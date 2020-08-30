@@ -1,0 +1,11 @@
+h1 {
+  color: red;
+  background-color: seagreen;
+  text-align: center;
+}
+.demo {
+  background-color: sienna;
+}
+#only {
+  color: pink;
+}

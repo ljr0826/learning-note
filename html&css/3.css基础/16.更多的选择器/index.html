@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 选择第一个子元素，选择li元素 */
+      div ul li:first-child {
+        color: red;
+      }
+      /* 选择第一个li的子元素 */
+      div ul li:first-of-type {
+        color: green;
+      }
+      div ul li:last-child {
+        color: hotpink;
+      }
+      div ul li:last-of-type {
+        color: indigo;
+      }
+      div ul li:nth-child(2n) {
+        background-color: lightblue;
+      }
+      /* div ul li:nth-of-type(2n){
+            background-color: lightcoral;
+        } */
+      div li:first-letter {
+        font-size: 100px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: green;
+      }
+      div p::first-line{
+          color: yellow;
+      }
+      div p::selection{
+          background-color: #008c8c;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="">Lorem.</a>
+      <a href="">Laboriosam.</a>
+      <a href="">Maiores.</a>
+      <a href="">Tempora!</a>
+      <a href="">Magnam?</a>
+      <a href="">Consequatur?</a>
+      <a href="">Ut!</a>
+      <a href="">Animi?</a>
+      <ul>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+          ullam dicta deserunt sapiente incidunt debitis exercitationem, non rem
+          repudiandae necessitatibus velit quae perferendis natus illum quas.
+          Amet, recusandae laudantium. Nihil.
+        </p>
+        <p>Lorem.</p>
+        <p>p元素</p>
+        <li>Lorem.</li>
+        <p>怕元素</p>
+        <li>Repellat?</li>
+        <li>Dolorem?</li>
+        <li>Dignissimos.</li>
+        <li>Vitae.</li>
+        <p>p元素</p>
+        <li>Iusto!</li>
+        <li>Consequatur!</li>
+        <li>Fugit!</li>
+        <li>Pariatur.</li>
+        <li>Assumenda?</li>
+        <p>Lorem, ipsum.</p>
+      </ul>
+    </div>
+  </body>
+</html>

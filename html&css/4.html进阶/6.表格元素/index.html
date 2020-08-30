@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表格练习</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        margin: 0 auto;
+      }
+      caption{
+          margin: 20px 0;
+          font-size: 38px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: #008c8c;
+      }
+      th,
+      td {
+        border: 1px solid #dcdfe6;
+        width: 130px;
+        height: 38px;
+        text-align: center;
+      }
+      tbody tr:nth-child(even){
+          background-color: #dcdfe6;
+      }
+      tfoot tr td{
+          text-align: right;
+          padding-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        美丽的李婧瑈
+      </caption>
+      <thead>
+        <tr>
+          <th>标题1</th>
+          <th>标题2</th>
+          <th>标题3</th>
+          <th>标题4</th>
+          <th>标题5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">列合并</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <!-- <td></td> -->
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+        <tr>
+          <td>数据1</td>
+          <td>数据2</td>
+          <td>数据3</td>
+          <td>数据4</td>
+          <td>数据5</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">总计1</td>
+          <!-- <td>总计1</td>
+          <td>总计2</td>
+          <td>总计3</td>
+          <td>总计4</td> -->
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+a {
+  font-size: 50px;
+  display: block;
+}
+/* a:link{
+    color: chocolate;
+}
+a:visited{
+    color: red;
+}
+a:hover{
+    color: #000000;
+}
+a:active{
+    color: green;
+} */
+span::before {
+  content: "美丽";
+  color: red;
+}
+[href$="baidu.com/"] {
+  color: green;
+}
+li {
+  background-color: rgb(141, 71, 190);
+}
+/* .yellow+li{
+  background-color: hotpink;
+} */
+.yellow~li{
+    color: green;
+}

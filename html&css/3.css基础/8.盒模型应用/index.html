@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .kg {
+        width: 300px;
+        height: 70px;
+        color: #ffccff;
+        background-color: #666;
+        line-height: 70px;
+        padding-left: 90px;
+        box-sizing: border-box;
+      }
+      p {
+        width: 300px;
+        height: 300px;
+        background-color: #00fcfc;
+        padding: 50px;
+        border: 20px dashed red;
+        background-clip: content-box;
+      }
+      .yc {
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+        padding: 3px;
+        /* overflow-y: scroll; */
+        overflow-y: auto;
+      }
+      .dc1,.dc2{
+          width: 300px;
+          border: 2px solid;
+          padding: 2px;
+          /* word-break: break-all; */
+          word-break: keep-all;
+      }
+      li{
+          border-bottom: 1px dashed #ccc;
+          height: 30px;
+          padding-left: 5px;
+          margin-top: 20px;
+          border-left: 3px solid #008c8c;
+          width: 200px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+      .kb{
+          white-space: pre;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 改变宽高范围 -->
+    <div class="kg">云顶模式</div>
+    <!-- 改变背景覆盖范围 -->
+    <p>Lorem ipsum dolor sit amet.</p>
+    <!-- 溢出处理 -->
+    <div class="yc">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero,
+      aspernatur deleniti eligendi placeat omnis vel ut, facere alias minus
+      culpa repellat reprehenderit non! Ullam eum perspiciatis saepe nostrum
+      vel! Dignissimos? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Nam, totam placeat provident reprehenderit nesciunt exercitationem minus
+      velit dignissimos deserunt, ipsum explicabo impedit. Voluptatibus quam
+      officia eius, provident quidem ab minus.
+    </div>
+    <!-- 断词规则 -->
+    <div class="dc1">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
+      repellendus eius nihil corporis et, minima explicabo assumenda error autem
+      id exercitationem omnis modi vitae praesentium voluptates porro eveniet
+      labore unde.
+    </div>
+    <div class="dc2">
+      女尼科夫加哦就流 口水贫困离开麦克雷 女你能看见分局i哦司 机大佬v就看你和v金佛而非防空飞弹列举了可能
+    </div>
+    <!-- 空白处理 -->
+    <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Ipsa excepturi cum rem nemo!</li>
+        <li>Minima odit voluptatibus molestiae autem?</li>
+        <li>At excepturi cum debitis facilis?</li>
+        <li>Tenetur sapiente pariatur magnam consequuntur.</li>
+        <li>Quidem odio voluptate delectus ratione.</li>
+        <li>Odit dolorum sunt quisquam consequuntur?</li>
+        <li>Dolore dicta harum ipsa ea.</li>
+        <li>Blanditiis aliquam consequatur non labore!</li>
+        <li>Tempore laudantium perferendis eius deleniti.</li>
+    </ul>
+    <div class="kb">
+        function test(){
+            console.log('aac')
+        }
+    </div>
+  </body>
+</html>

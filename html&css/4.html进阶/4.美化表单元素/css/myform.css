@@ -1,0 +1,7 @@
+input[type="text"],select,textarea,button{
+    border: 1px solid #008c8c;
+    margin-bottom: 1em;
+}
+input[type="text"]:focus,select:focus,textarea:focus,button:focus{
+    border: 1px solid #dfdf9f;
+}

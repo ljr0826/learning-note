@@ -1,0 +1,88 @@
+body .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.main .nav {
+  height: 60px;
+  width: 100%;
+  background-color: #47464a;
+  text-align: center;
+  line-height: 60px;
+}
+.main .nav a {
+  font-size: 16px;
+  /* text-decoration: none; */
+  color: #999;
+  padding: 0 40px;
+}
+.main .nav a:hover {
+  color: #fff;
+}
+.main .nav a.selected {
+  color: #f00;
+}
+.main .container {
+  width: 1050px;
+  margin: 0 auto;
+}
+.main .container .choose-area {
+  border: 1px solid #e5e5e5;
+  padding: 0 20px;
+  margin-top: 40px;
+}
+.main .container .choose-area .choose-item{
+    padding: 15px 0;
+    border-bottom: 1px dotted #e5e5e5;
+}
+.main .container .choose-area .choose-item .left {
+  float: left;
+  height: 24px;
+  line-height: 24px;
+  color: #999;
+  font-size: 14px;
+}
+.main .container .choose-area .choose-item .right {
+    color: #fff;
+}
+.main .container .choose-area .choose-item .right li {
+  float: left;
+  /* list-style: none; */
+  padding: 3px 9px;
+  margin-left: 12px;
+}
+.main .container .choose-area .choose-item .right li .selected{
+    background-color: #f00;
+    color: #fff;
+    border-radius: 15px;
+}
+.main .container .choose-area .choose-item .right a {
+  /* text-decoration: none; */
+  color: #000;
+}
+.main .container .movie-list li{
+  width: 160px;
+  margin: 30px 18px 10px 0;
+  float: left;
+}
+.main .container .movie-list li:nth-child(6n){
+  margin-right: 0;
+}
+.main .container .movie-list li img{
+  width: 160px;
+  height: 220px;
+}
+.main .container .movie-list li .movie-name,.movie-score{
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10px;
+  font-size: 16px;
+}
+.main .container .movie-list li .movie-score{
+  color: rgb(236, 204, 20);
+}
+.main .container .movie-list li .movie-score::first-letter{
+  font-style: italic;
+}

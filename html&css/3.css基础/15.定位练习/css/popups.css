@@ -1,0 +1,39 @@
+.container .poster img {
+  width: 100%;
+}
+.container .shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.container .shadow .main {
+    padding: 2em;
+    box-sizing: border-box;
+    width: 400px;
+    height: 512px;
+    background-color: #fff;
+    border: 2px solid #123;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.container .shadow .main .close{
+    color: #fff;
+    font-size: 20px;
+    background-color: salmon;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    cursor: pointer;
+}
