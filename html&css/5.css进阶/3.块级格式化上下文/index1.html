@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 更推荐用clear:both; */
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        /* .clearfix{
+            overflow: hidden;
+        } */
+        .container{
+            width: 800px;
+            background-color: rgb(146, 230, 233);
+            /* float: left; */
+            /* position: absolute; */
+            /* position: fixed; */
+            /* overflow: hidden; */
+            /* overflow: scroll; */
+            /* overflow: auto; */
+        }
+        .item{
+            width: 100px;
+            height: 100px;
+            background-color: #008c8c;
+            float: left;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container clearfix">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+</html>

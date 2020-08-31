@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: lightblue;
+            overflow: hidden;
+        }
+        .item{
+            width: 200px;
+            height: 200px;
+            background-color: #008c8c;
+            margin: 50px;
+            /* float: left; */
+            position: absolute;
+        }
+        /* 绝对定位、固定定位会会完全脱离文档流，所以自动高度一定不会计算他们在内 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item"></div>
+    </div>
+</body>
+</html>

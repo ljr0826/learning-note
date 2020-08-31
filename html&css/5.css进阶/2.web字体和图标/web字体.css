@@ -1,0 +1,8 @@
+@font-face{
+    font-family: "晚安体";
+    src: url(./font/晚安体.ttf);
+}
+h2{
+    font-family: "晚安体";
+    font-weight: normal;
+}
