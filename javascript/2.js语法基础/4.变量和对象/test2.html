@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var user = {
+            account:"dsfoij",
+            age:32,
+            pwd:"3423132434",
+            gender:"male",
+            isVip:true,
+            address:{
+                country:"中国",
+                city:"北京",
+            },
+        };
+        //用属性表达式读取用户的性别属性
+        // console.log(user.gender);
+        var prop = "account";
+        console.log(user[prop]);
+
+        var obj = {
+            a:"123",
+            "? jwefi sef sef":"456",
+            0:"abc",//属性的名字只能是字符串，如果书写的是数字，会自动转换为字符串
+        };
+        console.log(obj["? jwefi sef sef"]);
+        console.log(obj["0"]);
+        console.log(obj[0]);//宿主环境会自动将数字转换成字符串
+    </script>
+    <script>
+        //面试题
+        var obj = {};
+        obj[0] = "123";
+        obj["0"] = "456";
+        console.log(obj[0],obj["0"]);
+    </script>
+</body>
+</html>

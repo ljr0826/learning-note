@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var pid;//声明了一个变量，变量名为pid，目前变量为undefined
+        pid = "foienwkclsjf";//将****存放到变量pid中
+        console.log(pid);//输出变量pid的值，即存放在pid中的数据
+        console.log(typeof pid);
+
+        var $abc_123;
+        console.log($abc_123,typeof $abc_123);
+        $abc_123 = 1;
+        console.log($abc_123,typeof $abc_123);
+        $abc_123 = "abc";
+        console.log($abc_123,typeof $abc_123);
+        $abc_123 = undefined;
+        console.log($abc_123,typeof $abc_123);
+        $abc_123 = {};
+        console.log($abc_123,typeof $abc_123);
+
+        //一个变量，用于记录矩形（rectangle）宽度(width)
+        var rectangleWidth;
+        var rectWidth = 100;//声明并完成赋值
+
+        //等效于
+        var rectWidth;
+        rectWidth = 100;
+        console.log(rectWidth,typeof rectWidth);
+        var rectHeight;
+        var rectArea;
+    </script>
+</body>
+</html>
