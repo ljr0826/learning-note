@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var year = "2012";
+      var LeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+      var days = LeapYear ? "闰年2月29天" : "平年2月28天";
+      console.log(days);
+    //   console.log(LeapYear && "闰年2月29天");
+    //   console.log(LeapYear || "平年2月28天");
+    </script>
+  </body>
+</html>

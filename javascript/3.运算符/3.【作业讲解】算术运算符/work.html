@@ -7,17 +7,21 @@
   </head>
   <body>
     <script>
+      console.log(5.3-5.2);
+      console.log(5.4-5.3);
+    </script>
+    <script>
         //摄氏度转化
       var C = 26;
       var F = (C * 9) / 5 + 32;
-      console.log(F);
-      
+      console.log("摄氏温度：" + C,"华氏温度：" + F);
+       
       //利息计算
       var principal = 5000,
       depositTerm = 3,
-      interestRate = 0.03,
-      interest = principal * interestRate * depositTerm;
-      console.log(interest);
+      annualInterestRate = 0.036,
+      interest = principal * (annualInterestRate / 12) * depositTerm;
+      console.log("利息：" + interest);
     </script>
   </body>
 </html>

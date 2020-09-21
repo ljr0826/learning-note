@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.用一个变量保存成绩，输出该成绩是否及格（true 或 false）
+      var result = 65;
+      console.log(result >= 60);
+
+      //2.用一个变量保存年份，得到该年份 2 月的天数
+
+      var year = "2012";
+      var LeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+      console.log(LeapYear && "闰年2月29天");
+      console.log(LeapYear || "平年2月28天");
+
+      //3.利息计算器。设置变量，分别存放本金、月数、年利率，计算利息。如果本金存放量超过了 10 万，年利率上浮 20%（比如，年利率为 4%，上浮后的年利率 4% * 1.2）
+
+      var principal = 200001,
+        annualInterestRate = 0.036,
+        depositPeriod = 12,
+        //袁老师有其他算法
+        // (principal > 100000) && (annualInterestRate = 0.036 *1.2)
+        lowInterest =
+          (principal * depositPeriod * annualInterestRate * 1.2) / 12,
+        highInterest =
+          (principal * depositPeriod * annualInterestRate * 1.2) / 12;
+      console.log(principal > 100000 && highInterest);
+      console.log(principal > 100000 || lowInterest);
+    </script>
+  </body>
+</html>
