@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   1. 在控制台中输出100个*
+
+      //   for(i = 1; i <= 100; i++){
+      //       console.log("*");
+      //   }
+
+      //   2. 让用户输入*号的数量，然后输出对应数量的*
+
+      //   var num = +prompt("请输入*号的数量");
+      //   for(i = 1; i <= num; i++){
+      //       console.log("*");
+      //   }
+
+      //   3. 输出一个3行5列的*号
+      // var row = 3,
+      //   col = 5;
+      // for (i = 1; i <= row; i++) {
+      //在一行内输出col个*
+      //   var str = "";
+      //   for (j = 1; j <= col; j++) {
+      //     str += "* ";
+      //   }
+      //   console.log(`${str}`);
+      // }
+      //       4. 用*号输出一个5行的直角三角形
+
+      // ```
+      // *
+      // **
+      // ***
+      // ****
+      // *****
+      // ```
+
+      // var row = 5;
+      // for (i = 1; i <= row; i++) {
+      //输出一行*号，数量为i
+      //   var str = "";
+      //   for (j = 1; j <= i; j++) {
+      //     str += "* ";
+      //   }
+      //   console.log(str);
+      // }
+
+      // 5. 用*号输出一个5行的等腰三角形
+
+      // ```
+      //     *
+      //    ***
+      //   *****
+      //  *******
+      // *********
+      // ```
+
+      // var row = 7;
+      // //i代表第几行
+      // for (var i = 1; i <= row; i++) {
+      //   var str = "";
+      //   //每行*前面有row-i个空格1.拼接空格
+      //   for (var count = 1; count <= row - i; count++) {
+      //     str += "\0 ";
+      //   }
+      //   //每行有2i-1个*，j代表该行依次输出几个*2.拼接空格
+      //   for (var j = 1; j <= 2 * i - 1; j++) {
+      //     str += "* ";
+      //   }
+      //   console.log(str);
+      // }
+    </script>
+  </body>
+</html>

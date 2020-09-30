@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var h = prompt("请输入密码");
+      // console.log(h,typeof h);
+      var fingerGuessing = prompt("请输入剪刀/石头/布"),
+        robot;
+
+      function temp() {
+        if (Math.random() >= 0.7) {
+          robot = "布";
+        } else if (Math.random() <= 0.3) {
+          robot = "剪刀";
+        } else {
+          robot = "石头";
+        }
+        console.log(fingerGuessing, robot);
+        if (fingerGuessing === robot) {
+          console.log("平手，请重新输入");
+          fingerGuessing = prompt("请输入剪刀/石头/布");
+          temp();
+        } else if (fingerGuessing === "布") {
+          if (robot === "剪刀") {
+            console.log("失败");
+          } else if (robot === "石头") {
+            console.log("胜利");
+          }
+        } else if (fingerGuessing === "剪刀") {
+          if (robot === "石头") {
+            console.log("失败");
+          } else if (robot === "布") {
+            console.log("胜利");
+          }
+        } else if (fingerGuessing === "石头") {
+          if (robot === "布") {
+            console.log("失败");
+          } else if (robot === "剪刀") {
+            console.log("胜利");
+          }
+        } else {
+          console.log("输入有误");
+        }
+      }
+      temp();
+    </script>
+  </body>
+</html>

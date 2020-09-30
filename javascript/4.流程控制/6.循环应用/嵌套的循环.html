@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 打印1-100的所有素数
+      //方法一：
+      //   var record = 0;
+      //   for (var i = 1; i <= 100; i++) {
+      //     for (j = 1; j <= i; j++) {
+      //       if (i % j === 0) {
+      //         record++;
+      //       }
+      //     }
+      //     if (record === 2) {
+      //       console.log(i);
+      //     }
+      //     record = 0;
+      //   }
+      //方法二：
+      for (i = 1; i <= 100; i++) {
+        var isFind = true;
+        for (j = 2; j < i; j++) {
+          if (i % j === 0) {
+            isFind = false;
+            break;
+          }
+        }
+        if (isFind && i !== 1) {
+          console.log(i);
+        }
+      }
+    </script>
+  </body>
+</html>

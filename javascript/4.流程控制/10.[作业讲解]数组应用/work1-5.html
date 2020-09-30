@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1. 提示用户输入数组的长度，以及数组每一项的值，然后输出该数组
+      // var len = +prompt("请输入数组的长度");
+      // var num = prompt("请输入数组每一项的值"); //是String或NaN,是否需要转换？
+      // var arr = new Array(len);
+      // for (var i = 0; i < len; i++) {
+      //   arr[i] = num;
+      // }
+      // console.log(arr);
+      //听课后修改：
+      // var len = +prompt("请输入数组的长度");
+      // if (isNaN(len) || len < 0) {
+      //   console.log("输入有误");
+      // }
+      // var arr = [];
+      // for (var i = 0; i <= len - 1; i++) {
+      //   arr[i] = prompt(`请输入数组第${i + 1}项的值`);
+      // }
+      // console.log(arr);
+      //袁老师思路：
+      // var len = +prompt("请输入数组的长度");
+      // if (isNaN(len) || len < 0) {
+      //   console.log("输入有误");
+      // } else {
+      //   //输入正确
+      //   var arr = [];
+      //   for (var i = 0; i < len; i++) {
+      //     // 提示用户输入数组的这一项的值
+      //     arr[i] = prompt("请输入数组第" + (i + 1) + "项的值");
+      //   }
+      //   console.log(arr);
+      // }
+      //2. 初始化一个数字数组，然后求该数组所有项之和
+      // var arr = [12, 3, 4, 5, 5, 67, 8, 9];
+      // var sum = 0;
+      // for (var prop in arr) {
+      //   sum += arr[prop];
+      // }
+      // console.log(sum);
+      //3. 初始化一个数字数组，然后输出数组中所有的奇数
+      // var arr = [12, 3, 4, 5, 5, 67, 8, 9];
+      // var sum = 0;
+      // for (var i = 0; i <= arr.length - 1; i++) {
+      //   if (arr[i] % 2 === 1) {
+      //     sum += arr[i];
+      //   }
+      // }
+      //听课后修改：
+      // var arr = [12, 3, 4, 5, 5, 67, 8, 9];
+      // for (var index in arr) {
+      //   if (arr[index] % 2 === 1) {
+      //     console.log(arr[index]);
+      //   }
+      // }
+      //袁老师思路
+      // var arr = [234, 6, 23, 211, 23];
+      // for (var index in arr) {
+      //   if (arr[index] % 2 !== 0) {
+      //     console.log(arr[index]);
+      //   }
+      // }
+      // console.log(sum);
+      //4. 初始化一个数字数组，然后输出数组中所有的素数
+      // var arr = [12, 3, 4, 5, 5, 67, 8, 9];
+      // var isFind = false;
+      // for (var prop in arr) {
+      //   for (var i = 2; i < arr[prop]; i++) {
+      //     if (arr[prop] % i === 0) {
+      //       isFind = true;
+      // break;
+      //     }
+      //   }
+      //   if (arr[prop] !== 1 && !isFind) {
+      //     console.log(arr[prop]);
+      //   }
+      //   isFind = false;
+      // }
+      //袁老师思路
+      // var arr = [234, 2, 6, 23, 211, 23];
+      // for (var index in arr) {
+      //   // 判断arr[index]是不是素数
+      //   var isFind = false;
+      //   for (var i = 2; i < arr[index] - 1; i++) {
+      //     if (arr[index] % i === 0) {
+      //       isFind = true;
+      //       break;
+      //     }
+      //   }
+      //   if (!isFind && arr[index] >= 2) {
+      //     console.log(arr[index]);
+      //   }
+      // }
+      //5. 斐波拉契数列是这样一种数列：1  1  2  3  5  8  13 ......
+      //数列前两位为1，第n位=第n-1位+第n-2位
+      //让用户输入斐波拉契数列的长度，在控制台中打印该长度的斐波拉契数列
+      // var len = +prompt("请输入斐波那契数列的长度");
+      // var arr = [];
+      // //听课后修改：
+      // var len = +prompt("请输入斐波那契数列的长度");
+      // if (isNaN(len) || len < 0) {
+      //   console.log("输入有误");
+      // }
+      // var arr = [];
+      // for (var i = 0; i <= len - 1; i++) {
+      //   if (i === 0 || i === 1) {
+      //     arr[i] = 1;
+      //   } else {
+      //     arr[i] = arr[i - 1] + arr[i - 2];
+      //   }
+      // }
+      // console.log(arr);
+      // var one = 1,
+      //   two = 1;
+      // arr[0] = one;
+      // arr[1] = two;
+      // for (var i = 2; i <= len - 1; i++) {
+      //   var three = one + two;
+      //   arr[i] = three;
+      //   one = two;
+      //   two = three;
+      // }
+      // console.log(arr);
+      //袁老师思路
+      // var len = +prompt("请输入斐波拉契数列的长度");
+      // if (isNaN(len) || len < 0) {
+      //   console.log("输入有误");
+      // } else {
+      //   //输入正确
+      //   var arr = [];
+      //   for (var i = 0; i < len; i++) {
+      //     if (i === 0 || i === 1) {
+      //       arr[i] = 1;
+      //     } else {
+      //       arr[i] = arr[i - 1] + arr[i - 2];
+      //     }
+      //   }
+
+      //   console.log(arr);
+      // }
+    </script>
+  </body>
+</html>

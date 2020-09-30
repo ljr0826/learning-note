@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //         14. 输出99乘法表，效果如下：
+
+      // ```
+      // 1*1=1
+      // 1*2=2	2*2=4
+      // 1*3=3	2*3=6	3*3=9
+      // 1*4=4	2*4=8	3*4=12	4*4=16
+      // 1*5=5	2*5=10	3*5=15	4*5=20	5*5=25
+      // 1*6=6	2*6=12	3*6=18	4*6=24	5*6=30	6*6=36
+      // 1*7=7	2*7=14	3*7=21	4*7=28	5*7=35	6*7=42	7*7=49
+      // 1*8=8	2*8=16	3*8=24	4*8=32	5*8=40	6*8=48	7*8=56	8*8=64
+      // 1*9=9	2*9=18	3*9=27	4*9=36	5*9=45	6*9=54	7*9=63	8*9=72	9*9=81
+      // ```
+
+      // var row = 9;
+      // //i为第几行
+      // for (var i = 1; i <= row; i++) {
+      // //   每循环一次输出一行
+      //   var str = "";
+      //   //j为第几行有几个式子
+      //   for (var j = 1; j <= i; j++) {
+      //     var pro = j * i;
+      //     str += `${j}*${i}=${pro}\t`;
+      //   }
+      //   console.log(str);
+      // }
+
+      // 15. 将猜拳游戏升级，记录系统和玩家的积分，获胜者加1分，平局和输者不计分
+
+      // 可参考以下效果：
+
+      // ```
+      // 游戏开始
+      // ==============第1轮==============
+      // 系统：0分，玩家：0分
+      // 你的出拳：剪刀
+      // 系统出拳：布
+      // 你赢了！
+      // ==============第2轮==============
+      // 系统：0分，玩家：1分
+      // 你的出拳：石头
+      // 系统出拳：布
+      // 你输了！
+      // ==============游戏结束==============
+      // 系统：1分，玩家：1分
+      // ```
+
+      var rounds = 1, //代表游戏共几个回合
+        plaScore = 0, //玩家总积分
+        pcScore = 0, //系统总积分
+        grade; //每轮结果（输或赢）
+      console.log("游戏开始");
+      while (rounds) {
+        console.log(`==============第${rounds}轮==============`);
+        var plaFist = prompt("请玩家出拳（剪刀、石头、布）");
+        var pc = Math.random(), //随机数数据
+          plaPart = 0, //每轮中玩家积分
+          pcPart = 0, //每轮中系统积分
+          pcFist; //系统出拳
+        rounds++;
+        if (pc > 0.666) {
+          pcFist = "剪刀";
+        } else if (pc < 0.333) {
+          pcFist = "石头";
+        } else {
+          pcFist = "布";
+        }
+        if (plaFist === null) {
+          break;
+        } else if (
+          plaFist !== "石头" &&
+          plaFist !== "剪刀" &&
+          plaFist !== "布"
+        ) {
+          console.log("输入有误,请重新出拳");
+        } else {
+          if (
+            (plaFist === "石头" && pcFist === "剪刀") ||
+            (plaFist === "剪刀" && pcFist === "布") ||
+            (plaFist === "布" && pcFist === "石头")
+          ) {
+            plaPart += 1;
+            plaScore += 1;
+            grade = "你赢了！";
+          } else if (plaFist === pcFist) {
+            grade = "平局！";
+          } else if (
+            (plaFist === "剪刀" && pcFist === "石头") ||
+            (plaFist === "布" && pcFist === "剪刀") ||
+            (plaFist === "石头" && pcFist === "布")
+          ) {
+            pcPart += 1;
+            pcScore += 1;
+            grade = "你输了！";
+          }
+          console.log(
+            `系统：${pcScore}分，玩家：${plaScore}分
+             你的出拳：${plaFist}
+             系统出拳：${pcFist}
+             ${grade}`
+          );
+        }
+      }
+      console.log(`==============游戏结束==============
+      系统${pcScore}分，玩家：${plaScore}分`);
+    </script>
+    <!--  <script>
+      // 袁老师思路
+              console.log("游戏开始");
+              var round = 1, //轮次
+                  pcScore = 0, //系统分数
+                  playerScore = 0; //玩家分数
+              while (true) {
+                  // 1轮游戏
+                  console.log(`==============第${round}轮==============`);
+                  console.log(`系统：${pcScore}分，玩家：${playerScore}分`);
+                  var fist = prompt("请出拳（剪刀、石头、布）");
+                  if (fist === null) {
+                      //取消
+                      break;
+                  }
+                  //没有取消
+                  if (fist !== "剪刀" && fist !== "石头" && fist !== "布") {
+                      //出拳无效
+                      console.log("出拳无效，请重新出拳！");
+                      continue;
+                  }
+                  //出拳有效
+                  console.log(`你的出拳：${fist}`);
+                  var pcFist = Math.random(); //系统随机出拳
+                  if (pcFist < 0.3333) {
+                      pcFist = "剪刀";
+                  } else if (pcFist < 0.6666) {
+                      pcFist = "石头";
+                  } else {
+                      pcFist = "布";
+                  }
+                  console.log(`系统出拳：${pcFist}`);
+                  //判断胜负
+                  if (fist === "剪刀" && pcFist === "布" ||
+                      fist === "布" && pcFist === "石头" ||
+                      fist === "石头" && pcFist === "剪刀") {
+                      //玩家胜利
+                      playerScore++;
+                      console.log("你赢了！");
+                  } else if (fist === pcFist) {
+                      console.log("平局");
+                  } else {
+                      pcScore++;
+                      console.log("系统胜利！");
+                  }
+                  //轮次+1
+                  round++;
+              }
+      
+              console.log("==============游戏结束==============");
+              console.log(`系统：${pcScore}分，玩家：${playerScore}分`);
+          </script> -->
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //求一个数组中最大的一个数据
+      var nums = [2, 4, 56, 78, 796, 4432, 2];
+      var max = nums[0];
+      for (var i = 1; i <= nums.length - 1; i++) {
+        if (nums[i] > max) {
+          max = nums[i];
+        }
+      }
+      console.log(max);
+    </script>
+  </body>
+</html>

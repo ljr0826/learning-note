@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 输出一个数是不是奇数
+      // function isOdd(n) {
+      //   return n % 2 === 1;
+      // }
+      // isOdd(13);
+      // isOdd(24);
+      // 输出两个数相加的结果
+      // function sum(a, b) {
+      //   console.log(`${a}+${b}=${a + b}`);
+      // }
+      // sum(3, 4);
+      // 对一个数组求和
+      // function sumOfArray(arr) {
+      //   var sum = 0;
+      //   for (var i = 0; i <= arr.length - 1; i++) {
+      //     sum += arr[i];
+      //   }
+      //   console.log(`数组的和为：${sum}`);
+      // }
+      // sumOfArray([2, 3, 467, 8, 79, 2, 75, 1, 32, 3, 4]);
+      //删除数组末尾的指定数量的数据
+      function deleteArray(arr, number) {
+        arr.splice(-number, number);
+      }
+      var nums = [2, 3, 467, 8, 79, 2, 75, 1, 32, 3, 4];
+      deleteArray(nums, 3);
+      console.log(nums);
+    </script>
+  </body>
+</html>

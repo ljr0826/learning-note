@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 135-145 之间是否存在 能整除26的数字
+      //   var isFind = false;
+      //   var min = 135,
+      //     max = 145;
+      //   for (var i = min; i <= max; i++) {
+      //     if (i % 26 === 0) {
+      //       isFind = true;
+      //       break;
+      //     }
+      //   }
+      //   if (isFind) {
+      //     console.log("存在");
+      //   } else {
+      //     console.log("不存在");
+      //   }
+      // 打印135-185之间所有能整除26的数字
+      //   var min = 135,
+      //     max = 185;
+      //   for (i = min; i <= max; i++) {
+      //     if (i % 26 === 0) {
+      //       console.log(i);
+      //     }
+      //   }
+      // 打印135-185之间第一个能整除26的数字，如果不存在，输出不存在
+      //   var isFind = false;
+      //   var min = 135,
+      //     max = 185;
+      //   for (i = min; i <= max; i++) {
+      //     if (i % 26 === 0) {
+      //       isFind = true;
+      //       console.log(i);
+      //       break;
+      //     }
+      //   }
+      //   if (!isFind) {
+      //     console.log("不存在");
+      //   }
+      // 判断一个数是不是素数（质数）
+      // 素数：一个大于1的整数，只能被1和自身整除
+      // 比如：2是一个素数
+      // 比如：4不是一个素数
+      // 思路：从1循环到这个数，记录有多少个数字能整除它，
+
+      //   var num = 7,
+      //     record = 0;
+      //   for (i = 1; i <= num; i++) {
+      //     if (num % i === 0) {
+      //       record++;
+      //     }
+      //   }
+      //   if (record === 2) {
+      //     console.log(`${num}是素数`);
+      //   } else {
+      //     console.log(`${num}不是素数`);
+      //   }
+
+      var num = 7,
+        isFind = true;
+      for (i = 2; i < num; i++) {
+        if (num % i === 0) {
+          isFind = false;
+          break;
+        }
+      }
+      if (isFind) {
+        console.log(`${num}是素数`);
+      } else if (!isFind || num === 1) {
+        console.log(`${num}不是素数`);
+      }
+    </script>
+  </body>
+</html>

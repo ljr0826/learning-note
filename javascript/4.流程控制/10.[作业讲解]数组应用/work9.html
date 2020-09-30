@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //9. 有一个数组，存放了一些数字，找出出现频率最高的数字
+      var arr = [2, 4, 5, 6, 8, 4, 2, 25, 7, 8, 8, 43, 3, 346, 0, 7];
+      var nums = {};
+      for (var prop in arr) {
+        var index = arr[prop];
+        if (nums[index]) {
+          nums[index]++;
+        } else {
+          nums[index] = 1;
+        }
+      }
+      console.log(nums);
+      var arr2 = {};
+      for (var num in nums) {
+        // if (!arr2["name"] || nums[num] > arr2["pre"]) {
+        //   arr2['name'] = num;
+        //   arr2["pre"] = nums[num];
+        // }
+        arr2[num]
+      }
+
+      //修改：
+    //   var arr2;
+    //   for (var num in nums) {
+    //     if (!arr2 || nums[num] > arr2["pre"]) {
+    //       arr2 = {
+    //         name: num,
+    //         pre: nums[num],
+    //       };
+    //     }
+    //   }
+
+      //袁老师思路
+      //   var result; //结果对象
+      //   for (var prop in record) {
+      //     if (!result || record[prop] > result.frequency) {
+      //       result = {
+      //         number: prop,
+      //         frequency: record[prop],
+      //       };
+      //     }
+      //   }
+
+      console.log(
+        `出现赔率最高的数字是${arr2["name"]}，出现的频率是${arr2["pre"]}次`//
+      );
+    </script>
+  </body>
+</html>
