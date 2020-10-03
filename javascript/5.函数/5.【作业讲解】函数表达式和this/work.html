@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../common/BetterFunction.js"></script>
+    <script>
+      //2. 写一个函数，为数组排序//要考虑到这个数组的所有可能
+      /**
+       * 给指定的数组升序排序
+       * @param {*} arr
+       * @param {Function} compare 比较大小，
+       * 该函数有两个参数，代表数组中的两个元素，
+       * 该函数返回一个数字，如果是正数，则第一个元素比第二个元素大，
+       * 如果是0，则相等，
+       * 如果是负数，则第一个元素比第二个元素小
+       */
+
+      var sort = function (arr, callback) {
+        if (!callback) {
+          callback = function (a, b) {
+            if (a > b) {
+              return 1;
+            } else if ((a = b)) {
+              return 0;
+            } else {
+              return -1;
+            }
+          };
+        }
+        for (var i = 1; i <= arr.length; i++) {
+          for (var j = 0; j <= arr.length - i; j++) {
+            if (callback([j], [j + 1]) > 0) {
+              var temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+        console.log(arr);
+      };
+      var obj = [
+        { name: "ji", age: 13 },
+        { name: "gou", age: 53 },
+        { name: "tu", age: 37 },
+      ];
+      sort(obj, function (a, b) {
+        if (a > b) {
+          return 1;
+        } else if ((a = b)) {
+          return 0;
+        } else {
+          return -1;
+        }
+      });
+      //3. 写一个函数，按照指定的条件对某个数组进行筛选
+
+      //   var filter = function (callback, arr) {
+      //     for (var i = 0; i <= arr.length - 1; i++) {
+      //       if (callback(arr[i])) {
+      //         console.log(arr[i]);
+      //       }
+      //     }
+      //   };
+      //   var nums = [1, 3, 46, 73, 2, 1, 4, 5, 67, 4, 32, 5, 7, 4, 2, 3, 2];
+      //   filter(MyFunctions.isOdd, nums); //筛选出奇数
+      //   /**
+      //    * 筛选数组
+      //    * @param {*} arr
+      //    * @param {Function} callback 回调函数，接收两个参数，
+      //    * 分别表示数组的某一项和其下标，返回boolean
+      //    * 满足条件返回true，否则返回false
+      //    */
+      //   function filter(arr, callback) {
+      //     //遍历数组，看每一项是否满足条件
+      //     var newArr = [];
+      //     for (var i = 0; i < arr.length; i++) {
+      //       if (callback(arr[i], i)) {
+      //         newArr.push(arr[i]);
+      //       }
+      //     }
+      //     return newArr;
+      //   }
+      //   /**
+      //    * 从指定的数组中，查找第一个满足条件的元素，如果没有找到，返回undefined
+      //    * @param {*} arr
+      //    * @param {*} callback 回调函数，接收两个参数，
+      //    * 分别表示数组的某一项和其下标，返回boolean
+      //    * 满足条件返回true，否则返回false
+      //    */
+      //   function find(arr, callback) {
+      //     for (var i = 0; i < arr.length; i++) {
+      //       if (callback(arr[i], i)) {
+      //         return arr[i];
+      //       }
+      //     }
+      //   }
+      //   // 4. 写一个函数，按照指定的条件，得到某个数组中第一个满足条件的元素
+
+      //   // find
+      //   var find = function (callback, arr) {
+      //     for (var i = 0; i <= arr.length - 1; i++) {
+      //       if (callback(arr[i])) {
+      //         console.log(arr[i]);
+      //         break;
+      //       }
+      //     }
+      //   };
+      //   /**
+      //    * 从指定的数组中，查找第一个满足条件的元素，如果没有找到，返回undefined
+      //    * @param {*} arr
+      //    * @param {*} callback 回调函数，接收两个参数，
+      //    * 分别表示数组的某一项和其下标，返回boolean
+      //    * 满足条件返回true，否则返回false
+      //    */
+      //   function find(arr, callback) {
+      //     for (var i = 0; i < arr.length; i++) {
+      //       if (callback(arr[i], i)) {
+      //         return arr[i];
+      //       }
+      //     }
+      //   }
+      //   var nums = [1, 3, 46, 73, 2, 1, 4, 5, 67, 4, 32, 5, 7, 4, 2, 3, 2];
+      //   find(MyFunctions.isOdd, nums); //筛选出奇数
+
+      //   // 5. 写一个函数，按照指定的条件，得到某个数组中满足条件的元素数量
+
+      //   var count = function (callback, arr) {
+      //     var number = 0;
+      //     for (var i = 0; i <= arr.length - 1; i++) {
+      //       if (callback(arr[i])) {
+      //         number++;
+      //       }
+      //     }
+      //     console.log(number);
+      //   };
+      //   var nums = [1, 3, 46, 73, 2, 1, 4, 5, 67, 4, 32, 5, 7, 4, 2, 3, 2];
+      //   count(MyFunctions.isOdd, nums); //筛选出奇数
+
+      //   MyFunctions.filter(arr, Myfunctions.isOdd);
+      //   /**
+      //    * 按照指定的条件，得到某个数组中满足条件的元素数量
+      //    * @param {*} arr
+      //    * @param {*} callback 回调函数，接收两个参数，
+      //    * 分别表示数组的某一项和其下标，返回boolean
+      //    * 满足条件返回true，否则返回false
+      //    */
+      //   function count(arr, callback) {
+      //     var num = 0;
+      //     for (var i = 0; i < arr.length; i++) {
+      //       if (callback(arr[i], i)) {
+      //         num++;
+      //       }
+      //     }
+      //     return num;
+      //   }
+    </script>
+  </body>
+</html>

@@ -6,40 +6,72 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- <script>
-      var obj = {
-        name: "abc",
-        age: 13,
-        address: {
-          country: "china",
-          city: "beijing",
-        },
-      };
-      console.log(obj.name);
-      console.log(obj.gender);
-    //   console.log(obj1.name);
-    obj.address;
-    console.log(obj.address);
-    </script> -->
-
-    <!-- <script>
-      var j = +prompt();
-      console.log(j, typeof j);
-    </script> -->
-
     <script>
-      console.log(undefined, typeof undefined);
-      console.log("undefined", typeof "undefined");
-      var arr = [, 1, 2, 3, 5, 6, 7, 52, 2, ,];
-      console.log(arr[0], typeof arr[0]);
-      // var n = 10;
-      // for (var i = 0; i <= n; i++) {
-      //   if (i === 3) {
-      //     console.log(3);
-      //     break;
-      //   }
+      console.log(4 ** 2);
+      // console.log(typeof new Function());
+      // console.log(typeof new Object());
+      // console.log(typeof new Number());
+      // var a = 2.467362;
+      // console.log(a.toFixd(2));
+      // console.log(new Number(a).toFixed(2));
+      // console.log(typeof new Number(a));
+      // function sum(a, b) {
+      //   return a + b;
       // }
-      // console.log(n);
+      //相当于
+      // var sum = new Function("a", "b", "return a+b");
+      // console.log(typeof sum);
+      // console.log(sum(3, 5));
+      // var obj = new sum(3, 2);
+      // console.log(typeof obj);
+      // console.log(obj);
+      // var sum = new Function("a", "b", "return a+b");
+      // console.log(sum);
+      // function User(name, age) {
+      //   this.name = name;
+      //   this.age = age;
+      //   return new.target;
+      // }
+      // var obj = new User("奥塔曼", 33);
+      // console.log(obj);
+      // test(); //报错  变量提升、值为undefined
+      // var test = function () {
+      //   console.log("sofnrvk");
+      // };
+      // abc(); //存在函数声明提升 333
+      // function abc() {
+      //   console.log(333);
+      // }
+      // var hw = (function () {
+      //   console.log("Hello Wold");
+      //   return "wrfs";
+      // })();
+      // console.log(hw); //立即执行
+      // (function () {
+      //   console.log(`哈哈哈哈哈哈哈哈哈哈哈哈`);
+      // })(); //立即执行
+      // function test() {
+      //   console.log(`ooooooooo`);
+      // } //()//会报错
+
+      // test = 3;
+      // console.log(test);
+
+      // var obj = {
+      //   a: function () {
+      //     console.log(this);
+      //   },
+      //   b: {
+      //     x: 24,
+      //     func: function () {
+      //       console.log(this);
+      //     },
+      //   },
+      // };
+      // console.log(obj.a());
+      // var c = obj.a;
+      // console.log(c());
+      // console.log(obj.b.func());
     </script>
   </body>
 </html>

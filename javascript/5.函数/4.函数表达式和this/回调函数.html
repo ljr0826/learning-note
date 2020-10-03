@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // call：传递一个函数进来
+      // function test(callback1, callback2) {
+      //     console.log("test运行");
+      //     callback1();
+      //     callback2();
+      // }
+
+      // test(function() {
+      //     console.log("abc");
+      // }, function(){
+      //     console.log("asfasf");
+      // });//直接将函数作为实参传递
+
+      function test(obj) {
+        obj.func1();
+        obj.func2();
+      }
+
+      test({
+        func1: function () {
+          console.log("func1");
+        },
+        func2: function () {
+          console.log("func2");
+        },
+      });
+    </script>
+  </body>
+</html>

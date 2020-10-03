@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //无限循环，卡死不报错
+      // function A() {
+      //     while (true) {
+      //         console.log("1");
+      //     }
+      // }
+      // A();
+      //无限递归，执行栈溢出报错
+      function A() {
+        A();
+      }
+
+      A();
+    </script>
+  </body>
+</html>

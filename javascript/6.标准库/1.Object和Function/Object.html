@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Object静态成员
+      // var obj = {
+      //   x: 123,
+      //   y: "sfdgdf",
+      //   z: true,
+      // };
+      // var arr = [2, 4, 6, 2, 43, 10];
+      // var a = Object.entries(arr);
+      // console.log(a);
+      // var s = Object.entries(obj);
+      // console.log(s);
+      //Object实例成员
+      var obj = {
+        x: 123,
+        y: "sfdgdf",
+        z: true,
+      };
+      obj.toString = function () {
+        return this.x + "," + this.y;
+      };
+      console.log(obj.toString());
+      var arr = [1, 3, 5, 64, 2, 5, 64, 4, 52, 3546, 2, 5, 542];
+      console.log(arr.toString());
+      // var obj = {
+      //   x: 13,
+      //   y: 34534,
+      //   valueOf() {
+      //     return 213;
+      //   },
+      // };
+      // console.log(obj + 1);
+      // 如果调用了valueOf已经得到了原始类型，则不再调用toString
+      // console.log(obj.valueOf().toString() + 1);
+      // function Fn() {}
+      // Fn.w = function () {};
+      // Fn.a = "金 ";
+
+      // var fn = new Fn();
+      // fn.w = function () {};
+      // fn.a = "shili";
+    </script>
+  </body>
+</html>

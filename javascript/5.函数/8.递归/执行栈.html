@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function A() {
+        console.log("A begin"); 
+        B(); 
+        console.log("A over");
+      }
+
+      function B() {
+        console.log("B begin");
+        C();
+        console.log("B over");
+      }
+
+      function C() {
+        console.log("C begin");
+        console.log("C over");
+      }
+
+      console.log("global begin");
+      A();
+      console.log("global over");
+
+      //创建执行环境console.log("global begin");-->调用结束-->销毁环境
+      //创建执行环境function A（）-->创建执行环境--
+    </script>
+  </body>
+</html>

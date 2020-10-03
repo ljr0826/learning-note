@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      // 创建一个用户
+      function createUser(name, age, gender) {
+        return {
+          name,
+          age,
+          gender,
+          sayHello() {//语法糖：用户对象的一种创建方法
+            console.log(
+              `我叫${this.name}，年龄${this.age}岁，性别${this.gender}`
+            );
+          },
+        };
+      }
+
+      var u1 = createUser("张三", 18, "男");
+      u1.sayHello();
+      var u2 = createUser("姬成", 20, "男");
+      u2.sayHello();
+      console.log(u1 === u2); //flase,每次调用函数创建的都是一个新对象
+    </script> -->
+    <script>
+      //使用构造函数创建一个对象
+      //   function User(name, age, gender) {}
+      //   var u1 = new User("张三", 18, "男");
+      //   console.log(u1); //构造函数内部，会自动创建一个新对象，this 指向新创建的对象，并且自动返回新对象
+      //   var u2 = new User("姬成", 20, "男");
+      //   console.log(u2); //u1和u2不同
+
+      function User(name, age, gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.sayHello = function () {
+          console.log(
+            `我叫${this.name}，年龄${this.age}岁，性别${this.gender}`
+          );
+        };
+      }
+      var u1 = new User("张三", 18, "男");
+      u1.sayHello();
+      var u2 = new User("姬成", 20, "男");
+      u2.sayHello();
+
+      console.log(u1 === u2);
+      console.log(User);
+    </script>
+  </body>
+</html>

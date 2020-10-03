@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //静态成员
+      // - from 方法：可以将一个伪数组转换为真数组
+
+      //   function test(a, b) {
+      //     console.log(arguments);
+      //     var newArr = Array.from(arguments);
+      //     console.log(newArr);
+      //   }
+      //   test(2, 3, 45, 231, 42, 342, 22);
+      // - isArray 方法：判断一个给定的数据是否为一个真数组
+
+      //   function test(a, b) {
+      //     console.log(Array.isArray(arguments));
+      //     var newArr = Array.from(arguments);
+      //     console.log(Array.isArray(newArr));
+      //   }
+      //   test(2, 3, 45, 231, 42, 342, 22);
+
+      // - of 方法：类似于中括号创建数组，依次赋予数组每一项的值
+
+      console.log(Array.of(1, 2, 4));
+      var arr = [1, 2, 3];
+      console.log(arr); //.of和.fill的区别？
+    </script>
+  </body>
+</html>
