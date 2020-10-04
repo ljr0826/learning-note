@@ -9,38 +9,38 @@
     <script>
       //实例成员：改变原数组
       //  - 数组.fill(数据,开始下标,结束下标)：将数组从开始下标起，到数组的结束下标(取不到)，填充为指定的数据
-      var arr = new Array(6);
-      arr.fill(7, 2);
-      console.log(arr);
+      // var arr = new Array(6);
+      // arr.fill(7, 2);
+      // console.log(arr);
 
       //  - 数组.pop()：删除数组的最后一项，该表达式返回最后一项的数据
-      var a = arr.pop();
-      console.log(arr);
-      console.log(a);
+      // var a = arr.pop();
+      // console.log(arr);
+      // console.log(a);
 
       //  - 数组.push(数据)：向数组末尾添加一个数据
 
-      arr.push(9);
-      console.log(arr);
+      // arr.push(9);
+      // console.log(arr);
 
       //  - reverse：将当前数组颠倒顺序
 
-      arr.reverse();
-      console.log(arr);
+      // arr.reverse();
+      // console.log(arr);
 
       //  - 数组.shift()：删除数组的第一项，该表达式返回第一项的数据
 
-      b = arr.shift();
-      console.log(b);
-      console.log(arr);
+      // b = arr.shift();
+      // console.log(b);
+      // console.log(arr);
 
-      //  - sort：对数组进行排序
+      //  - sort：对数组进行排序。默认按照字符串unicode编码排序
 
-      var nums = [1, 4, 52, 34, 65, 73, 14, 4, 35, 22, 5465, 866, 4, 6];
-      nums.sort(function (a, b) {
-        return a - b;
-      });
-      console.log(nums);
+      // var nums = [1, 4, 52, 34, 65, 73, 14, 4, 35, 22, 5465, 866, 4, 6];
+      // nums.sort(function (a, b) {
+      //   return a - b;
+      // });
+      // console.log(nums);
 
       //  - 数组.splice(下标,0,添加的数据)：从指定下标位置开始，删除 0 个，然后在该位置插入添加的数据，如果下标超过范围，则按照范围的边界进行处理,一般不会造成稀松数组
       nums.splice(3, 3);

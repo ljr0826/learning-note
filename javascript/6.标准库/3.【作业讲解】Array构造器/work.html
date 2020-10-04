@@ -6,17 +6,31 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
+    <!-- <script>
       //去掉数组中的负数，然后对每一项平方，然后再对每一项翻倍，然后求和
       var arr = [1, 2, 3, 4, 5, 6, -1, -2, -3, -4, -5, -6];
-      var newArr1 = arr
+      var result = arr
         .filter(function (temp) {
           return temp >= 0;
         })
-        .forEach(function (temp, i) {
-          temp ** 2;
-        });
-      console.log(newArr1);
+        .map(function (temp) {
+          return temp ** 2;
+        })
+        .map(function (temp) {
+          return temp * 2;
+        })
+        .reduce(function (a, b) {
+          return a + b;
+        }, 0);
+      console.log(result);
+    </script> -->
+    <script>
+      //得到一个数组中的最大值
+      var arr = [2, 6, 111, 3, 8, 5, 23, 7, 4, 76, 3, 96];
+      var max = arr.reduce(function (a, b) {
+        return b > a ? b : a;
+      });
+      console.log(max);
     </script>
   </body>
 </html>
