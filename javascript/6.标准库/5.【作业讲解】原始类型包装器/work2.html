@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 2. 将一个字符串中单词之间的空格去掉，然后把每个单词首字母转换成大写
+
+      // 比如："hello world" -> "HelloWorld" 大驼峰命名法
+
+      //袁老师思路
+      function bigCamel(s) {
+        //只考虑空格
+        return s
+          .split(" ")
+          .filter(function (item) {
+            return item.length > 0;
+          })
+          .map(function (item) {
+            return item[0].toUpperCase() + item.substring(1).toLowerCase();
+          })
+          .join("");
+      }
+
+      console.log(bigCamel(s));
+    </script>
+  </body>
+</html>

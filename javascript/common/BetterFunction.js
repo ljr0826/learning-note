@@ -120,7 +120,7 @@ var MyFunctions = {
     }
     var result = undefined;
     for (var index in nums) {
-      if (!result || nums[index] > resulttopFreq) {
+      if (!result || nums[index] > result.topFreq) {
         result = {
           topFreq: +nums[index],
           topMax: index,
@@ -210,5 +210,14 @@ var MyFunctions = {
       }
     }
     return num;
+  },
+  /**
+   * 得到一个最小值到最大值之间的随机整数
+   * @param {number} min 最小值
+   * @param {number} max 最大值(取不到最大值)
+   */
+  //若数据为负数，将Number.parseInt()更改为向下取整Math.floor()更标准
+  getRandom: function (min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
   },
 };

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //输出当前日期的第二天
+      //方法一
+      var date = new Date();
+      //   var afterDay = date.getTime() + 24 * 60 * 60 * 1000;
+      //   date.setTime(afterDay);
+      //   console.log(date);
+      //方法二
+      var date = new Date();
+      var afterDay = date.getDate() + 1;
+      date.setDate(afterDay);
+      console.log(date);
+    </script>
+    <!-- <script>
+        function toUpper(num){
+
+        }
+    </script> -->
+  </body>
+</html>
