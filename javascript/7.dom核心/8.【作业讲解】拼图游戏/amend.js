@@ -5,8 +5,8 @@
 var gameConfig = {
   width: 690,
   height: 626,
-  rows: 5, //行数
-  cols: 5, //列数
+  rows: 3, //行数
+  cols: 3, //列数
   isOver: false, //游戏是否结束
   imgurl: "img/game.jpg", //图片路径,注意：相对的是页面路径
   dom: document.getElementById("game"), //游戏的dom对象
@@ -16,7 +16,6 @@ gameConfig.pieceWidth = gameConfig.width / gameConfig.cols;
 gameConfig.pieceHeight = gameConfig.height / gameConfig.rows;
 //小块的数量
 gameConfig.pieceNumber = gameConfig.rows * gameConfig.cols;
-console.log(gameConfig);
 var blocks = []; //包含小方块信息的数组
 
 function isEqual(n1, n2) {
@@ -42,6 +41,7 @@ function Block(left, top, isVisible) {
   this.dom.style.position = "absolute";
   this.dom.style.border = "1px solid #fff";
   this.dom.style.boxSizing = "border-box";
+  this.dom.style.transition = ".5s";
   this.dom.style.cursor = "pointer";
   if (!isVisible) {
     this.dom.style.display = "none";
