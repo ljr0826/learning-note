@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .item {
+        width: 100px;
+        height: 100px;
+      }
+      .red {
+        background-color: red;
+      }
+      .green {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item red"></div>
+    <script>
+      var div = document.querySelector(".item");
+      div.onclick = function () {
+        // 方法1：正则表达式
+        // if (this.className.search(/\bred\b/) !== -1) {
+        //   this.className = this.className.replace(/\bred\b/, "green");
+        // } else {
+        //   this.className = this.className.replace(/\bgreen\b/, "red");
+        // }
+        // //方法2：classList对象中方法的运用
+        // if (div.classList.contains("red")) {
+        //   div.classList.remove("red");
+        //   div.classList.add("green");
+        // } else {
+        //   div.classList.remove("green");
+        //   div.classList.add("red");
+        // }
+        //方法3：classList中的toggle方法
+        if (this.classList.contains("red")) {
+          this.classList.toggle("green", true); //若第二个参数为 true<=>add
+        }
+      };
+    </script>
+  </body>
+</html>

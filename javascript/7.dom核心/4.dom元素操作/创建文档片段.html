@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Fuga cupiditate repudiandae quae error.</li>
+        <li>Sed quo asperiores voluptatem dolores.</li>
+        <li>Ab ea nostrum aperiam laudantium.</li>
+        <li>Provident illo vel aliquid aperiam.</li>
+      </ul>
+    </div>
+    <script>
+      //   var div1 = document.querySelector(".container");
+      //   var arr = document.getElementsByTagName("li");
+      //   console.log(arr);
+      //   var ul = document.querySelector("ul");
+      //   ul.removeChild(arr[2]);
+      //   console.log(arr);
+
+      var ul = document.querySelector("ul");
+      var frag = document.createDocumentFragment();
+      for (var i  = 1; i <= 100; i++) {
+        var li = document.createElement("li");
+        li.innerText = "添加项" + i;
+        frag.appendChild(li);
+      }
+      ul.appendChild(frag);
+      console.log(ul);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style style="display: block; white-space: pre">
+      /* 一件好玩的事 */
+      p {
+        font-weight: 700;
+        font-style: normal;
+        font-size: 28px;
+        color: teal;
+      }
+    </style>
+  </head>
+  <body>
+    <style contenteditable="true" style="display: block; white-space: pre">
+      .container {
+        color: red;
+      }
+    </style>
+    <div>
+      <h2>
+        <p>我附庸的附庸不是我的附庸</p>
+        <p style="display: none">我附庸的附庸不是我的附庸</p>
+      </h2>
+    </div>
+    <div class="container">
+      <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Aut amet eum alias pariatur!</li>
+        <li>Accusamus consequatur tempora iusto at.</li>
+        <li>Rem, ad. Suscipit, deleniti cumque!</li>
+        <li>Magnam provident recusandae necessitatibus cumque.</li>
+      </ul>
+    </div>
+    <div contenteditable="true">
+      <p style="width: 100px; height: 100px; background-color: red"></p>
+      <span></span>124125125125
+    </div>
+    <script>
+      var div1 = document.querySelector("div");
+      console.log(div1.innerHTML);
+      console.log(div1.innerText);
+      console.log(div1.textContent);
+    </script>
+  </body>
+</html>

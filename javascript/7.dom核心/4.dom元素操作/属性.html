@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 300px;
+        height: 300px;
+        border: 2px solid yellow;
+        object-fit: contain;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 可识别属性 -->
+    <!-- <input type="text" value="ttt" />
+    <button id="btnGetText">获取文本框内容</button> -->
+    <!-- 自定义属性 -->
+    <!-- <div value="sss" name="d"></div>
+    <select name="" id="">
+      <option value="chengdu">成都</option>
+      <option value="beijing">北京</option>
+      <option value="hangzhou">杭州</option>
+    </select>
+    <input type="checkbox" name="" id="kk" /><label for="kk">男</label>
+    <textarea name="" id="" cols="30" rows="10"></textarea> -->
+    <img src="./img/1.jpg" alt="" />
+
+    <script>
+      //   var input = document.querySelector("input[type=text]");
+      //   document.getElementById("btnGetText").onclick = function () {
+      //     var div = document.querySelector("div");
+      //     console.log(input.value);
+      //     console.log(div.value);
+      //     console.log(div.name);
+      //   };
+      //   var opt = document.querySelector("select");
+      //   opt.value = "beijing";
+      //   console.log(opt.value); //某些表单元素可以获取到某些不存在的属性
+
+      //   var lab = document.querySelector("label");
+      //   console.log(lab.htmlFor); //某些属性与标识符冲突；此时，需要更换属性名
+
+      //   var tst = document.querySelector("textarea");
+      //   console.log(tst.value); //正常的属性即使没有被赋值，也有默认值
+
+      var img = document.querySelector("img");
+      var i = 1;
+      img.onclick = function () {
+        i++;
+        if (i === 3) {
+          i = 1;
+        }
+        img.src = "./img/" + i + ".jpg";
+      };
+    </script>
+  </body>
+</html>

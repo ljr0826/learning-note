@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   //创建正则对象两种方式的区别
+      //   var reg1 = /^1\d{10}$/;
+      //   var reg2 = new RegExp(reg1);
+      //   var reg3 = RegExp(reg1);
+      //   console.log(reg1 === reg2); //false
+      //   console.log(reg1 === reg3); //true
+
+      var reg1 = /^1\d{10}$/g;
+      var reg2 = new RegExp("^1\d{10}$", "g");
+      console.log(reg1.test("13323451234")); //true
+      console.log(reg2.test("12323459078")); //false?
+
+      //   //全局匹配和非全局匹配下.test()方法的结果不同
+      //   var reg = /abc/g;
+      //   var s = "111abc111abc111";
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   reg.lastIndex = 0; //lastIndex的值可以手动更改
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+
+      //   //判断匹配了多少处？
+      //   var count = 0;
+      //   while (reg.test(s)) {
+      //     count++;
+      //   }
+      //   console.log(`共匹配了${count}处`);
+
+      //   //贪婪匹配模式
+      //   var reg = /\d+?/g; //在量词后加上?，表示进入非贪婪模式
+      //   var s = "1234sdfbds45fsdgf";
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+      //   console.log(s, reg.lastIndex, reg.test(s), reg.lastIndex);
+
+      //exec()方法
+      var reg = /\d+/g;
+      var s = "1234sdfbds45fsdgf";
+      console.log(reg.exec(s));
+      console.log(reg.exec(s));
+      console.log(reg.exec(s)); //匹配不到返回null
+
+      //得到所有的匹配结果的索引位置
+      var result;
+      while ((result = reg.exec(s))) {
+        console.log(`匹配结果：${result[0]},索引位置：${result.index}`);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .container {
+        overflow: hidden;
+        width: 850px;
+        margin: 0 auto;
+      }
+
+      .container .left {
+        float: left;
+        margin: 0 30px;
+      }
+
+      .container select {
+        width: 100%;
+        height: 200px;
+      }
+
+      .container .mid {
+        padding-top: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left">
+        <h2>杀破狼语录</h2>
+        <select id="sel1" multiple>
+          <option value="1">未知苦处，不信神佛</option>
+          <option value="2">我大将军一言九鼎，战无不胜</option>
+          <option value="3">经年痴心妄想，一时走火入魔</option>
+          <option value="4">心肝过来，我给你把眼泪舔干净</option>
+          <option value="5">未经允许，擅自特别喜欢你，不好意思了</option>
+        </select>
+      </div>
+      <div class="left mid">
+        <p>
+          <button id="btnToRight" title="右移动选中的">&gt;&gt;</button>
+        </p>
+        <p>
+          <button id="btnToRightAll" title="右移动全部">&gt;&gt;|</button>
+        </p>
+        <p>
+          <button id="btnToLeft" title="左移动选中的">&lt;&lt;</button>
+        </p>
+        <p>
+          <button id="btnToLeftAll" title="左移动全部">|&lt;&lt;</button>
+        </p>
+      </div>
+      <div class="left">
+        <h2>默读语录</h2>
+        <select id="sel2" multiple>
+          <option value="6">长庚来，我给你擦擦眼泪</option>
+        </select>
+      </div>
+    </div>
+    <script>
+      //听课后修改
+      var btnRight = document.querySelector("#btnToRight");
+      var btnLeft = document.querySelector("#btnToLeft");
+      var btnRightAll = document.querySelector("#btnToRightAll");
+      var btnLeftAll = document.querySelector("#btnToLeftAll");
+      var sel1 = document.querySelector("#sel1");
+      var sel2 = document.querySelector("#sel2");
+      var opt1 = sel1.getElementsByTagName("option");
+      var opt2 = sel2.getElementsByTagName("option");
+      function getSelected(opts) {
+        var frag = document.createDocumentFragment();
+        Array.from(opts).filter(function (temp) {
+          if (temp.selected) {
+            frag.appendChild(temp);
+          }
+        });
+        return frag;
+      }
+      btnRight.onclick = function () {
+        sel2.appendChild(getSelected(opt1));
+      };
+      btnRightAll.onclick = function () {
+        var frag = document.createDocumentFragment();
+        Array.from(opt1).forEach(function (temp) {
+          frag.appendChild(temp);
+        });
+        sel2.appendChild(frag);
+      };
+      btnLeft.onclick = function () {
+        sel1.appendChild(getSelected(opt2));
+      };
+      btnLeftAll.onclick = function () {
+        var frag = document.createDocumentFragment();
+        Array.from(opt2).forEach(function (temp) {
+          frag.appendChild(temp);
+        });
+        sel1.appendChild(frag);
+      };
+    </script>
+    <script>
+      // var sel1 = document.querySelector("#sel1");
+      // var sel2 = document.querySelector("#sel2");
+      // var opts = document.querySelectorAll("option");
+      // var btnToRight = document.querySelector("#btnToRight");
+      // var btnToRightAll = document.querySelector("#btnToRightAll");
+      // var btnToLeft = document.querySelector("#btnToLeft");
+      // var btnToLeftAll = document.querySelector("#btnToLeftAll");
+      // for (var i = 0; i <= 5; i++) {
+      //   (function (j) {
+      //     console.log(opts[j]);
+      //     opts[j].onclick = function () {
+      //       btnToRight.onclick = function () {
+      //         if (opts[j].parentElement === sel1) {
+      //           sel2.appendChild(opts[j]);
+      //         }
+      //       };
+      //     };
+      //   })(i);
+      // }
+      // sel1.value = "3";
+      // sel1.onclick = function (e, a) {
+      //   console.log(this.value);
+      // };
+      // btnToRightAll.onclick = function () {
+      //   for (var i = 0; i <= 5; i++) {
+      //     (function (j) {
+      //       sel2.appendChild(opts[j]);
+      //     })(i);
+      //   }
+      // };
+      // for (var i = 0; i <= 5; i++) {
+      //   (function (j) {
+      //     opts[j].onclick = function () {
+      //       btnToLeft.onclick = function () {
+      //         if (opts[j].parentElement === sel2) {
+      //           sel1.appendChild(opts[j]);
+      //         }
+      //       };
+      //     };
+      //   })(i);
+      // }
+      // btnToLeftAll.onclick = function () {
+      //   for (var i = 0; i <= 5; i++) {
+      //     (function (j) {
+      //       sel1.appendChild(opts[j]);
+      //     })(i);
+      //   }
+      // };
+    </script>
+  </body>
+</html>
