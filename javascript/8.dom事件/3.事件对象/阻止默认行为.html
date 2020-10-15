@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <a href="javascript:;">百度</a> -->
+    <form action="https://www.taobao.com">
+      <input type="text" />
+      <p><button>提交</button></p>
+    </form>
+    <a href="https://www.baidu.com/">百度一下</a>
+    <script>
+      var btn = document.querySelector("button");
+      btn.onclick = function (e) {
+        console.log("提交/");
+        return false;
+      };
+      var a = document.querySelector("a");
+      a.addEventListener("click", function (e) {
+        e.preventDefault(); //阻止浏览器的默认行为
+        // window.event.returnValue = false;不要这样使用
+        console.log("被点击了");
+      });
+    </script>
+  </body>
+</html>

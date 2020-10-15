@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+        position: relative;
+      }
+      button {
+        position: absolute;
+        right: -200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div><button>点我</button></div>
+    <p>我大将军一言九鼎，战无不胜</p>
+    <script>
+      document.querySelector("p").onclick = function () {
+        console.log("p");
+      };
+      var btn = document.querySelector("button");
+      var div = document.querySelector("div");
+      btn.onclick = function () {
+        console.log("button");
+      };
+      div.onclick = function () {
+        console.log("div");
+      };
+      //   document.body.onclick = function () {
+      //     console.log("body");
+      //   };
+      //   document.documentElement.onclick = function () {
+      //     console.log("html");
+      //   };
+      //   document.onclick = function () {
+      //     console.log("document");
+      //   };//若注释，发生了事件只是没有处理
+    </script>
+  </body>
+</html>

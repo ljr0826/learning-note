@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      #buttons button {
+        margin-right: 20px;
+      }
+
+      img {
+        width: 500px;
+        height: 500px;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="buttons"></div>
+    <img src="img/1.jpg" alt="" />
+
+    <!-- <script>
+      //听课后改进
+      var imgs = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg"];
+      var divButtons = document.getElementById("buttons");
+      imgs.forEach(function (src, i) {
+        var btn = document.createElement("button");
+        btn.innerHTML = `第${i + 1}张图片`;
+        divButtons.appendChild(btn);
+        btn.dataset.src = src;
+      });
+      var img = document.querySelector("img");
+      divButtons.onclick = function (e) {
+        if (e.target.dataset.src) {
+          img.src = e.target.dataset.src;
+        }
+      };
+    </script> -->
+    <script>
+      var imgNumber = 4;
+      var btns = document.getElementById("buttons");
+      var img = document.querySelector("img");
+      for (var i = 1; i <= imgNumber; i++) {
+        var btn = document.createElement("button");
+        btn.innerHTML = `图${i}`;
+        btns.appendChild(btn);
+        btn.className = `${i}`;
+      }
+      btns.onclick = function (e) {
+        if (e.target.tagName === "BUTTON") {
+            console.log("dfg")
+          img.src = `img/${e.target.className}.jpg`;
+        }
+      };
+    </script>
+  </body>
+</html>

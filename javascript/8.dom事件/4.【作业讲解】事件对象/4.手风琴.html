@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      ul {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+      }
+
+      .wrap {
+        width: 200px;
+        border: 1px solid #ccc;
+        text-align: center;
+        line-height: 2;
+      }
+
+      .title {
+        background: rgb(236, 135, 52);
+        display: block;
+        cursor: pointer;
+      }
+      .none {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap" id="wrap">
+      <ul class="menu"></ul>
+    </div>
+    <script>
+      var menu = [
+        { name: "菜单一", children: ["商品一", "商品二", "商品三"] },
+        { name: "菜单二", children: ["商品一", "商品二", "商品三"] },
+        { name: "菜单三", children: ["商品一", "商品二", "商品三"] },
+        { name: "菜单四", children: ["商品一", "商品二", "商品三"] },
+      ];
+      var ul = document.querySelector(".menu");
+      //创建菜单栏
+      for (var i = 0; i <= menu.length - 1; i++) {
+        var li = document.createElement("li");
+        li.innerHTML = `${menu[i].name}`;
+        li.className = "title";
+        ul.appendChild(li);
+        //创建商品栏
+        var div = document.createElement("div");
+        for (var j = 0; j <= menu[i].children.length - 1; j++) {
+          var p = document.createElement("p");
+          p.innerHTML = `${menu[i].children[j]}`;
+          div.appendChild(p);
+        }
+        ul.appendChild(div);
+      }
+      ul.onclick = function (e) {
+        if (e.target.tagName === "LI") {
+          e.target.nextElementSibling.classList.toggle("none");
+        }
+      };
+    </script>
+  </body>
+</html>

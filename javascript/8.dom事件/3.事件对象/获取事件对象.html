@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="background-color: cadetblue"><button>点我</button></div>
+    <script>
+      document.querySelector("div").onclick = function (e) {
+        e = e || window.event;
+        e.target = e.taraget || window.event.srcElement;
+        console.log(e.target);
+        console.log(this, this === e.currentTarget);
+        console.log(this.type);
+      };
+    </script>
+  </body>
+</html>

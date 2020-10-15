@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p>
+      <input type="text" id="txt" />
+      <button id="btnAdd">添加</button>
+    </p>
+    <ul>
+      <li>
+        <span>列表1</span>
+        <button>删除</button>
+      </li>
+      <li>
+        <span>列表2</span>
+        <button>删除</button>
+      </li>
+      <li>
+        <span>列表3</span>
+        <button>删除</button>
+      </li>
+    </ul>
+    <script>
+      var input = document.querySelector("input");
+      var btnAdd = document.querySelector("#btnAdd");
+      var ul = document.querySelector("ul");
+      //删除列表，事件委托
+      ul.onclick = function (e) {
+        if (e.target.tagName === "BUTTON") {
+          e.target.parentElement.remove();
+        }
+      };
+      //添加列表
+      btnAdd.onclick = function (e) {
+        if (!input.value.trim()) {
+          throw new Error("输入不能为空哦~");
+          return;
+        }
+        var li = document.createElement("li");
+        li.innerHTML = ` <span>${input.value}</span><button>删除</button>`; //牛逼
+        // var span = document.createElement("span");
+        // var button = document.createElement("button");
+        // span.innerHTML = `项目：${input.value}`;
+        input.value = "";
+        // button.innerHTML = "删除";
+        // li.appendChild(span);
+        // li.appendChild(button);
+        ul.appendChild(li);
+      };
+    </script>
+  </body>
+</html>
