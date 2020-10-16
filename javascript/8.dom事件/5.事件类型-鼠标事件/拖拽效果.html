@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: sandybrown;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      var div = document.querySelector("div");
+      var body = document.querySelector("body");
+      var style = getComputedStyle(div);
+      var left = style.left;
+      var top = style.top;
+      div.onmousedown = function (e) {
+        if (e.button === 1 || e.button === 2) {
+          // !e.button === 0不好使？
+          console.log("需要点击左键哦");
+          return;
+        }
+        body.onmousemove = function (e) {
+          div.style.left = `${parseInt(style.left) + e.movementX}px`;
+          div.style.top = `${parseInt(style.top) + e.movementY}px`;
+          //   div.onmouseup = div.onmouseleave = function (e) {
+          //     return;
+          //   };//为什么没有用？
+        };
+        body.onmouseup = body.onmouseleave = function (e) {
+          body.onmousemove = null;
+        };
+      };
+    </script>
+  </body>
+</html>
