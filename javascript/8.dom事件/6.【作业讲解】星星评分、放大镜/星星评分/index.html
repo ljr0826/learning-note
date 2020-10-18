@@ -23,5 +23,94 @@
       <img src="images/empty.png" alt="" />
     </div>
     <div id="divword" class="left"></div>
+    <script>
+      var divstars = document.getElementById("divstars");
+      var divword = document.getElementById("divword");
+      var strArr = Array.from(divstars.children);
+      var score = -1; //初始化满意度，方便后续点击事件
+      var wordArr = ["满意", "一般满意", "还不错", "很满意", "非常满意"];
+      //事件委托
+      divstars.onmouseover = function (e) {
+        // console.log(e.target);
+        if (e.target.tagName === "IMG") {
+          e.target.src = "images/shining.png";
+          //处理文字
+          var index = strArr.indexOf(e.target);
+          //处理之前的
+          var prev = e.target.previousElementSibling;
+          console.log(prev);
+          while (prev) {
+            prev.src = "images/shining.png";
+            prev = prev.previousElementSibling;
+          }
+          //处理之后的
+          var next = e.target.nextElementSibling;
+          while (next) {
+            next.src = "images/empty.png";
+            next = next.nextElementSiblingv;
+          }
+          divword.innerHTML = wordArr[index];
+        }
+      };
+      divstars.onclick = function (e) {
+        if (e.target.tagName === "IMG") {
+          score = strArr.indexOf(e.target);
+        }
+      };
+      divstars.onmouseleave = function (e) {
+        divword.innerHTML = wordArr[score] || "";
+        for (var i = 0; i < strArr.length; i++) {
+          if (i <= score) {
+            console.log("i < score");
+            strArr[i].src = "images/shining.png";
+          } else {
+            strArr[i].src = "images/empty.png";
+          }
+        }
+      };
+      // // 遍历;
+      // strArr.forEach(function (temp1, index1) {
+      //   temp1.onmouseenter = function () {
+      //     divword.innerHTML = wordArr[index1];
+      //     strArr.filter(function (temp2, index2) {
+      //       if (index2 <= index1) {
+      //         temp2.src = "images/shining.png";
+      //       } else {
+      //         temp2.src = "images/empty.png";
+      //       }
+      //     });
+      //   };
+      //   temp1.onmouseleave = function () {
+      //     strArr.filter(function (temp2, index2) {
+      //       if (index2 <= index1) {
+      //         temp2.src = "images/empty.png";
+      //       }
+      //     });
+      //   };
+      //   temp1.onclick = function (e) {
+      //     temp1.onmouseleave = null;
+      //     temp1.src = "images/shining.png";
+      //   };
+      // });
+
+      // //for循环
+      // for (var i = 0; i <= strArr.length - 1; i++) {
+      //   (function (_i) {
+      //     strArr[_i].onmouseenter = function () {
+      //       console.log(_i);
+      //       for (var j = 0; j <= _i; j++) {
+      //         strArr[j].src = "images/shining.png";
+      //       }
+      //     };
+      //     strArr[_i].onmouseleave = function () {
+      //       strArr[_i].src = "images/empty.png";
+      //     };
+      //     strArr[_i].onclick = function (e) {
+      //       strArr[_i].onmouseleave = null;
+      //       strArr[_i].src = "images/shining.png";
+      //     };
+      //   })(i);
+      // }
+    </script>
   </body>
 </html>

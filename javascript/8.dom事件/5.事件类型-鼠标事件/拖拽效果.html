@@ -28,16 +28,19 @@
           console.log("需要点击左键哦");
           return;
         }
-        body.onmousemove = function (e) {
+        document.onmousemove = function (e) {
+          console.log("onmousemove");
           div.style.left = `${parseInt(style.left) + e.movementX}px`;
           div.style.top = `${parseInt(style.top) + e.movementY}px`;
-          //   div.onmouseup = div.onmouseleave = function (e) {
-          //     return;
-          //   };//为什么没有用？
+          document.onmouseup = document.onmouseleave = function (e) {
+            console.log("a");
+            document.onmousemove = null;
+          };
         };
-        body.onmouseup = body.onmouseleave = function (e) {
-          body.onmousemove = null;
-        };
+
+        // body.onmouseup = body.onmouseleave = function (e) {
+        //   body.onmousemove = null;
+        // };
       };
     </script>
   </body>

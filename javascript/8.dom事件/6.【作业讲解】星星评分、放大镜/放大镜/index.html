@@ -1,45 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-        .small{
-            width: 350px;
-            height: 350px;
-            border: 1px solid #ccc;
-            float: left;
-            background-clip: padding-box;
-            position: relative;
-        }
-        .big{
-            width: 540px;
-            height: 540px;
-            border:1px solid #ccc;
-            float: left;
-            margin-left: 10px;
-            background-clip: padding-box;
-            display: none;
-        }
+      .small {
+        width: 350px;
+        height: 350px;
+        border: 1px solid #ccc;
+        float: left;
+        background-clip: padding-box;
+        position: relative;
+      }
+      /* 用js设置背景图片 */
+      .big {
+        width: 540px;
+        height: 540px;
+        border: 1px solid #ccc;
+        float: left;
+        margin-left: 10px;
+        background-clip: padding-box;
+        display: none;
+      }
 
-        .small .move{
-            position: absolute;
-            background: rgba(200,200,50,0.5);
-            border: 1px solid #999;
-            box-sizing: border-box;
-            cursor: move;
-            display: none;
-        }
+      .small .move {
+        position: absolute;
+        background: rgba(200, 200, 50, 0.5);
+        border: 1px solid #999;
+        box-sizing: border-box;
+        cursor: move;
+        display: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="small">
-        <div class="move"></div>
+      <div class="move"></div>
     </div>
     <div class="big"></div>
-
     <script src="index.js"></script>
-</body>
+    <!-- <script> -->
+    <!-- //   //商品图
+    //   var small = document.querySelector(".small");
+    //   small.style.backgroundImage = "url(images/mouse.jpg)";
+    //   small.style.backgroundSize = "340px 340px";
+    //   var smallWidth = getComputedStyle(small).width;
+    //   var smallHeight = getComputedStyle(small).height;
+    //   //放大图
+    //   var big = document.querySelector(".big");
+    //   big.style.backgroundImage = "url(images/mouseBigSize.jpg)";
+    //   big.style.backgroundSize = "900px 900px";
+    //   //缩放比例
+    //   var rat =
+    //     parseInt(getComputedStyle(big).width) /
+    //     parseInt(big.style.backgroundSize);
+    //   //移动区域
+    //   var move = document.querySelector(".move");
+    //   move.style.width = `${parseInt(smallWidth) * rat}px`;
+    //   move.style.height = `${parseInt(smallHeight) * rat}px`;
+    //   //事件：进入商品图区域
+    //   small.onmouseenter = function (e) {
+    //     move.style.display = "block";
+    //     big.style.display = "block";
+    //   };
+
+    //   //事件：在商品图区域移动
+    //   small.onmousemove = function (e) {
+    //     move.style.left = `${e.clientX - parseInt(move.style.width) / 2}px`;
+    //     move.style.top = `${e.clientY - parseInt(move.style.height) / 2}px`;
+    //     // if (
+    //     //   move.style.left < 0 ||
+    //     //   move.style.left > parseInt(move.style.width) / 2
+    //     // ) {
+    //     //   return;
+    //     // }
+    //     console.log(move.style.left, move.style.top);
+    //     // if (
+    //     //   e.offsetX > parseInt(move.style.width) / 2 &&
+    //     //   e.offsetX < smallWidth - parseInt(move.style.width) / 2
+    //     // ) {
+    //     // }
+    //     // move.style.right = 0;
+    //     // move.style.bottom = 0;
+    //     big.style.backgroundPositionX = `-${parseInt(e.offsetX)}px`;
+    //     big.style.backgroundPositionY = `-${e.offsetY}px`;
+    //   };
+    //   //事件：离开商品图区域
+    //   small.onmouseleave = function () {
+    //     move.style.display = "none";
+    //     big.style.display = "none";
+    //   }; -->
+    <!-- // </script> -->
+  </body>
 </html>

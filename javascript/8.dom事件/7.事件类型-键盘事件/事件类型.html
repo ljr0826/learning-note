@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <script>
+      var input = document.querySelector("input");
+      input.onkeydown = function (e) {
+        // e.preventDefault(); //keydown、keypress 如果阻止了事件默认行为，文本不会显示
+        console.log("keydown", e.code, e.key, e.keyCode);
+      };
+      input.onkeypress = function (e) {
+        console.log("keypress", e.charCode, e.code, e.key, e.keyCode);
+      };
+      input.onkeyup = function () {
+        console.log("keyup");
+      };
+    </script>
+  </body>
+</html>
