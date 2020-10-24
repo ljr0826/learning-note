@@ -11,7 +11,7 @@
       var input = document.querySelector("input");
       input.onkeydown = function (e) {
         // e.preventDefault(); //keydown、keypress 如果阻止了事件默认行为，文本不会显示
-        console.log("keydown", e.code, e.key, e.keyCode);
+        console.log("keydown", e.code, typeof e.key, e.keyCode);
       };
       input.onkeypress = function (e) {
         console.log("keypress", e.charCode, e.code, e.key, e.keyCode);

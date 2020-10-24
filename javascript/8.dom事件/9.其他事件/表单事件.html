@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .onfocus {
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="https://www.taobao.com/">
+      <p><input type="text" placeholder="请输入关键字" /></p>
+      <button>按钮1</button>
+      <button>按钮2</button>
+    </form>
+    <script>
+      var form = document.querySelector("form");
+      form.onsubmit = function (e) {
+        console.log("提交了", e.bubbles);
+        return false;
+      };
+    </script>
+    <!-- 实现文本框的一个功能 -->
+    <!-- <div><input type="text" class="onfocus" value="请输入关键字" /></div>
+    <script>
+      var inp = document.querySelector("input");
+      //   //鼠标点击或 tab 键切换都可以实现聚焦的效果
+      //   inp.onfocus = function (e) {
+      //     console.log("聚焦了", e.bubbles);
+      //   };
+      //   inp.onblur = function (e) {
+      //     console.log("失去聚焦", e.bubbles);
+      //   };
+      inp.onfocus = function () {
+        if (this.value === this.defaultValue) {
+          this.value = "";
+          this.classList.remove("onfocus");
+        }
+      };
+      inp.onblur = function () {
+        if (this.value === "") {
+          this.value = this.defaultValue;
+          this.classList.add("onfocus");
+        }
+      };
+    </script> -->
+  </body>
+</html>

@@ -23,6 +23,12 @@
           return false;
         }
       };
+      input.onpaste = function (e) {
+        var text = e.clipboardData.getData("text/plain");
+        if (!text || !/\d+/.test(text)) {
+          e.preventDefault();
+        }
+      };
     </script>
   </body>
 </html>

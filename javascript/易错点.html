@@ -6,24 +6,28 @@
     <title>Document</title>
   </head>
   <body>
-    <div
-      class="container"
-      style="width: 300px; height: 300px; background-color: blueviolet"
-    >
-      <div
-        class="demo"
-        style="width: 100px; height: 100px; background-color: cadetblue"
-      ></div>
-    </div>
+    <div style="width: 200px; height: 200px; background-color: cadetblue"></div>
     <script>
-      var container = document.querySelector(".container");
-      var demo = document.querySelector(".demo");
-      container.onmouseenter = function (e) {
-        console.log(e.target, "enter");
-      };
-      // container.onmouseover = function (e) {
-      //   console.log(e.target, "over");
-      // };
+      // function a() {
+      //   console.log("a");
+      // }
+      // function b(callback) {
+      //   console.log("b");
+      //   callback();
+      //   console.log("c");
+      // }
+      // b(a);
+      var div = document.querySelector("div");
+      function a(ss) {
+        console.log("a");
+        div.onclick = function () {
+          console.log("点击");
+        };
+        console.log("b");
+      }
+      a(function (print) {
+        console.log(print);
+      });
     </script>
   </body>
 </html>

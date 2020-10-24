@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <script>
+      var txt = document.querySelector("textarea");
+      txt.onpaste = function (e) {
+        // e.preventDefault();
+        // console.log("阻止了粘贴默认事件");
+        var clipboardData = e.clipboardData || window.clipboardData;
+        var data = clipboardData.gatData("text/plain");
+        data = "来自于粘贴：" + data;
+        clipboardData.setData("text/plain", data); //了解即可，为保护用户安全现在一般停止使用 
+        clipboardData.clearData("text/plain");
+      };
+      txt.oncopy = function (e) {
+        e.preventDefault();
+        console.log("阻止了复制默认事件");
+      };
+      txt.oncut = function (e) {
+        e.preventDefault();
+        console.log("阻止了剪切默认事件");
+      };
+    </script>
+  </body>
+</html>
