@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var p = {
+        x: 123,
+        y: "殿下，信我",
+      };
+      var obj = Object.create(p);
+      obj.u = "天官赐福，百无禁忌";
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          console.log(obj[prop]);
+        }
+      }
+    </script>
+  </body>
+</html>

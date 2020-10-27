@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script src="../.././plugin/helpers.js"></script> -->
+    <script>
+      //   inherit = function (son, father) {
+      //     //袁老师思路
+      //     son.prototype = Object.create(father.prototype);
+      //     son.prototype.constructor = son;
+      //     son.prototype.uber = father.prototype;
+      //   };
+
+      if (!this.myPlugin) {
+        this.myPlugin = {};
+      }
+      this.myPlugin.inherit = (function () {
+        var Temp = function () {};
+        return function (son, father) {
+          Temp.prototype = father.prototype;
+          son.prototype = new Temp();
+          son.prototype.constructor = son;
+          son.prototype.uber = father.prototype;
+        };
+      })();
+      var Father = function (lastName, firstName, age) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.age = age;
+        this.fullName = `姓名${this.lastName}${this.firstName}，年龄${this.age}`;
+      };
+      Father.prototype.sayHello = function () {
+        console.log("世界和平");
+      };
+      var father = new Father("谢", "怜", "800");
+      console.log(father);
+      var Son = function (lastName, firstName, age, lover) {
+        // this.myPlugin.inherit();
+        Father.call(this, lastName, firstName, age);
+        this.lover = lover;
+      };
+      this.myPlugin.inherit(Son, Father);
+      var son = new Son("谢", "怜", "800", "花城");
+      console.log(son);
+    </script>
+  </body>
+</html>
