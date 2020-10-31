@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../plugin/helper.js"></script>
+    <script>
+      //克隆obj
+      var obj1 = {
+        x: 1,
+        y: 3,
+        z: {
+          name: "谢怜",
+          age: "800",
+        },
+        p: [2, 4, 2, [4, 8]],
+      };
+      var newA = this.myPlugin.clone(obj1, true);
+      console.log(newA);
+    </script>
+  </body>
+</html>

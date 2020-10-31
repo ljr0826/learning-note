@@ -30,7 +30,7 @@
       };
       //   user1.sayHello();
       //若user1中没有sayhello方法，可以使用call或apply调用函数，指定函数中的this指向
-      sayHello.apply(user1, [4, 5]);
+      sayHello.apply(user1, [4, 5]); //第一个参数是指：执行sayHello这个函数内部的this指向谁
       sayHello.call(user3, 3, 2);
       var newFunc = sayHello.bind(user2, 1, 2);
       newFunc();

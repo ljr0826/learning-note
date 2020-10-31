@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        border: 2px solid #008c8c;
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <!-- <script src="../../plugin/helper.js"></script> -->
+    <script>
+      var curry = function (func) {
+        var that = this;
+        // var args = Array.from(arguments).slice(1);
+        var args = Array.prototype.slice.call(arguments, 1);
+        return function () {
+          var curArgs = Array.from(arguments);
+          var totalArgs = args.concat(curArgs);
+          if (totalArgs.length >= func.length) {
+            return func.apply(null, totalArgs);
+          } else {
+            totalArgs.unshift(func);
+            return that.curry.apply(that, totalArgs);
+          }
+        };
+      };
+      function createElement(container, name, props, styles, content) {
+        var ele = document.createElement(name);
+        container.appendChild(ele);
+        for (var prop in props) {
+          ele[prop] = props[prop];
+        }
+        for (var prop in styles) {
+          ele.style[prop] = styles[prop];
+        }
+        if (content) {
+          ele.innerHTML = content;
+        }
+      }
+      createElement(
+        document.querySelector(".container"),
+        "img",
+        {
+          src: "1.jpg",
+        },
+        {
+          width: "100px",
+        }
+      );
+      var create = curry(
+        createElement,
+        document.querySelector(".container"),
+        "div",
+        {},
+        {
+          width: "200px",
+          height: "200px",
+          marginRight: "10px",
+          float: "left",
+          background: "lightblue",
+        }
+      );
+      create("你有没有什么想说的。");
+      create("....我想死");
+      create("你想的倒美。");
+    </script>
+  </body>
+</html>

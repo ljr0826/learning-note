@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //两个对象，混合后产生一个新对象
+      var obj1 = {
+        x: 1,
+        y: 2,
+        z: 3,
+      };
+      var obj2 = {
+        x: "abc",
+        z: "bcd",
+        h: "aaa",
+      };
+
+      //将obj2混合到obj1中 mixin
+      //   var obj3 = {
+      //     x: "abc",
+      //     y: 2,
+      //     z: "bcd",
+      //     h: "aaa",
+      //   };
+      mixin = function (obj1, obj2) {
+        var newArr = {}; //定义一个新对象
+        //得到obj2中所有的属性
+        for (var prop in obj2) {
+          newArr[prop] = obj2[prop];
+        }
+        //得到obj1中obj2没有的属性
+        for (var prop in obj1) {
+          if (!(prop in obj2)) {
+            newArr[prop] = obj1[prop];
+          }
+        }
+        return newArr;
+      };
+      console.log(mixin(obj1, obj2));
+
+      var obj3 = Object.assign(obj1, obj2); //方法Object.assign(obj1,obj2)，将obj2混合到obj1中，obj1会发生变化
+      console.log(obj3 === obj1);
+      var newArr = Object.assign({}, obj1, obj2);
+      console.log(newArr);
+
+      //应用
+      //option参数是一个对象，表示配置对象
+      function complicate(option) {
+        //如果没有传递，则使用默认值
+        var defaultOption = {
+          a: "default-a",
+          b: "default-b",
+          c: "default-c",
+          d: "default-d",
+          e: "default-e",
+        };
+        // var opt = mixin(defaultOption, option);
+        var opt = Object.assign({}, defaultOption, option);
+        console.log(opt);
+      }
+
+      complicate({
+        a: 123,
+        b: 34,
+      });
+    </script>
+  </body>
+</html>

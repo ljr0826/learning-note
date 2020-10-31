@@ -6,28 +6,23 @@
     <title>Document</title>
   </head>
   <body>
-    <div style="width: 200px; height: 200px; background-color: cadetblue"></div>
     <script>
-      // function a() {
-      //   console.log("a");
-      // }
-      // function b(callback) {
-      //   console.log("b");
-      //   callback();
-      //   console.log("c");
-      // }
-      // b(a);
-      var div = document.querySelector("div");
-      function a(ss) {
-        console.log("a");
-        div.onclick = function () {
-          console.log("点击");
+      var debounce = function (callback, time) {
+        var timer;
+        return function () {
+          clearTimeout(timer);
+          var args = arguments;
+          timer = setTimeout(function () {
+            callback.apply(null, args);
+          }, time);
         };
-        console.log("b");
-      }
-      a(function (print) {
-        console.log(print);
-      });
+      };
+      var handle = debounce(function (width) {
+        console.log(`视口宽度：${width}`);
+      }, 1000);
+      window.onresize = function () {
+        handle(document.documentElement.clientWidth);
+      };
     </script>
   </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <script src="../../plugin/helper.js"></script>
+    <script>
+      //回调函数：通常把作为参数传递的函数叫做回调函数
+      //高阶函数：在函数内部返回一个函数
+      //函数防抖：debounce
+      var handle = myPlugin.debounce(function (width) {
+        console.log(width);
+      }, 100);
+      window.onresize = function () {
+        handle(document.documentElement.clientWidth);
+      };
+      //输入框事件
+      var inp = document.querySelector("input");
+      var txt = myPlugin.debounce(function (val) {
+        console.log(val);
+      }, 1000);
+      inp.oninput = function () {
+        txt(inp.value);
+      };
+    </script>
+  </body>
+</html>
