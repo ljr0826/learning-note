@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="img/案例1.png" alt="" />
+    <div id="app">
+      <div v-if="loginType==='mobile'">
+        <label for="">手机号：</label>
+        <input type="text" key="1" />
+      </div>
+      <div v-else>
+        <label for="">邮箱：</label>
+        <input type="text" key="2" />
+      </div>
+      <div>
+        <button @click="loginType = loginType==='mobile' ? 'email' : 'mobile'">
+          切换登陆方式
+        </button>
+      </div>
+    </div>
+    <script src="../2.vue初体验/my-first-vue/vue.js"></script>
+    <script>
+      //vm:vue实例
+      var vm = new Vue({
+        //配置
+        el: "#app", //CSS选择器
+        data: {
+          loginType: "mobile",
+        },
+      });
+    </script>
+  </body>
+</html>

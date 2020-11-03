@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 设置元素的innerHTML -->
+    <div id="app" v-html="html"></div>
+    <script src="../2.vue初体验/my-first-vue/vue.js"></script>
+    <script>
+      //vm:vue实例
+      var vm = new Vue({
+        //配置
+        el: "#app", //CSS选择器
+        data: {
+          //和界面相关的数据
+          html: `<p style="color:red">Lorem</p>`,
+        },
+      });
+    </script>
+  </body>
+</html>

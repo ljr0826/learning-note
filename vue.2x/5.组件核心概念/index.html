@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="../2.vue初体验/my-first-vue/vue.js"></script>
+    <script>
+      var MyComp = {
+        //创建组件
+        data() {
+          return {
+            title: "库存管理系统",
+          };
+        },
+        // methods: {},
+        // computed: {},
+        template: `<h1>库存管理系统</h1>`,
+      };
+      // Vue.component("MyComp", MyComp); //全局注册组件
+      //vm:vue实例
+      var vm = new Vue({
+        //使用组件
+        el: "#app",
+        components: {
+          MyComp,
+        },
+        template: `<div>
+            <MyComp></MyComp>
+            </div>`,
+      });
+    </script>
+  </body>
+</html>
