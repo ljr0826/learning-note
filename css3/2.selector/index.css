@@ -1,0 +1,5 @@
+div::selection {
+  color: #fff;
+  background-color: #ffcccc;
+  /* text-shadow:; */
+}
