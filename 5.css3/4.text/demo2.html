@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 第四个效果 */
+      div {
+        width: 400px;
+        height: 150px;
+        line-height: 150px;
+        position: absolute;
+        left: calc(50% - 200px);
+        top: 100px;
+        font-size: 100px;
+        font-weight: 600;
+        color: #dddddd;
+        background-image: url(qi.jpg);
+        background-size: 400px 300px;
+
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+
+        background-position: -8px -24px;
+        transition: all 2s;
+      }
+      div:hover {
+        background-position: -8px -153px;
+        cursor: pointer;
+        text-shadow: 20px 30px 12px rgb(76, 160, 150), 14px 21px 12px #ff0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>青鬼来了</div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 400px;
+        height: 200px;
+        border: 1px solid;
+        display: flex;
+        resize: both;
+        overflow: hidden;
+      }
+      .content {
+        flex: 1 1 auto;
+        height: 100px;
+        border: 1px solid green;
+        box-sizing: border-box;
+      }
+      .content:nth-of-type(2) {
+        flex: 0 0 50%;
+      }
+      .content:last-of-type {
+        flex: 6 6 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content"></div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+  </body>
+</html>

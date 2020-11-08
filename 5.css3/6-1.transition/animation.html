@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes run1 {
+        0% {
+          left: 0;
+          top: 0;
+          background-color: rgb(255, 102, 0);
+        }
+        25% {
+          left: 100px;
+          top: 0;
+        }
+        50% {
+          left: 100px;
+          top: 100px;
+          background-color: #0f0;
+        }
+        75% {
+          left: 0;
+          top: 100px;
+        }
+        100% {
+          left: 0;
+          top: 0;
+          background-color: #00f;
+        }
+      }
+      @keyframes run2 {
+        0% {
+          background-color: #0ff;
+        }
+        60% {
+          background-color: #0f0;
+        }
+        100% {
+          background-color: #00f;
+        }
+      }
+      div {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: #ff0000;
+        animation: run1 4s cubic-bezier(0.5, 1, 1, 1) 1s 3 reverse both running;
+        /* animation-name: run1;
+        animation-duration: 4s;
+        animation-timing-function: ease-out;
+        animation-delay: 1s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: both;
+        animation-play-state: running; */
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

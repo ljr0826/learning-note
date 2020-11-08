@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #000;
+}
+@keyframes spaceopc {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.space {
+  height: 500px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 130, 255, 1),
+    rgba(255, 255, 255, 1)
+  );
+  animation: spaceopc 4s ease-in 0s 2 reverse;
+}
+.sun {
+  position: absolute;
+  left: calc(50% - 30px);
+  top: calc(50% - 30px);
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 60px 30px #ffffff, 0px 0px 180px 120px #ff0;
+}
+.moon {
+  position: absolute;
+  left: calc(50% + 300px);
+  top: calc(50% - 30px);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #000000;
+  /* opacity: 0.1; */
+  box-shadow: 13px 13px 4px #fff;
+}

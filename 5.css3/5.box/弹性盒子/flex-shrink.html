@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 600px;
+        height: 600px;
+        border: 1px solid #008c8c;
+        display: flex;
+        /* flex-wrap: wrap; */
+      }
+      .content {
+        width: 200px;
+        height: 200px;
+        /* padding: 0 100px; */
+        /* box-sizing: border-box; */
+        flex-shrink: 1;
+        word-break: break-word;
+      }
+      .content:first-of-type {
+        flex-shrink: 5;
+        background-color: rebeccapurple;
+      }
+      .content:nth-of-type(2) {
+        background-color: rosybrown;
+      }
+      .content:nth-of-type(3) {
+        width: 400px;
+        background-color: salmon;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">qwsdadsda</div>
+      <div class="content"></div>
+      <div class="content"></div>
+    </div>
+  </body>
+</html>

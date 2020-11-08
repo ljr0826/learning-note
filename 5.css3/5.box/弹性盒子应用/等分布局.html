@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 400px;
+        height: 400px;
+        border: 1px solid #000;
+        display: flex;
+      }
+      .item {
+        flex: 1 1 auto;
+        /* margin: 0 10px; */
+        border: 1px solid green;
+        box-sizing: border-box;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 等分布局(四等分、二等分、中间可以加margin) -->
+    <div class="wrapper">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>
