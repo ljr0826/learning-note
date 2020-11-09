@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes change {
+        0% {
+          transform: rotateZ(-45deg);
+        }
+        to {
+          transform: rotateZ(45deg);
+        }
+      }
+      body {
+        perspective: 800px;
+        transform-style: preserve-3d;
+        perspective-origin: 300px 300px;
+      }
+      div {
+        position: absolute;
+        left: 200px;
+        top: 200px;
+        width: 200px;
+        height: 200px;
+        background: url(qg.jpg) no-repe at;
+        background-size: cover;
+        /* transform: rotateZ(0deg); */
+        transform-origin: 100px 0;
+        animation: change 2s linear alternate infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

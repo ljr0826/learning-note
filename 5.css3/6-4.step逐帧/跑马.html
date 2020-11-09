@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes run1 {
+        0% {
+          background-position-x: 0;
+        }
+        100% {
+          background-position-x: -2400px;
+        }
+      }
+      @keyframes run {
+        0% {
+          background-position-x: 0;
+        }
+        10% {
+          background-position-x: -200px;
+        }
+        20% {
+          background-position-x: -400px;
+        }
+        30% {
+          background-position-x: -600px;
+        }
+        40% {
+          background-position-x: -800px;
+        }
+        50% {
+          background-position-x: -1000px;
+        }
+        60% {
+          background-position-x: -1200px;
+        }
+        65% {
+          background-position-x: -1400px;
+        }
+        70% {
+          background-position-x: -1600px;
+        }
+        80% {
+          background-position-x: -1800px;
+        }
+        90% {
+          background-position-x: -2000px;
+        }
+        100% {
+          background-position-x: -2200px;
+        }
+      }
+      div {
+        width: 200px;
+        height: 100px;
+        background: url(./练习素材/horse.png) no-repeat;
+        animation: run1 0.5s steps(12, end) 0s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

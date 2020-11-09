@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes skewchange {
+        0% {
+          transform: skew(45deg, 45deg);
+        }
+        50% {
+          transform: skew(0deg, 0deg);
+        }
+        100% {
+          transform: skew(-45deg, -45deg);
+        }
+      }
+      body {
+        perspective: 800px;
+        transform-style: preserve-3d;
+        perspective-origin: 300px 300px;
+      }
+      div {
+        position: absolute;
+        left: 200px;
+        top: 200px;
+        width: 200px;
+        height: 200px;
+        background: url(../6-5.rotate旋转/qg.jpg) no-repeat;
+        background-size: cover;
+        transform-origin: 0 0;
+        /* transform: skew(45deg, 0deg); */
+        transform: skewY(45deg);
+        /* transform: skewX(45deg); */
+        /* animation: skewchange 2s infinite alternate; */
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <hr style="position: absolute; top: 200px; width: 100%" />
+    <hr style="position: absolute; top: 400px; width: 100%" />
+  </body>
+</html>

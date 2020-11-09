@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes round {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      body {
+        perspective: 800px;
+        transform-style: preserve-3d;
+        perspective-origin: 300px 300px;
+      }
+      div {
+        position: absolute;
+        left: 200px;
+        top: 200px;
+        width: 200px;
+        height: 200px;
+        background: url(../6-5.rotate旋转/qg.jpg) no-repeat;
+        background-size: cover;
+        transform-origin: 0 0;
+        /* transform: scale(1, 1) translateX(100px); */
+        /* transform: rotateY(90deg) rotateX(40deg) scale(2, 1); */
+        transform: skew(45deg, 0deg) translateY(100px);
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

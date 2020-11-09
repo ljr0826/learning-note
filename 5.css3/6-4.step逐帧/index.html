@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      @keyframes run {
+        0% {
+          left: 0;
+        }
+        25% {
+          left: 100px;
+        }
+        50% {
+          left: 200px;
+        }
+        75% {
+          left: 300px;
+        }
+        100% {
+          left: 400px;
+        }
+      }
+      .item {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        background-color: cadetblue;
+      }
+      .demo1 {
+        left: 0;
+        top: 0;
+        animation: run 5s steps(1, start) 3s 1 normal backwards;
+      }
+      .demo2 {
+        left: 0;
+        top: 150px;
+        animation: run 5s steps(1, end) 3s 1 normal forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo1 item">start</div>
+    <div class="demo2 item">end</div>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root,
+      body {
+        height: 100%;
+      }
+      @keyframes run {
+        0% {
+          transform: translate(-50%, -50%) rotateX(0deg) rotateY(30deg)
+            rotateZ(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotateX(360deg) rotateY(30deg)
+            rotateZ(360deg);
+        }
+      }
+      body {
+        perspective: 2000px;
+        transform-style: preserve-3d;
+      }
+      .wrapper {
+        position: absolute;
+        left: calc(50%);
+        top: calc(50%);
+        width: 200px;
+        height: 200px;
+        transform: translate(-50%, -50%) rotateY(0deg);
+        /* background-color: #000; */
+        transform-style: preserve-3d;
+        animation: run 6s linear alternate infinite;
+      }
+      img {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        size: cover;
+      }
+      img:nth-of-type(1) {
+        transform: rotateY(0deg) translatez(150px);
+      }
+      img:nth-of-type(2) {
+        transform: rotateY(90deg) translatez(150px);
+      }
+      img:nth-of-type(3) {
+        transform: rotateY(180deg) translatez(150px);
+      }
+      img:nth-of-type(4) {
+        transform: rotateY(270deg) translatez(150px);
+      }
+      img:nth-of-type(5) {
+        transform: rotatex(90deg) translatez(150px);
+      }
+      img:nth-of-type(6) {
+        transform: rotateX(90deg) translatez(-150px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="img2/1.jpg" alt="" />
+      <img src="img2/2.jpg" alt="" />
+      <img src="img2/3.jpg" alt="" />
+      <img src="img2/4.jpg" alt="" />
+      <img src="img2/5.jpg" alt="" />
+      <img src="img2/6.jpg" alt="" />
+    </div>
+    <script>
+      document.body.onmousemove = function (e) {
+        this.style.perspectiveOrigin = `${e.pageX}px ${e.pageY}px`;
+      };
+    </script>
+  </body>
+</html>
