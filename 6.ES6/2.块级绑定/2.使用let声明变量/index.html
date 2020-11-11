@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="btns"></div>
+    <script>
+      //   let a = 21; //全局作用域中定义a
+      //   console.log(a);
+      //   console.log(window.a); //undefined
+      //   //   let a = 88;
+      //   //   console.log(a); //检查到当前作用域已经声明了变量a
+
+      //   function test() {
+      //     let a = 99; //块级作用域中定义a
+      //     console.log(a); //使用的是块级作用域中定义的a
+      //   }
+      //   test();
+
+      //   console.log(a);
+      //   let a = 33;
+
+      //   var div = document.querySelector(".btns");
+      //   for (let i = 0; i < 10; i++) {
+      //     let j = i;
+      //     var btn = document.createElement("button");
+      //     btn.innerHTML = "按钮" + i;
+      //     div.appendChild(btn);
+      //     btn.onclick = function () {
+      //       console.log(i, j); //使用的时当前作用域中的i
+      //     };
+      //   }
+
+      if (Math.random() < 0.5) {
+        let a = "abc";
+        console.log(a); //使用 let 不会有变量提升，因此不能在定义 let 变量之前使用它
+      } else {
+        console.log(a);
+      }
+      console.log(a);
+    </script>
+  </body>
+</html>

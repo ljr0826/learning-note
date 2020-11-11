@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let b = 3;
+      //   b = 6;
+      //   console.log(b);
+      //   const a = 2;
+      //   //   a = 10; //会报错
+      //   console.log(a);
+
+      //   const a = {
+      //     name: "姬成",
+      //     age: 18,
+      //   };
+      //   a.name = "大成";
+      //   console.log(a);
+      const obj = [1, 2, 45, 43];
+      for (const prop in obj) {
+        console.log(prop, typeof prop, obj[prop]);
+      }
+      for (let i = 0; i < obj.length; i++) {
+        console.log(obj[i], typeof obj[i]);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const text1 = "秋葵";
+      const text2 = "香菜";
+      const text = myTag`邓哥喜欢吃${text1},也喜欢吃${text2}。`;
+      function myTag(parts) {
+        console.log(arguments);
+        const values = Array.prototype.slice.apply(arguments).slice(1); //parts.length = values.length + 1
+        // return values;
+        let str = "";
+        for (let i = 0; i < values.length; i++) {
+          str += parts[i] + values[i];
+          if (i === values.length - 1) {
+            str += parts[i + 1];
+          }
+        }
+        return str;
+        // str += part[0] + values[0];
+        // return parts;
+      }
+      console.log(text);
+
+      var ss = String.row``;
+    </script>
+  </body>
+</html>

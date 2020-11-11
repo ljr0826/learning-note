@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const text = "吉";
+      console.log("字符串长度:", text.length);
+      console.log("使用正则表达式测试:", /^.$/u.test(text));
+      console.log("使用正则表达式测试:", text.charCodeAt().toString(16));
+      console.log("使用正则表达式测试:", text.codePointAt().toString(16));
+
+      //判断字符串char是32位还是16位
+      function is32bit(char, i) {
+        //如果码点大于了16位二进制的最大值，则其是32位的
+        return char.codePointAt(i) > 0xffff;
+      }
+      console.log("吉是否是32位的：", is32bit(text));
+
+      //得到一个字符串码点的真实长度
+      function getLengthOfCodePoint(str) {
+        var len = 0;
+        for (let i = 0; i < str.length; i++) {
+          //i在索引码元
+          if (is32bit(str, i)) {
+            //当前字符串在i这个位置，占用了两个码元
+            i++;
+          }
+          len++;
+        }
+        return len;
+      }
+      console.log(getLengthOfCodePoint("ab即吉c"));
+    </script>
+  </body>
+</html>

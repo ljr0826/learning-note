@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const text = "Hello World!!!";
+      const reg = /W\w+/y;
+      console.log(`reg.lastIndex:${reg.lastIndex}`);
+      console.log(reg.test(text));
+      reg.lastIndex = 6;
+      console.log(`reg.lastIndex:${reg.lastIndex}`);
+      console.log(reg.test(text));
+    </script>
+  </body>
+</html>
