@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   //历史遗留问题
+      //   console.log(NaN === NaN); //false
+      //   console.log(+0 === -0); //true
+
+      //   console.log(Object.is(NaN, NaN)); //true
+      //   console.log(Object.is(+0, -0)); //false
+
+      //   const obj1 = {
+      //     a: 123,
+      //     b: 456,
+      //     c: "abc",
+      //   };
+      //   const obj2 = {
+      //     a: 789,
+      //     d: "kk",
+      //   };
+      //   const obj = Object.assign(obj1, obj2);
+      //   console.log(obj, obj1, obj === obj1);
+      //   //将obj2的数据覆盖到obj1，并且会对obj1产生改动，然后返回obj1
+      //   //改动如下：
+      //   const obj3 = Object.assign({}, obj1, obj2);
+      //   console.log(obj3, obj1, obj3 === obj1);
+
+      //   const obj = {
+      //     d: 1,
+      //     b: 2,
+      //     a: 3,
+      //     0: 6,
+      //     5: 2,
+      //     4: 1,
+      //   };
+      //   const props = Object.getOwnPropertyNames(obj);
+      //   console.log(props);
+
+      const obj1 = {
+        a: 1,
+      };
+      const obj2 = {
+        b: 2,
+      };
+    //   Object.setPrototypeOf(obj1, obj2);
+      console.log(obj1);
+    </script>
+  </body>
+</html>

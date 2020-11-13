@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const Animal = class {
+        type = "cat";
+        static ss = "shrink";
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        get age() {
+          return this._age;
+        }
+        set age(age) {
+          this._age = age * 2;
+        }
+      };
+      const cat = new Animal("简单", 3);
+    </script>
+  </body>
+</html>

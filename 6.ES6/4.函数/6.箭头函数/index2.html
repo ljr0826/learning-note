@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   (a, b) => {
+      //     console.log(this);
+      //   };
+      //   const obj = {
+      //     start: (a, b) => {
+      //       console.log(this); //this如果没有写在函数里面，则指向全局对象
+      //       console.log(arguments); //报错
+      //       //   console.log(new.target);
+      //     },
+      //   };
+      //   obj.start(3, 4);
+
+      //   const func = () => {
+      //     console.log(this);
+      //   };
+      //   console.dir(func);
+      //   console.log(func, func.prototype);
+
+      const numbers = [2, 5, 7, 5, 9];
+      const result = numbers
+        .filter((num) => num % 2 !== 0) //保留奇数
+        .map((num) => num * 2) //数据*2
+        .reduce((a, b) => a + b); //求和
+      console.log(result);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   //面向对象中，将下面对一个对象的所有成员的定义，统称为类
+      //   //构造函数|构造器
+      //   function Animal(type, name, age, sex) {
+      //     (this.type = type),
+      //       (this.name = name),
+      //       (this.age = age),
+      //       (this.sex = sex);
+      //   }
+      //   //若中间存在别的代码，很多行
+      //   //定义原型方法|实例方法
+      //   Animal.prototype.print = function () {
+      //     console.log(`【种类】：${this.type}`);
+      //     console.log(`【名字】：${this.name}`);
+      //     console.log(`【年龄】：${this.age}`);
+      //     console.log(`【性别】：${this.sex}`);
+      //   };
+
+      //   const a = new Animal("狗", "旺财", 3, "男");
+      //   a.print();
+      //   for (const prop in a) {
+      //     console.log(prop);
+      //   }
+      class Animal {
+        constructor(type, name, age, sex) {
+          (this.type = type),
+            (this.name = name),
+            (this.age = age),
+            (this.sex = sex);
+        }
+        print() {
+          console.log(`【种类】：${this.type}`);
+          console.log(`【名字】：${this.name}`);
+          console.log(`【年龄】：${this.age}`);
+          console.log(`【性别】：${this.sex}`);
+        }
+      }
+      const a = new Animal("狗", "旺财", 3, "男");
+      a.print();
+      //   const p = new a.print(); //报错
+      for (const prop in a) {
+        console.log(prop);
+      }
+      //   const a = Animal("狗", "旺财", 3, "男"); //报错
+    </script>
+  </body>
+</html>

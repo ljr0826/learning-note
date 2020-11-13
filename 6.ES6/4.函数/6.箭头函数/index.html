@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var arr = [9, 1, 5];
+      //   var obj = {
+      //     fn() {
+      //       console.log("this",typeof this);
+      //     },
+      //   };
+      const obj = {
+        count: 0,
+        //this-->obj
+        start: function () {
+          setInterval(() => {
+            console.log(this);
+            this.count++; //直接调用函数，this 指向全局对象
+            console.log(this.count);
+          }, 1000);
+        },
+        regEvent: function () {
+          window.onclick = () => {
+            // this.count++;
+            console.log(this.count); //如果是 DOM 事件函数，this 指向事件源
+          };
+        },
+        print: function () {
+          console.log(this);
+          console.log(this.count);
+        },
+      };
+      //   obj.start();
+      obj.print();
+      const ss = obj.print; //实际开发中一般没有这么使用的
+      ss();
+    </script>
+  </body>
+</html>

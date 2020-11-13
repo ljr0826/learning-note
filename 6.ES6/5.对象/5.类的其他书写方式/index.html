@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const printName = "print";
+      class Animal {
+        constructor(type, name, age, sex) {
+          (this.type = type),
+            (this.name = name),
+            // Object.defineProperty(this, "age", {
+            //   get() {},
+            //   set(val) {},
+            // }),
+            (this.age = age),
+            (this.sex = sex);
+        }
+        //创建一个age属性，并给他加上一个getter，读取该属性时，会运行该函数
+        get age() {
+          return this._age + "岁";
+        }
+        //创建一个age属性，并给他加上一个setter，给该属性赋值时，会运行该函数
+        set age(age) {
+          if (typeof age !== "number") {
+            throw new TypeError("age property must be a number");
+          }
+          if (age < 0) {
+            age = 0;
+          } else if (age > 1000) {
+            age = 1000;
+          }
+          this._age = age;
+        }
+        [printName]() {
+          console.log(
+            `【类型】：${this.type},【名字】：${this.name},【年龄】：${this.age},【性别】：${this.sex}`
+          );
+        }
+      }
+      const cat = new Animal("猫", "简单", 3, "女");
+      cat[printName]();
+    </script>
+  </body>
+</html>
