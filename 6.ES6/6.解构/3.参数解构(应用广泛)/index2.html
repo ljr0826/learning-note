@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //之前的写法
+      function ajax(options) {
+        const defaultOptions = {
+          method: "get",
+          url: "/",
+        };
+        const opt = {
+          ...defaultOptions,
+          ...options,
+        };
+        console.log(opt);
+      }
+      //解构的方法
+      function ajax({ method = "get", url = "/" } = {}) {
+        //若不传参，默认从{}中解构(解决不传参的问题)
+        console.log(method, url);
+      }
+      ajax({
+        method: "get",
+        // url: "/abc",
+      });
+    </script>
+  </body>
+</html>

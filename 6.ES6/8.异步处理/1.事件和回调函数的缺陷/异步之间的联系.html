@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /*
+            邓哥心中有二十个女神，他决定用更加高效的办法
+            他同时给二十个女神表白，如果有女神同意，就拒绝其他的女神
+            并且，当所有的女神回复完成后，他要把所有的回复都记录到日志进行分析
+            用代码模拟上面的场景
+        */
+      function confess(god, callback) {
+        console.log(`邓哥向${god}表白`);
+        setTimeout(() => {
+          if (Math.random() > 0.3) {
+            callback(false);
+          } else {
+            callback(true);
+          }
+        }, Math.floor(Math.random() * (3000 - 1000) + 1000));
+      }
+      let agreeGod = null; //第一个接受邓哥的女神
+      const confessData = []; //日志汇总分析
+      for (let i = 1; i <= 20; i++) {
+        confess(`女神${i}`, (result) => {
+          if (result) {
+            console.log(`女神${i}接受了邓哥`);
+            if (agreeGod) {
+              console.log(
+                `邓哥回复女神${i}：不好意思，朋友拿我手机乱发的，别当真`
+              );
+            } else {
+              agreeGod = `女神${i}`;
+            }
+          } else {
+            console.log(`女神${i}拒绝了邓哥`);
+          }
+          confessData.push(`女神${i}：${result}`);
+          if (confessData.length === 20) {
+            console.log(confessData);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

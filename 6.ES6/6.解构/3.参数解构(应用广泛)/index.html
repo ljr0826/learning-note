@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   function print(user) {
+      //     console.log(`姓名：${name}`);
+      //     console.log(`年龄：${age}`);
+      //     console.log(`性别：${sex}`);
+      //     console.log(`省份：${province}`);
+      //     console.log(`城市：${city}`);
+      //   }
+      function print({ name, age, sex, address: { province, city } }) {
+        //直接解构
+        console.log(`姓名：${name}`);
+        console.log(`年龄：${age}`);
+        console.log(`性别：${sex}`);
+        console.log(`省份：${province}`);
+        console.log(`城市：${city}`);
+      }
+      const user = {
+        name: "kevin",
+        age: 11,
+        sex: "男",
+        address: {
+          province: "四川",
+          city: "成都",
+        },
+      };
+      print(user);
+    </script>
+  </body>
+</html>

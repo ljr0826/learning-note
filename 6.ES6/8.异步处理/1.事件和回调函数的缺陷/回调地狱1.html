@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p>
+      <button id="btn1">按钮1：给按钮2注册点击事件</button>
+      <button id="btn2">按钮2：给按钮3注册点击事件</button>
+      <button id="btn3">按钮3：点击后弹出hello</button>
+    </p>
+    <script>
+      //dom2第二个参数，是否在捕获阶段触发处理函数
+      const btn1 = document.querySelector("#btn1");
+      const btn2 = document.querySelector("#btn2");
+      const btn3 = document.querySelector("#btn3");
+      btn1.addEventListener("click", () => {
+        console.log("按钮1");
+        btn2.addEventListener("click", () => {
+          console.log("按钮2");
+          btn3.addEventListener("click", () => {
+            console.log("hello");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

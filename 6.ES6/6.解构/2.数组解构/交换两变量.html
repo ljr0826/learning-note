@@ -4,16 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      div {
-        width: 100px;
-        height: 0px;
-        border-top: 0.5px solid red;
-      }
-    </style>
   </head>
   <body>
-    <div></div>
-    <p></p>
+    <script>
+      let a = 1,
+        b = 2;
+      [b, a] = [a, b]; //将两个变量置于一个数组中，对数组进行解构，从而达到交换变量值的目的
+      console.log(a, b);
+    </script>
   </body>
 </html>
