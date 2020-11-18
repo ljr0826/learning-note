@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function confess(god) {
+        return new Promise((resolve, reject) => {
+          console.log(`邓哥向${god}表白`);
+          setTimeout(() => {
+            if (Math.random() < 0.1) {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
+          }, 3000);
+        });
+      }
+      confess("女神1").then((result) => {
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>

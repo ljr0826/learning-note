@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const pro = new Promise((resolve, reject) => {
+        reject(1);
+      });
+      pro.finally(() => console.log("finally1"));
+      pro.finally(() => console.log("finally2"));
+      pro.then(() => console.log("then1"));
+      pro.then(() => console.log("then2"));
+      pro.catch(() => console.log("catch1"));
+      pro.catch(() => console.log("catch1"));
+    </script>
+  </body>
+</html>

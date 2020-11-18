@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const pro = new Promise((resolve, reject) => {
+        resolve(1);
+      });
+      //等效于：
+      const pro = Promise.resolve(1);
+
+      const pro = new Promise((resolve, reject) => {
+        reject(2);
+      });
+      //等效于：
+      const pro = Promise.reject(2);
+
+      const p = new Promise((resolve, reject) => {
+        resolve(3);
+      });
+      const pro = new Promise((resolve, reject) => {
+        resolve(p);
+      });
+      //等效于：
+      const pro = Promise.resolve(p);
+      //也等效于：
+      const pro = p;
+
+      //浏览器之间不一致
+    </script>
+  </body>
+</html>

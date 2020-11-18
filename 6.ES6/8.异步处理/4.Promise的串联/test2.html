@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const pro1 = new Promise((resolve, reject) => {
+        resolve(1);
+        console.log(pro1);
+      });
+      const pro2 = pro1.then((result) => result * 2);
+      //pro2的类型：Promise对象
+      //pro2的状态：一定会等到(result) => result * 2运行后才会变成已决状态
+      console.log(pro2);
+      pro2.then(
+        (result) => console.log(pro2),
+        (err) => console.log(err),
+        console.log(pro2) 
+      );
+      //输出：2
+      console.log(pro2);
+      function a() {}
+      a(console.log(pro2))
+    </script>
+  </body>
+</html>
