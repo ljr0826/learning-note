@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const mp = new Map([
+        ["a", 3],
+        ["b", 4],
+        ["c", 5],
+        ["b", 9],
+      ]);
+      console.log(mp, [...mp]);
+      for (const [key, value] of mp) {
+        console.log([key, value], key, value); //解构
+      }
+      mp.forEach((value, key, mpp) => {
+        console.log(value, key, mpp);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 依次得到斐波拉契数列前面n位的值
+      // 1 1 2 3 5 8 13 .....
+
+      //创建一个斐波拉契数列的迭代器
+      function* createFeiBoIterator() {
+        let prev1 = 1,
+          prev2 = 1,
+          n = 1; //当前是斐波那契数列的第几位
+        while (true) {
+          if (n <= 2) {
+            yield 1;
+          } else {
+            let newPrev = prev1 + prev2;
+            yield newPrev;
+            prev2 = prev1;
+            prev1 = newPrev;
+          }
+          n++;
+        }
+      }
+      const iterator = createFeiBoIterator();
+      console.log(iterator.next()); //this不会别乱用
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <script>
+      //   const arr = Array.of(1, 2, 3, 4, 5);
+      //   const arr1 = Array.of(1); //长度为1的数组，数组第一项为1
+      //   const arr2 = new Array(1); //长度为1的空数组
+      //   console.log(arr, arr1, arr2);
+
+      const divs = document.querySelectorAll("div");
+      const result = Array.from(divs);
+      console.log(divs, result);
+    </script>
+  </body>
+</html>

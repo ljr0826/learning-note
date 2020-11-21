@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>得到所有的省份数据</button>
+    <script>
+      async function getProvinces() {
+        const url = "http://101.132.72.36:5100/api/local";
+        const config = {
+          method: "GET",
+          headers: {
+            // "Content-Type": "application/json",
+            a: 1,
+          },
+          //   body: `{"a":"1"}`,
+        };
+        const req = new Request(url, config);
+        try {
+          const resp = await fetch(req); //使用`fetch`函数即可立即向服务器发送网络请求
+          const result = await resp.json();
+          console.log(resp, result);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      document.querySelector("button").onclick = function () {
+        getProvinces();
+      };
+    </script>
+  </body>
+</html>

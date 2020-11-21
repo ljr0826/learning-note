@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function* test() {
+        //给生成器每一次迭代提供数据的
+        console.log("第一次运行");
+        yield 1; //yield就是提供了一个语法糖，让你可以在函数内部很方便的产生迭代数据
+        console.log("第二次运行");
+        yield 2;
+        console.log("第三次运行"); //函数运行完，done的值变为true
+        return 10;
+      }
+      const generator = test();
+      console.log(generator.next());
+    </script>
+  </body>
+</html>

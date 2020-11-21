@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const arr = [1, 2, 3, 4, 5];
+      //   const obj = { ...arr };
+      //   console.log(obj);
+
+      const obj = {
+        a: 1,
+        b: 2,
+      };
+      const obj1 = {
+        a: 1,
+        b: 2,
+        [Symbol.iterator]() {
+          const keys = Object.keys(this);
+          let i = 0;
+          return {
+            next: () => {
+              const propName = keys[i];
+              const propValue = this[propName];
+              const result = {
+                value: {
+                  propName,
+                  propValue,
+                },
+                done: i >= keys.length,
+              };
+              i++;
+              return result;
+            },
+          };
+        },
+      };
+      //   const arr = [...obj]; //报错，因为obj不是可迭代的
+      const arr1 = [...obj1];
+      console.log(arr1);
+    </script>
+  </body>
+</html>
