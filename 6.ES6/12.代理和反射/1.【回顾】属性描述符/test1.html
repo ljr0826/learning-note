@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const obj = {
+        a: 1,
+        b: 2,
+      };
+      Object.defineProperty(obj, "a", {
+        value: 3,
+        configurable: false,
+        enumerable: false,
+        writable: false,
+      });
+      Object.defineProperties(obj, {
+        a: {
+          value: 3,
+          configurable: false,
+          enumerable: false,
+          writable: false,
+        },
+        b: {
+          value: 0,
+          configurable: false,
+          enumerable: true,
+          writable: false,
+        },
+      });
+      //   Object.defineProperty(obj, "a", {
+      //     value: 4,
+      //     configurable: true,
+      //   }); //报错
+      obj.a = 7; //无效
+      const props = Object.keys(obj);
+      console.log(props);
+      const desc = Object.getOwnPropertyDescriptor(obj, "a");
+      console.log(Object.getOwnPropertyDescriptors(obj));
+      console.log(desc);
+    </script>
+  </body>
+</html>

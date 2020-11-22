@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      //观察者模式：
+      //有一个对象，是观察者，它用于观察另外一个对象的属性值变化，当属性值变化后会收到一个通知，可能会做一些事。
+      //创建一个观察者
+      function observer(target) {
+        const div = document.getElementById("container");
+        const proxy = new Proxy(target, {
+          set(target, propertyKey, value) {
+            Reflect.set(target, propertyKey, value);
+            render();
+          },
+          get(target, propertyKey) {
+            Reflect.get(target, propertyKey);
+          },
+        });
+        render();
+        function render() {
+          let html = "";
+          for (const prop of Object.keys(target)) {
+            html += `<p><span>${prop}:</span><span>${target[prop]}</span></p>`;
+          }
+          div.innerHTML = html;
+        }
+        return proxy;
+      }
+      const obj = observer({
+        a: 1,
+        b: 2,
+      });
+    </script>
+  </body>
+</html>
