@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{ 1+1 }} {{ qiRong }}</div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          meg: "花花世界迷人眼",
+          qiRong: {
+            lover: "谢怜",
+            age: "800",
+            like: "吃人",
+            son: "谷子",
+          },
+        },
+      });
+      console.log(vm.el, vm.data, vm.meg, vm);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div :class="{classA:isA,classB:isB}"></div>
+      <div :class="[classA,classB]" class="classA classB"></div>
+      <div v-bind:class="[isA?classA:'',classB]"></div>
+      <div v-bind:class="[{[classA]:isA},classB]"></div>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          classA: "classAAA",
+          classB: "classBBB",
+          isA: true,
+          isB: true,
+        },
+      });
+      //绑定calss：
+      //对象语法：键是否存在取决于值的真假
+      //v-bind:class可以与普通class共存。普通class先渲染
+      //数组语法：应用于一个class列表
+      //三元表达式和对象都可以应用到数组语法中
+    </script>
+  </body>
+</html>

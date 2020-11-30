@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+      span {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo">
+      <p>Lorem ipsum dolor sit.</p>
+      <span>嘻嘻哈哈</span>
+      <script>
+        const a = 1;
+      </script>
+      <style>
+        a {
+          display: none;
+        }
+      </style>
+    </div>
+    <script>
+      const demo = document.getElementById("demo");
+      console.log(demo.textContent);
+      console.log(demo.innerText);
+    </script>
+  </body>
+</html>

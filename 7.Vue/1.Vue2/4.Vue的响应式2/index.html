@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{arr}}</div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          arr: [1, 2, 3],
+        },
+      });
+      vm.$set(vm.arr, 3, 9);
+      vm.$set(vm.arr, 4, 0);
+      vm.$delete(vm.arr, 0);
+    </script>
+  </body>
+</html>

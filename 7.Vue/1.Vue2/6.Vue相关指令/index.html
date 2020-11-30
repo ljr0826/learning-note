@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app" @click="click">{{msg}}</div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "aaa",
+        },
+        methods: {
+          click() {
+            this.msg = "bbb";
+            console.log(this.msg, this.$el.innerText);
+            this.msg = "ccc";
+            console.log(this.msg, this.$el.innerText);
+            this.msg = "kkk";
+            console.log(this.msg, this.$el.innerText);
+            setTimeout(() => {
+              console.log(this.msg, this.$el.innerText);
+            });
+          },
+        },
+      });
+      vm.$nextTick(() => {
+        console.log(vm.msg, vm.$el.innerText);
+      }); 
+    </script>
+  </body>
+</html>

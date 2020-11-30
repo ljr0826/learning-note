@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div v-bind:style="{fontSize:size}">花花的世界</div>
+      <div v-bind:style="[styleObjectA,styleObjectB]"></div>
+    </div>
+    <div id="demo"></div>
+    <script>
+      const demo = document.getElementById("demo");
+      for (const key in demo) {
+        console.log(key);
+      }
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          size: "30px",
+          styleObjectA: {
+            height: "100px",
+          },
+          styleObjectB: {
+            backgroundColor: "red",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <img v-bind="{[name]:imgUrl ,[zhanWei]:msg }" />
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          zhanWei: "alt",
+          name: "src",
+          msg: "花花世界迷人眼",
+          imgUrl:
+            "https://pics3.baidu.com/feed/8601a18b87d6277fae00d67a44a8b637e824fcfe.jpeg?token=7188811c800fd7a8e56c8cfd305de060",
+        },
+      });
+    </script>
+  </body>
+</html>

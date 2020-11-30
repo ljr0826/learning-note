@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "哈哈哈哈哈哈",
+          jian: {
+            name: "简单",
+            age: "-20",
+            sex: "female",
+          },
+        },
+      });
+      vm.jian.lover = "undefined"; //未经声明的数据，不重新渲染页面
+      console.log(vm);
+      vm.jian.age = "-10"; //未在插值表达式使用的数据改变，不重新渲染页面
+      vm.msg = "呵呵呵呵"; //页面重新渲染
+      for (let i = 0; i < 10000; i++) {
+        vm.msg = i;
+      }
+      vm.msg = "aaa";
+      console.log(
+        vm.msg,
+        document.getElementById("app").innerText,
+        vm.$el.innerText
+      );
+      vm.msg = "bbb";
+      console.log(
+        vm.msg,
+        document.getElementById("app").innerText,
+        vm.$el.innerText
+      );
+      vm.msg = "ccc";
+      console.log(
+        vm.msg,
+        document.getElementById("app").innerText,
+        vm.$el.innerText
+      );
+      setTimeout(() => {
+        console.log(
+          vm.msg,
+          document.getElementById("app").innerText,
+          vm.$el.innerText
+        );
+      }, 0);
+      vm.$nextTick(function () {
+        console.log(this); //Vue
+        console.log(
+          vm.msg,
+          document.getElementById("app").innerText,
+          vm.$el.innerText
+        );
+      });
+      Vue.nextTick(function () {
+        console.log(this); //Window
+        console.log(
+          vm.msg,
+          document.getElementById("app").innerText,
+          vm.$el.innerText
+        );
+      });
+      //   vm.$nextTick().then(function () {
+      //     console.log(
+      //       vm.msg,
+      //       document.getElementById("app").innerText,
+      //       vm.$el.innerText
+      //     );
+      //   });
+      //   Vue.nextTick().then(function () {
+      //     console.log(
+      //       vm.msg,
+      //       document.getElementById("app").innerText,
+      //       vm.$el.innerText
+      //     );
+      //   });
+    </script>
+  </body>
+</html>

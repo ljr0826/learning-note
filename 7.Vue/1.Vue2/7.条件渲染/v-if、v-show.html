@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <template v-if="boolean1">
+        <div>{{show1}}</div>
+        <div>{{show1}}</div>
+        <div>{{show1}}</div>
+        <div>{{show1}}</div>
+        <div>{{show1}}</div>
+      </template>
+      <!-- <div v-if="boolean1">{{show1}}</div>
+      <div v-else-if="boolean1">{{show2}}</div>
+      <div v-else-if="boolean1">{{show3}}</div>
+      <div v-else="boolean1">{{show4}}</div> -->
+      <div v-if="boolean2">{{show2}}</div>
+      <div v-show="boolean2">{{show3}}</div>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          boolean1: true,
+          boolean2: false,
+          show1: "怎么也飞不出",
+          show2: "花花的世界",
+          show3: "原来我是一只",
+          show4: "酒醉的蝴蝶",
+        },
+      });
+    </script>
+  </body>
+</html>

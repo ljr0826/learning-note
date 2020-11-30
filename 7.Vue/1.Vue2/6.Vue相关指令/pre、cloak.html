@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app" v-cloak>{{msg}}</div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "花花世界迷人眼",
+        },
+      });
+      //v-pre：跳过这个元素的编译过程
+      //v-cloak：和display:none搭配使用解决闪烁问题
+    </script>
+  </body>
+</html>

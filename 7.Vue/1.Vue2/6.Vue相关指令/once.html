@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{msg}}</p>
+      <span v-once>{{msg}}</span>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "花花世界迷人眼",
+        },
+      });
+      vm.msg = "不要到处扣扣"; //span不再渲染
+    </script>
+  </body>
+</html>
