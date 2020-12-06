@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(person,index) in persons">
+          {{person.name}}---{{person.age}}岁----索引位 {{index}}
+        </li>
+        <li v-for="(value,key,index) in qiang">
+          {{key}}---{{value}}---索引位{{index}}
+        </li>
+        <li v-for="num in number">{{num}}</li>
+        <li v-for="str in string">{{str}}</li>
+      </ul>
+      <template v-for="person in persons">
+        <li>{{person.name}}</li>
+        <span>{{person.age}}</span>
+      </template>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          persons: [
+            { name: "花花", age: 22 },
+            { name: "强强", age: 7 },
+            { name: "村村", age: 55 },
+            { name: "齐齐", age: 6 },
+          ],
+          qiang: {
+            name: "强强",
+            age: 7,
+            like: "sleeping",
+          },
+          number: 10,
+          string: "花花世界迷人眼",
+        },
+        method: {
+          test() {},
+        },
+      });
+    </script>
+  </body>
+</html>

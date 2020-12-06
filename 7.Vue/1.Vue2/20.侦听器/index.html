@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // const vm = new Vue({
+      //   el: "#app",
+      //   data: {
+      //     question: "十分艰苦了",
+      //   },
+      //   watch: {
+      //     question() {
+      //       setTimeout(() => {
+      //         alert(this.question);
+      //       }, 1000);
+      //     },
+      //   },
+      // });
+
+      arr = [callback, callback];
+
+      function watch(callback) {
+        callback();
+        return function () {
+          console.log("un");
+        };
+      }
+      const unwatch = watch(() => {
+        if (unwatch) {
+          unwatch();
+        }
+      });
+    </script>
+  </body>
+</html>

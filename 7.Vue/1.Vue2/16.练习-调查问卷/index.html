@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="area" v-for="area in 2">
+        <h2>{{area === 1 ? "提问区" : "回答展示区"}}</h2>
+        <ul>
+          <li v-for="question in questionList" :key="question.id">
+            <h3>{{question.title}}</h3>
+            <!--1.请问你的姓名是？-->
+            <div v-if="question.type==='short'">
+              <input type="text" v-if="area===1" v-model="question.answer" />
+              <span v-else>{{question.answer}}</span>
+            </div>
+            <!--请问您的性别是？-->
+            <div v-if="question.type==='single'">
+              <template v-if="area===1">
+                <div v-for="choose in question.chooseList" :key="choose">
+                  <input
+                    type="radio"
+                    v-model="question.answer"
+                    :value="choose"
+                  />
+                  <span>{{choose}}</span>
+                </div>
+              </template>
+              <span v-else>{{question.answer}}</span>
+            </div>
+            <!--3.请问您的兴趣爱好是？-->
+            <div v-if="question.type==='multiple'">
+              <template v-if="area===1">
+                <div v-for="choose in question.chooseList" :key="choose">
+                  <input
+                    type="checkbox"
+                    v-model="question.answer"
+                    :value="choose"
+                  />
+                  <span>{{choose}}</span>
+                </div>
+              </template>
+              <div v-else>{{question.answer&&question.answer.toString()}}</div>
+            </div>
+            <!--4.请介绍以下自己-->
+            <div v-if="question.type==='long'">
+              <textarea v-if="area===1" v-model="question.answer"></textarea>
+              <span v-else>{{question.answer}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          questionList: [
+            {
+              type: "short",
+              title: "1.请问你的姓名是？",
+              chooseList: null,
+              answer: "",
+              id: 0,
+            },
+            {
+              type: "single",
+              title: "2.请问您的性别是？",
+              chooseList: ["男", "女", "保密"],
+              answer: "",
+              id: 1,
+            },
+            {
+              type: "multiple",
+              title: "3. 请选择您的兴趣爱好：",
+              chooseList: ["看书", "游泳", "跑步", "看电影", "听音乐"],
+              answer: [],
+              id: 2,
+            },
+            {
+              type: "long",
+              title: "4. 请介绍一下自己:",
+              chooseList: null,
+              answer: "",
+              id: 3,
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

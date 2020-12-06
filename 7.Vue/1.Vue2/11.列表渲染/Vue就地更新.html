@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(person,index) in persons" :key="person.name">
+          {{person.name}}
+          <input type="text" />
+          <button v-on:click="handleClick(index)">下移</button>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          persons: [
+            { name: "花花", age: 22 },
+            { name: "强强", age: 7 },
+            { name: "村村", age: 55 },
+            { name: "齐齐", age: 6 },
+          ],
+        },
+        methods: {
+          handleClick(index) {
+            const deleteDom = this.persons.splice(index, 1);
+            console.log(deleteDom, ...deleteDom);
+            this.persons.splice(index + 1, 0, ...deleteDom);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

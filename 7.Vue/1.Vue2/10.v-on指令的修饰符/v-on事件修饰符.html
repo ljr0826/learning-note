@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <!-- <div id="app">
+      <div @click="alert('div')" :style="styleColor">
+        <button @click.stop="alert('button')">点击</button>
+      </div>
+    </div> -->
+
+    <!-- <div id="app">
+          <form @click.prevent="onSubmit" action="">
+              <input type="submit">
+          </form>
+      </div> -->
+
+    <!-- <div id="app">
+      <div @click.capture="alert('div')" :style="styleColor">
+        <button @click="alert('button')">点击</button>
+      </div>
+    </div> -->
+
+    <!-- <div id="app">
+      <div @click.self="alert('div')" :style="styleColor">
+        <button @click="alert('button')">点击</button>
+      </div>
+    </div> -->
+
+    <!-- <div id="app">
+      <div @click.once="alert('div')" :style="styleColor">
+        <button @click="alert('button')">点击</button>
+      </div>
+    </div> -->
+
+    <div id="app">
+      <div v-on:click.prevent.self="alert('ss')"></div>
+      <div v-on:click.self.prevent="alert('ss')"></div>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          styleColor: {
+            backgroundColor: "red",
+            height: "20px",
+          },
+        },
+        methods: {
+          alert(str) {
+            alert(str);
+          },
+          onSubmit() {
+            console.log("submit");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

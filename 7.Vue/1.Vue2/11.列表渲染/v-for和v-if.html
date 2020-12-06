@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul v-if="shouldShow">
+        <li v-for="person in persons" v-if="person.isActive" :key="person.id">
+          {{person.name}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          persons: [
+            { name: "花花", age: 22, isActive: true, id: 1 },
+            { name: "强强", age: 7, isActive: true, id: 2 },
+            { name: "村村", age: 55, isActive: false, id: 3 },
+            { name: "齐齐", age: 6, isActive: true, id: 4 },
+          ],
+          activePersons: [],
+          shouldShow: false,
+        },
+        method: {},
+      });
+      vm.acivePersons = vm.persons.filter((item) => item.isActive); //如此优化性能或者在父级上先v-if
+    </script>
+  </body>
+</html>
