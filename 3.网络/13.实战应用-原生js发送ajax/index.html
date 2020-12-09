@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          console.log(data);
+        }
+      };
+      xhr.open("GET", "http://www.baidu.com:80"); //第三个参数表示同步/异步，默认true异步
+      xhr.send();
+      console.log("+=========");
+    </script>
+  </body>
+</html>

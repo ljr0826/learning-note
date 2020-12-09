@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const xhr = new XMLHttpRequest(); //创建发送请求的对象
+      console.log(xhr.readyState); //0：刚创建好了请求对象，还未配置请求(调用open方法)
+      xhr.onreadystatechange = function () {
+        console.log(xhr.readyState); //判断请求到了那个阶段
+        //1：open方法已被调用
+        //2：send方法已被调用
+        //3：正在接收服务器的响应消息体
+        //4：服务器响应的所有内容均已接收完毕，即请求已经完成，并接收到数据
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          //xhr.status === 200，网络请求的结果都会有一个状态码来表示这个请求是否正常。
+          //2**表示各种成功，3**表示重定向，4**表示客户端错误，404页面没找到，5**表示服务端错误
+          console.log(xhr.responseText); //获取服务器响应的消息体文本
+          const test = JSON.parse(xhr.responseText);
+          console.log(test);
+          document.getElementById("app").innerText = xhr.responseText;
+        }
+      };
+      //   xhr.setRequestHeader(); //配置请求头
+      xhr.open("get", "http://developer.duyiedu.com/edu/testAjaxCrossOrigin"); //配置请求行，请求要素：请求方式、url
+      //open方法第三个参数表示同步/异步，默认值true异步模式
+      xhr.send(); //配置请求体
+      console.log(xhr.readyState); //1：执行发送是一个过程，在过程中状态还是1
+      console.log("===============");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <!-- hello world -->
+    <!-- <img src="" alt="https://developer.duyiedu.com/edu/testAjax" />
+    <iframe src="http://www.baidu.com" frameborder="0"></iframe> -->
+
+    <script>
+      //请求有几个要素：
+      //请求方式：get/post
+      //url
+      var xhr = null;
+      if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+      } else {
+        xhr = new ActiveXObject("Microsoft.XMLHttp");
+      }
+      console.log(xhr.readyState); //0，
+      xhr.open(
+        "get",
+        "http://developer.duyiedu.com/edu/testAjaxCrossOrigin",
+        true
+      ); //如果open第三个参数传true或不传，为异步模式；如果传false，为同步模式
+      console.log(xhr.readyState); //1
+      //   xhr.send();
+      //   console.log(xhr.readyState); //1
+      xhr.onreadystatechange = function () {
+        //readystate === 4表示请求已完成，已经接收到数据
+        //status === 200表示网络请求结果都会有一个状态码，来表示这个请求是否正常，200表示请求成功
+        //http状态码有很多：2**表示各种成功、3**表示重定向、4**表示客户端错误、5**表示服务端错误
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+          //   alert(xhr.responseText);
+          var data = JSON.parse(xhr.responseText);
+          console.log(data);
+          document.getElementById("demo").innerText = xhr.responseText;
+        }
+      };
+      xhr.send();
+      console.log("======");
+      console.log("++++++");
+      //在计算机的世界里，异步与同步和现实世界里是相反的；同步表示串行异步表示同时进行
+      //可以理解为同线程或异线程
+    </script>
+  </body>
+</html>

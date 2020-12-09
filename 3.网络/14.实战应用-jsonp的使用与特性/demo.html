@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery.js"></script>
+  </head>
+  <body>
+    <script>
+      $.ajax({
+        url: "http://developer.duyiedu.com/edu/testJsonp",
+        type: "GET",
+        dataType: "jsonp",
+        success: function (data) {
+          console.log(data);
+        },
+      });
+      //jsonp的格式哪里特殊？发送的时候会带上一个参数callback、返回的结果不是json，而是callback+(json)
+      //jsonp跨域只能使用get方法，如果我们设置的是post方法，jquery会自动转为get方法
+      //问：是不是在jsonp里面只能使用get方法？是不是设置的post方法都会转为get方法？
+      //答：不是的，jquery会先判断是否同源，若同源设置什么是什么；若不同源设置什么都改为get
+    </script>
+  </body>
+</html>

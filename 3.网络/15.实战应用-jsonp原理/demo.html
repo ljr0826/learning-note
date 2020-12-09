@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script>
+      function asd(data) {
+        console.log(data);
+      }
+    </script>
+    <script src="http://developer.duyiedu.com/edu/testJsonp?callback=asd"></script> -->
+  </head>
+  <body>
+    <script>
+      const $ = {
+        ajax: function (options) {
+          const url = options.url;
+          const type = options.type;
+          const dataType = options.dataType;
+          //1. 判断是否同源(协议、域名、端口号)，首先获取目标url的域
+          let targetProtocol = ""; //目标接口的协议
+          let targetHost = ""; //目标接口的host，包含域名和端口
+          if (url.indexOf("http://") == 0 || url.indexOf("https://") == 0) {
+            //如果url不带http，那么访问的一定是相对路径；相对路径一定是同源的
+            const targetUrl = new URL(url);
+            targetProtocol = targetUrl.protocol;
+            targetHost = targetUrl.host;
+          } else {
+            targetProtocol = location.protocol;
+            targetHost = loccation.host;
+          }
+          //2. 判读是否为jsonp，因为不是jsonp不用做其他的判断，直接发送ajax即可
+          if (dataType == "jsonp") {
+            //要看是否同源
+            if (
+              location.protocol == targetProtocol &&
+              location.host == targetHost
+            ) {
+              //此处省略，因为同源jsonp会当作普通ajax做请求
+            } else {
+              //不同源；跨域
+              //先随机生成一个callback
+              const callback = "cb" + Math.floor(Math.random() * 1000000);
+              //给window上添加一个方法：
+              window[callback] = options.success;
+              //   console.log(window[callback]);
+              //生成script标签
+              const script = document.createElement("script");
+              if (url.indexOf("?") > 0) {
+                //表示已经有参数了
+                script.src = url + "&callback=" + callback;
+              } else {
+                //表示没有参数
+                script.src = url + "?callback=" + callback;
+              }
+              //   console.log(callback);
+              script.id = callback;
+              document.head.appendChild(script);
+            }
+          }
+        },
+      };
+      $.ajax({
+        url: "http://developer.duyiedu.com/edu/testJsonp",
+        type: "get",
+        dataType: "jsonp",
+        success: function (data) {
+          console.log(data); //成功之后的回调
+        },
+      });
+    </script>
+  </body>
+</html>
