@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>得到所有的省份数据</button>
+    <script>
+      try {
+        async function getProvinces() {
+          const resp = await fetch(
+            "http://developer.duyiedu.com/edu/testJsonp",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const result = resp.text();
+          console.log(result);
+        }
+        document.querySelector("button").onclick = function () {
+          getProvinces();
+        };
+      } catch (err) {
+        console.log(err);
+      }
+    </script>
+  </body>
+</html>

@@ -3,33 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-
   <body>
     <img src="" alt="" id="imgAvatar" />
     <input type="file" id="avatar" />
-    <button>上传</button>
+    <button>提交</button>
     <script>
       async function upload() {
         const inp = document.getElementById("avatar");
         if (inp.files.length === 0) {
-          alert("请选择要上传的文件");
+          alert("请上传文件");
           return;
         }
         const formData = new FormData(); //构建请求体
-        console.log(inp.files);
         formData.append("imagefile", inp.files[0]);
-        const url = "http://101.132.72.36:5100/api/upload";
-        const resp = await fetch(url, {
+        const resp = await fetch("http://101.132.72.36:5100/api/upload", {
           method: "POST",
           body: formData, //会自动修改请求头
+          //   headers: {
+          //     "Content-Type": "multipart/form-data",
+          //   },
         });
         const result = await resp.json();
         return result;
       }
-
       document.querySelector("button").onclick = async function () {
         const result = await upload();
         const img = document.getElementById("imgAvatar");

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>点击</button>
+    <script>
+      function getRequestInfo() {
+        const req = new Request("http://developer.duyiedu.com/edu/testJsonp", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        return req;
+      }
+      async function getProvinces() {
+        const resp = await fetch(getRequestInfo());
+        const result = await resp.text();
+        console.log(result);
+      }
+      document.querySelector("button").onclick = function () {
+        getProvinces();
+      };
+      //尽量保证每次请求
+    </script>
+  </body>
+</html>
