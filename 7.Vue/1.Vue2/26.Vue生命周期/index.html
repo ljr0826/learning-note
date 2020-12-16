@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "刀剑，须得永远向前",
+        },
+        methods: {
+          handle() {
+            console.log("方法");
+          },
+        },
+        watch: {
+          msg: {
+            handler() {
+              console.log("侦听msg");
+            },
+            immediate: true,
+          },
+        },
+        computed: {},
+        //创建vue实例
+        //初始化：读取配置项，加载声明周期方法
+        beforeCreate() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          this.timer = setInterval(() => {
+            console.log(1);
+          });
+          console.log("-----------以上为beforeCreate-----------");
+        },
+        //初始化：设置data、methods、computed等配置项
+        created() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          console.log("-----------以上为created-----------");
+        },
+        //-------------以上为创建-------------------
+        //是否指定"el"选项/当调用vm.$mount(el)函数时
+        //是否拥有配置template配置项
+        //有：传入render函数，编译template
+        //无：将el对应的outerHTML当作template编译
+        beforeMount() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          console.log("-----------以上为beforeMount-----------");
+        },
+        //使用编译后的结果vm.$el替换el作用的dom
+        mounted() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          console.log("-----------以上为mounted-----------");
+        },
+        //-----------------以上为挂载--------------
+        //当dom被修改时
+        beforeUpdate() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          console.log("-----------以上为beforeUpdate-----------");
+        },
+        //虚拟dom重新渲染并应用更新
+        updated() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          console.log("-----------以上为updated-----------");
+        },
+        //-------------以上为更新--------
+        //调用vm.$destroy()销毁实例
+        beforeDestroy() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          clearInterval(this.timer);
+          console.log("-----------以上为beforeDestroy-----------");
+        },
+        //实例移除data、methods、computed等
+        destroyed() {
+          console.log(this.msg);
+          console.log(this.handle);
+          console.log(this.$el);
+          console.log("-----------以上为destroyed-----------");
+        },
+        //--------以上为销毁---------
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="../vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="username">
+        <input type="text" placeholder="请输入用户名" v-model="name" />
+      </div>
+      <div class="mail">
+        <input type="text" placeholder="请输入邮箱" v-model="mail" />
+      </div>
+      <div class="upload-btn" @click="handleUpload">上传</div>
+      <div class="show-btn" @click="handleShow">显示人物信息</div>
+      <ul class="person-list" v-if="personList.length">
+        <li class="person" v-for="person in personList">
+          <span>{{person.name}}</span>
+          <span>{{person.mail}}</span>
+        </li>
+      </ul>
+    </div>
+    <script>
+      axios.defaults.baseURL = "https://developer.duyiedu.com";
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "",
+          mail: "",
+          msg: "",
+          personList: [],
+        },
+        methods: {
+          handleUpload() {
+            const { name, mail } = this;
+            axios.post("/vue/setUserInfo", { name, mail }).then((res) => {
+              this.msg = res.data.msg;
+            });
+          },
+          handleShow() {
+            // axios({
+            //   methods: "get",
+            //   baseURL: "https://developer.duyiedu.com",
+            //   url: "/vue/getUserInfo",
+            // }).then((res) => {
+            //   this.msg = res.data.msg;
+            //   this.personList = res.data.data;
+            // });
+            axios.get("/vue/getUserInfo").then((res) => {
+              this.msg = res.data.msg;
+              this.personList = res.data.data;
+            });
+          },
+        },
+        watch: {
+          msg() {
+            if (this.msg === "") {
+              return;
+            }
+            alert(this.msg);
+            this.msg = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

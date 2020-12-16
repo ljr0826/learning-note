@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="../vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!-- 要注意：vue-resource 依赖于 Vue，所以要先引入 Vue，再引入 vue-resource -->
+  </head>
+  <body>
+    <div id="app">
+      <div class="username">
+        <input type="text" placeholder="用户名" v-model="name" />
+      </div>
+      <div class="mail">
+        <input type="text" placeholder="邮箱" v-model="mail" />
+      </div>
+      <div class="upload-btn" @click="handleUpload">上传</div>
+      <div class="test-btn" @click="handleTest">测试jsonp</div>
+      <div class="show-btn" @click="handleShow">显示人物信息</div>
+      <ul class="person-list" v-if="personList.length">
+        <li class="person" v-for="person in personList">
+          <span>{{person.name}}</span>
+          <span>{{person.mail}}</span>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "",
+          mail: "",
+          msg: "",
+          personList: [],
+        },
+        methods: {
+          handleUpload() {
+            this.$http
+              .post("https://developer.duyiedu.com/vue/setUserInfo", {
+                name: this.name,
+                mail: this.mail,
+              })
+              .then((res) => {
+                console.log(res);
+                this.msg = res.body.msg;
+                return res.json();
+              })
+              .then((data) => {
+                console.log(data);
+              })
+              .catch((err) => {
+                this.msg = err.message;
+              });
+          },
+          handleShow() {
+            this.$http
+              .get("https://developer.duyiedu.com/vue/getUserInfo")
+              .then((res) => {
+                this.personList = res.body.data;
+                console.log(res.json());
+                console.log(res);
+                return res.json();
+              })
+              .then((resp) => {
+                console.log(resp);
+              });
+          },
+          handleTest() {
+            this.$http
+              .jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su", {
+                params: {
+                  wd: "百度",
+                },
+                jsonp: "cb",
+              })
+              .then((res) => {
+                console.log(res);
+              });
+          },
+        },
+        watch: {
+          msg() {
+            if (this.msg === "") {
+              return;
+            }
+            alert(this.msg);
+            this.msg = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
