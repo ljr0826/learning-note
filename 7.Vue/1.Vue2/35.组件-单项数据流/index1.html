@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      father：{{array}}
+      <my-array :array="array"></my-array>
+    </div>
+    <script>
+      Vue.component("my-array", {
+        props: {
+          array: Array,
+        },
+        data() {
+          return {
+            myArray: [...this.array],
+          };
+        },
+        template: `<div>
+                        <div>son：{{myArray}}</div>
+                        <button @click="myArray.push(9)">点击push一个9</button>
+                    </div>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          array: [1, 2, 3],
+        },
+      });
+    </script>
+  </body>
+</html>

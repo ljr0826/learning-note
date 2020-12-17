@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <afei-yun></afei-yun>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        components: {
+          AfeiYun: {
+            template: `<div>有翡君子</div>`,
+          },
+        },
+        template: `<div>
+            <AfeiYun></AfeiYun>
+            <AfeiYun />
+            <AfeiYun />
+            <AfeiYun />
+                    </div>`,
+      });
+    </script>
+  </body>
+</html>

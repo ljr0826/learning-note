@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <my-cmp :person-list="personList"> </my-cmp>
+    </div>
+    <script>
+      Vue.component("my-cmp", {
+        props: {
+          personList: {
+            type: Array,
+            default() {
+              return [{ name: "李晟" }, { name: "李妍" }];
+            },
+            required: true,
+          },
+        },
+        template: `<ul>
+                            <li v-for="person in personList" :key="person.name">
+                                {{person.name}}
+                            </li>
+                    </ul>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          personList: [{ name: "谢允" }, { name: "周翡" }],
+        },
+      });
+      //组件默认只是写好结构、样式和行为；使用的数据应由外界传递给组件(注册需要接收的props，将数据作为一个自定义的特性传递给组件)
+    </script>
+  </body>
+</html>

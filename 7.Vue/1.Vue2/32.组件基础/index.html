@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <youfei-c></youfei-c>
+    </div>
+    <div id="app1">
+      <youfei-c></youfei-c>
+    </div>
+    <script>
+      //组件是可复用的vue实例，且带有一个名字，例youfei-c，我们可以在new Vue创建的根实例中，将这个组件作为自定义元素来使用
+      //即可以理解为组件是一个可复用的自定义元素
+      Vue.component("youfei-c", {
+        template: `<div>
+                        <div>你的命运悬在刀尖上，而刀剑须得永远向前</div>
+                        <div>恨晨光之熹微</div>
+                    </div>`,
+      }); //全局组件
+      const vm = new Vue({
+        el: "#app",
+      });
+      const ve = new Vue({
+        el: "#app1",
+      });
+    </script>
+  </body>
+</html>

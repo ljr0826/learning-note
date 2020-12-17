@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <button @click="count++">点击count+1</button> -->
+      <div>father：{{count}}</div>
+      <my-count :count="count"></my-count>
+    </div>
+    <script>
+      Vue.component("my-count", {
+        props: {
+          count: Number,
+        },
+        data() {
+          return {
+            myCount: this.count,
+          };
+        },
+        template: `<div>
+                        son：{{myCount}}
+                        <button @click="myCount++">点击</button>
+                    </div>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          count: 0,
+        },
+      });
+    </script>
+  </body>
+</html>

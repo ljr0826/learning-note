@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+    </div>
+    <script>
+      //   const vv = {
+      //     data() {
+      //       return {
+      //         count: 0,
+      //       };
+      //     },
+      //     template: `<button @click="count++">点击了{{count}}次</button>`,
+      //     template: `<div>就覅是你上课</div>`,
+      //   };
+      const vm = new Vue({
+        el: "#app",
+        components: {
+          "button-counter": {
+            data() {
+              return {
+                count: 0,
+              };
+            },
+            template: `<button @click="count++">点击了{{count}}次</button>`,
+            // template: `<div>就覅是你上课</div>`,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
