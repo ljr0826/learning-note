@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <base-checkbox
+        :checked="checked"
+        @change="checked = $event"
+      ></base-checkbox> -->
+      <base-checkbox v-model="checked"></base-checkbox>
+    </div>
+    <script>
+      Vue.component("base-checkbox", {
+        model: {
+          prop: "checked",
+          event: "change",
+        },
+        props: {
+          checked: Boolean,
+        },
+        template: `
+        <input type="checkbox" :checked="checked" @change="$emit('change',$event.target.checked)"/>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          checked: true,
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="{fontSize: postFontSize + 'em'}">
+        <blog-post
+          v-for="post in posts"
+          :key="post.id"
+          @click.native="postFontSize += 0.1"
+          :post="post"
+        ></blog-post>
+      </div>
+    </div>
+    <script>
+      //$emit(name,抛出来的值会放到$event中)方法：传入事件名来触发一个自定义事件
+      //组件内直接监听一个事件的话，会直接默认触发组件内的自定义事件；
+      //若想要监听一个组件的原生事件的话，需要加一个修饰符.native原生
+      Vue.component("blog-post", {
+        props: {
+          post: Object,
+        },
+        template: `<div class="blog-post">
+                        <h3>{{post.title}}</h3>
+                        <button @click="$emit('enlarge-text',0.2)">放大字号</button>
+                        <div>{{post.content}}</div>
+                    </div>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          posts: [
+            { title: "标题1", content: "正文内容", id: 0 },
+            { title: "标题2", content: "正文内容", id: 1 },
+            { title: "标题3", content: "正文内容", id: 2 },
+          ],
+          postFontSize: 1,
+        },
+        methods: {
+          onEnlargeText(e) {
+            this.postFontSize += e; //逻辑简单也可以直接写
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

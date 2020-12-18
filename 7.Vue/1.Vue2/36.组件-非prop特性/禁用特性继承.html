@@ -8,19 +8,24 @@
   </head>
   <body>
     <div id="app">
-      <my-cmp a="1" b="10" class="vv"></my-cmp>
+      <my-cmp type="radio" class="yy"></my-cmp>
     </div>
     <script>
       Vue.component("my-cmp", {
-        props: ["a"],
-        template: `<div b="2" class="cc">哈哈</div>`,
+        inheritAttrs: false,
+        mounted() {
+          console.log(this.$attrs); //$attrs即为传递对象键值对
+        },
+        template: `<label>
+                        <span>选择</span>
+                        <input v-bind="$attrs"/>
+                    </label>`,
       });
       const vm = new Vue({
         el: "#app",
         data: {},
       });
-      //a被当作数据使用，b则直接添加到了组件的根元素即template上
-      //非prop特性会替换/合并(calss、style)已有特性
+      //inheritAttrs: false 选项不会影响 style 和 class 的绑定和继承。
     </script>
   </body>
 </html>

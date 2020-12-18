@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <my-cmp>
+        <template v-slot:default="slotProps">{{slotProps.user.name}}</template>
+      </my-cmp> -->
+      <my-cmp v-slot="{user}"> {{user.name}} </my-cmp>
+      <!--独占默认插槽的缩写语法，即只有一个默认插槽的时候，template可以省略，将v-slot直接放在组件上-->
+    </div>
+    <script>
+      //v-slot缩写#
+      Vue.component("my-cmp", {
+        data() {
+          return {
+            user: {
+              name: "毁灭吧",
+              age: 77,
+            },
+          };
+        },
+        template: `
+        <div>
+            <slot :user="user"></slot>
+        </div>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

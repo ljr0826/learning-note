@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <my-cmp>
+        <template v-slot:header>
+          <div>头部</div>
+        </template>
+        <template v-slot:default>
+          <div>主要内容</div>
+        </template>
+        <template v-slot:footer>
+          <div>底部</div>
+        </template>
+      </my-cmp>
+    </div>
+    <script>
+      //v-slot指令
+      //该指令只能添加在<template>上，只有一种例外情况
+      //见作用域插槽
+      Vue.component("my-cmp", {
+        template: `
+    <div class="container">
+      <header>
+        <slot name="header"></slot>
+      </header>
+      <main>
+        <slot></slot>
+      </main>
+      <footer>
+        <slot name="footer"></slot>
+      </footer>
+    </div>
+  `,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <base-input :value="name" @input="name=$event"></base-input> -->
+      <!-- <base-input v-model="name"></base-input> -->
+      <base-input :value.sync="name"></base-input>
+    </div>
+    <script>
+      //在子组件内触发事件，在父组件中监听子组件的事件
+      // v-bind .sync 语法糖 :prop @updata:prop
+      //vue2.0之后，v-bind.sync和v-model作用相同
+      Vue.component("base-input", {
+        model: {
+          prop: "value",
+          event: "input",
+        },
+        props: {
+          value: String,
+        },
+        template: `<label>
+                         姓名：<input type="text" :value="value" @input="$emit('update:value',$event.target.value)"/>
+                    </label>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "毁灭吧",
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

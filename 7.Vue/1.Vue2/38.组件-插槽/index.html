@@ -8,19 +8,23 @@
   </head>
   <body>
     <div id="app">
-      <my-cmp a="1" b="10" class="vv"></my-cmp>
+      <my-cmp>这是写在组件标签上的文字，正常不会渲染到页面上{{msg}}</my-cmp>
     </div>
     <script>
+      //插槽slot：既想写在dom模板上，有想不让他被放弃
+      //编译作用域--
+      //后备内容，即默认插槽
       Vue.component("my-cmp", {
-        props: ["a"],
-        template: `<div b="2" class="cc">哈哈</div>`,
+        template: `<div>
+            <slot></slot>XXX
+            </div>`,
       });
       const vm = new Vue({
         el: "#app",
-        data: {},
+        data: {
+          msg: "毁灭吧",
+        },
       });
-      //a被当作数据使用，b则直接添加到了组件的根元素即template上
-      //非prop特性会替换/合并(calss、style)已有特性
     </script>
   </body>
 </html>
