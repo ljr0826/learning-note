@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <my-cmp ref="cmp">
+        <cmp-a>
+          <cmp-b>
+            <cmp-c>姓名：奥特曼</cmp-c>
+          </cmp-b>
+        </cmp-a>
+      </my-cmp>
+      <input type="text" v-for="item in 3" ref="input" />
+    </div>
+    <script>
+      //处理边界情况：即一些需要对Vue的规则做一些小调整的特殊情况
+      //访问根组件：$root
+      //访问父组件：$parent；以上都有缺点
+      //依赖注入：可以很好的扩展到更深层级的组件上，用到两个实例provide和inject
+      //provide指定想要提供给后代组件的数据方法；是一个函数返回一个对象
+      //inject：后代组件用来接收指定想要添加在实例上的属性；是一个数组
+      //访问子组件：通过ref特性为子组件赋予一个ID引用
+      Vue.component("my-cmp", {
+        provide() {
+          return {
+            share: this.share,
+          };
+        },
+        data() {
+          return {
+            share: "share",
+          };
+        },
+        template: `<div><slot></slot></div>`,
+      });
+      Vue.component("cmp-a", {
+        // mounted() {
+        //   console.log(this.$parent.share);
+        // },
+        template: `<div><slot></slot></div>`,
+      });
+      Vue.component("cmp-b", {
+        inject: ["share"],
+        mounted() {
+          console.log(this.share);
+        },
+        template: `<div><slot></slot></div>`,
+      });
+      Vue.component("cmp-c", {
+        mounted() {
+          console.log(this.$root.name);
+        },
+        template: `<div><slot></slot></div>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "毁灭吧",
+        },
+        mounted() {
+          console.log(this.$refs);
+        },
+      });
+    </script>
+  </body>
+</html>

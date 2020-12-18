@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      //侦听一个事件除了v-on、$emit外还有：$on侦听一个事件、$once一次性侦听一个事件、$off停止侦听一个事件
+      //以上另3中方法用于当 需要在一个组件实例上手动侦听事件时，
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>
