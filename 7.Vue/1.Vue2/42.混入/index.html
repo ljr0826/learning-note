@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <cmp-a></cmp-a>
+      <cmp-b></cmp-b>
+    </div>
+    <script>
+      //一个混入对象可以包含任意组件选项;
+      const mixin = {
+        data() {
+          console.log("cc");
+          return {
+            昵称: "爵士黄瓜",
+          };
+        },
+        mounted() {
+          console.log("混入的生命周期钩子函数");
+        },
+      };
+      const CmpA = {
+        mixins: [mixin],
+        data() {
+          console.log("dd");
+          return {
+            // 昵称: "爵士黄瓜",
+            age: 18,
+          };
+        },
+        mounted() {
+          console.log(this.$data);
+        },
+        template: `<div>组件cmp-a</div>`,
+      };
+      const CmpB = {
+        data() {
+          return {
+            昵称: "爵士黄瓜",
+            age: 21,
+          };
+        },
+        template: `<div>组件cmp-b</div>`,
+      };
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+          CmpA,
+          CmpB,
+        },
+      }); //数据冲突时，会以组件数据优先
+      //声明周期的钩子函数与mixin中合并为一个数组，先调用混入对象的钩子，再调用组件自身
+    </script>
+  </body>
+</html>
