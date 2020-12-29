@@ -1,0 +1,29 @@
+{
+  "name": "chapter2",
+  "version": "1.0.0",
+  "description": "just test,will not publish to npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ljr0826/learning-note.git"
+  },
+  "keywords": [
+    "kevin"
+  ],
+  "author": "yuanjin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ljr0826/learning-note/issues"
+  },
+  "homepage": "https://github.com/ljr0826/learning-note#readme",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "loadsh": "4.17.15"
+  },
+  "devDependencies": {
+    "mocha": "6.2.2"
+  }
+}
