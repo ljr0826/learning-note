@@ -6,9 +6,13 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- 控制元素可见度v-show -->
+    <!-- 控制元素可见度v-show ，是通过css属性display控制的元素显示/隐藏-->
     <div id="app">
-      <img v-show="isShow" v-bind:src="imgUrl" alt="" />
+      <img
+        v-show="isShow"
+        v-bind:src="imgUrl"
+        style="width: 200px; height: 200px"
+      />
       <button @click="isShow=!isShow">切换显示</button>
     </div>
     <script src="../2.vue初体验/my-first-vue/vue.js"></script>

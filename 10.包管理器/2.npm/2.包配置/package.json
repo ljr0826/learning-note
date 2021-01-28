@@ -21,7 +21,8 @@
   "homepage": "https://github.com/ljr0826/learning-note#readme",
   "dependencies": {
     "jquery": "^3.5.1",
-    "loadsh": "4.17.15"
+    "loadsh": "4.17.15",
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "mocha": "6.2.2"

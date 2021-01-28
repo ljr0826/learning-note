@@ -1,30 +1,13 @@
 import Vue from "vue";
 import App from "./App.vue";
-import VueRouter from "vue-router";
-
-import Home from "./components/Home";
-import Learn from "./components/Learn";
-import Student from "./components/Student";
-import About from "./components/About";
-import Activity from "./components/Activity";
-
-const routers = [
-  { path: "/", component: Home },
-  { path: "/Learn", component: Learn },
-  { path: "/Student", component: Student },
-  { path: "/About", component: About },
-  { path: "/Activity", component: Activity },
-];
-
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  routers,
-});
+import router from "./router.js";
+import "./assets/reset.css";
+import axios from "./http.js";
 
 Vue.config.productionTip = false;
+Vue.prototype.$axios = axios; //在main.js中引入的文件是无法放到组件里面的，所以需要加到Vue原型链上
 
 new Vue({
-  render: (h) => h(App),
   router,
+  render: (h) => h(App),
 }).$mount("#app");

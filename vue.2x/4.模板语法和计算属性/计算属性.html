@@ -31,8 +31,9 @@
               return this.lastName + this.firstName;
             },
             set(val) {
+              console.log(val);
               this.lastName = val[0];
-              this.firstName = val.substr(1);
+              this.firstName = val.substr(1); //从第二个字符开始
               return this.lastName + this.firstName;
             },
           },

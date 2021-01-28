@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getTopFreqInArray(arr) {
+        let nums = {};
+        arr.forEach((item) => {
+          if (!nums[item]) {
+            nums[item] = 1;
+          } else {
+            nums[item]++;
+          }
+        });
+        let result = null;
+        for (const key in nums) {
+          if (!result || nums[key] > result.freq) {
+            result = {
+              number: key,
+              freq: nums[key],
+            };
+          }
+        }
+        return result;
+      }
+    </script>
+  </body>
+</html>
