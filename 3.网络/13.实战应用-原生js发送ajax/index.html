@@ -8,15 +8,30 @@
   <body>
     <script>
       const xhr = new XMLHttpRequest();
+      console.log(xhr.readyState); //0
+
       xhr.onreadystatechange = function () {
+        //readyState===4的时候表示请求已经完成，已经接收到数据
+        //0：刚刚创建好请求对象，还没有调用open方法
+        //1：open方法已经调用
+        //2：send方法已经调用
+        //3：正在接收服务器的响应消息体
+        //4：服务器响应的消息体已经全部接收完成
+        //status===200表示网络请求的结果，200表示请求成功。
+        //2**表示各种成功、3**表示重定向、4**表示浏览器端的各种失败、5**表示服务端错误
+        console.log(xhr.readyState);
         if (xhr.readyState === 4 && xhr.status === 200) {
-          const data = JSON.parse(xhr.responseText);
-          console.log(data);
+          let data = xhr.responseText; //json格式可以将他转化为对象
+          console.log(JSON.parse(data));
         }
       };
-      xhr.open("GET", "http://www.baidu.com:80"); //第三个参数表示同步/异步，默认true异步
-      xhr.send();
-      console.log("+=========");
+      xhr.open("get", "http://developer.duyiedu.com/edu/testAjaxCrossOrigin"); //跨域了，但是后端设置了Access-Control-Allow-Origin属性，所以能访问到
+      console.log(xhr.readyState); //1
+      xhr.send(); //xhr.open第三个参数默认true异步模式/false同步模式
+      console.log(xhr.readyState); //1
+      console.log("===============");
+
+      //在计算机的世界里，同步和异步和现实世界里是相反的
     </script>
   </body>
 </html>
