@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script>
+      function asd(data) {
+        console.log("asdasd", data, typeof data);
+      }
+    </script>
+    <script src="http://developer.duyiedu.com/edu/testJsonp?callback=asd"></script> -->
+    <!-- 返回的内容：asd({"status":"ok","msg":"Hello! There is DuYi education!"}) -->
+    <!-- 相当于调用的asd方法，传入了一个json对象作为参数 -->
+  </head>
+  <body>
+    <script>
+      //我想从一个接口中获取一个数据
+      //但是这个接口和当前页面是不同源的。需要跨域
+      //但是这个接口是支持jsonp的
+
+      //跨域：jsonp原理
+      //script元素，有src属性，所以可以发出网络请求
+      //script元素，虽然可以引用其他域的资源，浏览器不限制；但是浏览器会将返回的内容作为js代码执行
+
+      //   即：jsonp原理如下：
+      //1. 判断请求与当前的域是否同源，如果同源，发送正常的ajax；
+      //2. 如果不同源，生成一个script元素
+      //3. 生成一个随机的callback名字，创建一个名为这个的方法
+      //4. 设置script元素的src，设置为要请求的接口；也因此是get请求
+      //5. 将callback作为参数拼接在后面
+
+      //==================以上为前端部分==============
+
+      //6. 后端接收到请求后，准备返回的数据
+      //7. 后端拼接数据，将要返回的数据用callback的值和括号包裹起来
+      //例如：要callback=阿斯顿123456，返回{"a":1,"b":2}；就要拼接为：阿斯顿23456({"a":1,"b":2})即调用这个方法，传入这个参数
+      //8. 将内容返回
+
+      //=================以上为后端部分======================
+
+      //9. 浏览器接收到内容，会当作js代码来执行
+      //10.从而执行名为asd123456的方法。这样的话我们就接收到了后端返回给我们的对象
+
+      const $ = {
+        ajax: function (options) {
+          var url = options.url;
+          var type = options.type;
+          var dataType = options.dataType;
+          //判断是否同源
+          //获取目标url的域
+          var targetProtocol = ""; //目标接口的协议
+          var targetHost = ""; //目标接口的host，包含域名和端口号
+          //如果url不带http，是相对路径，相对路径一定的同源的
+          if (url.indexOf("http://") == 0 || url.indexOf("https://")) {
+            var targetUrl = new URL(url); //创建并返回一个URL对象
+            targetProtocol = targetUrl.protocol;
+            targetHost = targetUrl.host;
+          } else {
+            targetProtocol = location.protocol;
+            targetHost = location.host; //location.protocol代表当前页面的协议等
+          }
+          if (dataType === "jsonp") {
+            if (
+              location.protocol === targetProtocol &&
+              location.host === targetHost
+            ) {
+              console.log("同源，非跨域。可以直接发送ajax请求");
+            } else {
+              //跨域
+              //随机生成一个callback
+              var callback = "cb" + Math.floor(Math.random() * 1000000);
+              window[callback] = options.success;
+              //生成script标签
+              var script = document.createElement("script");
+              if (url.indexOf("?") > 0) {
+                script.src = url + "&callback" + callback;
+              } else {
+                script.src = url + "?callback" + callback;
+              }
+              script.id = callback;
+              document.head.appendChild(script);
+            }
+          }
+        },
+      };
+      $.ajax({
+        url: "http://developer.duyiedu.com/edu/testJsonp",
+        type: "get",
+        dataType: "jsonp",
+        success: function (data) {
+          console.log(data);
+        },
+      });
+    </script>
+  </body>
+</html>

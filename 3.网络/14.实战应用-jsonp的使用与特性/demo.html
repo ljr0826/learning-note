@@ -10,11 +10,11 @@
     <script>
       $.ajax({
         url: "http://developer.duyiedu.com/edu/testJsonp",
-        type: "GET",
-        dataType: "jsonp",
+        type: "GET", //发送请求的方式
+        dataType: "jsonp", //服务端返回的数据类型
         success: function (data) {
           console.log(data);
-        },
+        }, //成功之后执行的回调函数
       });
       //jsonp的格式哪里特殊？发送的时候会带上一个参数callback、返回的结果不是json，而是callback+(json)
       //jsonp跨域只能使用get方法，如果我们设置的是post方法，jquery会自动转为get方法

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //jsonp原理：
+      const $ = {
+        ajax: function (options) {
+          const targetUrl = new URL(options.url);
+          if (
+            location.protocol === targetUrl.protocol &&
+            location.host === targetUrl.host
+          ) {
+            //同源，直接发送ajax请求
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(JSON.parse(xhr.responseText));
+              }
+            };
+            xhr.open("get", "http://developer.duyiedu.com/edu/testJsonp");
+            xhr.send();
+          } else {
+            //跨域
+            const script = document.createElement("script");
+            const callback = "cb" + Math.floor(Math.random() * 1000000);
+            window[callback] = options.success;
+            if (options.url.indexOf("?") > 0) {
+              //有参数
+              script.src = options.url + "&callback=" + callback;
+            } else {
+              script.src = options.url + "?callback=" + callback;
+            }
+            document.head.appendChild(script);
+          }
+        },
+      };
+      $.ajax({
+        url: "http://developer.duyiedu.com/edu/testJsonp",
+        type: "get",
+        dataType: "jsonp",
+        success: function (data) {
+          console.log(data);
+        },
+      });
+    </script>
+  </body>
+</html>

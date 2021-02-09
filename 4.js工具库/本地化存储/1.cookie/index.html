@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">发送请求</button>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/ajax.js"></script>
+    <script>
+      document.cookie = "name=kaivon";
+      document.cookie = "name=laivon2; age=10";
+      document.cookie = "color=red; damain=127.0.0.1; path=/docs";
+      document.cookie = "padding=30; expires=" + new Date(2021, 1, 10);
+      document.cookie = "set=20; max-age=5";
+      setTimeout(() => {
+        console.log(document.cookie);
+      }, 1000);
+      setTimeout(() => {
+        console.log(document.cookie);
+      }, 6000);
+      const btn = document.querySelector("#btn");
+      btn.onclick = function () {
+        ajax("js/data.json", function (data) {
+          console.log(data);
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -4,21 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="./jquery.js"></script>
   </head>
   <body>
     <script>
-      const xhr = new XMLHttpRequest();
-      console.log(xhr);
-      xhr.onreadystatechange = function () {
-        console.log(xhr);
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          const data = JSON.parse(xhr.responseText);
+      $.ajax({
+        url: "http://developer.duyiedu.com/edu/testJsonp",
+        type: "get",
+        dataType: "jsonp",
+        success: (data) => {
           console.log(data);
-        }
-      };
-      xhr.open("get", "http://developer.duyiedu.com/edu/testAjaxCrossOrigin");
-      xhr.send();
-      console.log("========");
+        },
+      });
+      // const xhr = new XMLHttpRequest();
+      // console.log(xhr);
+      // xhr.onreadystatechange = function () {
+      //   console.log(xhr);
+      //   if (xhr.readyState === 4 && xhr.status === 200) {
+      //     const data = JSON.parse(xhr.responseText);
+      //     console.log(data);
+      //   }
+      // };
+      // xhr.open("get", "http://developer.duyiedu.com/edu/testAjaxCrossOrigin");
+      // xhr.send();
+      // console.log("========");
     </script>
   </body>
 </html>
