@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function cc() {
+        var ss = "我接住了";
+        console.log(ss, window.ss);
+      }
+      cc();
+      // ajax：发送网络请求的方式，可以实现 -
+      // 请求的代码能控制，请求回来的页面能操作，不发生页面跳转
+
+      const xhr = new XMLHttpRequest(); //创建发送请求的对象
+      console.log(xhr);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(typeof xhr.responseText);
+          console.log(JSON.parse(xhr.response));
+        }
+      };
+      xhr.open(
+        "get",
+        "http://developer.duyiedu.com/edu/testAjaxCrossOrigin",
+        true
+      ); //配置请求行，默认异步true
+      xhr.send(); //配置请求体
+      console.log("=============");
+    </script>
+  </body>
+</html>

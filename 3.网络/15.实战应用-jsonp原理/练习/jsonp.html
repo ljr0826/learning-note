@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //location表示当前链接地址的对象；参数--protocol协议，host域名+端口号
+      //new URL(目标url)：表示创建一个目标链接地址的对象
+      const $ = {
+        ajax(obj) {
+          const targetUrl = new URL(obj.url);
+          console.log(obj.url);
+          console.log(location);
+          console.log(new URL(obj.url));
+          if (
+            location.protocol === targetUrl.protocol &&
+            location.host === targetUrl.host
+          ) {
+            //不跨域
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function (data) {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(JSON.parse(xhr.responseText));
+              }
+            };
+            xhr.open(obj.type, obj.url);
+            xhr.send();
+          } else {
+            //跨域
+            const dom = document.createElement("script");
+            var callback = "cb" + Math.floor(Math.random() * 1000000);
+            window[callback] = obj.success; //?为什么要把callback添加到window上
+            //原因：jsonp原理--后端返回的是callback(data响应体)--相当于函数执行
+            // var callback = obj.success;//X,错的。函数中的变量声明不属于window
+            // console.log(callback, window.callback);
+            if (obj.url.indexOf("?") >= 0) {
+              //obj.url中已经包含参数
+              obj.url += `&callback=${callback}`;
+            } else {
+              obj.url += `?callback=${callback}`;
+            }
+            dom.src = obj.url;
+            document.body.appendChild(dom);
+          }
+        },
+      };
+      $.ajax({
+        url: "http://developer.duyiedu.com/edu/testJsonp",
+        type: "get",
+        dataType: "jsonp",
+        success: function (data) {
+          console.log(data, typeof data);
+        },
+      });
+    </script>
+  </body>
+</html>
