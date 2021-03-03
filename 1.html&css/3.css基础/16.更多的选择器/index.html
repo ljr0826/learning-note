@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      /* 选择第一个子元素，选择li元素 */
+      /* 选中li元素，并且li元素是第一个子元素 */
       div ul li:first-child {
         color: red;
       }
-      /* 选择第一个li的子元素 */
+      /* 选中第一个是li的子元素 */
       div ul li:first-of-type {
         color: green;
       }
@@ -24,18 +24,18 @@
       }
       /* div ul li:nth-of-type(2n){
             background-color: lightcoral;
-        } */
+        } */ /*选中第偶数个li*/
       div li:first-letter {
         font-size: 100px;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
         color: green;
       }
-      div p::first-line{
-          color: yellow;
+      div p::first-line {
+        color: yellow;
       }
-      div p::selection{
-          background-color: #008c8c;
+      div p::selection {
+        background-color: #008c8c;
       }
     </style>
   </head>
