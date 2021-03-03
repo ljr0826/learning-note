@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .item{
-            width: 70px;
-            height: 70px;
-            border: 2px solid black;
-            border-radius: 50%;
-            position: absolute;
-        }
-        .circle1{
-            left: 0;
-            top: 0;
-            border-color: red;
-        }
-        .circle2{
-            left: 75px;
-            top: 0;
-            border-color: orange;
-            z-index: 5;
-        }
-        .circle3{
-            left: 150px;
-            top: 0;
-            border-color: green;
-        }
-        .circle4{
-            left: 40px;
-            top: 60px;
-            border-color: indianred;
-        }
-        .circle5{
-            left: 115px;
-            top: 60px;
-            border-color: cornflowerblue;
-            z-index: -10;
-        }
+      .item {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border: 2px solid;
+        box-sizing: border-box;
+        border-radius: 50%;
+      }
+      .circle1 {
+        left: 0;
+        top: 0;
+        border-color: tomato;
+        /* background-color: tomato; */
+        z-index: -5;
+      }
+      .circle2 {
+        left: 70px;
+        top: 0;
+        border-color: yellow;
+        z-index: 10;
+      }
+      .circle3 {
+        left: 140px;
+        top: 0;
+        border-color: turquoise;
+      }
+      .circle4 {
+        left: 35px;
+        top: 55px;
+        border-color: violet;
+      }
+      .circle5 {
+        left: 105px;
+        top: 55px;
+        border-color: darkcyan;
+        z-index: 3;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="item circle1"></div>
     <div class="item circle2"></div>
     <div class="item circle3"></div>
     <div class="item circle4"></div>
     <div class="item circle5"></div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus id veritatis saepe quia quam doloremque velit tempore quidem sed qui reprehenderit adipisci sequi iure provident amet molestiae, voluptates maxime illum.</p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus dolor odio animi quod. Sint aliquam consequuntur neque ut, illo in necessitatibus ipsam eos nobis dolor laborum quasi optio repellendus itaque?</p>
-    <span style="position: absolute; background-color: darkgoldenrod;">123</span>
-    <div style="background-color: darkgreen;">35dghjghkjlk;jhg</div>
-</body>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt velit
+      explicabo suscipit, aut sed officiis, modi, autem ea porro nostrum neque
+      aliquid incidunt aliquam esse nisi placeat cupiditate quaerat temporibus?
+    </p>
+  </body>
 </html>

@@ -2,6 +2,14 @@ a {
   font-size: 50px;
   display: block;
 }
+/*选中带有href属性的元素*/
+[href] {
+  color: red;
+}
+[href="http://www.baidu.com/"]
+{
+  color: blue;
+}
 /* a:link{
     color: chocolate;
 }
@@ -27,6 +35,6 @@ li {
 /* .yellow+li{
   background-color: hotpink;
 } */
-.yellow~li{
-    color: green;
+.yellow ~ li {
+  color: green;
 }

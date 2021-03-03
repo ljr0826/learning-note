@@ -1,49 +1,46 @@
 body {
   background-color: #4d4a40;
+  line-height: 2;
   padding: 20px 0;
+  min-width: 500px;
 }
 .container {
-  line-height: 2;
-  background-color: #fff;
   width: 90%;
   margin: 0 auto;
-  padding: 30px 0 0 0;
-  min-width: 100px;
+  padding: 30px 0;
+  background-color: #fff;
 }
 .container header {
   background-color: #267890;
   border: 5px solid #14414e;
   text-align: center;
   margin: 0 -34px 30px;
+  padding-bottom: 30px;
+  color: #fff;
 }
 .container header h1 {
   font-size: 42px;
-  color: #fff;
   font-weight: 700;
-  margin: 20px;
 }
-.container header .another-page {
+.container header .ori-link {
   color: #dbdbdb;
-  margin-bottom: 30px;
 }
-.container header .another-page a {
+.container header .ori-link a {
   text-decoration: underline;
 }
-.container header .another-page a:hover {
+.container header .ori-link a:hover {
   color: #fff;
+  text-decoration: none;
 }
-.container section {
-  width: 89%;
+.container .content {
+  width: 90%;
   margin: 0 auto;
 }
-.container section h2{
-    font-size: 32px;
-    font-weight: 700;
-    padding: 10px 0;
-    border-top: 1px dashed #000;
-    border-bottom: 1px dashed #000;
+.container dt {
+  font-size: 32px;
+  font-weight: 600;
 }
-.container section p{
-    margin: 1em 0;
-    text-indent: 2em;
+.container dt,
+dd {
+  border-bottom: 1px dashed;
 }

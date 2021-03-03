@@ -1,0 +1,45 @@
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.main {
+  width: 1120px;
+  margin: 0 auto;
+  color: #333;
+}
+.main .choose-area {
+  border: 1px solid #e5e5e5;
+  margin: 40px 0;
+  padding: 0 30px;
+  font-size: 14px;
+  line-height: 30px;
+}
+.main .choose-area .choose-item {
+  border-bottom: 1px dotted #e5e5e5;
+  margin: 1em 0;
+}
+.main .choose-area .choose-item.no-line {
+  border: none;
+}
+.main .choose-area .choose-item .left {
+  float: left;
+  color: #999;
+}
+.main .choose-area .choose-item .right {
+  float: left;
+  width: 1010px;
+}
+.main .choose-area .choose-item .right li {
+  float: left;
+  padding: 0 6px;
+  margin: 0 9px;
+}
+.main .choose-area .choose-item .right li:hover {
+  color: #ef4238;
+}
+.main .choose-area .choose-item .right li .select {
+  color: #fff;
+  background-color: #ef4238;
+  border-radius: 12px;
+}

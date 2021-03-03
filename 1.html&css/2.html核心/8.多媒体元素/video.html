@@ -6,17 +6,17 @@
     <title>Document</title>
   </head>
   <body>
-    <video
-      controls
-      autoplay
-      muted
-      loop
-      style="width: 500px; height: 500px;"
-    >
-    <!-- 兼容性 -->
+    <!--站外资源通常有作品保护-->
+    <video controls autoplay muted loop style="width: 500px; height: 500px">
+      <!-- 兼容性 -->
       <source src="./media/video.mp4" />
       <source src="./media/video.webm" />
-      <p>对不起，你的浏览器不支持video元素，请点击这里下载最新版本的浏览器</p>
+      <p>
+        对不起，你的浏览器不支持video元素，请<a href="https://www.baidu.com"
+          >点击这里</a
+        >下载最新版本的浏览器
+      </p>
     </video>
+    <audio controls autoplay muted loop src="./media/audio.mp3"></audio>
   </body>
 </html>

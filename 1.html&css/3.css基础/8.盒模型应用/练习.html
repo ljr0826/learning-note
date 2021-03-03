@@ -2,33 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      div {
-        width: 200px;
-        height: 200px;
-        /* padding: 20px 80px 300px 30px;
-        border: 10px solid #cc8;
-        margin: 50px 30px 10px 60px;
-        background-color: brown;
-        background-clip: content-box; */
+      .container {
+        width: 300px;
+        height: 300px;
+        padding: 30px;
+        border: 20px dashed #008c8c;
+        margin: 30px;
+        background-color: #ccc;
+        box-sizing: border-box; /*控制盒子的类型，默认值content-box*/
+        background-clip: border-box; /*控制盒子背景颜色的覆盖范围，默认值border-box*/
       }
-      p {
-        white-space: nowrap;
+      .par {
+        width: 300px;
+        height: 20px;
+        border: 1px solid #008c8c;
+        overflow: hidden; /*文字溢出隐藏*/
+      }
+      header,
+      article {
+        border: 2px solid black;
+        margin-bottom: 20px;
         word-break: break-all;
+      }
+      ul > li {
+        width: 300px;
+        height: 30px;
+        line-height: 2;
+        padding-left: 10px;
+        border-left: 2px solid #008c8c;
+        border-bottom: 1px dashed #000;
+        margin-bottom: 20px;
+        list-style-type: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     </style>
   </head>
   <body>
-    <div>哈哈哈哈</div>
-    <div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-        recusandae at non. Mollitia ipsum cum iure magnam voluptas, velit ad
-        nesciunt voluptatum nostrum ipsa. Placeat corrupti aliquid impedit
-        exercitationem rem.
-      </p>
-    </div>
+    <div class="container">阿絮</div>
+    <p class="par">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, enim?
+    </p>
+    <header>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quasi rem
+      sequi. Ducimus repellat mollitia, vitae provident dolore rem. Delectus,
+      commodi excepturi? Repudiandae aspernatur, sapiente aut quia culpa
+      corrupti reiciendis?
+    </header>
+    <article>
+      周子舒有些不适，可是那人没有一点玩笑的意思，只是一直叫着他的名字，好像极不确定，带着微许惶恐与急迫一样，周子舒心里叹了口气，想着，算了，怪可怜的，让他一次就让他一次吧。
+    </article>
+    <ul>
+      <li>Lorem ipsum dolor sit amet consectetur.</li>
+      <li>Magni fugit hic nobis nostrum consequuntur?</li>
+      <li>Neque dicta tenetur eaque possimus natus?</li>
+      <li>Mollitia est sunt eos dolor tempora.</li>
+      <li>Ratione error odit totam iste porro.</li>
+      <li>Perferendis ad blanditiis architecto reprehenderit repudiandae.</li>
+      <li>Nihil, optio. Exercitationem temporibus officiis culpa.</li>
+      <li>Veniam dolores suscipit quae culpa earum?</li>
+    </ul>
   </body>
 </html>

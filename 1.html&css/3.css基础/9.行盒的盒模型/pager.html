@@ -2,42 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .pager a {
-        border: 1px solid #e1e2e3;
-        color: #38f;
-        text-decoration: none;
-        width: 34px;
-        height: 34px;
+      a {
         display: inline-block;
-        line-height: 34px;
+        text-decoration: none;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
         text-align: center;
+        background-color: rgba(0, 0, 0, 0);
+        color: #3951b3;
       }
-      .pager a:hover {
-        border: #38f;
-        background-color: #f2f8ff;
-      }
-      .pager a.selected {
-        border: none;
-        color: #000;
-        background-color: initial;
+      a:hover,
+      a.selected {
+        color: #fff;
+        background-color: #4e6ef2;
+        border-radius: 3px;
       }
     </style>
   </head>
   <body>
-    <div class="pager">
-      <a href="">1</a>
-      <a href="" class="selected">2</a>
-      <a href="">3</a>
-      <a href="">4</a>
-      <a href="">5</a>
-      <a href="">6</a>
-      <a href="">7</a>
-      <a href="">8</a>
-      <a href="">9</a>
-      <a href="">10</a>
-    </div>
+    <a href="" class="selected">1</a><a href="">2</a><a href="">3</a
+    ><a href="">4</a><a href="">5</a><a href="">6</a><a href="">7</a
+    ><a href="">8</a><a href="">9</a><a href="">10</a>
   </body>
 </html>

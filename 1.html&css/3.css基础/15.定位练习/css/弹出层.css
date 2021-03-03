@@ -1,0 +1,38 @@
+.main img {
+  width: 100%;
+  height: 200%;
+  opacity: 0.5;
+}
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal .container {
+  position: absolute;
+  width: 300px;
+  height: 500px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 12px;
+} /*可以认为不需要固定定位了，具体情况具体分析*/
+.modal .container .close {
+  position: absolute;
+  right: -10px;
+  top: -12px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  border: 2px solid #008c8c;
+  background-color: lightblue;
+}

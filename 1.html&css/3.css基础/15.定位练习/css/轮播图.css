@@ -1,0 +1,79 @@
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.banner {
+  position: relative;
+  width: 520px;
+  height: 304px;
+  overflow: hidden;
+  margin: 50px auto 0;
+}
+.banner .imgs {
+  width: 1560px;
+  height: 304px;
+}
+.banner .imgs a {
+  float: left;
+}
+.banner .imgs img {
+  width: 520px;
+  height: 304px;
+}
+.banner .left,
+.banner .right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  line-height: 0.8;
+  text-align: center;
+  font-size: 3em;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.banner .left:hover,
+.banner .right:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.banner .left {
+  left: 20px;
+}
+.banner .right {
+  right: 20px;
+}
+.banner .modal {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  padding: 0 30px;
+  box-sizing: border-box;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.banner .modal .title {
+  float: left;
+  font-weight: 600;
+}
+.banner .modal .dots {
+  float: right;
+}
+.banner .modal .dots li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+} /*用行块盒或浮动都可以。此处建议使用行块盒。因为浮动元素居中麻烦*/
+.banner .modal .dots li:hover {
+  background-color: #369;
+}

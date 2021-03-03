@@ -1,0 +1,50 @@
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.main .nav {
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+  background-color: #e3e4e5;
+}
+.main .nav .topmenu > li {
+  position: relative;
+  float: left;
+  margin: 0 20px;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  box-sizing: border-box;
+} /*hover后文字后左右移，解决：box-sizing*/
+.main .nav .topmenu > li:hover {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-bottom: none;
+  line-height: 36px;
+} /*hover后文字上下移，解决：line-height减少一部分*/
+.main .nav .topmenu > li .submenu {
+  display: none;
+  position: absolute;
+  right: -2px;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  width: 300px;
+  line-height: 1.5;
+  background-color: #fff;
+}
+.main .nav .topmenu > li:hover .submenu {
+  display: block;
+}
+.main .nav .topmenu > li:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #fff;
+}

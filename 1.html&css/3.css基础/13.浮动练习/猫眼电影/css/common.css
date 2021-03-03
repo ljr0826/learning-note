@@ -1,0 +1,19 @@
+.pager {
+  text-align: center;
+}
+.pager a {
+  display: inline-block;
+  padding: 0 16px;
+  border: 1px solid #d8d8d8;
+  height: 34px;
+  line-height: 34px;
+  color: #999;
+}
+.pager a:hover {
+  border-color: #ef4238;
+}
+.pager a.select {
+  color: #fff;
+  background-color: #ef4238;
+}
+/*多页面的通用样式*/
