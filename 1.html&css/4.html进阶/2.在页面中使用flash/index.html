@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        object{
-            width: 600px;
-            height: 500px;
-        }
+      object {
+        width: 600px;
+        height: 500px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 兼容性写法 -->
-    <object data="./example.swf" type="application/x-shockwave-flash">
-        <param name="qulity" value="high">
-        <embed qulity="high" src="./example.swf" type="application/x-shockwave-flash">
+    <object
+      style="width: 600px; height: 500px"
+      data="./example.swf"
+      type="application/x-shockwave-flash"
+    >
+      <!--data资源，type资源类型-->
+      <param name="qulity" value="high" />
+      <embed
+        qulity="high"
+        src="./example.swf"
+        type="application/x-shockwave-flash"
+      />
     </object>
-</body>
+  </body>
 </html>

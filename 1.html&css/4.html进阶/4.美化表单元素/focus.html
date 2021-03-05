@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伪类focus</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <style>
-        input{
-            color: #000;
-        }
-        input:focus{
-            outline: 1px solid #008c8c;
-            outline-offset: 0;
-            color: #999;
-        }
+      input:focus {
+        /* outline: 1px solid #008c8c;
+        outline-offset: -2px; */
+        outline: 1px auto #008c8c;
+        /* 设置成auto就没有外边框的偏移量了outline-offset */
+      }
     </style>
-</head>
-<body>
-    <p>
-        <a href="https://www.baidu.com/">Lorem.</a>
-    </p>
-    <p>
-        <input type="text" placeholder="请输入账号" name="" id="">
-    </p>
-    <p>
-        <button>提交</button>
-    </p>
-</body>
+  </head>
+  <body>
+    <form action="" method="">
+      <p><a tabindex="2" href="https://www.baidu.com">lorem1</a></p>
+      <p><input tabindex="1" type="text" /></p>
+      <p><button tabindex="3" type="submit">提交</button></p>
+    </form>
+  </body>
 </html>

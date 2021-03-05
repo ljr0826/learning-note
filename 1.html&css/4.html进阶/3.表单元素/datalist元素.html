@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <p><input list="useragent" type="text" name="" id=""></p>
+  </head>
+  <body>
+    <!--搜索联想不是用这个做的。因为这些数据是写死的。但是搜索数据是不断的和服务器交互得到的。而且这种写法比较新，有兼容性问题-->
+    <p>
+      请输入你常用的浏览器：
+      <input list="useragent" type="text" name="" id="" />
+    </p>
     <datalist id="useragent">
-        <option value="opera">欧鹏浏览器</option>
-        <option value="safari">苹果浏览器</option>
-        <option value="firefox">火狐浏览器</option>
-        <option value="ie">ie浏览器</option>
+      <option value="opera">欧鹏浏览器</option>
+      <option value="safari">苹果浏览器</option>
+      <option value="firefox">火狐浏览器</option>
+      <option value="ie">ie浏览器</option>
     </datalist>
-</body>
+  </body>
 </html>

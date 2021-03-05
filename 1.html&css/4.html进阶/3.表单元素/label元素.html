@@ -2,27 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-      <!-- 显示关联 -->
-    <p>性别：
-      <input id="radMale" type="radio" name="gender" id="" />
-      <label for="radMale">男</label>
-      <input id="radFemale" type="radio" name="gender" id="" />
-      <label for="radFemale">女</label>
-    </p>
-    <!-- 隐式关联 -->
+    <!--实现点击文字男/女也会选中内容。label元素中for属性值为input的id值-->
+    <!--显示关联-->
     <p>
-        <label>
-            <input type="radio" name="gender" id="">
-            男
-        </label>
-        <label>
-            <input type="radio" name="gender" id="">
-            女
-        </label>
+      请选择性别：
+      <input id="male" type="radio" name="gender" />
+      <label for="male">男</label>
+      <input id="female" type="radio" name="gender" />
+      <label for="female">女</label>
+    </p>
+    <!--隐式关联-->
+    <p>
+      请选择性别1：
+      <label><input type="radio" name="gender1" />男</label>
+      <label><input type="radio" name="gender1" />女</label>
     </p>
   </body>
 </html>

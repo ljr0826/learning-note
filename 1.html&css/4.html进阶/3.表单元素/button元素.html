@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <!--button可以在内容区直接写样式。建议写type属性-->
+    <p><button type="button">这是一个按钮</button></p>
+    <!--input-->
+    <p><input type="submit" /></p>
+    <p><input type="button" value="文本内容需要自己写" /></p>
+    <p><input type="reset" /></p>
+
+    <!--给按钮元素加图片做图片按钮-->
     <p>
-        <button type="submit">这是一个按钮</button>
+      <button>
+        <img src="./img/button2.jpg" alt="" />
+        <p>这是一个图片按钮</p>
+      </button>
     </p>
-    <p>
-        <input type="image" src="./img/button1.ipg">
-        <button type="submit">
-            <img src="./img/button2.jpg" alt="" style="width: 100px; height: 100px;">
-            <p>走向人生巅峰</p>
-        </button>
-    </p>
-</body>
+    <p><input type="image" src="./img/button2.jpg" /></p>
+  </body>
 </html>

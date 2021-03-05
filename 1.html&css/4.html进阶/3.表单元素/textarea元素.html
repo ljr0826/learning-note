@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <textarea placeholder="请输入简介" name="" id="" cols="30" rows="10"></textarea>
-</body>
+  </head>
+  <body>
+    <!--cols表示列，rows表示行。建议使用css控制样式-->
+    <!--特殊点：默认的文本内容放在内容区而不是value属性上，没有空白折叠-->
+    <!--但是默认内容我们一般会配合js、服务器端的内容。不太会在静态页面上书写默认内容。最多写一个placeholder-->
+    <textarea placeholder="请输入简介" name="" id="" cols="30" rows="10">
+你好，           我叫ccc</textarea
+    >
+  </body>
 </html>

@@ -2,51 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <!-- 普通文本输入框 -->
-    <p><input type="text" value="文本输入框" name="" id="" /></p>
-    <p><input type="text" placeholder="文本输入框" name="" id="" /></p>
-    <!-- 密码框 -->
-    <p><input type="password" placeholder="密码框" name="" id="" /></p>
-    <!-- 日期框 -->
-    <p><input type="date" name="" id="" /></p>
-    <!-- 搜索框 -->
-    <p><input type="search" name="''" id="" /></p>
-    <!-- 数字框 -->
-    <p><input type="number" min="-4" max="99" step="3" name="" id="" /></p>
-    <!-- 多选框 -->
+    <!--普通文本输入框-->
+    <p><input type="text" value="输入框的值" placeholder="显示提示的文本" /></p>
+    <!--密码框，会将输入的内容换成一个字符。不会起到加密的作用。只是防偷窥-->
+    <p><input type="password" placeholder="请输入密码" /></p>
+    <!--日期选择框，部分旧浏览器有兼容性问题-->
+    <p><input type="date" /></p>
+    <!--搜索框：见手机端，电脑上没太大效果-->
+    <p><input type="search" /></p>
+    <!--滑块，需要配合js来做-->
+    <p><input type="range" min="0" max="5" /></p>
+    <!--颜色选择框-->
+    <p><input type="color" /></p>
+    <!--数字输入框，min最小值，max最大值，step增加或减少的频数-->
+    <p><input type="number" min="0" max="100" step="10" /></p>
+    <!--多选框。怎么知道那几个是一组，在input元素加name属性-->
     <p>
-      爱好： 追剧<input type="checkbox" name="" id="" /> 西瓜<input
-        type="checkbox"
-        name=""
-        id=""
-      />
-      香蕉<input type="checkbox" name="" id="" checked /> 可乐<input
-        type="checkbox"
-        name=""
-        id=""
-      />
+      爱好：
+      <input name="loves" type="checkbox" />音乐
+      <input name="loves" type="checkbox" />电影
+      <input name="loves" type="checkbox" />运动
+      <input name="loves" type="checkbox" />健身
     </p>
-    <!-- 单选框 -->
+    <!--单选框。同样也需要添加name属性告诉那几个是一组的-->
     <p>
-      性别：
-      男<input type="radio" name="gender" id="" checked />
-      女<input type="radio" name="gender" id="" />
+      性取向：
+      <input name="gender" checked type="radio" />男男
+      <input name="gender" type="radio" />女女
+      <input name="gender" type="radio" />男女
+      <input name="gender" type="radio" />都可
     </p>
-    <!-- 重置按钮 -->
-    <p>
-      <input type="reset" value="这是一个重置按钮">
-    </p>
-    <!-- 普通按钮 -->
-    <p>
-      <input type="button" value="这是一个普通按钮">
-    </p>
-    <!-- 提交按钮 -->
-    <p>
-      <input type="submit">
-    </p>
+    <!--选择文件-->
+    <p><input type="file" name="" id="" /></p>
+
+    <!--input可以做按钮使用。现在都没有默认文本了，需要在value属性上手动设置-->
+    <!--没有功能的。需要配合js实现效果-->
+    <!--重置-->
+    <p><input type="reset" value="重置" /></p>
+    <!--普通按钮-->
+    <p><input type="button" value="普通按钮" /></p>
+    <p><input type="submit" value="提交" /></p>
   </body>
 </html>

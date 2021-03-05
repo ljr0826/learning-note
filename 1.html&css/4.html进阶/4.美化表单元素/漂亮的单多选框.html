@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .radios {
+        width: 12px;
+        height: 12px;
+        border: 1px solid #999;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .radios.checked {
+        border-color: #444;
+      }
+      .radios.checked::after {
+        content: "";
+        display: block;
+        width: 5px;
+        height: 5px;
+        background-color: #444;
+        margin-left: 3.5px;
+        margin-top: 3.5px;
+        border-radius: 50%;
+      } /*该伪元素需要是block元素的原因是在父元素的最后一个子元素想要靠上margin-top为负，无效*/
+    </style>
+  </head>
+  <body>
+    <div class="radios checked"></div>
+  </body>
+</html>

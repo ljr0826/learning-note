@@ -1,0 +1,196 @@
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.main {
+  width: 980px;
+  margin: 1em auto;
+}
+.main .header {
+  height: 30px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-size: 38px;
+}
+.main .header span {
+  background-color: #fff;
+  padding: 0 20px;
+  line-height: 60px;
+}
+.main .form-area {
+  width: 432px;
+  margin: 0 auto;
+}
+.main .form-area .form-item {
+  height: 40px;
+  margin: 50px 0;
+  position: relative;
+}
+/*可以设置统一的文本框样式*/
+/*从浏览器理解上最好button单独设置一个通用的按钮样式*/
+button {
+  height: 40px;
+  line-height: 40px;
+  background-color: #00a1d6;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #33b4de;
+}
+button:disabled {
+  background-color: #f5f5f5;
+  color: rgba(0, 0, 0, 0.25);
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+}
+/*input:text和input:password建议也单独设置一个通用的样式。即从语义上出发*/
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid #dcdfe6;
+  text-indent: 1em;
+  font-size: 14px;
+  color: #606266;
+}
+input[type="text"]:hover,
+input[type="password"]:hover {
+  border-color: #c0c4cc;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #00a1d6;
+}
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #ddd;
+}
+.main .form-area .form-item .error {
+  position: absolute;
+  top: 14px;
+  right: -255px;
+  width: 240px;
+  font-size: 12px;
+  color: #f45d90;
+  display: none;
+}
+.main .form-area .form-item.haserror .error {
+  display: block;
+}
+.main .form-area .form-item.haserror input {
+  border-color: #f45d90;
+}
+.main .form-area .form-item .select .select-item {
+  float: left;
+  position: relative;
+  /*绝对定位和固定定位与浮动、常规流不能同时用，但是相对定位可以*/
+  width: 150px;
+  height: 40px;
+  box-sizing: border-box;
+  color: #909399;
+  border: 1px solid #dcdfe6;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.main .form-area .form-item .select .select-item .title {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+}
+.main .form-area .form-item .select input {
+  float: left;
+  width: 281px;
+  border-radius: 0 4px 4px 0;
+}
+.main .form-area .form-item .select .select-item:hover ul {
+  display: block;
+}
+.main .form-area .form-item .select .select-item ul {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  left: 0px;
+  width: 100%;
+  max-height: 256px;
+  overflow-y: auto;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #606266;
+}
+.main .form-area .form-item .select .select-item ul li {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 20px;
+}
+.main .form-area .form-item .select .select-item ul li:hover {
+  background-color: #f5f7fa;
+}
+/*选中样式可以起名字为select、selected、active都可*/
+.main .form-area .form-item .select .select-item ul li .active {
+  color: #00a1d6;
+  font-weight: bold;
+}
+.main .form-area .form-item button.btn-sncode {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 130px;
+  height: 36px;
+  line-height: 36px;
+}
+.main .form-area p {
+  margin: -40px 0;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+.main .form-area p a {
+  color: #00a1d6;
+}
+.main .form-area p .checkbox {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.main .form-area p input:checked + .checkbox {
+  border-color: #00a1d6;
+}
+.main .form-area p input:checked + .checkbox::after {
+  content: "";
+  display: block;
+  margin-top: 3px;
+  margin-left: 3px;
+  width: 6px;
+  height: 6px;
+  background-color: #00a1d6;
+}
+
+.main .form-area p input[type="checkbox"] {
+  display: none;
+}
+.main .form-area .form-item button.fill {
+  width: 100%;
+  cursor: not-allowed;
+}
+.main .form-area p.right {
+  text-align: right;
+}
+/*问题：伪元素控制台看不了怎么办？
+答：用取色器或猜一下*/
+/*ul部分定位参考系的设置：脱离文档流的元素一定是块盒且互相冲突。元素只能是一种情况absolute/fixed/float*/

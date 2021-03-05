@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <div class="main">
+      <h2 class="header">
+        <span>注册</span>
+      </h2>
+      <form class="form-area" action="" method="GET">
+        <div class="form-item haserror">
+          <input type="text" placeholder="账号" />
+          <div class="error">该昵称已被他人使用</div>
+        </div>
+        <div class="form-item haserror">
+          <input
+            type="password"
+            placeholder="密码(6-16个字符组成，区分大小写)"
+          />
+          <div class="error">密码强度不够</div>
+        </div>
+        <div class="form-item">
+          <div class="select clearfix">
+            <div class="select-item">
+              <div class="title">中国大陆</div>
+              <ul>
+                <li><a href="">Lorem.</a></li>
+                <li><a href="">Soluta!</a></li>
+                <li><a href="" class="active">中国大陆</a></li>
+                <li><a href="">Vitae.</a></li>
+                <li><a href="">Fugit!</a></li>
+                <li><a href="">In?</a></li>
+                <li><a href="">Laboriosam?</a></li>
+                <li><a href="">Cumque.</a></li>
+                <li><a href="">Accusamus!</a></li>
+                <li><a href="">Excepturi.</a></li>
+                <li><a href="">Fuga!</a></li>
+                <li><a href="">Facere.</a></li>
+              </ul>
+            </div>
+            <input type="text" placeholder="填写常用的手机号" />
+          </div>
+        </div>
+        <div class="form-item">
+          <input type="text" placeholder="请输入短信验证码" />
+          <button type="button" class="btn-sncode">点击获取</button>
+        </div>
+        <p>
+          <label>
+            <input type="checkbox" name="" id="" />
+            <span class="checkbox"></span>
+            <span
+              >我已同意 <a href="">《哔哩哔哩弹幕网用户使用协议》</a>和<a
+                href=""
+                >《哔哩哔哩弹幕网账号中心规范》</a
+              >
+            </span>
+          </label>
+        </p>
+        <div class="form-item">
+          <button type="button" disabled class="fill">注册</button>
+        </div>
+        <p class="right"><a href="">已有账号，直接登录></a></p>
+      </form>
+    </div>
+  </body>
+</html>

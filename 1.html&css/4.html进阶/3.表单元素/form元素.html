@@ -6,11 +6,26 @@
     <title>Document</title>
   </head>
   <body>
-    <form method="get" action="https://www.baidu.com/">
-      <p>账号： <input type="text" name="idtext" id="" /></p>
-      <p>密码： <input type="password" name="idpsd" id="" /></p>
+    <!--配置属性：action，链接地址即提交给谁。method，提交方式-->
+    <!--对表单元素的要求是必须写name属性-->
+    <form action="get" action="https://www.baidu.com">
       <p>
-        提交：
+        账号：
+        <input name="loginid" type="text" />
+      </p>
+      <p>
+        密码：
+        <input name="loginpwd" type="password" />
+      </p>
+      <p>
+        你最喜欢的城市：
+        <select name="lovecity" id="">
+          <option value="nanjing">南京</option>
+          <option value="beijing">北京</option>
+          <option value="jiangsu">江苏</option>
+        </select>
+      </p>
+      <p>
         <button type="submit">提交</button>
       </p>
     </form>

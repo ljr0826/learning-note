@@ -2,35 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <fieldset>
-      <legend>账号信息</legend>
-      <p>账号：<input placeholder="请输入账号" readonly type="text" name="" id="" value="2922557321" /></p>
-      <p>密码：<input placeholder="请输入密码" type="password" name="" id="" /></p>
-    </fieldset>
-    <fieldset>
-      <legend>基本信息</legend>
-      <p>姓名：<input type="text" name="" id="" value="李婧瑈" disabled /></p>
+    <form action="https://www.baidu.com" method="get">
+      <h1>修改用户信息</h1>
+      <fieldset>
+        <legend>账号信息</legend>
+        <p>
+          用户账号：
+          <input readonly type="text" name="userid" id="" />
+        </p>
+        <p>
+          用户密码：
+          <input type="password" name="userpwd" />
+        </p>
+      </fieldset>
+      <fieldset>
+        <legend>用户信息</legend>
+        <p>
+          用户姓名：
+          <input disabled type="text" name="username" />
+        </p>
+        <p>
+          城市：
+          <select name="usercity" id="">
+            <option value="beijing">北京</option>
+            <option value="jiangsu">江苏</option>
+          </select>
+        </p>
+      </fieldset>
       <p>
-        城市：<select name="" id="">
-          <option value="">Lorem.</option>
-          <option value="">Necessitatibus.</option>
-          <option value="">Error.</option>
-          <option value="">Sapiente!</option>
-          <option value="">Velit.</option>
-          <option value="">Omnis.</option>
-          <option value="">Iure?</option>
-          <option value="">Recusandae.</option>
-          <option value="">Voluptatem.</option>
-          <option value="">Perspiciatis.</option>
-        </select>
+        <button type="submit">提交</button>
       </p>
-    </fieldset>
-    <p>
-        <button>提交修改</button>
-    </p>
+    </form>
   </body>
 </html>
