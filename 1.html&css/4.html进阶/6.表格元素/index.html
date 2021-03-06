@@ -2,39 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>表格练习</title>
+    <title>Document</title>
     <style>
       table {
-        border-collapse: collapse;
-        margin: 0 auto;
-      }
-      caption{
-          margin: 20px 0;
-          font-size: 38px;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          color: #008c8c;
-      }
-      th,
-      td {
-        border: 1px solid #dcdfe6;
-        width: 130px;
-        height: 38px;
+        width: 100%;
         text-align: center;
+        border-collapse: collapse;
       }
-      tbody tr:nth-child(even){
-          background-color: #dcdfe6;
+      table th,
+      table td {
+        border: 1px solid;
       }
-      tfoot tr td{
-          text-align: right;
-          padding-right: 20px;
-      }
+      /* table tfoot {
+        text-align: right;
+      } */
     </style>
   </head>
   <body>
     <table>
       <caption>
-        美丽的李婧瑈
+        这是表格的标题
       </caption>
       <thead>
         <tr>
@@ -47,83 +36,68 @@
       </thead>
       <tbody>
         <tr>
-          <td rowspan="2">列合并</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td rowspan="2">单元格1</td>
+          <!--占据两行-->
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
         <tr>
-          <!-- <td></td> -->
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
         <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td>单元格1</td>
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
         <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td>单元格1</td>
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
         <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td>单元格1</td>
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
         <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td>单元格1</td>
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
         <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td>单元格1</td>
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
         <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
-        </tr>
-        <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
-        </tr>
-        <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-          <td>数据3</td>
-          <td>数据4</td>
-          <td>数据5</td>
+          <td>单元格1</td>
+          <td>单元格2</td>
+          <td>单元格3</td>
+          <td>单元格4</td>
+          <td>单元格5</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="5">总计1</td>
-          <!-- <td>总计1</td>
-          <td>总计2</td>
-          <td>总计3</td>
-          <td>总计4</td> -->
+          <td colspan="3">总计</td>
+          <!--占据前三列-->
+          <td>4</td>
+          <td>5</td>
         </tr>
       </tfoot>
     </table>

@@ -105,6 +105,12 @@ input[type="password"]::placeholder {
   line-height: 40px;
   padding: 0 20px;
 }
+.main .form-area .form-item .select .select-item .title i {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  color: #dcdfe6;
+}
 .main .form-area .form-item .select input {
   float: left;
   width: 281px;
@@ -167,6 +173,7 @@ input[type="password"]::placeholder {
   border-radius: 4px;
   box-sizing: border-box;
   cursor: pointer;
+  vertical-align: middle;
 }
 .main .form-area p input:checked + .checkbox {
   border-color: #00a1d6;
