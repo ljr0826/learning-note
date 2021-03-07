@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        background-color: lightblue;
+      }
+      .c1 {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        z-index: 0;
+        background-color: #008c8c;
+      }
+      .c2 {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        z-index: -1;
+        background-color: chocolate;
+        left: 100px;
+        top: 100px;
+      }
+      .item1 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        right: -50px;
+        bottom: -50px;
+      }
+      .c1 .item1 {
+        background-color: red;
+      }
+      .c2 .item1 {
+        background-color: rgb(114, 5, 5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="c1">
+      <div class="item1"></div>
+      <div class="item2"></div>
+    </div>
+    <div class="c2">
+      <div class="item1"></div>
+      <div class="item2"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        background-color: lightblue;
+      }
+      .container {
+        width: 200px;
+        height: 200px;
+        background-color: #008c8c;
+        position: relative;
+        /* z-index: 0; */
+        /* z-index: auto; */
+        margin: 50px;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: -30px;
+        top: -30px;
+        z-index: -1;
+        background-color: red;
+      }
+      .normal {
+        width: 200px;
+        height: 200px;
+        background-color: chocolate;
+        /* margin-top: -200px; */
+      }
+      .float {
+        width: 200px;
+        height: 200px;
+        background-color: brown;
+        margin-left: 100px;
+        /* margin-top: -600px; */
+      }
+    </style>
+  </head>
+  <body>
+    <p style="background-color: yellow">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero modi
+      eligendi iusto iste sunt a, tempore voluptatibus commodi, aspernatur porro
+      repellat rem odit sit illo molestias impedit quaerat officia eos!
+    </p>
+    <span style="background-color: yellow">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero modi
+      eligendi iusto iste sunt a, tempore voluptatibus commodi, aspernatur porro
+      repellat rem odit sit illo molestias impedit quaerat officia eos!
+    </span>
+    <div class="container">
+      <div class="item"></div>
+    </div>
+    <div class="normal"></div>
+    <div class="float"></div>
+  </body>
+</html>
