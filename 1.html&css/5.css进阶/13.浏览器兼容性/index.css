@@ -1,0 +1,21 @@
+div {
+  width: 300px;
+  height: 500px;
+  border: 1px solid;
+  overflow: auto;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: rosybrown;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: saddlebrown;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+::-webkit-scrollbar-button {
+  background-color: slateblue;
+  border-radius: 50%;
+}

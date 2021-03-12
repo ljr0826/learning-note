@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .clearfix::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .wrapper {
+        font-size: 0;
+        width: 350px;
+        background-color: cadetblue;
+      }
+      .item {
+        /* float: left; */
+        display: inline-block;
+        width: 170px;
+        height: 170px;
+        margin: 10px 0;
+        background-color: chocolate;
+      }
+      .item:nth-child(even) {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>
