@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        font-size: 20px;
+      }
+      .container .radio {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #999;
+        border-radius: 50%;
+      }
+      .container input[type="radio"]:checked + .radio {
+        border-color: #008c8c;
+      }
+      .container input[type="radio"]:checked + .radio::after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        content: "";
+        width: 8px;
+        height: 8px;
+        background-color: #008c8c;
+        border-radius: 50%;
+      }
+      .container input[type="radio"]:checked ~ .words {
+        color: #008c8c;
+      }
+      .container input[type="radio"] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>请选择你的性别</p>
+      <label>
+        <input type="radio" name="gender" />
+        <span class="radio"></span>
+        <span class="words">男</span>
+      </label>
+      <label>
+        <input type="radio" name="gender" />
+        <span class="radio"></span>
+        <span class="words">女</span>
+      </label>
+    </div>
+  </body>
+</html>
