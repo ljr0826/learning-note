@@ -2,32 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      var a;
-      var b;
-      var c;
-      a = 1;
-      b = 2;
-      c = 3;
-
-      //等效于
-      var a,
-        b,
-        c,
-        a = 1;
-      b = 2;
-      c = 3;
-
-      //等效于
-
-      var a = 1,
-        b = 2,
-        c = 3,
-        d;
+      var $_3a;
+      console.log($_3a, typeof $_3a);
+      $_3a = 1;
+      console.log($_3a, typeof $_3a); //先把a的值输出，再输出a的类型
+      $_3a = "abc";
+      console.log($_3a, typeof $_3a); //js是弱类型语言，存放的数据类型是可以变化的
+      $_3a = undefined;
+      console.log($_3a, typeof $_3a);
     </script>
   </body>
 </html>

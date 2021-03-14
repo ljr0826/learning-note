@@ -2,49 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
+      document.write(`<ul>
+        <li>香蕉</li>
+        <li>苹果</li>
+        <li>梨</li>
+        </ul>`);
       console.log({
         name: "李婧瑈",
-        age: 20,
-        stature: "162cm",
-        weight: "55kg",
-        address: {
-          country: "中国",
-          province: "北京",
-          detail: "当代城市家园",
-        },
-        boyfriend: {
+        age: 22,
+        isMale: false,
+        family: undefined,
+        house: null,
+        partner: {
           name: "孟令雨",
-          age: 21,
-          gender: "male",
-          love: "me",
-          hate: undefined,
+          work: "GOOD",
         },
       });
-      console.log(
-        typeof {
-          name: "李婧瑈",
-          age: 20,
-          stature: "162cm",
-          weight: "55kg",
-          address: {
-            country: "中国",
-            province: "北京",
-            detail: "当代城市家园",
-          },
-          boyfriend: {
-            name: "孟令雨",
-            age: 21,
-            gender: "male",
-            love: "me",
-            hate: undefined,
-          },
-        }
-      );
     </script>
   </body>
 </html>

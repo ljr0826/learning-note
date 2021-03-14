@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        var a;
-        a = 1;
-        console.log(a);
-        a = 3;
-        console.log(a);
-
-        //等效于
-        var a = 1;
-        console.log(a);
-        var a = 3;
-        console.log(a);
+      var a = "hello";
+      var b = a; //将变量a的数据复制粘贴到变量b中
+      b = "world"; //不会影响到a的值
+      console.log(a);
+      console.log(b);
     </script>
-</body>
+  </body>
 </html>

@@ -2,18 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      div {
+        float: right;
+      }
+    </style>
   </head>
   <body>
+    <ul>
+      <li>什么是变量：存储数据的内存空间</li>
+      <li>
+        怎么使用变量：声明变量+变量赋值--
+        <div>
+          <ul>
+            <li>变量存储的数据和数据类型都是可变的，即可以重复赋值</li>
+            <li>变量的名称、属性名等标识符的规范：小驼峰、语义化等</li>
+            <li>变量的声明和赋值可以合并（语法糖）</li>
+            <li>多个变量的声明和赋值可以合并（语法糖）</li>
+            <li>任何可以书写数据的地方都可以书写变量</li>
+            <li>
+              js中变量的声明存在提升，提升到当前代码块的最顶端。script元素中内容相通？
+            </li>
+            <li>变量没声明会报错，但是typeof 未声明变量不会报错</li>
+            <li>js允许定义多个同名变量</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div><span>1</span><span>2</span><span>3</span><span>4</span></div>
     <script>
-      var userName = "肖战";
+      var userName = "温客行";
       var userAge = 29;
       var isVip = true;
-      prompt("isVip");
-      console.log(isVip);
-      console.log(userName);
-      console.log(userAge);
+      console.log(userName, userAge, isVip);
     </script>
   </body>
 </html>
