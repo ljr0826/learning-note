@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 2. 用一个变量保存年份，得到该年份 2 月的天数（闰年29天，不润年28天）
+
+      var year = 2021;
+      var isLeap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0; //是否是闰年
+
+      //得到该年份2月的天数
+      var days = isLeap ? "29天" : "28天";
+      console.log("二月的天数为：" + days);
+    </script>
+  </body>
+</html>

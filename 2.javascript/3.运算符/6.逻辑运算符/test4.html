@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //在变量中存放年份
+      var year = 2019;
+      //用逻辑运算判断该年是否是闰年
+      //闰年的规则：4年一闰，百年不润，400年一润
+
+      var result = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+      //把文字想象成代码需要时间积累，不要着急啊
+
+      //如果是闰年，则输出闰年；否则输出平年
+      result && console.log(year, "年是闰年");
+      result || console.log(year, "年是平年");
+    </script>
+  </body>
+</html>

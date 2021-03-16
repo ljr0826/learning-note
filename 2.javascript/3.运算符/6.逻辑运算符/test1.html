@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // console.log(5 > 3 && 3 > 2); //true
+      // console.log(5 > 3 && 100); //100
+      // console.log(0 && 2);
+
+      // var x = 1;
+      // console.log(x > 2 && x++ > 0); //false，第一个表达式为假，直接返回，第二个表达式都不用运行了
+      // console.log(x); //1
+
+      // console.log(1 && 2 && 3 && 4 && 0 && 5 && 6 && 7); //0
+
+      // var age = -10; //如果年龄为负数，则将其设置为0
+      // age < 0 && (age = 0); //日后有三目运算符或流程判断，代码更加优雅；这样难以阅读和理解
+      // console.log(age);
+
+      var x = 1;
+      console.log(x++ >= 1 && x++ >= 2 && x++ >= 4 && x++ >= 4); //false
+      console.log(x); //4
+    </script>
+  </body>
+</html>

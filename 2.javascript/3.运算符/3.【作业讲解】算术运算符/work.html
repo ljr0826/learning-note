@@ -2,26 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      console.log(5.3-5.2);
-      console.log(5.4-5.3);
-    </script>
-    <script>
-        //摄氏度转化
-      var C = 26;
-      var F = (C * 9) / 5 + 32;
-      console.log("摄氏温度：" + C,"华氏温度：" + F);
-       
-      //利息计算
-      var principal = 5000,
-      depositTerm = 3,
-      annualInterestRate = 0.036,
-      interest = principal * (annualInterestRate / 12) * depositTerm;
-      console.log("利息：" + interest);
+      //     1. 温度转换器。设置一个变量，保存摄氏温度（C），将其转换为华氏温度（F）。F = (9/5)C + 32
+      var C = 8;
+      var F = (9 / 5) * C + 32;
+      var result = "摄氏温度为" + C + "°时，" + "华氏温度为" + F + "°";
+      console.log(result);
+      // 2. 利息计算器。设置变量，分别存放本金、月数、年利率，计算利息
+      var money = 10000,
+        months = 12,
+        annualRate = 0.036;
+      var interest = money * annualRate * (months / 12);
+      console.log(
+        "当本金是：" +
+          money +
+          "，月数是：" +
+          months +
+          "，年利率是：" +
+          annualRate +
+          "，利息为" +
+          interest +
+          "元"
+      );
+      //要把变量的值想象为未知的，日后可能要变化
     </script>
   </body>
 </html>

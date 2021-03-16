@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 用一个变量保存成绩，输出该成绩是否及格（true 或 false）
+      var score = 34;
+      console.log(score >= 60); //若及格为true，不及格为false
+
+      // 2. 用一个变量保存年份，得到该年份 2 月的天数（闰年29天，不润年28天）
+
+      var year = 2021;
+      var isLeap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0; //是否是闰年
+      isLeap && console.log(year + "年的2月份有29天");
+      isLeap || console.log(year + "年的2月份有28天"); //日后学了更多的知识就不这么写了
+
+      // 3. 利息计算器
+
+      // 设置变量，分别存放本金、月数、年利率，计算利息
+
+      // 如果本金存放量超过了 10 万，年利率上浮 20%（比如，年利率为 4%，上浮后的年利率 4% * 1.2）
+
+      var money = 1000000,
+        months = 12,
+        rate = 0.03;
+      money > 100000 && (rate = rate * 1.2);
+      var earn = money * (months / 12) * rate;
+      console.log(earn, rate);
+      //不要假设变量的值，它是会变化的
+    </script>
+  </body>
+</html>
