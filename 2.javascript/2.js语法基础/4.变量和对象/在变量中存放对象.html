@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        a: "123",
+        "? fd cc es": "32", //js对属性名字的要求宽松，特殊字符前后加上双引号即可
+        0: "ccvvkk",
+      };
+      console.log(obj);
+      console.log(obj["? fd cc es"]); //属性名只有是正确的标识符的时候才能 变量名.属性名 读取
+      console.log(obj[0]); //宿主环境会自动将数字0转化为字符串0
+    </script>
+  </body>
+</html>

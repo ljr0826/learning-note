@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //前端平时不会太在意垃圾回收这个东西
+      var obj = {
+        a: "123",
+        b: "456",
+        sub: {
+          s: "sffw",
+        },
+      }; //此对象被定义为垃圾。js中的垃圾回收器会定期清理
+      obj = {
+        a: "abc",
+        b: "bcd",
+      }; //尽量不要这样定义同名变量
+    </script>
+  </body>
+</html>

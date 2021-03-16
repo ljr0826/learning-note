@@ -2,37 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      window.console.log("abc");
-      window.alert("abc");
-      window.document.write("abc");
-      console.log(window.console);
-      console.log(window.alert);
-      console.log(window.document);
-
-      // var a = 123;
-      // console.log(window.a);//因为，window之前没有属性a，a成为了window对象的属性
-
-      // var console = "abc";
       // console.log(window);
-      // alert(window.console);//由于console有赋值，因此，覆盖了window的属性console
+      // window.console.log("abc"); //console.log的完整写法
+      // window.alert("abc");
+      // window.document.write("abc");
 
-      // var console;
-      // console.log(console);//由于console没有赋值，因此，没有覆盖window的属性console
-    </script>
-    <script>
-        //面试题
-      var name = undefined;//name属性比较特殊，赋值的任何内容，都会被转换为字符串
+      // console.log(window.console); //log是console对象中的其中一个函数
+      // console.log(window.document); //日后会详细讲
+      // console.log(window.alert);
+
+      // var a;
+      // console.log(window); //因为window之前没有属性a，a成为了window对象的属性
+      // var console = undefined;
+      // // console.log(window); //报错console.log is not a function。字符串"abc"中没有log函数
+      // alert(window.console); //由于console有赋值，因此覆盖了window的属性console
+
+      var name = undefined;
       console.log(name);
-      console.log(typeof name);
+      console.log(typeof name); //string。原因：window里面有一个属性为name。它的值为""（一个空字符串）
       console.log(window);
-
-    //   var alert = undefined;
-    //   console.log(typeof alert);
     </script>
   </body>
 </html>

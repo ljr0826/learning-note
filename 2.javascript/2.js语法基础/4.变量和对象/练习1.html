@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        //1.定义一个变量存放对象，包含姓名、年龄、性别、女朋友（姓名、年龄、性别）
-        var lian = {
-            name: "谢怜",
-            age:700,
-            gender:"male",
-            mate:{
-                name:"花城",
-                age:680,
-                gender:"male",
-            },
-        };
-        //2.定义一个变量，存放对象，包含姓名、年龄、性别、女朋友（和一个变量的女朋友是一样的）
-        var xian = {
-            name:"魏无羡",
-            age:21,
-            gender:"male",
-            // soulMate:lian.mate,
-        };
-        xian.soulMate = lian.mate;//第二种写法
-        console.log(lian,xian);
-        //3.输出女朋友的姓名
-        console.log(lian.mate.name,xian.soulMate.name);
-        //4.分手一个
-        // delete xian.soulMate;
-        xian.soulMate = undefined;//第二种写法，常用
-        console.log(xian);
+      //1.定义一个变量，存放对象，包含姓名，年龄，性别，女朋友（姓名，年龄，性别）
+
+      var paohui1 = {
+        name: "paohui1",
+        age: 23,
+        gender: "male",
+        girlFriend: {
+          name: "selina",
+          age: 18,
+          gender: "famale",
+        },
+      };
+
+      //2.定义一个变量，存放对象，包含姓名，年龄，性别，女朋友（姓名，年龄，性别）。要求女朋友和第一个变量的女朋友是一样的
+
+      var paohui2 = {
+        name: "paohui2",
+        age: 27,
+        gender: "male",
+        // girlFriend: paohui1.girlFriend,
+      };
+      paohui2.girlFriend = paohui1.girlFriend;
+      console.log(paohui1, paohui2);
+
+      //3.输出两个变量女朋友的姓名
+      console.log(paohui1.girlFriend.name, paohui2.girlFriend.name);
+
+      //4.女朋友与paohui2分手
+      //   delete paohui2.girlFriend;
+      paohui2.girlFriend = undefined;
+      console.log(paohui2);
     </script>
-</body>
+  </body>
 </html>
