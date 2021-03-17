@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var x = 2;
+      //   x += 3; //等同于x = x + 3;即将x自增3再赋值给x
+      //   x *= 1 + 2; //等同于x=x*(1+2)
+      //   x *= x++ + 2; //等同于 x = x * (x++ + 2)
+      //   console.log(x);
+
+      var user = {
+        age: 18,
+        name: "成哥",
+        gender: "男",
+      };
+      //输出：我叫xx，今年xx岁了，性别是xx，目前已成年/未成年
+      var result = "我叫";
+      result += user.name;
+      result += "，今年";
+      result += user.age;
+      result += "岁了，";
+      console.log(result);
+    </script>
+  </body>
+</html>
