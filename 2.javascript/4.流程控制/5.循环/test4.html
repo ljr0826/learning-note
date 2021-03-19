@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var i = 0;
+      //   while (i < 10) {
+      //     if (i === 3) {
+      //       i++;
+      //       continue;
+      //     }
+      //     console.log(i);
+      //     // if (i === 3) {
+      //     //   //   break; //强制结束循环
+      //     //   continue; //结束当前这次的循环死循环了。
+      //     // }
+      //     i++;
+      //   }
+
+      //   for (var i = 0; i < 10; i++) {
+      //     if (i === 3) {
+      //       continue;
+      //     }
+      //     console.log(i);
+      //   }
+      //   console.log("循环结束", i);
+
+      for (var i = 0; i < 3; i++) {
+        for (var j = 0; i < 3; j++) {
+          console.log(i, j); //00 01 02 10 11 20
+          if (i + j >= 2) {
+            break;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

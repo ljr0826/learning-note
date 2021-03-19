@@ -13,37 +13,22 @@
       //若用户的理财金额超过200万，除了理财收益外，还要额外给予用户收益金额的10%
       //编写程序，让用户输入理财金额和理财年限，计算到期后的收益
       var money = +prompt("请输入理财金额");
-      var year = +prompt("请输入理财年限");
-      var rate = 0.04;
-      console.log(`您输入的理财金额为${money}元，理财年限为${year}年`);
-      if (money === NaN || year === NaN || money <= 0 || year <= 0) {
-        console.log("输入有误");
-      } else if (money >= 500000) {
-        rate = 0.045;
-      }
-      var earn = money * rate * year;
-      if (money > 2000000) {
-        earn *= 1.1;
-      }
-      console.log(`到期后的收益为：${earn}`);
-    </script>
-    <script>
-        //袁老师思路
-      var money = +prompt("请输入理财金额");
-      var year = +prompt("请输入理财年限");
-      if (isNaN(money) || isNaN(year) || money <= 0 || year <= 0) {
+      var years = +prompt("请输入理财年限");
+      if (isNaN(money) || isNaN(years) || money <= 0 || years <= 0) {
         console.log("输入有误");
       } else {
-        var rate = 0.04; // 年利率4%
+        var rate = 0.04; //年利率
         if (money >= 500000) {
           rate = 0.045;
         }
-        var earnMoney = money * rate * year; // 收益
+        var earn = money * years * rate; //理财收益
         if (money >= 2000000) {
-          earnMoney += earnMoney * 0.1;
+          earn *= 1.1;
         }
-        console.log(`总收益为：${earnMoney}`);
       }
+      console.log(
+        `理财金额：${money}，理财年限：${years}，年利率：${rate}，到期后的收益为：${earn}`
+      );
     </script>
   </body>
 </html>

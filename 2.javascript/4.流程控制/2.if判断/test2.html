@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //声明的变量会被提升到脚本块的第一行
+      if (!x) {
+        x = 0;
+      } //该if判断可以读成：如果x不存在则：
+      if (x++ >= 1) {
+        var x;
+        x++;
+      } else if (++x >= 2) {
+        x++;
+      } else {
+        x--;
+      }
+      console.log(x); //3
+    </script>
+  </body>
+</html>

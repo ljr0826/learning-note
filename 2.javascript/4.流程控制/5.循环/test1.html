@@ -2,28 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      // 输出 1-100 的所有数字
-      for (var i = 1; i <= 100; i++) {
-        if (i === 3) {
-          continue;
-        }
-        console.log(i);
-      }
-      // 输出 100-1 的所有数字
-      // for(var i = 100;i >=1;i--){
-      //     console.log(i);
+      //输出100个hello world
+      // console.log("hello world"); //最好有一个简洁的结构可以帮助我们执行这种代码
+
+      // var i = 0; //i表示当前输出的次数，初始化
+      // while (i < 100) {//条件判断
+      //   console.log("hello world"); //循环体
+      //   i++; //改变循环条件
       // }
-      // 输出 1-100 的所有奇数
-      //   for(var i = 0;i <=100;i++){
-      //       if(i % 2 === 1){
-      //           console.log(i);
-      //       }
-      //   }
+
+      for (var i = 0; i < 100; i++) {
+        console.log("hello world");
+      }
+      console.log("循环结束", i);
+      //死循环：条件永远满足，永远无法退出循环
     </script>
   </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var score = 67; //变量里面存的东西不要做假设
+      //成绩分四个等级：A>=90  90>B>=70  70>C>=50  50>D
+
+      //写法一：
+      if (score >= 90) {
+        console.log("A");
+      } else if (score >= 70) {
+        console.log("B");
+      } else if (score >= 50) {
+        console.log("C");
+      } else {
+        console.log("D");
+      }
+
+      //以上是一个if结构：若条件1满足后续条件都不会被运行，所以&&score<90/70是可以省略的
+
+      //写法二：
+      if (score >= 90) {
+        console.log("A");
+      } //若条件成立执行语句，条件不满足直接结束
+      if (score >= 70 && score < 90) {
+        console.log("B");
+      }
+      if (score >= 50 && score < 70) {
+        console.log("C");
+      }
+      if (score < 50) {
+        console.log("D");
+      }
+
+      //写法一更好一些，而且写法一执行效率更高
+    </script>
+  </body>
+</html>
