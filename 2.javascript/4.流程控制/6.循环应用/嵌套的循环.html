@@ -2,35 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      // 打印1-100的所有素数
-      //方法一：
+      //打印1-100的所有素数
+      //思路一：
+      // for (var i = 1; i <= 100; i++) {
+      //   //判断i是不是素数
       //   var record = 0;
-      //   for (var i = 1; i <= 100; i++) {
-      //     for (j = 1; j <= i; j++) {
-      //       if (i % j === 0) {
-      //         record++;
-      //       }
+      //   for (var j = 1; j <= i; j++) {
+      //     if (i % j === 0) {
+      //       record++;
       //     }
-      //     if (record === 2) {
-      //       console.log(i);
-      //     }
-      //     record = 0;
       //   }
-      //方法二：
-      for (i = 1; i <= 100; i++) {
-        var isFind = true;
-        for (j = 2; j < i; j++) {
+      //   if (record === 2) {
+      //     console.log(i);
+      //   }
+      // }
+
+      //思路二：
+      // for (var i = 1; i <= 100; i++) {
+      //   var isFind = false;
+      //   for (var j = 2; j <= i - 1; j++) {
+      //     if (i % j === 0) {
+      //       isFind = true;
+      //       break;
+      //     }
+      //   }
+      //   if (!isFind && i !== 1) {
+      //     console.log(i);
+      //   }
+      // }
+
+      for (var i = 1; i <= 100; i++) {
+        //判断i是不是素数
+        var isFind = false;
+        for (var j = 2; j <= i - 1; j++) {
           if (i % j === 0) {
-            isFind = false;
+            isFind = true;
             break;
           }
         }
-        if (isFind && i !== 1) {
+        if (!isFind && i !== 1) {
           console.log(i);
         }
       }

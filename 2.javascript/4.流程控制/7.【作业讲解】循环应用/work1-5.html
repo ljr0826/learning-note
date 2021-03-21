@@ -2,56 +2,57 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      //   1. 在控制台中输出100个*
-
-      //   for(i = 1; i <= 100; i++){
-      //       console.log("*");
-      //   }
-
-      //   2. 让用户输入*号的数量，然后输出对应数量的*
-
-      //   var num = +prompt("请输入*号的数量");
-      //   for(i = 1; i <= num; i++){
-      //       console.log("*");
-      //   }
-
-      //   3. 输出一个3行5列的*号
-      // var row = 3,
-      //   col = 5;
-      // for (i = 1; i <= row; i++) {
-      //在一行内输出col个*
-      //   var str = "";
-      //   for (j = 1; j <= col; j++) {
-      //     str += "* ";
-      //   }
-      //   console.log(`${str}`);
+      // //1. 在控制台中输出100个*
+      // for (var i = 1; i <= 100; i++) {
+      //   console.log("*");
       // }
-      //       4. 用*号输出一个5行的直角三角形
 
-      // ```
-      // *
-      // **
-      // ***
-      // ****
-      // *****
-      // ```
+      // //2. 让用户输入*号的数量，然后输出对应数量的*
+      // var num = +prompt("请输入*号的数量");
+      // if (isNaN(num) || num <= 0) {
+      //   console.log("输入有误");
+      // }
+      // for (var i = 0; i < num; i++) {
+      //   console.log("*");
+      // }
 
-      // var row = 5;
-      // for (i = 1; i <= row; i++) {
-      //输出一行*号，数量为i
+      // // 3. 输出一个3行5列的*号
+      // var row = 3; //行
+      // var col = 5; //列
+      // for (var i = 1; i <= row; i++) {
       //   var str = "";
-      //   for (j = 1; j <= i; j++) {
+      //   for (var j = 1; j <= col; j++) {
       //     str += "* ";
       //   }
       //   console.log(str);
       // }
 
-      // 5. 用*号输出一个5行的等腰三角形
+      // //4. 用*号输出一个5行的直角三角形
+
+      // //       ```
+      // // *
+      // // **
+      // // ***
+      // // ****
+      // // *****
+      // // ```;
+      // var row = 5;
+      // for (var i = 1; i <= 5; i++) {
+      //   //输出一行的*，数量为i
+      //   var str = "";
+      //   for (var j = 1; j <= i; j++) {
+      //     str += "* ";
+      //   }
+      //   console.log(str);
+      // }
+
+      //       5. 用*号输出一个5行的等腰三角形
 
       // ```
       //     *
@@ -61,18 +62,40 @@
       // *********
       // ```
 
-      // var row = 7;
-      // //i代表第几行
+      var row = 5;
+      for (var i = 1; i <= 5; i++) {
+        var str = "";
+        for (var j = 1; j <= row - i; j++) {
+          str += "  ";
+        }
+        for (var j = 1; j <= 2 * i - 1; j++) {
+          str += "* ";
+        }
+        console.log(str);
+      }
+
+      // //每行有2n-1个*，第一行是5个开始，第二行从第4个开始
+      // var row = 15;
       // for (var i = 1; i <= row; i++) {
+      //   //每行是怎么输出的
       //   var str = "";
-      //   //每行*前面有row-i个空格1.拼接空格
-      //   for (var count = 1; count <= row - i; count++) {
-      //     str += "\0 ";
+      //   //1.拼接空格，数量为r-i
+      //   for (var j = 1; j <= row - i; j++) {
+      //     str += "  ";
       //   }
-      //   //每行有2i-1个*，j代表该行依次输出几个*2.拼接空格
+      //   //2.拼接*号，数量为2i-1
       //   for (var j = 1; j <= 2 * i - 1; j++) {
       //     str += "* ";
       //   }
+
+      //   // for (j = 1; j <= 2 * row - 1; j++) {
+      //   //   //每行共有多少个数
+      //   //   if (j < row + 1 - i || j > row - 1 + i) {
+      //   //     str += " ";
+      //   //   } else {
+      //   //     str += "*";
+      //   //   }
+      //   // }
       //   console.log(str);
       // }
     </script>

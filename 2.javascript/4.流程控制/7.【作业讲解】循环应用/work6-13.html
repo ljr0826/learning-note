@@ -2,87 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      //   6. 输出1-100的所有数字
-      //   for (var i = 1; i <= 100; i++) {
-      //     console.log(i);
-      //   }
-
-      //   7. 输出1-100的所有奇数
-      //   for (var i = 1; i <= 100; i++) {
-      //     if (i % 2 === 1) {
-      //       console.log(i);
-      //     }
-      //   }
-
-      //   8. 求1-100之间所有数字之和
-      //   var sum = 0;
-      //   for (var i = 1; i <= 100; i++) {
-      //     sum += i;
-      //   }
-      //   console.log(sum);
-
-      //   9. 求1-100之间所有奇数之和
-
-      //   var sum = 0;
-      //   for (var i = 1; i <= 100; i += 2) {
-      //     sum += i;
-      //   }
-      //   console.log(sum);
-
-      //   10. 求1-10之间所有数字的积
-
-      //   var pro = 1;
-      //   for (var i = 1; i <= 10; i++) {
-      //     pro *= i;
-      //   }
-      //   console.log(pro);
-
-      //   11. 判断数字233是不是素数。
-
-      //   素数是指一个数（大于1）仅能被1和自身整除
-
-      //   var num = 233;
-      //   var count = 0;
-      //   for (i = 1; i <= num; i++) {
-      //     if (num % i === 0) {
-      //       count++;
-      //     }
-      //   }
-      //   if (count === 2) {
-      //     console.log(`${num}是素数`);
-      //   } else {
-      //     console.log(`${num}不是素数`);
-      //   }
-
-      //       12. 输出1-100中的所有素数
-
+      // //6. 输出1-100的所有数字
       // for (var i = 1; i <= 100; i++) {
-      //   var count = 0;
-      //   for (var j = 1; j <= i; j++) {
-      //     if (i % j === 0) {
-      //       count++;
-      //     }
-      //   }
-      //   if (count === 2) {
+      //   console.log(i);
+      // }
+
+      // //7. 输出1-100的所有奇数
+      // for (var i = 1; i <= 100; i++) {
+      //   if (i % 2 !== 0) {
       //     console.log(i);
       //   }
       // }
 
-      //   13. 求1-100之间的所有素数之和
-      var sum = 0;
+      // //8. 求1-100之间所有数字之和
+      // var sum = 0;
+      // for (var i = 1; i <= 100; i++) {
+      //   sum += i;
+      // }
+      // console.log(sum);
+
+      // // 9. 求1-100之间所有奇数之和
+      // var sum = 0;
+      // for (var i = 1; i <= 100; i += 2) {
+      //   sum += i;
+      // }
+      // console.log(sum);
+
+      // //10. 求1-10之间所有数字的积
+      // var sum = 1;
+      // for (var i = 1; i <= 10; i++) {
+      //   sum *= i;
+      // }
+      // console.log(sum);
+
+      // //11. 判断数字233是不是素数。
+      // // 素数是指一个数（大于1）仅能被1和自身整除
+      // var num = 233;
+      // var isFind = false;
+      // for (var i = 2; i <= num - 1; i++) {
+      //   if (num % i === 0) {
+      //     isFind = true;
+      //     break;
+      //   }
+      // }
+      // if (isFind || num <= 1) {
+      //   console.log(`${num}不是素数`);
+      // } else {
+      //   console.log(`${num}是素数`);
+      // }
+
+      // //12. 输出1-100中的所有素数
+      // for (var i = 1; i <= 100; i++) {
+      //   //判断i是不是素数
+      //   var isFind = false;
+      //   for (var j = 2; j <= i - 1; j++) {
+      //     if (i % j === 0) {
+      //       isFind = true;
+      //       break;
+      //     }
+      //   }
+      //   if (!isFind && i !== 1) {
+      //     console.log(i);
+      //   }
+      // }
+
+      //13. 求1-100之间的所有素数之和
+      var sum = 0; //记录和
       for (var i = 1; i <= 100; i++) {
-        var count = 0;
-        for (var j = 1; j <= i; j++) {
+        //判断i是不是素数
+        var isFind = false;
+        for (var j = 2; j <= i - 1; j++) {
           if (i % j === 0) {
-            count++;
+            isFind = true;
+            break;
           }
         }
-        if (count === 2) {
+        if (!isFind && i !== 1) {
           sum += i;
         }
       }
