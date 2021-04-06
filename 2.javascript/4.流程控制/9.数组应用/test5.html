@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr1 = [34, 5, 2, 1];
+      //期望在arr1数组的末尾再拼接一个数组arr2
+      var arr2 = ["abc", "bcd"];
+      //数组方法：arr1.concat(arr2)，将数组2的所有元素拼接到数组1的末尾，产生一个新数组返回，该函数不会对原数组造成任何影响
+      var newArr = arr1.concat(arr2);
+      console.log(newArr);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        a: 1,
+        b: 2,
+        c: "dwefg",
+      };
+      console.log("a" in obj); //必须是字符串 in obj
+
+      var arr = [23, 4, 67, 99];
+      console.log(arr);
+      console.log(23 in arr); //false，in关键字判断的是属性名是否在对象中
+    </script>
+  </body>
+</html>

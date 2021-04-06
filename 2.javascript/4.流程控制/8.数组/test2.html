@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        0: "sfgtbsve",
+        1: "dfwegtgbvdvfbg",
+        length: 2,
+      };
+      var arr = [2, 3];
+      console.log(obj, obj["0"]); //0不是合法的标识符，应该用属性表达式来访问。
+      console.log(obj[0]); //js会自动将0转化为"0"
+      console.log(arr);
+    </script>
+  </body>
+</html>

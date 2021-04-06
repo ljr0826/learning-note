@@ -9,10 +9,10 @@
     <script>
       //求一个数组中最大的一个数据
       var nums = [2, 4, 56, 78, 796, 4432, 2];
-      var max = nums[0];
-      for (var i = 1; i <= nums.length - 1; i++) {
-        if (nums[i] > max) {
-          max = nums[i];
+      var max;
+      for (var index in nums) {
+        if (!max || nums[index] > max) {
+          max = nums[index];
         }
       }
       console.log(max);

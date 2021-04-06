@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 6. 定义一个用户数组，数组的每一项是一个用户对象，
+      //用户对象中包含账号和密码，随意初始化一些对象放入数组中。
+      //然后提示用户输入账号和密码，判断是否登录成功
+      // var userArr = [
+      //   { loginId: "YU", loginPwd: "999999" },
+      //   { loginId: "林子闳", loginPwd: "999999" },
+      //   { loginId: "杨宇腾", loginPwd: "999999" },
+      // ];
+      // var loginId = prompt("请输入账号");
+      // var loginPwd = prompt("请输入密码");
+      // //查找问题
+      // var isLogin = false;
+      // for (var prop in userArr) {
+      //   if (
+      //     userArr[prop].loginId === loginId &&
+      //     userArr[prop].loginPwd === loginPwd
+      //   ) {
+      //     isLogin = true;
+      //     break;
+      //   }
+      // }
+      // if (isLogin) {
+      //   console.log("登录成功");
+      // } else {
+      //   console.log("登录失败");
+      // }
+
+      // // userArr.indexOf({ loginId, loginPwd }); //这样是找不到的，因为{}不同
+
+      //   //7. 初始化一个 5\*5 的二维数组，数组每一项是一个数字，计算对角线之和
+      var arr = [
+        [2, 3, 4, 5, 7],
+        [7, 8, 9, 0, 4],
+        [2, 3, 4, 1, 6],
+        [4, 6, 8, 2, 0],
+        [1, 2, 6, 7, 9],
+      ];
+      var sum = 0;
+      //   console.log(arr.length);
+      for (var i = 0; i < arr.length; i++) {
+        // sum += arr[i][i];
+        // sum += arr[i][arr.length - 1 - i];
+        // if (arr.length - 1 - i === i) {
+        //   sum -= arr[i][arr.length - 1 - i];
+        // }
+        for (var j = 0; j < arr[i].length; j++) {
+          if (i === j || i + j === arr.length - 1) {
+            sum += arr[i][j];
+          }
+        }
+      }
+      console.log(sum);
+    </script>
+  </body>
+</html>

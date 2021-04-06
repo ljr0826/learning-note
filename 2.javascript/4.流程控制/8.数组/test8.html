@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //创建一个长度为100的数组，给数组的每一项赋值为"abc"
+      var arr = new Array(100);
+      //   for (var i = 0; i < arr.length; i++) {
+      //     arr[i] = "abc";
+      //   } //使用for-in循环实现不了这个效果，因为new Array(100)创建的是稀松数组
+
+      //用arr.fill()方法也能实现这个效果。将数组的所有项填充为指定的数据
+      arr.fill("abc", 3, 5);
+      console.log(arr);
+    </script>
+  </body>
+</html>
