@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   //对一个数组求和
+      //   function sumOfArray(arr) {
+      //     var sum = 0;
+      //     for (var index in arr) {
+      //       sum += arr[index];
+      //     }
+      //     return sum;
+      //   }
+      //   var num1 = [234, 65, 56, 7];
+      //   var num2 = [234, 45665, 7];
+
+      //   console.log(sumOfArray(num1) + sumOfArray(num2));
+
+      //判断一个数是不是素数
+      function isPrime(n) {
+        if (n < 2) {
+          return false;
+        }
+        // isFind = false;
+        for (var i = 2; i < n; i++) {
+          if (n % i === 0) {
+            // isFind = true;
+            // break;
+            return false;
+          }
+        }
+        return true;
+        // if (isFind || n < 2) {
+        //   return false;
+        // } else {
+        //   return true;
+        // }
+      }
+
+      var nums = [32, 65, 67, 2, 2, 34, 5, 3, 11, 6, 67];
+      for (var index in nums) {
+        if (isPrime(nums[index])) {
+          console.log(nums[index]);
+        }
+      }
+    </script>
+  </body>
+</html>

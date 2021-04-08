@@ -1,21 +1,21 @@
 /**
- * 该函数用于判断某个数是不是奇数
- * @param {number} n 数字
- * @reutrns {number} 是否是奇数
+ * 判断某个数是不是奇数
+ * @param {number} n 要判断的数
+ * @returns {boolean}
  */
 function isOdd(n) {
-  return n % 2 === 1;
+  return n % 2 !== 0;
 }
 /**
- * 该函数用于判断某个数是不是素数
- * @param {number} n 数字
- * @returns {boolean} 是否是素数
+ * 判断某个数是不是素数
+ * @param {number} n 要判断的数
+ * @returns {boolean}
  */
 function isPrime(n) {
   if (n < 2) {
     return false;
   }
-  for (var i = 2; i <= n - 1; i++) {
+  for (var i = 2; i < n; i++) {
     if (n % i === 0) {
       return false;
     }
@@ -23,9 +23,9 @@ function isPrime(n) {
   return true;
 }
 /**
- * 该函数用于对数组求和
- * @param {object} arr 数组
- * @returns {number} 数组的和
+ * 对数组求和
+ * @param {object} arr 要求和的数组
+ * @returns {number}
  */
 function sumOfArray(arr) {
   var sum = 0;
@@ -35,13 +35,16 @@ function sumOfArray(arr) {
   return sum;
 }
 /**
- * 该函数用于得到数组中的最大值
- * @param {object} arr 数组
- * @returns {number} 数组中的最大值
+ * 得到数组中的最大值
+ * @param {object} arr 要判断的数组，如果数组长度为0，返回undefined
+ * @return {number}
  */
 function maxOfArray(arr) {
+  if (arr.length === 0) {
+    return;
+  }
   var max;
-  for (var index of arr) {
+  for (var index in arr) {
     if (!max || arr[index] > max) {
       max = arr[index];
     }
@@ -49,13 +52,16 @@ function maxOfArray(arr) {
   return max;
 }
 /**
- * 该函数用于得到数组中的最小值
- * @param {object} arr 数组
- * @returns {number} 数组中的最小值
+ * 得到数组中的最小值
+ * @param {object} arr 要判断的数组
+ * @returns {number}
  */
 function minOfArray(arr) {
+  if (arr.length === 0) {
+    return;
+  }
   var min;
-  for (var index of arr) {
+  for (var index in arr) {
     if (!min || arr[index] < min) {
       min = arr[index];
     }
@@ -63,36 +69,39 @@ function minOfArray(arr) {
   return min;
 }
 /**
- * 该函数用于判断数组是否是稀松数组
- * @param {object} arr 数组
- * @returns {boolean} 是否是稀松数组
+ * 判断数组是否是稀松数组
+ * @param {object} arr 要判断的数组
+ * @returns {boolean}
  */
 function hasEmptyInArray(arr) {
-  for (var i = 0; i <= arr.length - 1; i++) {
-    if (typeof arr[i] === "undefined") {
-      //袁老师思路
-      //if(!(i in arr)){
+  //稀松数组的特点：下标是连续的
+  for (var i = 0; i < arr.length; i++) {
+    if (!(i in arr)) {
       return true;
     }
+    // if (arr[i] === undefined) {
+    //   return true;
+    // }
   }
   return false;
 }
 /**
- * 判断该年是否是闰年
- * @param {string} year 某年
- * @returns {boolean} 是否是闰年
+ * 判断某年是否是闰年
+ * @param {number} year 要判断的年份
+ * @returns {boolean}
  */
-function isLeap(year) {
+function isLeep(year) {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 /**
  * 得到某年某月的天数
- * @param {string} year 某年
- * @param {number} month 某月
+ * @param {number} year 要判断的年份
+ * @param {number} month 要判断的月份
+ * @return {number}
  */
 function getDays(year, month) {
   if (month === 2) {
-    return isLeap(year) ? 29 : 28;
+    return isLeep(year) ? 29 : 28;
   } else if ((month < 8 && isOdd(month)) || (month >= 8 && !isOdd(month))) {
     return 31;
   } else {
@@ -101,27 +110,25 @@ function getDays(year, month) {
 }
 /**
  * 得到某个数字数组中出现次数最多的数字和频率
- * @param {object} arr 数字数组
+ * @param {object} arr 要判断的数组
+ * @return {object}
  */
 function getTopFreqInArray(arr) {
-  var nums = {};
-  for (var prop in arr) {
-    var index = arr[prop];
-    if (!nums[index]) {
-      nums[index] = 1;
+  var obj = {};
+  for (var index in arr) {
+    if (!obj[arr[index]]) {
+      obj[arr[index]] = 1;
     } else {
-      nums[index]++;
+      obj[arr[index]]++;
     }
   }
-  var result = undefined;
-  for (var index in nums) {
-    if (!result || nums[index] > resulttopFreq) {
-      result = {
-        topFreq: +nums[index],
-        topMax: index,
-      };
+  console.log(obj);
+  var result = {};
+  for (var prop in obj) {
+    if (!result.topFreq || result.topFreq < obj[prop]) {
+      result.topFreq = obj[prop];
+      result.topNum = +prop;
     }
   }
   return result;
-  //函数的返回值只能有一个
 }

@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <script src="../../common/myFunction.js"></script>
-</body>
+  </head>
+  <body>
+    <script src="../../common/myFunction.js">
+      console.log(isOdd(2));//没有用，会被替换成src的内容
+    </script>
+    <script>
+      //   console.log(isOdd(2));
+      //   console.log(isOdd(3));
+      //   console.log(isPrime(13));
+      //   console.log(isPrime(9));
+      //   console.log(isPrime(1));
+      //   console.log(isPrime(2));
+      //   console.log(sumOfArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+      //   console.log(maxOfArray([23, 435, 1, 234, 5345, 99]));
+      //   console.log(maxOfArray([]));
+
+      //   console.log(minOfArray([23, 435, 1, 234, 5345, 99]));
+      //   console.log(hasEmptyInArray([23, 435, 1, 234, 5345, 99]));
+      //   console.log(hasEmptyInArray([23, 435, 1, , , 234, 5345, 99]));
+      //   console.log(isLeep(2010));
+      //   console.log(getDays(2021, 2));
+      arr1 = [1, 1, 1, 1, 13, 2, 4, 34, 2, 23, 23, 43, 23, 34, 4, 2, 23, 23];
+      console.log(getTopFreqInArray(arr1));
+    </script>
+  </body>
 </html>
