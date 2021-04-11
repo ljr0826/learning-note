@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //3. 写一个函数，按照指定的条件对某个数组进行筛选
+
+      function filter(arr, callback) {
+        var newArr = [];
+        for (var index in arr) {
+          if (callback(arr[index])) {
+            newArr.push(arr[index]);
+          }
+        }
+        return newArr;
+      }
+      var nums = [2, 43, 5, 46, 5, 33, 2, 4, 324, 35, 4, 6, 57, 4, 3];
+      console.log(
+        filter(nums, function (item) {
+          if (item < 2) {
+            return false;
+          }
+          for (var i = 2; i < item; i++) {
+            if (item % i === 0) {
+              return false;
+            }
+          }
+          return true;
+        })
+      );
+      // function filter(arr, callback) {
+      //   return callback(arr);
+      // }
+      // function isOdd(arr) {
+      //   var result = [];
+      //   for (var prop in arr) {
+      //     if (arr[prop] % 2 !== 0) {
+      //       result.push(arr[prop]);
+      //     }
+      //   }
+      //   return result;
+      // }
+      // nums = [1, 2, 33, 4, 44, 2, 3, 23, 12, 3, 12, 32, 8];
+      // console.log(filter(nums, isOdd));
+    </script>
+  </body>
+</html>

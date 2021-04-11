@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function test() {
+        console.log(this);
+      }
+      var b = test;
+      var arr = [b, test];
+      arr[0](); //this指向arr这个对象
+
+      var obj = {
+        a: function () {
+          console.log(this);
+        },
+        b: {
+          x: 23,
+          func: function () {
+            console.log(this);
+          },
+        },
+      };
+      obj.a(); //指向obj
+      var b = obj.a;
+      b(); //指向window对象
+      obj.b.func(); //指向b
+      //this关键字在函数作用域中一定是在调用的时候才能确定指向
+    </script>
+  </body>
+</html>

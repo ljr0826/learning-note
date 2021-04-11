@@ -7,10 +7,16 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../common/BetterFunction.js"></script>
     <script>
-      console.log(MyFunctions.isOdd(2));
-      console.log(MyFunctions.getDays(2020, 2));
+      var obj = {
+        a: "fieo",
+        b: 234,
+        c: function () {
+          console.log(232);
+        },
+      };
+      console.log(obj.c, typeof obj.c);
+      obj.c();
     </script>
   </body>
 </html>

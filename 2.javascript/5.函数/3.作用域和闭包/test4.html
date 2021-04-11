@@ -7,10 +7,13 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../common/BetterFunction.js"></script>
     <script>
-      console.log(MyFunctions.isOdd(2));
-      console.log(MyFunctions.getDays(2020, 2));
+      (function () {
+        //非常复杂的功能，需要声明函数完成功能
+        function helper1() {} //若这个函数只为一个函数服务，以可将其放置在函数内部
+      })();
+
+      function helper2() {}
     </script>
   </body>
 </html>

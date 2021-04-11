@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //4. 写一个函数，按照指定的条件，得到某个数组中第一个满足条件的元素
+
+      function find(arr, callback) {
+        for (var index in arr) {
+          if (callback(arr[index])) {
+            return arr[index];
+          }
+        }
+      }
+      var nums = [24, 43, 6, 57, 67, 9, 7, 545, 32, 20];
+      console.log(
+        find(nums, function (item) {
+          return item % 2 !== 0;
+        })
+      );
+    </script>
+  </body>
+</html>

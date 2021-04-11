@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //2. ！！！写一个函数，为数组排序（用冒泡排序原理）
+
+      // 要考虑到这个数组的所有可能，即数组内容是未知的
+
+      function sort(arr, callback) {
+        if (callback === undefined) {
+          callback = function (a, b) {
+            if (a > b) {
+              return 1;
+            } else if (a === b) {
+              return 0;
+            } else {
+              return -1;
+            }
+          };
+        }
+        for (var i = 1; i < arr.length; i++) {
+          for (var j = 0; j < arr.length - i; j++) {
+            if (callback(arr[j], arr[j + 1]) > 0) {
+              var temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+        return arr;
+      }
+      var users = [
+        { name: "Bb", age: 22, weight: 67 },
+        { name: "Aa", age: 13, weight: 45 },
+        { name: "Cc", age: 23, weight: 46 },
+      ];
+      var arrs = [2, 432, 4, 2, 97, 3, 24, 3, 534, 2, 43, 2, 23, 12];
+      console.log(
+        sort(users, function (a, b) {
+          return a.weight - b.weight;
+        })
+      );
+      console.log(sort(arrs));
+    </script>
+  </body>
+</html>

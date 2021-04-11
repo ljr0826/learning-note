@@ -7,10 +7,18 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../common/BetterFunction.js"></script>
     <script>
-      console.log(MyFunctions.isOdd(2));
-      console.log(MyFunctions.getDays(2020, 2));
+      var g = "Abc";
+      function A() {
+        var a = 234;
+        console.log(a, g);
+        function B() {
+          var b = 567;
+          console.log(b, a, g);
+        }
+        B();
+      }
+      A();
     </script>
   </body>
 </html>

@@ -7,10 +7,17 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../common/BetterFunction.js"></script>
     <script>
-      console.log(MyFunctions.isOdd(2));
-      console.log(MyFunctions.getDays(2020, 2));
+      var arr = [
+        34,
+        32,
+        "fe",
+        {},
+        function () {
+          console.log("数组中的函数");
+        },
+      ];
+      arr[arr.length - 1]();
     </script>
   </body>
 </html>

@@ -7,10 +7,15 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../common/BetterFunction.js"></script>
     <script>
-      console.log(MyFunctions.isOdd(2));
-      console.log(MyFunctions.getDays(2020, 2));
+      var a = 234;
+      var b = "fwefw"; //处于全局作用域下
+
+      function test() {
+        var c = 231;
+        var d = "fsef"; //处于函数作用域下
+      }
+      test();
     </script>
   </body>
 </html>

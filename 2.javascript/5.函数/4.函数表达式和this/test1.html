@@ -7,10 +7,15 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../common/BetterFunction.js"></script>
     <script>
-      console.log(MyFunctions.isOdd(2));
-      console.log(MyFunctions.getDays(2020, 2));
+      a();
+      //声明一个函数，将其赋值给变量a
+      //   var a = function () {
+      //     console.log("sfeij");
+      //   }; //函数表达式，不存在变量提升
+      function a() {
+        console.log("sfeij");
+      } //函数字面量，存在变量提升
     </script>
   </body>
 </html>
