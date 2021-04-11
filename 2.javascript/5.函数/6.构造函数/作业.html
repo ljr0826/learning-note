@@ -8,79 +8,62 @@
   <body>
     <script>
       //英雄打怪兽的小游戏
-      //英雄和怪兽都具有攻击力、防御力、生命值、暴击几率（暴击时伤害翻倍）
+      //英雄和怪兽都具有攻击力、防御力、生命值、暴击几率（暴击时攻击伤害翻倍）
       //攻击伤害 = 攻击力 - 防御力
-      //伤害最少为 1.
+      //攻击伤害最少为 1.
       //创建一个英雄和一个怪兽，让它们互相攻击，直到一方死亡，输出整个攻击过程。
-      function Charactor(name, attack, defense, hp, critRate) {
-        (this.name = name),
-          (this.attack = attack),
-          (this.defense = defense),
-          (this.hp = hp),
-          (this.critRate = critRate),
-          //函数===打印信息
-          (this.print = function () {
-            console.log(
-              `玩家：${this.name},攻击力${this.attack}、防御力${this.defense}、生命值${this.hp}、暴击几率${this.critRate}`
-            );
-          }),
-          /**
-           * 攻击，返回对方是否死亡
-           * @param {*} ctor 攻击对象
-           */
-          (this.hit = function (ctor) {
-            var damage = this.attack - ctor.defense;
-            //判断是否有暴击
-            var isCrit = false;
-            var rat = Math.random();
-            if (this.critRate > rat) {
-              isCrit = true;
-              damage *= 2;
-            }
-            if (damage < 1) {
-              damage = 1;
-            }
-            ctor.hp -= damage;
-            if (ctor.hp < 0) {
-              ctor.hp = 0;
-            }
-            console.log(
-              `${isCrit ? "暴击！" : ""}【${this.name}】对【${
-                ctor.name
-              }】造成【${damage}点伤害】，【${ctor.name}】剩余血量【${
-                ctor.hp
-              }】`
-            );
-            //对方是否死亡
-            return ctor.hp === 0;
-          });
+      function Character(name, attack, defense, hp, critRate) {
+        (this.name = name), (this.attack = attack);
+        this.defense = defense;
+        this.hp = hp;
+        this.critRate = critRate;
+        this.print = function () {
+          console.log(
+            `${this.name}生命值为：${this.hp} 攻击力：${this.attack} 防御力：${this.defense} 暴击几率：${this.critRate}`
+          );
+        };
+        this.hit = function (ctor) {
+          var damage = this.attack - ctor.defense;
+          var rate = Math.random();
+          var isCrit = false; //是否暴击
+          if (rate <= this.critRate) {
+            isCrit = true;
+            damage *= 2;
+          }
+          if (damage < 1) {
+            damage = 1;
+          }
+          ctor.hp -= damage;
+          if (ctor.hp < 0) {
+            //血量至少为0
+            ctor.hp = 0;
+          }
+          console.log(
+            `${isCrit ? "暴击！" : ""} 【${this.name}】进攻【${
+              ctor.name
+            }】，造成【${damage}】点伤害，对方当前血量为：【${ctor.hp}】`
+          );
+          //对方是否死亡
+          return ctor.hp === 0;
+        };
       }
-      var hero = new Charactor("奥特曼", 100, 20, 500, 0.3);
+      var hero = new Character("英雄", 100, 20, 500, 0.3);
       hero.print();
       console.log("VS");
-      var monster = new Charactor("怪兽", 120, 40, 400, 0.05);
+      var monster = new Character("怪兽", 120, 40, 300, 0.05);
       monster.print();
+
       while (true) {
         if (hero.hit(monster)) {
-          console.log("游戏结束");
           break;
         }
         if (monster.hit(hero)) {
-          console.log("游戏结束");
           break;
         }
       }
-      //   function begin(obj1, obj2) {
-      //     //i代表第几回合
-      //     for (var i = 1; i <= hp; i++) {
-      //       obj1.print();
-      //       obj2.print();
-      //       if (obj1 <= 0 || obj2 <= 0) {
-      //         console.log("&&&游戏结束啦");
-      //       }
-      //     }
-      //   }
-      //   begin(hero, monster);
+      console.log("======游戏结束======");
+      hero.print();
+      monster.print();
     </script>
   </body>
 </html>

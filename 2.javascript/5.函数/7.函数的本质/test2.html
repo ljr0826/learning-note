@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function User(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullName = this.firstName + "" + this.lastName;
+      }
+      console.log(new User("Y", "U"));
+
+      // new Function --->  函数
+      // new User ---> 普通对象
+
+      //函数就是对象，没有特别的地方，只不过创建函数的构造函数比较特殊，是Function
+    </script>
+  </body>
+</html>

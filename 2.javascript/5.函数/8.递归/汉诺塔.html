@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      //还是不懂？
-      //形参和实参之间的对应？
+      //有四个参数，前三个参数为柱子的编号，第四个参数表示起始时第一个柱子上的数量
       function hannuo(no1, no2, no3, n) {
         if (n === 1) {
           console.log(`${no1}->${no3}`);
@@ -18,8 +18,7 @@
           hannuo(no2, no1, no3, n - 1);
         }
       }
-
-      hannuo("A", "B", "C", 3);
+      hannuo("A", "B", "C", 2);
     </script>
   </body>
 </html>

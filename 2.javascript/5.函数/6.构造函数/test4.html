@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function User(name, age, gender) {
+        var temp = function () {
+          console.log(
+            `我叫${this.name}，年龄${this.age}，性别是：${this.gender}`
+          );
+        };
+        if (new.target === User) {
+          //正常的构造函数调用
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+          this.sayHello = temp;
+        } else {
+          return {
+            name,
+            age,
+            gender,
+            sayHello: temp,
+          };
+        }
+      }
+      var u1 = User("张三", 18, "男");
+      console.log(u1);
+      var u2 = new User("李四", 20, "男");
+      console.log(u2);
+    </script>
+  </body>
+</html>

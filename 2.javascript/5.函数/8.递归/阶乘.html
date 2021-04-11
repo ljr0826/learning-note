@@ -13,13 +13,20 @@
       //f(2) = 2*f(1)
       //f(3) = 3*f(2)
       //n的阶乘 n!
-      function f(n) {
+      // function f(n) {
+      //   if (n === 1) {
+      //     return 1;
+      //   }
+      //   return n * f(n - 1);
+      // }
+      function f(n, result) {
         if (n === 1) {
-          return 1;
+          return result;
+        } else {
+          return f(n - 1, n * result);
         }
-        return n * f(n - 1);
       }
-      console.log(f(5));
+      console.log(f(5, 1));
     </script>
   </body>
 </html>
