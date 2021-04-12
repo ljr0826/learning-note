@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        x: 123,
+        y: "dewa",
+      };
+      obj.toString = function () {
+        return this.x + "," + this.y;
+      };
+      console.log(obj.toString());
+
+      var arr = [23, 4, 3, 546, 754];
+      console.log(arr.toString());
+
+      var num = new Number(12314);
+      console.log(num.toString());
+
+      var bool = new Boolean(true);
+      console.log(bool.toString());
+    </script>
+  </body>
+</html>

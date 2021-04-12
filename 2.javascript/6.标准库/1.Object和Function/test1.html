@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        x: 123,
+        y: "fse",
+        z: true,
+      };
+      //   var arr = Object.keys(obj); //key表示键，返回值为对象可枚举的属性名组成的字符串数组
+      //   var arr = Object.values(obj);
+      var arr = Object.entries(obj);
+      console.log(arr);
+    </script>
+  </body>
+</html>

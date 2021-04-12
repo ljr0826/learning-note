@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //目的：将函数内部的arguments转化为真数组
+      function test() {
+        console.log(arguments);
+        var newArr = [].slice.call(arguments, 0);
+        console.log(newArr);
+      }
+      test(12, 33, 534, 65547, 54, 63, 5, 24);
+
+      function cc(a, b, c, d, v) {
+        console.log(this);
+      }
+      console.log(cc.length);
+    </script>
+  </body>
+</html>

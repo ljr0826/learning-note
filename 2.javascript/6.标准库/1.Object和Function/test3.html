@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        x: 13,
+        y: 1231,
+        // toString: function () {
+        //   return "hello";
+        // },
+        valueOf: function () {
+          return 123;
+        },
+      };
+      //   console.log(obj.valueOf() === obj); //默认的返回值为函数本身
+
+      console.log(obj + 1); //先调用obj.valueOf，返回结果调用toString方法，得到"[object Object]"
+      console.log(obj.valueOf().toString() + 1);
+      //如果调用了valueOf已经得到了原始类型，就不会再调用toString方法了
+    </script>
+  </body>
+</html>

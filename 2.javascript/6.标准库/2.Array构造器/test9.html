@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [55, 66, 77, 88, 33, 44];
+      //得到一个新数组，新数组的每一项是一个对象，
+
+      //对象中包含两个属性：name、score
+      var newArr = arr
+        .map(function (item, index) {
+          return { name: `学生${index + 1}`, score: item };
+        })
+        .map(function (item) {
+          return item.name;
+        });
+      console.log(newArr);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [67, 88, 99, 76, 54];
+      //判断是否所有同学都及格
+      var every = arr.every(function (item, index, arr) {
+        return item >= 60;
+      }); //若所有同学都及格，result为true，否则为false
+      console.log(every);
+
+      //判断是否至少有一个同学及格
+      var some = arr.some(function (item, index, arr) {
+        return item >= 60;
+      });
+      console.log(some);
+    </script>
+  </body>
+</html>

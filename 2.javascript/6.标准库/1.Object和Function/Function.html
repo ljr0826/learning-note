@@ -2,53 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      //apply、call方法
-
-      function sayHello(a, b) {
-        console.log(`${this.name}, 今年${this.age}岁`);
-        console.log(a, b);
-      }
-      var user1 = {
-        name: "奥特曼",
-        age: 44,
-        // sayHello() {
-        //   console.log(`${this.name}, 今年${this.age}岁`);
-        // },
-      };
-      var user2 = {
-        name: "小怪兽",
-        age: 13,
-      };
-      var user3 = {
-        name: "女妖精",
-        age: 23,
-      };
-      //   user1.sayHello();
-      //若user1中没有sayhello方法，可以使用call或apply调用函数，指定函数中的this指向
-      sayHello.apply(user1, [4, 5]); //第一个参数是指：执行sayHello这个函数内部的this指向谁
-      sayHello.call(user3, 3, 2);
-      var newFunc = sayHello.bind(user2, 1, 2);
-      newFunc();
-      newFunc();
-      newFunc();
-      newFunc();
-    </script>
-    <script>
-      //   //slice方法
-      //   var newArr = [1, 4, 3, 6475, 7, 64, 84, 4, 5, 3, 5, 4].slice();
-      //   console.log(newArr);
-      function test() {
+      function test(a, b, c) {
         console.log(arguments);
-        //将arguments转化为真数组
-        var newArr = [].slice.call(arguments, 3, 5);
-        console.log(newArr);
+        var trueArr = [].slice.call(arguments, 0);
+        console.log(trueArr);
       }
-      test(1, 4, 3, 6475, 7, 64, 84, 4, 5, 3, 5, 4);
+      test(1, 2, 3, 3, 43, 24, 9);
+      console.log(test.length); //test函数的形参数量
+
+      function user(name, age) {
+        console.log(`${this.name}今年${this.age}岁了`);
+        console.log(name, age);
+      }
+      YU = {
+        name: "YU",
+        age: 26,
+      };
+      user();
+      user.call(YU, "YU", 26);
+      user.apply(YU, ["YU", 26]);
+      var func = user.bind(YU, "YU", 26);
+      func();
     </script>
   </body>
 </html>

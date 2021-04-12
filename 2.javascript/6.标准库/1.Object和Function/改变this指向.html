@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sayHello(a, b) {
+        console.log(this.name, this.age);
+        console.log(a, b);
+      }
+      var user1 = {
+        name: "23fse",
+        age: 13,
+      };
+      var user2 = {
+        name: "fe",
+        age: 98,
+      };
+      sayHello(); //直接调用this指向window
+      sayHello.apply(user1, [1, 2]); //第一个参数表示执行这个函数，函数里面的this指向第一个参数
+      sayHello.call(user2, 3, 4); //即有两个作用1. 调用函数 2. 指定函数内部this的指向
+      var newFunc = sayHello.bind(user2, 3, 4); //将函数里的this固定指向user2，但是不会调用函数
+      newFunc();
+    </script>
+  </body>
+</html>
