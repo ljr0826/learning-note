@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //2. 给定用户的生日（年、月、日），计算该用户的年龄
+      //考虑下闰年2月29号出生的同学
+      function getAge(year, month, day) {
+        var now = new Date(); //得到当前日期
+        var age = now.getFullYear() - year;
+        if (
+          now.getMonth() + 1 < month ||
+          (now.getMonth() + 1 === month && now.getDate() < day)
+        ) {
+          age--;
+        }
+        return age;
+      }
+      console.log(getAge(2000, 4, 15));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //获取当前月份多少天的巧妙方法：
+      var d = new Date();
+      var year = d.getFullYear();
+      var month = d.getMonth();
+      var days = new Date(year, month + 1, 0).getDate();
+      console.log(days);
+    </script>
+  </body>
+</html>

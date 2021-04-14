@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../common/BetterFunction.js"></script>
+    <script>
+      // 4. 将字符串按照字符编码的顺序重新升序排序
+      // 如果是降序?
+
+      //数组的实例方法sort就是干这个事的
+      var str = "UnknownsufferinodBuddha";
+      var Upresult = str.split("").sort().join(""); //升序
+      var Downresult = str.split("").sort().reverse().join(""); //降序
+      console.log(Upresult);
+      console.log(Downresult);
+    </script>
+  </body>
+</html>

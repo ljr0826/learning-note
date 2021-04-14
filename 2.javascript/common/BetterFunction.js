@@ -114,25 +114,24 @@ var MyFunctions = {
     }
   },
   /**
-   * 得到某个数字数组中出现次数最多的数字和频率
+   * 得到某个数字数组中出现次数最多的数字/字符串和频率
    * @param {object} arr 要判断的数组
    * @return {object}
    */
   getTopFreqInArray: function (arr) {
-    var obj = {};
+    var record = {}; //记录出现的数字及其频率
     for (var index in arr) {
-      if (!obj[arr[index]]) {
-        obj[arr[index]] = 1;
+      if (!record[arr[index]]) {
+        record[arr[index]] = 1;
       } else {
-        obj[arr[index]]++;
+        record[arr[index]]++;
       }
     }
-    console.log(obj);
     var result = {};
-    for (var prop in obj) {
-      if (!result.topFreq || result.topFreq < obj[prop]) {
-        result.topFreq = obj[prop];
-        result.topNum = +prop;
+    for (var prop in record) {
+      if (!result.topFreq || result.topFreq < record[prop]) {
+        result.topFreq = record[prop];
+        result.topNum = prop;
       }
     }
     return result;
@@ -217,5 +216,47 @@ var MyFunctions = {
       }
     }
     return count;
+  },
+  /**
+   * 得到一个最小值到最大值之间的随机整数
+   * @param {*} min 最小值
+   * @param {*} max 最大值 （取不到）
+   * Math.random取值范围是0~1，1取不到
+   * 向下取整，Math对象提供的函数，Math.floor
+   */
+  getRandom: function (min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  },
+  /**
+   * 根据出生年月日，计算年龄。照顾到闰年2月29号出生的人
+   * @param {*} year
+   * @param {*} month
+   * @param {*} day
+   */
+  getAge: function (year, month, day) {
+    var now = new Date(); //得到当前日期
+    var age = now.getFullYear() - year;
+    if (
+      now.getMonth() < month - 1 ||
+      (now.getMonth() === month - 1 && now.getDate() < day)
+    ) {
+      age--;
+    }
+    return age;
+  },
+  /**
+   * 根据日期得到一个友好的日期字符串格式
+   * @param {*} d
+   * @returns
+   */
+  getDateString: function getDateString(d) {
+    var year = d.getFullYear().toString().padStart(4, "0");
+    var month = (d.getMonth() + 1).toString().padStart(2, "0");
+    var date = d.getDate().toString().padStart(2, "0");
+    var hour = d.getHours().toString().padStart(2, "0");
+    var minute = d.getMinutes().toString().padStart(2, "0");
+    var second = d.getSeconds().toString().padStart(2, "0");
+
+    return `${year}-${month}-${date}  ${hour}:${minute}:${second}`;
   },
 };

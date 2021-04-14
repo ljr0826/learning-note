@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../common/BetterFunction.js"></script>
+    <script>
+      //3. 书写一个函数，产生一个指定长度的随机字符串，字符串中只能包含大写字母65-91、小写字母97-123、数字48-58
+      //String.fromCharCode()
+      function getRandomString(len) {
+        var str = "";
+        for (var i = 0; i < len; i++) {
+          var math = Math.random();
+          if (math > 0.66) {
+            str += String.fromCharCode(MyFunctions.getRandom(65, 91));
+          } else if (math < 0.33) {
+            str += String.fromCharCode(MyFunctions.getRandom(97, 123));
+          } else {
+            str += String.fromCharCode(MyFunctions.getRandom(48, 58));
+          }
+        }
+        return str;
+      }
+      //   function getRandom(min, max) {
+      //     return Math.floor(Math.random() * (max - min) + min);
+      //   }
+
+      console.log(getRandomString(3));
+      console.log(getRandomString(6));
+    </script>
+  </body>
+</html>

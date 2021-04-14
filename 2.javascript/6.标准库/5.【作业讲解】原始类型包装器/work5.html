@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../common/BetterFunction.js"></script>
+    <script>
+      // 5. 从一个标准的身份证号中取出用户的出生年月日和性别，保存到对象中
+      // 例如，"524713199703020014"
+      // 得到对象：
+      // birthYear: 1997
+      // birthMonth: 3
+      // birthDay: 2
+      // gender: "男" // 性别看倒数第二位，奇数为男，偶数为女
+
+      var str = "524713199312020024";
+      function getInfoFromPID(pid) {
+        return {
+          birthYear: Number.parseInt(pid.substr(6, 4)),
+          birthMonth: Number.parseInt(pid.substr(10, 2)),
+          birthDay: Number.parseInt(pid.substr(12, 2)),
+          gender: Number(pid.substr(-2, 1)) % 2 !== 0 ? "男" : "女",
+        };
+      }
+      console.log(getInfoFromPID(str));
+    </script>
+  </body>
+</html>

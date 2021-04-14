@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //要求写一个函数，实现：
+      //得到一个最小值到最大值之间的随机整数
+      //Math.random取值范围是0~1，1取不到
+      //向下取整更符合题意，使用Math对象提供的函数，Math.floor
+      function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+      console.log(getRandom(5, 8));
+      console.log(getRandom(-5, -3));
+    </script>
+  </body>
+</html>

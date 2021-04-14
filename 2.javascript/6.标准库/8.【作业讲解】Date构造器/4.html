@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //3. 根据系统当前的月份，输出这一个月每一天的星期
+      // 2019 年 6 月 1 日：星期六
+      // 2019 年 6 月 2 日：星期日
+      // .....
+      // 2019 年 6 月 30 日：星期日
+      function getWeek() {
+        //系统当前的月份为：
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth();
+        for (var i = 1; i <= getDays(year, month + 1); i++) {
+          var date = new Date(year, month, i);
+          var week = date.getDay();
+          switch (week) {
+            case 0:
+              week = "日";
+              break;
+            case 1:
+              week = "一";
+              break;
+            case 2:
+              week = "二";
+              break;
+            case 3:
+              week = "三";
+              break;
+            case 4:
+              week = "四";
+              break;
+            case 5:
+              week = "五";
+              break;
+            case 6:
+              week = "六";
+              break;
+          }
+          console.log(`${year}年${month + 1}月${i}日：星期${week}`);
+        }
+      }
+
+      //得到某年某月有多少天：
+      function getDays(year, month) {
+        if ((month < 8 && isOdd(month)) || (month >= 8 && !isOdd(month))) {
+          return 31;
+        } else if (isLeep(year) && month === 2) {
+          return 29;
+        } else if (month === 2) {
+          return 28;
+        } else {
+          return 30;
+        }
+      }
+
+      //判断一个数是否是奇数
+      function isOdd(n) {
+        return n % 2 !== 0;
+      }
+      //判断某年是否是闰年
+      function isLeep(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+      }
+
+      getWeek();
+
+      //获取当前月份的巧妙方法：
+      var d = new Date();
+      var year = d.getFullYear();
+      var month = d.getMonth();
+      var days = new Date(year, month + 1, 0).getDay();
+      console.log(days);
+    </script>
+  </body>
+</html>

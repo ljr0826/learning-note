@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../common/BetterFunction.js"></script>
+    <script>
+      //1. 找到某个字符串中出现最多的字符，打印字符和它出现的次数
+
+      var str = "fjsefwsfkfjsfadwafjsdkfj";
+      //将伪数组转化为真数组
+      var arr = Array.from(str);
+      var result = MyFunctions.getTopFreqInArray(arr);
+      console.log(result);
+
+      // var newObj = {};
+      // for (var i = 0; i < str.length; i++) {
+      //   if (!newObj[str[i]]) {
+      //     newObj[str[i]] = 1;
+      //   } else {
+      //     newObj[str[i]]++;
+      //   }
+      // }
+      // // console.log(new String(str));
+      // console.log(newObj);
+
+      // var result = {};
+      // for (var item in newObj) {
+      //   if (!result.topFreq || result.topFreq < newObj[item]) {
+      //     result.topFreq = newObj[item];
+      //     result.topNum = item;
+      //   }
+      // }
+      // console.log(result);
+    </script>
+  </body>
+</html>

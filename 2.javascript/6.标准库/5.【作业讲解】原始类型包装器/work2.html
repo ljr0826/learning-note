@@ -2,30 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      // 2. 将一个字符串中单词之间的空格去掉，然后把每个单词首字母转换成大写
-
+      //2. 将一个字符串中单词之间的空格去掉，然后把每个单词首字母转换成大写
       // 比如："hello world" -> "HelloWorld" 大驼峰命名法
 
-      //袁老师思路
+      var str = "Unknown   suffeRing dO  not belIeve in god Buddha";
+
+      // //方法一：
+      // function bigCamel(s) {
+      //   var result = "";
+      //   var empties = " \t\n\r"; //记录所有的空白字符
+      //   for (var i = 0; i < str.length; i++) {
+      //     if (!empties.includes(str[i])) {
+      //       //判断arr[i]是否是首字母（特征，关注前一个字符串）
+      //       if (empties.includes(str[i - 1]) || i === 0) {
+      //         result += str[i].toUpperCase();
+      //       } else {
+      //         result += str[i].toLowerCase();
+      //       }
+      //     }
+      //   }
+      //   return result;
+      // }
+
+      //方法二：
+
+      //考虑到连续空格的情况
       function bigCamel(s) {
-        //只考虑空格
         return s
           .split(" ")
-          .filter(function (item) {
-            return item.length > 0;
+          .filter((item) => item.length > 0)
+          .map((item) => {
+            return (
+              item.substr(0, 1).toUpperCase() + item.substr(1).toLowerCase()
+            );
           })
-          .map(function (item) {
-            return item[0].toUpperCase() + item.substring(1).toLowerCase();
-          })
-          .join("");
+          .join(""); //目前这种方法只考虑空格。学习了正则表达式后再考虑换行等情况
       }
 
-      console.log(bigCamel(s));
+      console.log(bigCamel(str));
     </script>
   </body>
 </html>
