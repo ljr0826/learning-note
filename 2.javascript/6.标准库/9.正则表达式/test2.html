@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var reg = /\d+/g;
+      var str = "1234abc111aaa";
+      //得到所有的匹配结果和位置
+      while ((n = reg.exec(str))) {
+        console.log(`匹配的结果${n[0]}，位置在${n.index}`);
+      }
+
+      //   //实用：判断匹配了多少处
+      //   var count = 0;
+      //   while (reg.test(str)) {
+      //     count++;
+      //   }
+      //   console.log(`匹配了${count}次`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //3. 过滤敏感词，有一个敏感词数组，需要将字符串中出现的敏感词替换为四个星号
+      var arr = ["共产党", "too young too simple", "营销"];
+      var str = "法轮大法好，共产党必胜，too young too simple，传统营销";
+      //思路：循环数组，创建规则对象，替换
+
+      var reg = new RegExp(`(${arr.join("|")})+`, "g"); //另一种思路，想要实现相邻词汇合并成一个****，思路：开启贪婪模式
+
+      arr.forEach((item) => {
+        str = str.replace(new RegExp(item, "g"), "****");
+      });
+      console.log(str);
+    </script>
+  </body>
+</html>

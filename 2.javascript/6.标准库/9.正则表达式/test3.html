@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var s = "hello world\tjavascript\nyes";
+      console.log(s);
+      //将单词首字母大写，去掉空白字符
+      var result = s.replace(/\s*\b[a-z]/g, function (match) {
+        console.log(match, match.length);
+        return match.toUpperCase().trimStart();
+      });
+      console.log(result);
+    </script>
+  </body>
+</html>

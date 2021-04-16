@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1. 书写一个正则表达式，去匹配一个字符串，得到匹配的次数，和匹配的结果
+      function getResult(str, reg) {
+        // var count = 0; //匹配的次数
+        // while ((result = reg.exec(str))) {
+        //   count++;
+        //   console.log(`匹配的结果为：${result[0]}`);
+        // }
+        // console.log(`综上：一共匹配了${count}次`);
+        var result = str.match(reg);
+        console.log(result);
+        return `匹配的结果为${result}，匹配的次数为${result.length}`;
+      }
+      var str = "abc1234abc111abc3";
+      var reg = /\d{1,4}/g;
+      console.log(getResult(str, reg));
+    </script>
+  </body>
+</html>

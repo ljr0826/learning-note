@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //2. 得到一个字符串中中文字符的数量
+      function getCount(str, reg) {
+        // var count = 0;
+        // while (reg.test(str)) {
+        //   count++;
+        // }
+        // return count;//方法一
+        return str.match(reg).length; //方法二
+      }
+      var str = "林子闳wbl杨宇腾";
+      var reg = /[\u4e00-\u9fa5]/g;
+
+      console.log(getCount(str, reg));
+    </script>
+  </body>
+</html>
