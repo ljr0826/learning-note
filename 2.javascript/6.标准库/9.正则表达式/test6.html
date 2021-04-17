@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var s = "67712165765643927673648";
+      //面试题： 要求将字符串从右向左每3位加上一个逗号
+      var reg = /(\d)(?=(\d{3})+$)/g;
+      // console.log(reg.exec(s));
+      s = s.replace(reg, "$1,");
+      console.log(s);
+    </script>
+  </body>
+</html>

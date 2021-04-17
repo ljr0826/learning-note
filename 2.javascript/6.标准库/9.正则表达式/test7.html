@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // var s = "abcd123efgh456ijk890";
+      // //要得到后面没有数字的字母
+      // var reg = /[a-zA-Z](?!\d)/g;
+      // while ((result = reg.exec(s))) {
+      //   console.log(result[0]);
+      // }
+
+      //！例题：判断密码强度
+      // //要求密码中必须出现小写字母、大写字母、数字、特殊字符（!@#_,.等），6-12位
+      var s = "234Dsfes,hj";
+      var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#_,.]).{6,12}$/;
+      console.log(reg.test(s));
+
+      // //！例题：判断密码强度
+      // //密码长度必须是6-12位
+      // //出现小写字母、大写字母、数字、特殊字符（!@#_,.），->强
+      // //出现小写字母、大写字母、数字，->中
+      // //出现小写字母、大写字母，->轻
+      // //其他 -> 不满足要求
+      // //用一个函数来判断密码强度是否满足要求
+      // var pwd = "DBfjse";
+      // function judgePwd(s) {
+      //   var reg1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#_,.]).{6,12}$/; //强
+      //   var reg2 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,12}$/; //中
+      //   var reg3 = /^(?=.*[a-z])(?=.*[A-Z]).{6,12}$/; //轻
+      //   if (reg1.test(s)) {
+      //     return "密码强度为强";
+      //   } else if (reg2.test(s)) {
+      //     return "密码强度为中";
+      //   } else if (reg3.test(s)) {
+      //     return "密码强度为轻";
+      //   } else {
+      //     return "密码不满足要求";
+      //   }
+      // }
+      // console.log(judgePwd(pwd));
+    </script>
+  </body>
+</html>

@@ -8,11 +8,28 @@
   </head>
   <body>
     <script>
-      var reg = /(\d[a-z])+/;
-      var s = "2ssssf-5fesdg-9fegtd";
-      while ((result = reg.exec(s))) {
-        console.log(result);
-      }
+      // var reg = /(\d[a-z])+/;
+      // var s = "2ssssf-5fesdg-9fegtd";
+      // while ((result = reg.exec(s))) {
+      //   console.log(result);
+      // }
+
+      // var s = "2015-5-1,2019-6-19,2000-04-28";
+      // //得到每一个日期，并得到每一个日期的年月日
+      // var reg = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/g;
+      // while ((result = reg.exec(s))) {
+      //   console.log(result);
+      //   console.log(result.groups); //放置具名捕获组的对象
+      // }
+
+      var s = "2015-5-1, - 2019-6-19, - 2000-04-28";
+      console.log(s);
+      var reg = /(\d{4})-(\d{1,2})-(\d{1,2})/g;
+      s = s.replace(reg, function (match, g1, g2, g3) {
+        console.log(match, g1, g2, g3);
+        return `${g1}/${g2}/${g3}`;
+      }); //$1 $2 $3分别表示第123个捕获组。应用场景？
+      console.log(s);
     </script>
   </body>
 </html>

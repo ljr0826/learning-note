@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // //反向引用的例子：
+      // var reg = /(\d{2})\1/g; //该规则表示的字符串要满足不仅是捕获组捕获的这两个数字，还要把第一个捕获组再重复一次
+      // var s = "1334";
+      // var ss = "1313";
+      // console.log(reg.test(s)); //false
+      // console.log(reg.test(ss)); //true
+
+      //面试题：
+      var s = "fwessdsssskkkkjgiiiiii";
+      var reg = /(\w)\1+/g;
+      while ((result = reg.exec(s))) {
+        console.log(result[1]);
+      }
+    </script>
+  </body>
+</html>
