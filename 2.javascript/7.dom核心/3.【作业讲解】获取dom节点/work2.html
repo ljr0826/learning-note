@@ -2,53 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-
   <body>
     <div class="container">
       <ul>
         <li><a href="">Lorem ipsum dolor sit.</a></li>
-        <li><a href="">Laboriosam esse voluptatibus accusamus!</a></li>
-        <li><a href="">Minima cumque alias numquam!</a></li>
-        <li><a href="">Beatae sit quod earum?</a></li>
-        <li><a href="">Doloremque vitae totam pariatur.</a></li>
-        <li><a href="">Autem ab iusto quae.</a></li>
-        <li><a href="">Mollitia accusamus iure maxime.</a></li>
-        <li><a href="">Sapiente vitae nostrum ex?</a></li>
-        <li><a href="">Aut quos est amet!</a></li>
-        <li><a href="">Laudantium dicta fuga debitis.</a></li>
+        <li><a href="">Sunt perferendis ullam dolores.</a></li>
+        <li><a href="">Quos incidunt officia voluptatum?</a></li>
+        <li><a href="">Veritatis provident explicabo dolorum.</a></li>
+        <li><a href="">Omnis cumque aperiam rem?</a></li>
+        <li><a href="">Asperiores perferendis adipisci ad?</a></li>
+        <li><a href="">Earum explicabo consectetur beatae!</a></li>
+        <li><a href="">Veritatis et veniam rem!</a></li>
+        <li><a href="">Dolor omnis id illum.</a></li>
+        <li><a href="">Aperiam quibusdam culpa nostrum.</a></li>
       </ul>
     </div>
-
     <div class="container2">
-      <span>asdfasfd</span>
-      <strong>asdfasdfgasdfa</strong>
-      <i>asadfasfas</i>
-      <p>aasdfdasf</p>
-      <header class="c3">
-        <p id="test">dfgasdfasfaf</p>
-      </header>
+      <span>fjeifse</span>
+      <strong>seflsjd</strong>
+      <i>ljfsn<s>few</s></i>
+      <p>kopjin</p>
+      <div class="c3">
+        <p>ujgjrn,rf</p>
+      </div>
     </div>
-
     <script>
-      //写一个函数，传入一个dom对象，返回该对象的第一个div容器
-      function retDiv(dom) {
-        return dom.getElementsByTagName("div")[0];
-      }
-      console.log(retDiv(document)); //理解错题意了大宝贝!
-
-      //听课后修改：
+      //作业2：写一个函数，传入一个dom对象，返回该对象的第一个祖先元素div容器
       function getDivContainer(dom) {
-        var parent = dom.parentElement;
-        while (parent && parent.nodeName !== "DIV") {
-          parent = parent.parentElement;
+        // var parent = dom.parentElement;
+        // while (parent && parent.nodeName !== "DIV") {
+        //   parent = parent.parentElement;
+        // }
+        // return parent;
+        if (dom.parentElement === null) {
+          return null;
+        } else if (dom.parentElement.nodeName === "DIV") {
+          return dom.parentElement;
         }
-        return parent;
+        return getDivContainer(dom.parentElement); //记得return 哦
       }
-      console.log(getDivContainer(document.getElementsByTagName("a")[3]));
+      var s = document.getElementsByTagName("s")[0];
+      console.log(getDivContainer(s));
     </script>
   </body>
 </html>
