@@ -21,28 +21,26 @@
   </head>
 
   <body>
-    <div class="container">袁</div>
+    <div class="container">奥</div>
     <p>
       <button id="btnbig">放大</button>
       <button id="btnsmall">缩小</button>
     </p>
     <script>
       var div = document.querySelector(".container");
-      var btnBig = document.getElementById("btnbig");
-      var btnSmall = document.getElementById("btnsmall");
-      btnBig.onclick = function () {
-        if (!div.style.fontSize || parseInt(div.style.fontSize) <= 200) {
-          div.style.fontSize = `${
-            parseInt(getComputedStyle(div).fontSize) + 10
-          }px`;
-        }
+      var btnbig = document.getElementById("btnbig");
+      var btnsmall = document.getElementById("btnsmall");
+      var style = window.getComputedStyle(div);
+      btnbig.onclick = function () {
+        var size = Number.parseInt(style.fontSize) + 10;
+        div.style.fontSize = size + "px";
       };
-      btnSmall.onclick = function () {
-        if (!div.style.fontSize || parseInt(div.style.fontSize) >= 16) {
-          div.style.fontSize = `${
-            parseInt(getComputedStyle(div).fontSize) - 10
-          }px`;
+      btnsmall.onclick = function () {
+        var size = Number.parseInt(style.fontSize) - 10;
+        if (size < 10) {
+          size = 10;
         }
+        div.style.fontSize = size + "px";
       };
     </script>
   </body>

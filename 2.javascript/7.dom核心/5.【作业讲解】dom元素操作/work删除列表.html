@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>删除列表</title>
     <style>
       .container {
         width: 400px;
@@ -40,33 +40,35 @@
       </ul>
     </div>
     <script>
-      var empty = document.querySelector("#btnClear");
-      var ul = document.querySelector(".list");
-      var buts = ul.querySelectorAll("button");
-      //清空
-      empty.onclick = function () {
+      var btnClear = document.getElementById("btnClear"); //清空
+      var ul = document.querySelector(".list"); //项目列表
+      var btnList = ul.querySelectorAll("button"); //项目组
+      btnClear.onclick = function () {
         // ul.remove();
         ul.innerHTML = "";
       };
-      //删除
-      // for (var i = 0; i <= 9; i++) {
-      //   //1.解决闭包问题
-      //   // (function (j) {
-      //   //   buts[j].onclick = function () {
-      //   //     buts[j].parentElement.remove();
-      //   //   };
-      //   // })(i);
-      //   //2.使用this指代事件
-      //   buts[i].onclick = function () {
-      //     this.parentElement.remove();
-      //   };
-      // }
-      //3.使用forEach()遍历
-      Array.from(buts).forEach(function (temp) {
-        return (temp.onclick = function () {
-          temp.parentElement.remove();
-        });
+      //得到ul下的所有按钮
+      Array.from(btnList).forEach((item) => {
+        item.onclick = function () {
+          this.parentElement.remove();
+        };
       });
+      // for (var i = 0; i < btnList.length; i++) {
+      //   var b = btnList[i]; //得到当前按钮
+      //   // regEvent(b); //固定变量值
+      //   (function (btn) {
+      //     btn.onclick = function () {
+      //       this.parentElement.remove();
+      //     };
+      //   })(b);
+      // }
+      // // function regEvent(btn) {
+      // //   btn.onclick = function () {
+      // //     this.parentElement.remove();
+      // //   };
+      // // }
+
+      //三种方法都要会
     </script>
   </body>
 </html>

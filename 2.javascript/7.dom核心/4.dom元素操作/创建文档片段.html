@@ -2,37 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style></style>
   </head>
   <body>
-    <div class="container">
-      <ul>
-        <li>Lorem ipsum dolor sit amet.</li>
-        <li>Fuga cupiditate repudiandae quae error.</li>
-        <li>Sed quo asperiores voluptatem dolores.</li>
-        <li>Ab ea nostrum aperiam laudantium.</li>
-        <li>Provident illo vel aliquid aperiam.</li>
-      </ul>
-    </div>
+    <ul id="ul1">
+      <li>Lorem, ipsum.</li>
+      <li>Nobis, consectetur.</li>
+      <li>Doloribus, omnis.</li>
+      <li>Quasi, nulla!</li>
+      <li>Eligendi, deserunt?</li>
+      <li>Sit, asperiores.</li>
+      <li>Voluptatum, consectetur?</li>
+      <li>Fugit, quibusdam!</li>
+      <li>Mollitia, ad!</li>
+      <li>Ipsum, saepe.</li>
+    </ul>
     <script>
-      //   var div1 = document.querySelector(".container");
-      //   var arr = document.getElementsByTagName("li");
-      //   console.log(arr);
-      //   var ul = document.querySelector("ul");
-      //   ul.removeChild(arr[2]);
-      //   console.log(arr);
-
-      var ul = document.querySelector("ul");
-      var frag = document.createDocumentFragment();
-      for (var i  = 1; i <= 100; i++) {
+      var ul1 = document.getElementById("ul1");
+      // var newli = document.createElement("li");//创建元素对象
+      // var txt = document.createTextNode("abc");//创建文本对象
+      // newli.innerText = "程序创建的li对象";
+      // newli.appendChild(txt);
+      // ul1.appendChild(newli);
+      var frag = document.createDocumentFragment(); //创建文档片段。对执行速度比较友好
+      for (var i = 1; i <= 100; i++) {
         var li = document.createElement("li");
-        li.innerText = "添加项" + i;
+        li.innerText = "选项" + i;
         frag.appendChild(li);
       }
-      ul.appendChild(frag);
-      console.log(ul);
+      ul1.appendChild(frag);
     </script>
   </body>
 </html>

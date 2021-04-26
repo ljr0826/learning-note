@@ -37,7 +37,7 @@
       <nav>
         <span>Lorem.</span>
         <span>Explicabo.</span>
-        <span>Harum?</span>
+        <span class="active">Harum?</span>
         <span>Delectus?</span>
         <span>Commodi.</span>
         <span>Ullam!</span>
@@ -45,18 +45,31 @@
       </nav>
     </header>
     <script>
-      var spans = document.getElementsByTagName("span");
-      Array.from(spans).forEach(function (temp) {
-        temp.onclick = function () {
-          //去掉之前的具有带有的active样式
+      var spans = document.querySelectorAll("span");
+      Array.from(spans).forEach((item) => {
+        item.onclick = function () {
+          //去掉之前的所有具有active的类样式
           var span = document.querySelector("span.active");
           if (span) {
             span.classList.remove("active");
           }
-          // temp.style.className = "active";//为什么不好使？,解疑：style哪里有class-.-
-          temp.classList.add("active");
+          // Array.from(this.parentElement.children).forEach((item) => {
+          //   item.classList.remove("active");
+          // });
+          this.classList.add("active");
         };
       });
+      // for (var i = 0; i < spans.length; i++) {
+      //   (function (i) {
+      //     var span = spans[i];
+      //     span.onclick = function () {
+      //       Array.from(this.parentElement.children).forEach((item) => {
+      //         item.classList.remove("active");
+      //       });
+      //       this.classList.toggle("active");
+      //     };
+      //   })(i);
+      // }
     </script>
   </body>
 </html>

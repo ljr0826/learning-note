@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>添加列表</title>
     <style>
       .container {
         width: 400px;
@@ -13,7 +13,6 @@
       p {
         text-align: center;
       }
-
       p.error {
         color: red;
       }
@@ -33,37 +32,20 @@
       </ul>
     </div>
     <script>
-      // var btn = document.querySelector("#btnAdd");
-      // var list = document.querySelector(".list");
-      // var input = document.querySelector("input[type=text]");
-      // var p = document.querySelector("p");
-      // btn.onclick = function () {
-      //   if (input.value === "") {
-      //     // throw new Error("输入不能为空哦~");
-      //     p.className = "error";
-      //   } else {
-      //     var li = document.createElement("li");
-      //     li.innerText = input.value;
-      //     list.appendChild(li);
-      //   }
-      // };
-
-      //听课后修改
-      // trim() 方法用于删除字符串的头尾空白符，空白符包括：空格、制表符 tab、换行符等其他空白符等。
-      var btn = document.querySelector("#btnAdd");
-      var list = document.querySelector(".list");
       var input = document.querySelector("input[type=text]");
+      var btn = document.getElementById("btnAdd");
+      var ul = document.querySelector(".list");
       var p = document.querySelector("p");
       btn.onclick = function () {
-        if (!input.value.trim()) {
+        if (input.value.trim()) {
+          p.className = "";
+          var newLi = document.createElement("li");
+          newLi.innerHTML = input.value;
+          ul.appendChild(newLi);
+          input.value = "";
+        } else {
           p.className = "error";
-          return;
         }
-        p.className = "";
-        var li = document.createElement("li");
-        li.innerText = input.value;
-        list.appendChild(li);
-        input.value = "";
       };
     </script>
   </body>

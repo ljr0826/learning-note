@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>库存变更器</title>
     <style>
       span {
         min-width: 50px;
@@ -29,22 +29,19 @@
       <button data-plus="100">+100</button>
       <button data-plus="1000">+1000</button>
     </div>
-
     <script>
-      var spanNumber = document.querySelector("#spanNumber");
-      var buts = document.querySelectorAll("button");
-      for (var i = 0; i <= 7; i++) {
-        (function (j) {
-          buts[j].onclick = function () {
-            spanNumber.innerText =
-              Number(spanNumber.innerText) +
-              Number(buts[j].getAttribute("data-plus"));
-            if (spanNumber.innerText < 0) {
-              spanNumber.innerText = 0;
-            }
-          };
-        })(i);
-      }
+      var spanNumber = document.getElementById("spanNumber");
+      var btnList = document.querySelectorAll("button");
+      Array.from(btnList).forEach((item) => {
+        item.onclick = function () {
+          spanNumber.innerHTML =
+            Number.parseInt(spanNumber.innerHTML) +
+            Number.parseInt(this.dataset.plus);
+          if (spanNumber.innerHTML < 0) {
+            spanNumber.innerHTML = 0;
+          }
+        };
+      });
     </script>
   </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>穿梭框</title>
     <style>
       .container {
         overflow: hidden;
@@ -18,7 +18,7 @@
       }
 
       .container select {
-        width: 100%;
+        width: 300px;
         height: 200px;
       }
 
@@ -58,98 +58,41 @@
         <h2>默读语录</h2>
         <select id="sel2" multiple>
           <option value="6">长庚来，我给你擦擦眼泪</option>
+          <option value="7">凝视深渊的人，深渊也在凝视你</option>
         </select>
       </div>
     </div>
     <script>
-      //听课后修改
-      var btnRight = document.querySelector("#btnToRight");
-      var btnLeft = document.querySelector("#btnToLeft");
-      var btnRightAll = document.querySelector("#btnToRightAll");
-      var btnLeftAll = document.querySelector("#btnToLeftAll");
-      var sel1 = document.querySelector("#sel1");
-      var sel2 = document.querySelector("#sel2");
-      var opt1 = sel1.getElementsByTagName("option");
-      var opt2 = sel2.getElementsByTagName("option");
-      function getSelected(opts) {
-        var frag = document.createDocumentFragment();
-        Array.from(opts).filter(function (temp) {
-          if (temp.selected) {
-            frag.appendChild(temp);
+      var sel1 = document.getElementById("sel1");
+      var sel2 = document.getElementById("sel2");
+      var btnToRight = document.getElementById("btnToRight");
+      var btnToRightAll = document.getElementById("btnToRightAll");
+      var btnToLeft = document.getElementById("btnToLeft");
+      var btnToLeftAll = document.getElementById("btnToLeftAll");
+      btnToRight.onclick = function () {
+        Array.from(sel1.children).forEach((item) => {
+          if (item.selected) {
+            sel2.appendChild(item);
           }
         });
-        return frag;
-      }
-      btnRight.onclick = function () {
-        sel2.appendChild(getSelected(opt1));
       };
-      btnRightAll.onclick = function () {
-        var frag = document.createDocumentFragment();
-        Array.from(opt1).forEach(function (temp) {
-          frag.appendChild(temp);
+      btnToRightAll.onclick = function () {
+        Array.from(sel1.children).forEach((item) => {
+          sel2.appendChild(item);
         });
-        sel2.appendChild(frag);
       };
-      btnLeft.onclick = function () {
-        sel1.appendChild(getSelected(opt2));
-      };
-      btnLeftAll.onclick = function () {
-        var frag = document.createDocumentFragment();
-        Array.from(opt2).forEach(function (temp) {
-          frag.appendChild(temp);
+      btnToLeft.onclick = function () {
+        Array.from(sel2.children).forEach((item) => {
+          if (item.selected) {
+            sel1.appendChild(item);
+          }
         });
-        sel1.appendChild(frag);
       };
-    </script>
-    <script>
-      // var sel1 = document.querySelector("#sel1");
-      // var sel2 = document.querySelector("#sel2");
-      // var opts = document.querySelectorAll("option");
-      // var btnToRight = document.querySelector("#btnToRight");
-      // var btnToRightAll = document.querySelector("#btnToRightAll");
-      // var btnToLeft = document.querySelector("#btnToLeft");
-      // var btnToLeftAll = document.querySelector("#btnToLeftAll");
-      // for (var i = 0; i <= 5; i++) {
-      //   (function (j) {
-      //     console.log(opts[j]);
-      //     opts[j].onclick = function () {
-      //       btnToRight.onclick = function () {
-      //         if (opts[j].parentElement === sel1) {
-      //           sel2.appendChild(opts[j]);
-      //         }
-      //       };
-      //     };
-      //   })(i);
-      // }
-      // sel1.value = "3";
-      // sel1.onclick = function (e, a) {
-      //   console.log(this.value);
-      // };
-      // btnToRightAll.onclick = function () {
-      //   for (var i = 0; i <= 5; i++) {
-      //     (function (j) {
-      //       sel2.appendChild(opts[j]);
-      //     })(i);
-      //   }
-      // };
-      // for (var i = 0; i <= 5; i++) {
-      //   (function (j) {
-      //     opts[j].onclick = function () {
-      //       btnToLeft.onclick = function () {
-      //         if (opts[j].parentElement === sel2) {
-      //           sel1.appendChild(opts[j]);
-      //         }
-      //       };
-      //     };
-      //   })(i);
-      // }
-      // btnToLeftAll.onclick = function () {
-      //   for (var i = 0; i <= 5; i++) {
-      //     (function (j) {
-      //       sel1.appendChild(opts[j]);
-      //     })(i);
-      //   }
-      // };
+      btnToLeftAll.onclick = function () {
+        Array.from(sel2.children).forEach((item) => {
+          sel1.appendChild(item);
+        });
+      };
     </script>
   </body>
 </html>

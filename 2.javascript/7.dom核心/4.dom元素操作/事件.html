@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -10,9 +11,14 @@
     <script>
       var btn = document.getElementById("btn");
       var count = 0;
+      //元素的dom节点里面有很多属性，其中的一个属性是和事件相关的。
+      //和事件相关的属性有一个特点。是以on开头，即当...发生的时候
       btn.onclick = function () {
         console.log(count++);
-      };
+        console.log(this);
+        console.log(this === btn);
+      }; //叫注册事件。这个函数不是立即执行的也不需要调用，要等到发生某一件事的时候执行
+      //onclick就是dom节点里面一个普通的属性。只不过这个属性赋值的话，赋值的是一个函数
     </script>
   </body>
 </html>

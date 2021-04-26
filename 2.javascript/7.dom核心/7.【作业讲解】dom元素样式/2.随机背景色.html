@@ -20,16 +20,21 @@
     <div class="container"></div>
     <script src="../../common/BetterFunction.js"></script>
     <script>
-      //方法一听课后修改：
       var div = document.querySelector(".container");
       div.onclick = function () {
-        div.style.backgroundColor = `rgb(
-          ${MyFunctions.getRandom(0, 256)},
-            ${MyFunctions.getRandom(0, 256)},
-          ${MyFunctions.getRandom(0, 256)}
-        )`;
+        // var color = `rgb(${MyFunctions.getRandom(
+        //   0,
+        //   256
+        // )},${MyFunctions.getRandom(0, 256)},${MyFunctions.getRandom(0, 256)})`;
+        var color = `#${MyFunctions.getRandom(
+          0x0,
+          0xff
+        )}${MyFunctions.getRandom(0x0, 0xff)}${MyFunctions.getRandom(
+          0x0,
+          0xff
+        )}`;
+        this.style.backgroundColor = color;
       };
-      //方法二：。。。不小心删除了-.-|,原理是#008c8c形式
     </script>
   </body>
 </html>

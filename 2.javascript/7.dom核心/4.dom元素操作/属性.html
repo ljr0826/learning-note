@@ -2,59 +2,61 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
       img {
-        width: 300px;
-        height: 300px;
-        border: 2px solid yellow;
-        object-fit: contain;
+        width: 100px;
+        height: 100px;
+        border: 2px solid;
+        object-fit: cover;
         display: block;
       }
     </style>
   </head>
   <body>
-    <!-- 可识别属性 -->
-    <!-- <input type="text" value="ttt" />
-    <button id="btnGetText">获取文本框内容</button> -->
-    <!-- 自定义属性 -->
-    <!-- <div value="sss" name="d"></div>
+    <input
+      type="text"
+      value="fewk"
+    /><!--input元素里面的value属性就是可识别属性-->
+    <label for="cbgender">男</label
+    ><input id="cbgender" type="checkbox" name="" id="" />
     <select name="" id="">
       <option value="chengdu">成都</option>
       <option value="beijing">北京</option>
-      <option value="hangzhou">杭州</option>
+      <option value="haebin">哈尔滨</option>
     </select>
-    <input type="checkbox" name="" id="kk" /><label for="kk">男</label>
-    <textarea name="" id="" cols="30" rows="10"></textarea> -->
+    <button id="btnGetText">获取文本框内容</button>
+    <button id="btnSetText">设置文本框内容</button>
+    <!-- <div value="fksje"></div> -->
     <img src="./img/1.jpg" alt="" />
-
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <div data-abc="123" data-bcd="789"></div>
     <script>
-      //   var input = document.querySelector("input[type=text]");
-      //   document.getElementById("btnGetText").onclick = function () {
-      //     var div = document.querySelector("div");
-      //     console.log(input.value);
-      //     console.log(div.value);
-      //     console.log(div.name);
-      //   };
-      //   var opt = document.querySelector("select");
-      //   opt.value = "beijing";
-      //   console.log(opt.value); //某些表单元素可以获取到某些不存在的属性
-
-      //   var lab = document.querySelector("label");
-      //   console.log(lab.htmlFor); //某些属性与标识符冲突；此时，需要更换属性名
-
-      //   var tst = document.querySelector("textarea");
-      //   console.log(tst.value); //正常的属性即使没有被赋值，也有默认值
-
+      var input = document.querySelector("input[type=text]");
+      document.getElementById("btnGetText").onclick = function () {
+        //获取文本框的值
+        var div = document.querySelector("div");
+        console.log(input.value, div.value); //div元素上的value不是可识别属性，获取不到
+      };
+      document.getElementById("btnSetText").onclick = function () {
+        input.value = "请输入文本";
+      };
+      //实现点击图片实现图片切换
       var img = document.querySelector("img");
       var i = 1;
       img.onclick = function () {
         i++;
+        // if (i % 2 === 0) {
+        //   img.src = `./img/2.jpg`;
+        // } else {
+        //   img.src = `./img/1.jpg`;
+        // }
         if (i === 3) {
           i = 1;
         }
-        img.src = "./img/" + i + ".jpg";
+        img.src = `./img/${i}.jpg`;
       };
     </script>
   </body>

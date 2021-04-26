@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .item {
+        background: gray;
+        width: 100px;
+        height: 100px;
+      }
+      .red {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item red"></div>
+    <script>
+      var div = document.querySelector(".item");
+      div.onclick = function () {
+        this.classList.toggle("red"); //有的时候就移除，没有就添加
+      };
+    </script>
+  </body>
+</html>

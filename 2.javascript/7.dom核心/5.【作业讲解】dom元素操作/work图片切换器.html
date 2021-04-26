@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>图片切换器</title>
     <style>
       .banner {
         width: 500px;
@@ -30,25 +30,24 @@
         <button id="btnNext">下一张</button>
       </p>
     </div>
-
     <script>
-      var img = document.querySelector("img");
-      var btnPrev = document.querySelector("#btnPrev");
-      var btnNext = document.querySelector("#btnNext");
+      var btnPrev = document.getElementById("btnPrev");
+      var btnNext = document.getElementById("btnNext");
+      var img = document.getElementById("img");
       var i = 1;
       btnPrev.onclick = function () {
         i--;
         if (i === 0) {
           i = 5;
         }
-        return (img.src = "img/" + i + ".jpg");
+        img.src = `img/${i}.jpg`;
       };
       btnNext.onclick = function () {
         i++;
         if (i === 6) {
           i = 1;
         }
-        return (img.src = "img/" + i + ".jpg");
+        img.src = `img/${i}.jpg`;
       };
     </script>
   </body>

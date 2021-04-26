@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red {
+        background: red;
+      }
+      .green {
+        background: green;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item red"></div>
+    <script>
+      var div = document.querySelector(".item");
+      div.onclick = function () {
+        // if (this.className.search(/\bred\b/) !== -1) {
+        //   this.className = this.className.replace(/\bred\b/, "green");
+        // } else {
+        //   this.className = this.className.replace(/\bgreen\b/, "red");
+        // }
+        if (this.classList.contains("red")) {
+          this.classList.remove("red");
+        } else {
+          this.class.add("red");
+        }
+      };
+    </script>
+  </body>
+</html>
