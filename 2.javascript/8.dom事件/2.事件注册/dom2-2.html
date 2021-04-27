@@ -7,24 +7,15 @@
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <button id="btn1">点击1</button>
-    </div>
+    <button id="btn1">点击1</button>
     <script>
       var btn = document.getElementById("btn1");
       btn.addEventListener("click", function () {
-        console.log("btn1");
+        console.log("1");
       });
       btn.addEventListener("click", function () {
-        console.log("btn2");
+        console.log("2");
       });
-      document.querySelector("div").addEventListener(
-        "click",
-        function () {
-          console.log("div");
-        },
-        true //表示是否在捕获阶段触发事件。默认是false
-      );
     </script>
   </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn1">点击1</button>
+    <button id="btnRemove">点击移除btn1的事件</button>
+    <script>
+      var btn = document.getElementById("btn1");
+      var btnRemove = document.getElementById("btnRemove");
+      function handler1() {
+        console.log("btn1");
+      }
+      function handler2() {
+        console.log("btn2");
+      }
+      btn.addEventListener("click", handler1, {
+        capture: true, //默认false。表示是否在捕获阶段执行
+        once: true, //默认false，事件只触发一次就自动移除了
+      });
+      btn.addEventListener("click", handler2);
+      btnRemove.addEventListener("click", function () {
+        btn.removeEventListener("click", handler1);
+        btn.removeEventListener("click", handler2);
+      });
+    </script>
+  </body>
+</html>

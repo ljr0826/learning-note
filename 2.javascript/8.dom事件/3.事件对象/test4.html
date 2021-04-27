@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="div1">
+      <button>点击</button>
+    </div>
+
+    <script>
+      var div1 = document.getElementById("div1");
+      var btn = document.querySelector("button");
+      div1.addEventListener(
+        "click",
+        function (e) {
+          console.log(e.eventPhase); //1。事件捕获阶段
+        },
+        true
+      );
+      div1.addEventListener(
+        "click",
+        function (e) {
+          console.log(e.eventPhase); //3。事件冒泡阶段
+        },
+        false
+      );
+      btn.addEventListener("click", function (e) {
+        console.log(e.eventPhase); //2。目标事件阶段
+      });
+    </script>
+  </body>
+</html>

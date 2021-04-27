@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="https://www.taobao.com">
+      <p><input type="text" name="" id="" /></p>
+      <p><button>提交</button></p>
+      <!--button元素的默认type值为submit，设置为button后就没有浏览器的默认行为了-->
+    </form>
+    <script>
+      var btn = document.querySelector("button");
+      btn.addEventListener("click", function (e) {
+        console.log("被点击了"); //输出该语句后，执行了浏览器的默认行为跳转页面了
+        // e.preventDefault(); //阻止浏览器的默认行为
+      });
+    </script>
+  </body>
+</html>

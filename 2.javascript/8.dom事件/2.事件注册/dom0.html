@@ -2,21 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <div><button>点我</button></div>
+    <button id="btn1" onclick="test()">点击1</button>
     <script>
-      document.querySelector("button").onclick = function () {
-        console.log("button1");
-      };
-      document.querySelector("button").onclick = function () {
-        console.log("button2");
-      };
-      document.querySelector("div").onclick = function () {
-        console.log("div");
-      };
+      var btn = document.getElementById("btn1");
+      function test() {
+        console.log("abc");
+      }
+      //即最早的时候，事件是在前面加上一个on作为一个属性存在的
+      // btn.onclick = function () {
+      //   console.log("btn1");
+      // };
     </script>
   </body>
 </html>

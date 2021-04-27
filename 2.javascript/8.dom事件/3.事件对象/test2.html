@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="background-color: cadetblue">
+      <p><span>Lorem ipsum dolor sit.</span><button>删除</button></p>
+      <p><span>Corrupti consectetur error totam.</span><button>删除</button></p>
+      <p><span>Laborum fugit nihil est!</span><button>删除</button></p>
+      <p>
+        <span>Ipsum reiciendis architecto facere!</span><button>删除</button>
+      </p>
+      <p>
+        <span>Praesentium corrupti doloribus necessitatibus?</span
+        ><button>删除</button>
+      </p>
+      <p><span>Debitis qui quam tempora!</span><button>删除</button></p>
+      <p><span>Sapiente harum ab accusantium?</span><button>删除</button></p>
+      <p><span>Voluptatibus deserunt eum modi?</span><button>删除</button></p>
+      <p><span>Quae delectus totam voluptatum.</span><button>删除</button></p>
+      <p><span>Porro corrupti officiis odio.</span><button>删除</button></p>
+    </div>
+    <script>
+      var div = document.querySelector("div");
+      div.onclick = function (e) {
+        console.log(e.type);
+        // if (e.target.tagName === "BUTTON") {
+        //   e.target.parentElement.remove();
+        // }
+        // console.log(this);
+        // console.log(e.currentTarget);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <script>
+      var dom = document.getElementById("div1");
+      dom.onclick = function () {
+        console.log("123");
+      }; //注册点击事件，
+      //事件类型是点击事件click、事件处理程序是一个函数，将这个函数与点击事件关联起来
+    </script>
+  </body>
+</html>
