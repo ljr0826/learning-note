@@ -1,4 +1,3 @@
-//1.第一步，做一个大体的分析：背景图片(类似雪碧图)；格式、区域大小最好可以配置；使用js代码更加灵活
 /**
  * 游戏配置
  */
@@ -8,15 +7,15 @@ var gameConfig = {
   rows: 3, //行数
   cols: 3, //列数
   isOver: false, //游戏是否结束
-  imgurl: "img/game.jpg", //图片路径,注意：相对的是页面路径
-  dom: document.getElementById("game"), //游戏的dom对象
+  imgurl: "img/game.jpg", //图片路径,注意：相对的是html页面路径
+  dom: document.getElementById("game"), //得到游戏的dom对象
 };
-//每一小块的宽高
+//每一小块的宽高，对象写好之后在里面加属性
 gameConfig.pieceWidth = gameConfig.width / gameConfig.cols;
 gameConfig.pieceHeight = gameConfig.height / gameConfig.rows;
-//小块的数量
+//所有小块的数量
 gameConfig.pieceNumber = gameConfig.rows * gameConfig.cols;
-var blocks = []; //包含小方块信息的数组
+var blocks = []; //记录了每一个小方块信息的数组
 
 function isEqual(n1, n2) {
   return parseInt(n1) === parseInt(n2);
@@ -24,8 +23,8 @@ function isEqual(n1, n2) {
 
 /**
  * 小方块的构造函数
- * @param {*} left
- * @param {*} top
+ * @param {*} left 当前的横坐标
+ * @param {*} top 当前的纵坐标
  * @param {*} isVisible 是否可见
  */
 function Block(left, top, isVisible) {
@@ -37,7 +36,7 @@ function Block(left, top, isVisible) {
   this.dom = document.createElement("div");
   this.dom.style.width = gameConfig.pieceWidth + "px";
   this.dom.style.height = gameConfig.pieceHeight + "px";
-  this.dom.style.background = `url("${gameConfig.imgurl}") -${this.correctLeft}px -${this.correctTop}px`;
+  this.dom.style.background = `url("${gameConfig.imgurl}") -${this.correctLeft}px -${this.correctTop}px`; //背景图位置与正确的横坐标有关
   this.dom.style.position = "absolute";
   this.dom.style.border = "1px solid #fff";
   this.dom.style.boxSizing = "border-box";
@@ -48,7 +47,7 @@ function Block(left, top, isVisible) {
   }
   gameConfig.dom.appendChild(this.dom);
   this.show = function () {
-    //根据当前的left、top，重新设置div的位置
+    //该函数是根据当前位置的left、top，重新设置div的位置
     this.dom.style.left = this.left + "px";
     this.dom.style.top = this.top + "px";
   };
@@ -168,15 +167,15 @@ function init() {
     for (var i = 0; i < gameConfig.rows; i++) {
       for (var j = 0; j < gameConfig.cols; j++) {
         //i行号，j列号
-        var isVisible = true;
+        var isVisible = true; //表示小方块是否可见
         if (i === gameConfig.rows - 1 && j === gameConfig.cols - 1) {
           isVisible = false;
         }
         var b = new Block(
-          j * gameConfig.pieceWidth,
-          i * gameConfig.pieceHeight,
+          j * gameConfig.pieceWidth, //横坐标
+          i * gameConfig.pieceHeight, //纵坐标
           isVisible
-        );
+        ); //创建div对象。Block里面有div对象的各种信息
         blocks.push(b);
       }
     }
