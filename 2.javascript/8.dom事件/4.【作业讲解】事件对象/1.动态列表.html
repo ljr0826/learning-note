@@ -27,32 +27,27 @@
       </li>
     </ul>
     <script>
-      var input = document.querySelector("input");
-      var btnAdd = document.querySelector("#btnAdd");
+      var btnAdd = document.getElementById("btnAdd");
+      var txt = document.getElementById("txt");
       var ul = document.querySelector("ul");
-      //删除列表，事件委托
-      ul.onclick = function (e) {
+      btnAdd.addEventListener("click", function () {
+        var li = document.createElement("li");
+        li.innerHTML = `<span>${txt.value}</span>
+        <button>删除</button>`;
+        // var span = document.createElement("span");
+        // var button = document.createElement("button");
+        // span.innerText = txt.value;
+        // button.innerText = "删除";
+        // li.appendChild(button);
+        // li.insertBefore(span, button);
+        ul.appendChild(li);
+        txt.value = "";
+      }); //添加列表项
+      ul.addEventListener("click", function (e) {
         if (e.target.tagName === "BUTTON") {
           e.target.parentElement.remove();
         }
-      };
-      //添加列表
-      btnAdd.onclick = function (e) {
-        if (!input.value.trim()) {
-          throw new Error("输入不能为空哦~");
-          return;
-        }
-        var li = document.createElement("li");
-        li.innerHTML = ` <span>${input.value}</span><button>删除</button>`; //牛逼
-        // var span = document.createElement("span");
-        // var button = document.createElement("button");
-        // span.innerHTML = `项目：${input.value}`;
-        input.value = "";
-        // button.innerHTML = "删除";
-        // li.appendChild(span);
-        // li.appendChild(button);
-        ul.appendChild(li);
-      };
+      }); //删除列表项，使用事件委托
     </script>
   </body>
 </html>

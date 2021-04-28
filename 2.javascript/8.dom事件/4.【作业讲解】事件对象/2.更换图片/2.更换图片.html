@@ -10,8 +10,8 @@
 
       img {
         width: 500px;
-        height: 500px;
-        margin-top: 60px;
+        height: 450px;
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -20,40 +20,32 @@
     <div id="buttons"></div>
     <img src="img/1.jpg" alt="" />
     <!--提示：创建一个数组放置路径数据-->
-
-    <!-- <script>
-      //听课后改进
+    <script>
       var imgs = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg"];
-      var divButtons = document.getElementById("buttons");
-      imgs.forEach(function (src, i) {
+      var divBtns = document.getElementById("buttons");
+      var img = document.querySelector("img");
+      // function createBtn() {
+      //   for (var i = 0; i < imgs.length; i++) {
+      //     var btn = document.createElement("button");
+      //     btn.setAttribute("data-src", imgs[i]);
+      //     btn.innerHTML = `第${i + 1}张图片`;
+      //     divBtns.appendChild(btn);
+      //     btn.addEventListener("click", function () {
+      //       img.src = this.dataset.src;
+      //     });
+      //   }
+      // } //闭包问题的其他解决方式？
+
+      imgs.forEach((src, i) => {
         var btn = document.createElement("button");
         btn.innerHTML = `第${i + 1}张图片`;
-        divButtons.appendChild(btn);
-        btn.dataset.src = src;
+        divBtns.appendChild(btn);
+        btn.addEventListener("click", function () {
+          img.src = src;
+        });
       });
-      var img = document.querySelector("img");
-      divButtons.onclick = function (e) {
-        if (e.target.dataset.src) {
-          img.src = e.target.dataset.src;
-        }
-      };
-    </script> -->
-    <script>
-      var imgNumber = 4;
-      var btns = document.getElementById("buttons");
-      var img = document.querySelector("img");
-      for (var i = 1; i <= imgNumber; i++) {
-        var btn = document.createElement("button");
-        btn.innerHTML = `图${i}`;
-        btns.appendChild(btn);
-        btn.className = `${i}`;
-      }
-      btns.onclick = function (e) {
-        if (e.target.tagName === "BUTTON") {
-          console.log("dfg");
-          img.src = `img/${e.target.className}.jpg`;
-        }
-      };
+      // createBtn();
+      //还可以用事件委托
     </script>
   </body>
 </html>

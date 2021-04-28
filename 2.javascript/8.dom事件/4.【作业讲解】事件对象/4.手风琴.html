@@ -36,74 +36,42 @@
       //要求：菜单是通过js对象生成的
       //var menu = [item:{name:"",children:[{name:""},{name:""}]}]
       var menu = [
-        { name: "菜单一", children: ["商品一", "商品二", "商品三"] },
-        { name: "菜单二", children: ["商品一", "商品二", "商品三"] },
-        { name: "菜单三", children: ["商品一", "商品二", "商品三"] },
-        { name: "菜单四", children: ["商品一", "商品二", "商品三"] },
+        {
+          name: "菜单一",
+          children: ["选项一", "选项二", "选项三"],
+        },
+        {
+          name: "菜单二",
+          children: ["选项一", "选项二", "选项三"],
+        },
+        {
+          name: "菜单三",
+          children: ["选项一", "选项二", "选项三"],
+        },
       ];
       var ul = document.querySelector(".menu");
-      //创建菜单栏
-      for (var i = 0; i <= menu.length - 1; i++) {
+      for (var i = 0; i < menu.length; i++) {
         var li = document.createElement("li");
-        li.innerHTML = `${menu[i].name}`;
-        li.className = "title";
+        var nav = document.createElement("nav");
+        nav.innerHTML = menu[i].name;
+        nav.classList.add("title");
+        li.appendChild(nav);
+        for (var j = 0; j < menu[i].children.length; j++) {
+          var div = document.createElement("div");
+          div.innerHTML = menu[i].children[j];
+          li.appendChild(div);
+        }
         ul.appendChild(li);
-        //创建商品栏
-        var div = document.createElement("div");
-        for (var j = 0; j <= menu[i].children.length - 1; j++) {
-          var p = document.createElement("p");
-          p.innerHTML = `${menu[i].children[j]}`;
-          div.appendChild(p);
+      } //生成菜单栏
+      ul.addEventListener("click", function (e) {
+        if (e.target.tagName === "NAV") {
+          Array.from(e.target.parentElement.children).forEach((item) => {
+            if (item.tagName === "DIV") {
+              item.classList.toggle("none");
+            }
+          });
         }
-        ul.appendChild(div);
-      }
-      ul.onclick = function (e) {
-        if (e.target.tagName === "LI") {
-          e.target.nextElementSibling.classList.toggle("none");
-        }
-      };
+      });
     </script>
-    <!-- 袁老师思路 -->
-    <!-- <script>
-        var menu = [{
-                name: "菜单一",
-                children: ["商品一", "商品二", "商品三", "商品四"]
-            },
-            {
-                name: "菜单二",
-                children: ["商品一", "商品二", "商品三", "商品四"]
-            }, {
-                name: "菜单三",
-                children: ["商品一", "商品二", "商品三", "商品四"]
-            }, {
-                name: "菜单四",
-                children: ["商品一", "商品二", "商品三", "商品四"]
-            }
-        ];
-        var ul = document.querySelector("ul.menu");
-        menu.forEach(function(item) {
-            var li = document.createElement("li");
-            li.innerHTML = `<span class="title">${item.name}</span>`;
-
-            var childUl = document.createElement("ul");
-            item.children.forEach(function(child) {
-                childUl.innerHTML += `<li>${child}</li>`;
-            })
-            li.appendChild(childUl);
-            ul.appendChild(li);
-        })
-
-        ul.onclick = function(e) {
-            if (e.target.className === "title") {
-                var nextUl = e.target.nextElementSibling;
-                var style = getComputedStyle(nextUl);
-                if (style.display === "none") {
-                    nextUl.style.display = "block";
-                } else {
-                    nextUl.style.display = "none";
-                }
-            }
-        }
-    </script> -->
   </body>
 </html>

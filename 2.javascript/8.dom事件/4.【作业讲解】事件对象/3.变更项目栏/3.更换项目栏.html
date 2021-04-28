@@ -70,13 +70,13 @@
     <script>
       var top = document.querySelector(".top");
       var img = document.querySelector("img");
-      top.onclick = function (e) {
+      top.addEventListener("click", function (e) {
         if (e.target.tagName === "LI") {
+          img.src = e.target.dataset.src;
           document.querySelector("li.current").classList.remove("current");
           e.target.classList.add("current");
-          img.src = `./${e.target.dataset.src}`;
         }
-      };
+      });
     </script>
   </body>
 </html>
