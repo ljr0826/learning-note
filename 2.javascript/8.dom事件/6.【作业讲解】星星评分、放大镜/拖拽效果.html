@@ -9,7 +9,7 @@
       div {
         width: 100px;
         height: 100px;
-        background-color: crimson;
+        background-color: darkcyan;
         border-radius: 50%;
         cursor: move;
         position: absolute;
@@ -22,24 +22,20 @@
     <div></div>
     <script>
       var div = document.querySelector("div");
+      var style = window.getComputedStyle(div);
       div.onmousedown = function (e) {
         if (e.button !== 0) {
           return;
         }
-        var pageX = e.pageX;
-        var pageY = e.pageY;
-        var style = window.getComputedStyle(div);
-        var divLeft = parseFloat(style.left);
-        var divTop = parseFloat(style.top);
         window.onmousemove = function (e) {
-          var disX = e.pageX - pageX;
-          var disY = e.pageY - pageY;
-          div.style.left = divLeft + disX + "px";
-          div.style.top = divTop + disY + "px";
+          var divLeft = parseFloat(style.left);
+          var divTop = parseFloat(style.top);
+          div.style.left = e.movementX + divLeft + "px";
+          div.style.top = e.movementY + divTop + "px";
         };
         window.onmouseup = window.onmouseleave = function (e) {
           if (e.button === 0) {
-            window.onmousemove = null; //鼠标抬起时取消移动事件！
+            window.onmousemove = null;
           }
         };
       };

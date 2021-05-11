@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button>点击</button>
+    </div>
+    <script>
+      var btn = document.querySelector("button");
+      btn.onclick = function () {
+        console.log("被点击了");
+      };
+      btn.ondblclick = function () {
+        console.log("被双击了");
+      };
+      btn.onmousedown = function () {
+        console.log("按下鼠标任意键");
+      };
+      btn.onmouseup = function () {
+        console.log("抬起鼠标任意键");
+      };
+      // btn.onmousemove = function () {
+      //   console.log("鼠标在元素上移动");
+      // };
+      // btn.onmouseover = function () {
+      //   console.log("进入元素over，子父分离");
+      // };
+      // btn.onmouseout = function () {
+      //   console.log("离开元素out，子父分离");
+      // };
+
+      // btn.onmouseenter = function () {
+      //   console.log("进入元素enter，子父一体");
+      // };
+      // btn.onmouseleave = function () {
+      //   console.log("离开元素leave，子父一体");
+      // };
+
+      //事件触发顺序：mousedown、mouseup、click、dblclick
+      //事件触发顺序：mouseover、mouseenter、mousemove、mouseout、mouseleave
+    </script>
+  </body>
+</html>
