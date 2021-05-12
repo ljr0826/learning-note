@@ -4,19 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background: red;
+      }
+    </style>
   </head>
   <body>
+    <div></div>
+    <!--div元素没法聚焦-->
     <input type="text" />
     <script>
-      var input = document.querySelector("input");
-      input.onkeydown = function (e) {
-        // e.preventDefault(); //keydown、keypress 如果阻止了事件默认行为，文本不会显示
+      var inp = document.querySelector("input");
+      window.onkeydown = function (e) {
         console.log("keydown", e.code, typeof e.key, e.keyCode);
       };
-      input.onkeypress = function (e) {
+      inp.onkeypress = function (e) {
         console.log("keypress", e.charCode, e.code, e.key, e.keyCode);
       };
-      input.onkeyup = function () {
+      inp.onkeyup = function () {
         console.log("keyup");
       };
     </script>

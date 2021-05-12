@@ -2,81 +2,53 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      img {
+        position: fixed;
+        left: 500px;
+        top: 400px;
+      }
+    </style>
   </head>
   <body>
-    <img src="imgs/tankU.gif" style="position: absolute" alt="" />
+    <img src="imgs/tankR.gif" alt="" />
     <script>
-      var img = document.querySelector("img");
-      img.style.left = 0;
-      img.style.top = 0;
-      var speed = 10;
-      window.onkeydown = function (e) {
-        switch (e.keyCode) {
-          //   case 16:
-          //     speed *= 2;
-          case 37:
-            console.log("左");
-            img.src = "imgs/tankL.gif";
-            img.style.left = `${parseInt(img.style.left) - speed}px`;
-            break;
-          case 38:
-            console.log("上");
-            img.src = "imgs/tankU.gif";
-            img.style.top = `${parseInt(img.style.top) - speed}px`;
-            break;
-          case 39:
-            console.log("右");
-            img.src = "imgs/tankR.gif";
-            img.style.left = `${parseInt(img.style.left) + speed}px`;
-            break;
-          case 40:
-            console.log("下");
-            img.src = "imgs/tankD.gif";
-            img.style.top = `${parseInt(img.style.top) + speed}px`;
-            break;
-        }
-        if (parseInt(img.style.left) < 0) {
-          img.style.left = 0;
-        }
-        if (parseInt(img.style.top) < 0) {
-          img.style.top = 0;
-        }
-      };
-    </script>
-    <!-- 袁老师规范思路 -->
-    <!-- <script>
       var tank = {
-        direction: "U", // U L R D
         left: 500,
         top: 400,
+        direction: "R", //U R D L
         dom: document.querySelector("img"),
         show: function () {
-          //显示
           this.dom.style.left = this.left + "px";
           this.dom.style.top = this.top + "px";
-          this.dom.src = "imgs/tank" + this.direction + ".gif";
+          this.dom.src = `imgs/tank${this.direction}.gif`;
         },
       };
-
-      //切换方向 和 移动
       document.addEventListener("keydown", function (e) {
         if (e.key === "ArrowUp") {
           tank.direction = "U";
-          tank.top -= 4;
-        } else if (e.key === "ArrowDown") {
-          tank.direction = "D";
-          tank.top += 4;
-        } else if (e.key === "ArrowLeft") {
-          tank.direction = "L";
-          tank.left -= 4;
+          tank.top -= 3;
+          tank.show();
         } else if (e.key === "ArrowRight") {
           tank.direction = "R";
-          tank.left += 4;
+          tank.left += 3;
+          tank.show();
+        } else if (e.key === "ArrowDown") {
+          tank.direction = "D";
+          tank.top += 3;
+          tank.show();
+        } else if (e.key === "ArrowLeft") {
+          tank.direction = "L";
+          tank.left -= 3;
+          tank.show();
         }
-        tank.show();
       });
-    </script> -->
+    </script>
   </body>
 </html>

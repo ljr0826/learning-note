@@ -11,22 +11,13 @@
     <input type="text" />
     <script>
       // 制作一个只能书写整数的文本框，必须使用type=text的文本框
-      var input = document.querySelector("input");
-      input.onkeypress = function (e) {
-        // e.preventDefault();
-        // if (e.charCode >= 48 && e.charCode <= 57) {
-        //   input.value = e.key;
-        // }
-        //听课后修改:
-        var code = e.key[0].charCodeAt(0);
-        if (code < 48 || code > 57) {
+      //复制粘贴目前无法解决
+      var inp = document.querySelector("input");
+      inp.onkeypress = function (e) {
+        // console.log(e.charCode === e.key.charCodeAt(0)); //true
+        if (e.charCode > 57 || e.charCode < 48) {
           return false;
-        }
-      };
-      input.onpaste = function (e) {
-        var text = e.clipboardData.getData("text/plain");
-        if (!text || !/\d+/.test(text)) {
-          e.preventDefault();
+          // e.preventDefault();
         }
       };
     </script>
