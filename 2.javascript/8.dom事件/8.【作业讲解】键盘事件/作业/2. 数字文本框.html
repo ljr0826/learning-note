@@ -20,6 +20,12 @@
           // e.preventDefault();
         }
       };
+      inp.onpaste = function (e) {
+        var data = e.clipboardData.getData("text/plain");
+        if (!/\d+/.test(data)) {
+          e.preventDefault();
+        }
+      }; //实现非数字无法粘贴
     </script>
   </body>
 </html>

@@ -1,38 +1,29 @@
-body,
-p {
-  margin: 0;
-}
-
-.paper {
-  width: 170px;
-  height: 170px;
-  background: rgb(243, 168, 168);
-  border-radius: 5px;
+.item {
+  width: 200px;
+  height: 200px;
+  padding: 30px;
   box-sizing: border-box;
-  padding: 20px;
+  border-radius: 8px;
   position: fixed;
-  left: 100px;
-  top: 100px;
   cursor: move;
 }
-
-.paper span {
-  cursor: pointer;
+.item i {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 3px;
+  top: 3px;
+  cursor: pointer;
+  font-size: 24px;
 }
-
-input {
-  position: fixed;
+.txt {
   width: 300px;
-  height: 40px;
+  height: 50px;
   padding: 0 10px;
-  border: 1px solid #aaa;
-  font-size: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
+  border-color: #aaa;
+  font-size: 26px;
+  position: fixed;
+  bottom: 100px;
   left: 0;
   right: 0;
   margin: 0 auto;
-  bottom: 30px;
 }

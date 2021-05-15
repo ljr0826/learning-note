@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input.noinput {
+        color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="text" class="noinput" value="请输入关键字" />
+    </div>
+    <script>
+      var div = document.querySelector("div");
+      var inp = document.querySelector("input");
+      inp.onfocus = function (e) {
+        // console.log("聚焦了", e.bubbles); //鼠标点击或者按tab键都可以聚焦
+        if (
+          this.value === this.defaultValue &&
+          this.classList.contains("noinput")
+        ) {
+          this.value = "";
+          this.classList.remove("noinput");
+        }
+      };
+      inp.onblur = function (e) {
+        // console.log("失去焦点", e.bubbles);
+        if (this.value === "") {
+          this.value = this.defaultValue;
+          this.classList.add("noinput");
+        }
+      };
+    </script>
+  </body>
+</html>

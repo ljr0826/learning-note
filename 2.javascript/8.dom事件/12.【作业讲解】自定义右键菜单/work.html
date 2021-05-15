@@ -2,49 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
       .container1 {
-        width: 200px;
-        height: 200px;
-        background: pink;
-        float: left;
-      }
-
-      .container2 {
         width: 300px;
         height: 300px;
-        background: #008c8c;
-        float: right;
+        float: left;
+        background-color: blueviolet;
       }
-
-      .context-menu {
-        position: fixed;
-        left: 500px;
-        top: 200px;
+      .container2 {
+        width: 200px;
+        height: 200px;
+        float: right;
+        background-color: cornflowerblue;
+      }
+      .menu {
         border: 1px solid #ccc;
-        padding: 10px;
+        position: fixed;
+        background-color: #fff;
+        min-width: 150px;
+        text-align: center;
         line-height: 2;
-        min-width: 200px;
-        background: #fff;
         display: none;
       }
-
-      .context-menu ul {
-        margin: 0;
-        padding: 0;
+      .menu ul {
         list-style: none;
       }
     </style>
   </head>
-
   <body>
     <div class="container1"></div>
     <div class="container2"></div>
-
-    <div class="context-menu">
+    <div class="menu">
       <ul>
         <li>菜单1</li>
         <li>菜单2</li>
@@ -59,26 +50,20 @@
       </ul>
     </div>
     <script>
-      var container1 = document.querySelector(".container1");
-      var container2 = document.querySelector(".container2");
-      var menu = document.querySelector(".context-menu");
-      container1.oncontextmenu = function (e) {
+      //实现一个自定义的右键菜单
+      var div1 = document.querySelector(".container1");
+      var div2 = document.querySelector(".container2");
+      var menu = document.querySelector(".menu");
+      div1.oncontextmenu = div2.oncontextmenu = function (e) {
         e.preventDefault();
         menu.style.display = "block";
-        console.log(e.clientX, e.clientY, "fdsf");
-        menu.style.left = e.clientX + "px";
-        menu.style.top = e.clientY + "px";
-      };
-      container2.oncontextmenu = function (e) {
-        e.preventDefault();
-        menu.style.display = "block";
-        console.log(e.clientX, e.clientY, "fdsf");
         menu.style.left = e.clientX + "px";
         menu.style.top = e.clientY + "px";
       };
       window.onmousedown = function () {
         menu.style.display = "none";
       };
+      //事件发生的先后顺序可以自己实验得出：mousedown -- contextmenu
     </script>
   </body>
 </html>

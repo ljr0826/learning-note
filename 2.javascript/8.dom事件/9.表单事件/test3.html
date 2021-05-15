@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="" id="sel">
+      <option value="1">Lorem.</option>
+      <option value="2">Possimus.</option>
+      <option value="3">Accusamus.</option>
+      <option value="4">Quia?</option>
+      <option value="5">Aliquid?</option>
+      <option value="6">Eligendi!</option>
+      <option value="7">Quisquam.</option>
+      <option value="8">Doloremque.</option>
+      <option value="9">Quos.</option>
+      <option value="10">Possimus.</option>
+    </select>
+    <input type="text" id="txt1" />
+    <textarea name="" id="txt2" cols="30" rows="10"></textarea>
+    <script>
+      var sel = document.getElementById("sel");
+      var txt1 = document.getElementById("txt1");
+      var txt2 = document.getElementById("txt2");
+      sel.onchange = function (e) {
+        // console.log(this.value, this.selectedIndex, this.options);
+        console.log(this.options[this.selectedIndex].innerHTML);
+      };
+      //   txt1.onchange = function (e) {
+      //     console.log(this.value);
+      //   }; //触发的契机时离开文本框时触发，与blur还是有区别，只有改变文本框的值时才触发
+      txt2.oninput = txt1.oninput = function (e) {
+        if (!this.value.trim()) {
+          console.log("请输入内容");
+          return;
+        }
+        console.log(this.value);
+      };
+    </script>
+  </body>
+</html>

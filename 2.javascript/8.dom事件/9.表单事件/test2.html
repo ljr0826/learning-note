@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="https://www.taobao.com">
+      <p>
+        <input type="text" placeholder="请输入账号" />
+      </p>
+      <button>按钮1</button>
+      <button>按钮2</button>
+    </form>
+    <script>
+      //最好在源头上控制提交事件。即form元素
+      var form = document.querySelector("form");
+      var inp = document.querySelector("input");
+      form.onsubmit = function (e) {
+        if (!inp.value.trim()) {
+          e.preventDefault(); //阻止浏览器默认事件，即页面数据发送到服务器。return false只在dom0好用
+        }
+        console.log(e, e.bubbles); //会冒泡，一般没有特别说明的事件都会冒泡
+        // return false; //阻止浏览器默认事件，即页面数据发送到服务器。return false只在dom0好用
+      };
+    </script>
+  </body>
+</html>
