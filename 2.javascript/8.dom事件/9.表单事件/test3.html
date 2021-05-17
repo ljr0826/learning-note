@@ -28,6 +28,7 @@
       sel.onchange = function (e) {
         // console.log(this.value, this.selectedIndex, this.options);
         console.log(this.options[this.selectedIndex].innerHTML);
+        console.log(e);
       };
       //   txt1.onchange = function (e) {
       //     console.log(this.value);
@@ -35,6 +36,7 @@
       txt2.oninput = txt1.oninput = function (e) {
         if (!this.value.trim()) {
           console.log("请输入内容");
+          console.log(e);
           return;
         }
         console.log(this.value);

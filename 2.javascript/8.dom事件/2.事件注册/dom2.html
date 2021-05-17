@@ -21,7 +21,14 @@
       document.querySelector("div").addEventListener(
         "click",
         function () {
-          console.log("div");
+          console.log("div 冒泡");
+        },
+        false
+      );
+      document.querySelector("div").addEventListener(
+        "click",
+        function () {
+          console.log("div 捕获");
         },
         true //表示是否在捕获阶段触发事件。默认是false
       );

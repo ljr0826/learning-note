@@ -26,6 +26,7 @@
         ) {
           this.value = "";
           this.classList.remove("noinput");
+          console.log(e);
         }
       };
       inp.onblur = function (e) {
@@ -33,6 +34,7 @@
         if (this.value === "") {
           this.value = this.defaultValue;
           this.classList.add("noinput");
+          console.log(e);
         }
       };
     </script>

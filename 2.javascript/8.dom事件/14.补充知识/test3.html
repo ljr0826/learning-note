@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        width: 300px;
+        height: 300px;
+        background-color: #bbb;
+        margin: 100px;
+        overflow: hidden;
+        margin-top: 3000px;
+        margin-left: 3000px;
+      }
+      .box2 {
+        width: 200px;
+        height: 200px;
+        background-color: #888;
+        margin: 100px;
+        overflow: hidden;
+      }
+      .box3 {
+        width: 100px;
+        height: 100px;
+        background-color: #333;
+        margin: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">
+      <div class="box2">
+        <div class="box3"></div>
+      </div>
+    </div>
+    <script>
+      var div1 = document.querySelector(".box1");
+      var div2 = document.querySelector(".box2");
+      var div3 = document.querySelector(".box3");
+      function getPagePosition(dom) {
+        var left = dom.offsetLeft;
+        var top = dom.offsetTop;
+        while (dom.offsetParent) {
+          left += dom.offsetParent.offsetLeft;
+          top += dom.offsetParent.offsetTop;
+          dom = dom.offsetParent;
+        }
+        return {
+          x: left,
+          y: top,
+        };
+      }
+      var div3Rect = div3.getBoundingClientRect(); //控制台实时获取。
+    </script>
+  </body>
+</html>
