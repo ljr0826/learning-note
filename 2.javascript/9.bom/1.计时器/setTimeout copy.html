@@ -14,20 +14,25 @@
   <body>
     <h1>0</h1>
     <button id="btn1">点击开始</button>
-
     <button id="btn2">清除计时器</button>
     <script>
       var timer1,
         num = 0;
       var h1 = document.querySelector("h1");
       btn1.onclick = function () {
-        timer1 = setInterval(function () {
+        interval(function () {
           num++;
           h1.innerHTML = num;
         }, 1000); //由于该函数本身瞬间就执行完成了，只是1000ms后会调用自身
       };
+      function interval(callback, duration) {
+        timer1 = setTimeout(function () {
+          callback();
+          interval(callback, duration);
+        }, duration);
+      }
       btn2.onclick = function () {
-        clearInterval(timer1);
+        clearTimeout(timer1);
       };
     </script>
   </body>

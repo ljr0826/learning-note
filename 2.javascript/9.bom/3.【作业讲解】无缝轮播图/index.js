@@ -1,84 +1,76 @@
-//配置对象
+//配置
 var config = {
-  imgWidth: 520, //图片的宽度
+  imgWidth: 500, //图片的宽度
   dotWidth: 12, //圆点的宽度
   doms: {
-    //涉及的dom对象
     divBanner: document.querySelector(".banner"),
     divImgs: document.querySelector(".banner .imgs"),
     divDots: document.querySelector(".banner .dots"),
     divArrow: document.querySelector(".banner .arrow"),
   },
-  currentIndex: 0, //实际的图片索引0~imgNumber-1
+  currentIndex: 0, //实际的图片索引位置。0~imgNmuber。此值要实时变化
   timer: {
-    //计时器配置
-    duration: 16, //运动间隔时间，单位毫秒
-    total: 200, //运动的总时间，单位毫秒
-    id: null, //计时器id
-  },
+    duration: 16, //运动的时间间隔，单位ms
+    total: 2000, //运动的总时间，单位ms
+    id: null,
+  }, //计时器相关配置信息
+  autoTimer: null, //自动计时器id
 };
-//图片数量
-config.imgNumber = config.doms.divImgs.children.length;
+config.imgNumber = config.doms.divImgs.children.length; //初始时图片的数量
 /**
  * 初始化元素尺寸
  */
 function initSize() {
-  config.doms.divDots.style.width = config.dotWidth * config.imgNumber + "px";
   config.doms.divImgs.style.width =
-    config.imgWidth * (config.imgNumber + 2) + "px";
+    config.imgWidth * (config.imgNumber + 2) + "px"; //+2是因为前后多了两个图片
+  config.doms.divDots.style.width = config.dotWidth * config.imgNumber + "px";
 }
 /**
  * 初始化元素
  */
-function initElements() {
-  //创建小圆点
+function initElement() {
   for (var i = 0; i < config.imgNumber; i++) {
-    var span = document.createElement("span");
-    config.doms.divDots.appendChild(span);
+    var div = document.createElement("span"); //创建相应小圆点
+    config.doms.divDots.appendChild(div);
   }
-  //复制图片
+
   var children = config.doms.divImgs.children;
-  var first = children[0],
-    last = children[children.length - 1];
-  var newImg = first.cloneNode(true); //深度克隆
-  config.doms.divImgs.appendChild(newImg);
-  newImg = last.cloneNode(true);
-  config.doms.divImgs.insertBefore(newImg, first);
+  var newImg1 = children[0].cloneNode(true),
+    newImg5 = children[children.length - 1].cloneNode(true);
+  config.doms.divImgs.insertBefore(newImg5, children[0]);
+  config.doms.divImgs.appendChild(newImg1); //图片前后各插入一张
 }
 /**
- * 初始化位置
+ * 初始化图片的位置
  */
-function inintPosition() {
-  var left = (-config.currentIndex - 1) * config.imgWidth;
-  config.doms.divImgs.style.marginLeft = left + "px";
+function initPosition() {
+  config.doms.divImgs.style.marginLeft =
+    -(config.currentIndex + 1) * config.imgWidth + "px";
 }
 /**
- *设置小圆点位置
+ * 设置小圆点的选中类样式
  */
 function setDotStatus() {
-  for (var i = 0; i < config.doms.divDots.children.length; i++) {
-    var dot = config.doms.divDots.children[i];
-    if (i === config.currentIndex) {
-      dot.className = "active";
-    } else {
-      dot.className = "";
-    }
-  }
+  Array.from(config.doms.divDots.children).forEach((item) => {
+    item.classList.remove("active");
+  });
+  config.doms.divDots.children[config.currentIndex].classList.add("active");
 }
+
 /**
- * 初始化汇总方法
+ * 初始化方法汇总
  */
 function init() {
   initSize();
-  initElements();
-  inintPosition();
+  initElement();
+  initPosition();
   setDotStatus();
 }
 init();
 /**
- * 切换到某一个图片索引
- * @param {*} index 切换到的图片索引
- *@param {*} direction 方向 "left" "right"
+ * 切换到某一个图片的索引位
+ * @param {*} index 目标索引
+ * @param {*} direction 方向 "left" "right"
  */
 function switchTo(index, direction) {
   if (index === config.currentIndex) {
@@ -87,82 +79,66 @@ function switchTo(index, direction) {
   if (!direction) {
     direction = "right";
   }
-  //最终的marginLeft
-  var newLeft = (-index - 1) * config.imgWidth;
-  //   config.doms.divImgs.style.marginLeft = newLeft + "px";
+  //1. 重新设置divImgs的marginLeft
+  var newLeft = -(index + 1) * config.imgWidth; //目标marginLeft
+  //1.1 逐步改变marginLeft
   animateSwitch();
-  //重新设置当前索引
+  //2. 重新设置小圆点选中样式
   config.currentIndex = index;
   setDotStatus();
+
   /**
-   * 逐步改变marginLeft
+   * 1.1逐步改变marginLeft
    */
   function animateSwitch() {
-    stopAnimate(); //先停止之前的动画
+    stopAnimate(); //先停止之前的动画。再开始新的动画
+    //1.1.1计算运动的次数
+    var number = Math.ceil(config.timer.total / config.timer.duration); //计时器需要运动的次数
+    var curNumber = 0; //当前计时器运行的次数
 
-    //1.计算运动的次数
-    var number = Math.ceil(config.timer.total / config.timer.duration);
-    var curNumber = 0; //当前的运动次数
-    //2.计算总距离
-    var distance;
-    marginLeft = parseFloat(getComputedStyle(config.doms.divImgs).marginLeft);
-    totalWidth = config.imgNumber * config.imgWidth;
-    if (direction === "left") {
-      if (newLeft < marginLeft) {
-        distance = newLeft - marginLeft;
+    //1.1.2计算需要改变的总距离
+    var distance, //需要移动的总距离
+      prevLeft = parseFloat(getComputedStyle(config.doms.divImgs).marginLeft),
+      totalWidth = config.imgWidth * config.imgNumber;
+    if (direction === "right") {
+      if (newLeft > prevLeft) {
+        distance = newLeft - prevLeft; //+
       } else {
-        distance = -(totalWidth - Math.abs(newLeft - marginLeft));
+        distance = totalWidth - Math.abs(newLeft - prevLeft); //+
       }
     } else {
-      if (newLeft > marginLeft) {
-        distance = newLeft - marginLeft;
+      if (newLeft < prevLeft) {
+        distance = newLeft - prevLeft; //-
       } else {
-        distance = totalWidth - Math.abs(newLeft - marginLeft);
+        distance = -(totalWidth - Math.abs(newLeft - prevLeft)); //-
       }
     }
-    // console.log(marginLeft, totalWidth, distance);
-    //3.计算每次改变的距离
+    //1.1.3计算每次改变的距离。转折点重要看这里
     var everyDistance = distance / number;
-
     config.timer.id = setInterval(function () {
-      //改变div的marginLeft
-      marginLeft += everyDistance;
-      if (direction === "left" && Math.abs(marginLeft) > totalWidth) {
-        marginLeft += totalWidth;
-      } else if (
-        direction === "right" &&
-        Math.abs(marginLeft) < config.imgWidth
-      ) {
-        marginLeft -= totalWidth;
+      prevLeft += everyDistance; //每次移动的距离
+      if (direction === "left" && Math.abs(prevLeft) > totalWidth) {
+        prevLeft += totalWidth;
       }
-      config.doms.divImgs.style.marginLeft = marginLeft + "px";
+      if (direction === "right" && Math.abs(prevLeft) < config.imgWidth) {
+        prevLeft -= totalWidth;
+      }
+      config.doms.divImgs.style.marginLeft = prevLeft + "px";
       curNumber++;
       if (curNumber === number) {
         stopAnimate();
       }
     }, config.timer.duration);
-  }
-  function stopAnimate() {
-    clearInterval(config.timer.id);
-    config.timer.id = null;
+
+    /**
+     * 停止动画
+     */
+    function stopAnimate() {
+      clearInterval(config.timer.id);
+      config.timer.id = null;
+    }
   }
 }
-
-config.doms.divArrow.onclick = function (e) {
-  if (e.target.classList.contains("left")) {
-    toLeft();
-  }
-  if (e.target.classList.contains("right")) {
-    toRight();
-  }
-};
-
-config.doms.divDots.onclick = function (e) {
-  if (e.target.tagName === "SPAN") {
-    Array.from(this.children).indexOf(e.target);
-    switchTo(index, index > config.currentIndex ? "left" : "right");
-  }
-};
 
 function toLeft() {
   var index = config.currentIndex - 1;
@@ -172,18 +148,36 @@ function toLeft() {
   switchTo(index, "right");
 }
 function toRight() {
-  var index = (config.currentIndex + 1) % config.imgNumber;
+  var index = config.currentIndex + 1;
+  if (index === config.imgNumber) {
+    index = 0;
+  }
   switchTo(index, "left");
 }
 
+config.doms.divArrow.onclick = function (e) {
+  if (e.target.classList.contains("left")) {
+    toLeft();
+  } else if (e.target.classList.contains("right")) {
+    toRight();
+  }
+};
+config.doms.divDots.onclick = function (e) {
+  if (e.target.tagName === "SPAN") {
+    var index = Array.from(this.children).indexOf(e.target);
+    if (index > config.currentIndex) {
+      switchTo(index, "left");
+    } else {
+      switchTo(index, "right");
+    }
+  }
+};
 config.autoTimer = setInterval(toRight, 2000);
-
-config.doms.divBanner.onmouseenter = function () {
+config.doms.divBanner.onmouseenter = function (e) {
   clearInterval(config.autoTimer);
   config.autoTimer = null;
 };
-
-config.doms.divBanner.onmouseleave = function () {
+config.doms.divBanner.onmouseleave = function (e) {
   if (config.autoTimer) {
     return;
   }

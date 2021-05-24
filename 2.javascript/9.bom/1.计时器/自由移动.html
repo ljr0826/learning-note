@@ -2,42 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
       div {
-        width: 200px;
-        height: 200px;
-        background-color: cadetblue;
+        width: 100px;
+        height: 100px;
+        background: crimson;
+        position: absolute;
+        left: 0;
+        top: 0;
       }
-      button {
+      p {
         margin-top: 300px;
       }
     </style>
   </head>
   <body>
     <div></div>
-    <button>开始移动</button>
-    <button>停止移动</button>
+    <p>
+      <button id="btn1">开始移动</button>
+      <button id="btn2">停止移动</button>
+    </p>
     <script>
       var div = document.querySelector("div");
-      var btn1 = document.getElementsByTagName("button")[0];
-      var btn2 = document.getElementsByTagName("button")[1];
       var left = 0;
-      var timer;
-
+      var timer1;
       btn1.onclick = function () {
-        if (timer) {
-          return;
+        if (!timer1) {
+          timer1 = setInterval(function () {
+            left++;
+            div.style.left = left + "px";
+          }, 10);
         }
-        timer = setInterval(function () {
-          left++;
-          div.style.marginLeft = left + "px";
-        }, 16);
       };
       btn2.onclick = function () {
-        clearInterval(timer);
-        timer = null;
+        clearInterval(timer1);
+        timer1 = null; //timer1里面记录的数字需要手动清空
       };
     </script>
   </body>

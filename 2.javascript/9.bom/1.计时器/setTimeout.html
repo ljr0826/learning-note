@@ -2,32 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <button>点击开始</button>
-    <button>清除计时器</button>
+    <button id="btn1">点击开始</button>
+
+    <button id="btn2">清除计时器</button>
     <script>
-      var btn1 = document.getElementsByTagName("button")[0];
-      var btn2 = document.getElementsByTagName("button")[1];
-      var time1, time2, time3;
+      var timer1, timer2, timer3;
       btn1.onclick = function () {
-        //3000毫秒之后运行指定的函数
-        time1 = setTimeout(function () {
+        timer1 = setTimeout(function () {
           console.log("计时完成1");
-        }, 3000);
-        time2 = setTimeout(function () {
+        }, 3000); //第一个参数是函数，第二个参数是数字代表时间间隔单位毫秒；即多长时间后运行第一个参数
+        timer2 = setTimeout(function () {
           console.log("计时完成2");
         }, 3000);
-        time3 = setTimeout(function () {
+        timer3 = setTimeout(function () {
           console.log("计时完成3");
         }, 3000);
-        console.log(time1, time2, time3);
-        console.log("不会阻塞后续代码的执行");
+        console.log(timer1, timer2, timer3); //timer立即输出
+        console.log("点击事件"); //并不会等待计时器。即计时器不会阻塞后续代码的执行
       };
       btn2.onclick = function () {
-        clearTimeout(time1);
+        if (timer1) {
+          clearTimeout(timer1); //清除后无法恢复
+        }
       };
     </script>
   </body>

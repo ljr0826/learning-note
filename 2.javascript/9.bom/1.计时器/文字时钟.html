@@ -2,27 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <h1 style="text-align: center"></h1>
+    <h1></h1>
     <script>
       var h1 = document.querySelector("h1");
-
       function setTime() {
         var date = new Date();
-        var hour = date.getHours();
-        var minute = date.getMinutes();
-        var second = date.getSeconds();
-        h1.innerHTML = `${hour
-          .toString()
-          .padStart(2, "0")}:${minute
-          .toString()
-          .padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
+        // var hours = date.getHours().toString().padStart(2, "0"),
+        //   minutes = date.getMinutes().toString().padStart(2, "0"),
+        //   seconds = date.getSeconds().toString().padStart(2, "0");
+        // h1.innerHTML = `${hours}：${minutes}：${seconds}`;
+        h1.innerHTML = date.toLocaleString();
       }
       setTime();
-      setInterval(setTime, 1000);
+      var timer1 = setInterval(setTime, 1000);
     </script>
   </body>
 </html>

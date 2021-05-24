@@ -2,69 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
       .move {
         position: fixed;
-        left: 0;
-        top: 0;
+        top: 100px;
+        left: 100px;
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: red;
+        background-color: red;
       }
     </style>
   </head>
-
   <body>
-    <div class="move">
-      <!-- 该div自动向右下移动，遇到边界反弹 -->
-    </div>
+    <div class="move"></div>
     <script>
-      var timer;
       var div = document.querySelector(".move");
-      var style = getComputedStyle(div);
-      var divWidth = 100;
-      var divHeight = 100;
-      var divLeft = parseFloat(style.left);
-      var divTop = parseFloat(style.top);
-      var width = true;
-      var height = true;
-      divMove();
-      function divMove() {
-        var timer = setInterval(function () {
-          if (divLeft === 0) {
-            width = true;
-          } else if (
-            divLeft ===
-            document.documentElement.clientWidth - divWidth
-          ) {
-            width = false;
-          } 
-          if (width) {
-            divLeft += 2;
-          } else {
-            divLeft -= 2;
-          }
-          if (divTop === 0) {
-            height = true;
-          } else if (
-            divTop ===
-            document.documentElement.clientHeight - divHeight
-          ) {
-            height = false;
-          }
-          if (height) {
-            divTop += 3;
-          } else {
-            divTop -= 3;
-          }
-          div.style.top = divTop + "px";
-          div.style.left = divLeft + "px";
-        }, 10);
-      }
+      var mleft = 100,
+        mtop = 100,
+        disX = 2,
+        disY = 2;
+      setInterval(function () {
+        var maxLeft = document.documentElement.clientWidth - div.clientWidth;
+        var maxTop = document.documentElement.clientHeight - div.clientHeight;
+        if (mleft > maxLeft || mleft < 0) {
+          disX = -disX;
+        }
+        if (mtop > maxTop || mtop < 0) {
+          disY = -disY;
+        }
+        mleft += disX;
+        mtop += disY;
+        div.style.left = mleft + "px";
+        div.style.top = mtop + "px";
+      }, 2);
     </script>
   </body>
 </html>

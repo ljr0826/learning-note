@@ -1,28 +1,28 @@
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 .banner {
-  position: relative;
-  width: 520px;
-  height: 280px;
-  background-color: red;
+  width: 500px;
+  height: 320px;
   margin: 0 auto;
-  /* border: 2px solid #008c8c; */
+  position: relative;
   overflow: hidden;
 }
 .banner .imgs img {
-  width: 520px;
-  height: 280px;
+  width: 500px;
+  height: 320px;
   object-fit: cover;
-  display: block;
-}
-.banner .imgs a {
   float: left;
 }
 .banner .dots {
   position: absolute;
-  background: rgba(255, 255, 255, 0.3);
   left: 0;
   right: 0;
   margin: 0 auto;
-  bottom: 12px;
+  bottom: 8px;
+  background-color: rgba(255, 255, 255, 0.3);
   padding: 2px 4px;
   border-radius: 8px;
 }
@@ -31,12 +31,12 @@
   width: 8px;
   height: 8px;
   margin: 2px;
-  background: #fff;
+  background-color: #fff;
   border-radius: 50%;
   cursor: pointer;
 }
 .banner .dots span.active {
-  background: #f40;
+  background-color: #ef780b;
 }
 .banner .arrow {
   display: none;
@@ -46,24 +46,26 @@
 }
 .banner .arrow .item {
   position: absolute;
-  top: 120px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  width: 20px;
+  top: 150px;
+  width: 25px;
   height: 30px;
   line-height: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
   cursor: pointer;
 }
 .banner .arrow .item:hover {
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .banner .arrow .left {
   left: 0;
-  border-radius: 0 17px 17px 0;
+  border-radius: 0 30px 30px 0;
 }
 .banner .arrow .right {
   right: 0;
-  padding-left: 7px;
+  border-radius: 30px 0 0 30px;
   box-sizing: border-box;
-  border-radius: 17px 0 0 17px;
+  padding-left: 6px;
 }
