@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://at.alicdn.com/t/font_2568536_10mn2ch5aeua.css"
+    />
+    <style>
+      .container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        left: 0;
+        top: 0;
+      }
+      .container .confirm {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 260px;
+        height: 160px;
+        background-color: #fff;
+      }
+      .container .confirm .cue {
+        height: 30px;
+        padding: 10px 20px 0;
+        background-color: rgb(238, 238, 238);
+      }
+      .container .confirm .iconfont {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        cursor: pointer;
+      }
+      .container .confirm .txt {
+        height: 70px;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .container .confirm .btn-sel {
+        height: 50px;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        text-align: right;
+      }
+      button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button>打开一个确认对话框</button>
+    <!-- <div class="container">
+      <div class="confirm">
+        <div class="cue">提示</div>
+        <i class="iconfont icon-guanbi"></i>
+        <div class="txt">你坐明堂上，不要沾风雪</div>
+        <div class="btn-sel">
+          <button class="verify">确认</button>
+          <button class="cancel">取消</button>
+        </div>
+      </div>
+    </div> -->
+    <script>
+      //实现点击弹出提示的功能。能点确定、取消、关闭、拖拽（不用这节课的知识）
+      var btn = document.querySelector("button");
+      var div = document.createElement("div");
+      div.classList.add("container");
+      div.innerHTML = `<div class="confirm">
+        <div class="cue">提示</div>
+        <i class="iconfont icon-guanbi"></i>
+        <div class="txt">你坐明堂上，不要沾风雪</div>
+        <div class="btn-sel">
+          <button class="verify">确认</button>
+          <button class="cancel">取消</button>
+        </div>
+      </div>`;
+      document.body.appendChild(div);
+      div.style.display = "none";
+      btn.onclick = function () {
+        div.style.display = "block";
+      };
+      div.onclick = function (e) {
+        if (e.target.classList.contains("verify")) {
+          div.style.display = "none";
+        }
+        if (e.target.classList.contains("cancel")) {
+          div.style.display = "none";
+        }
+        if (e.target.classList.contains("icon-guanbi")) {
+          div.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

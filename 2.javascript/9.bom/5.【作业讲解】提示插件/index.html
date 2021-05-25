@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .confirm {
+        background-color: cornflowerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <button>打开一个确认对话框</button>
+    <script src="../../plugin/confirm.js"></script>
+    <script>
+      //按钮的文本和样式（类样式）、提示文本、提示标题.需要自己配置
+      document.querySelector("button").onclick = function () {
+        myPlugin.openConfirm({
+          title: "删除的提示",
+          content: "请问真的要删除吗？",
+          confirmText: "OK",
+          cancelText: "Cancel",
+          confirmClass: "confirm",
+          cancelClass: "cancel",
+          onconfirm: function () {
+            console.log("点击了确定");
+          },
+          oncancel: function () {
+            console.log("点击了取消");
+          },
+        }); //假设有这样一个函数提供给我。调用该函数即打开一个确认对话框
+      }; //观察通用插件js得知。此处可以传递字符串、或对象、不传递也行
+    </script>
+  </body>
+</html>

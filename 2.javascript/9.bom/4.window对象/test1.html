@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      iframe {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>打开新页面</button>
+    <iframe name="myframe" src="" frameborder="0"></iframe>
+    <script>
+      var w;
+      // document.querySelector("button").onclick = function () {
+      //   window.open("https://www.jd.com", "_blank");
+      // };
+      // document.querySelector("button").onclick = function () {
+      //   window.open("https://www.jd.com", "myframe");
+      // };
+      document.querySelector("button").onclick = function () {
+        var w = window.open("test2.html", null, "width=300,height=300");
+        w.resizeTo(500, 500);
+      }; //关于屏幕的配置还有很多。但是兼容性严重到一个浏览器一个样子。不要去用
+    </script>
+  </body>
+</html>
