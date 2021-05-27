@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        x: 1,
+        y: 2,
+      };
+      Object.defineProperty(obj, "name", {
+        value: "abc",
+        writable: false, //默认值也是false，不写也行
+        enumerable: false, //不可迭代 遍历
+      });
+      //for-in循环可以遍历一个对象的属性。
+      //但是原型链的学习我们知道所有对象都会继承自Object.prototype。那为什么没有遍历到Object里面的东西呢？
+      //而且，为什么name属性没有遍历出来呢？
+      //答：就是因为name属性是存取器属性，他的属性描述符里面配置了enumerable属性值为false
+      for (var prop in obj) {
+        console.log(prop);
+      }
+    </script>
+  </body>
+</html>

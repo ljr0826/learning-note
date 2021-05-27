@@ -2,17 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
       function test() {
-        return {}; //obj.__proto__ === Object.prototype
+        // return {};//根据构造函数的原理，构造函数默认会返回一个对象。如果自身有返回值（原始类型忽略，引用类型替换掉默认返回的对象）
       }
-      var obj = new test(); //obj.__proto__ === test.prototype
-      function ss() {}
-      console.log(ss);
+      var obj = new test(); //默认或者说正常情况下，返回test{}对象。但是若构造函数内return {};则返回Object{}对象
     </script>
   </body>
 </html>

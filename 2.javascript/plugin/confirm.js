@@ -3,6 +3,7 @@
 if (!window.myPlugin) {
   window.myPlugin = {}; //在window全局对象上添加一个对象。将暴露出来的变量全部添加在该对象上
 }
+//由于写的东西就是和浏览器相关的，所以可以认为就是浏览器环境
 window.myPlugin.openConfirm = (function () {
   var divModal, //遮罩层
     divCenter, //中间的容器

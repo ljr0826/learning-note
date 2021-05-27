@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .move {
+        position: fixed;
+        top: 100px;
+        left: 100px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="move"></div>
+    <script>
+      var div = document.querySelector(".move");
+      var config = {
+        disX: 2,
+        disY: 2,
+        duration: 16,
+        width: 100,
+        height: 100,
+        _mleft: 100,
+        _mtop: 100,
+      };
+      Object.defineProperty(config, "mleft", {
+        get: function () {
+          return this._mleft;
+        },
+        set: function (val) {
+          if (val > document.documentElement.clientWidth - this.width) {
+            val = document.documentElement.clientWidth - this.width;
+          }
+          if (val < 0) {
+            val = 0;
+          }
+          this._mleft = val;
+          div.style.left = val + "px";
+        },
+      });
+      Object.defineProperty(config, "mtop", {
+        get: function () {
+          return this._mtop;
+        },
+        set: function (val) {
+          if (val > document.documentElement.clientHeight - this.height) {
+            val = document.documentElement.clientHeight - this.height;
+          }
+          if (val < 0) {
+            val = 0;
+          }
+          this._mtop = val;
+          div.style.top = val + "px";
+          // this.mtop = val;//会导致无限递归
+        },
+      });
+      //存取器属性控制属性的范围
+      setInterval(function () {
+        //边界判定
+        if (
+          config.mleft ===
+            document.documentElement.clientWidth - config.width ||
+          config.mleft === 0
+        ) {
+          config.disX = -config.disX;
+        }
+        if (
+          config.mtop ===
+            document.documentElement.clientHeight - config.height ||
+          config.mtop === 0
+        ) {
+          config.disY = -config.disY;
+        }
+        config.mleft += config.disX;
+        config.mtop += config.disY;
+      }, config.duration);
+      //赋值表达式obj.a = 3的结果为赋值的结果，而不是变量obj.a的结果
+    </script>
+  </body>
+</html>

@@ -2,18 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <!-- <script>
-      var str = "esrgbvds sfg sfv";
-      String.prototype.camel = function () {
-        return this.replace(/\b(\w)(\w*)\b/g, function ($1, $2, $3) {
-          return $1.toUpperCase() + $2;
-        }).replace(/\s/g, " ");
-      };
-    </script> -->
-    <script src="./面试题/面试题1.js"></script>
+    <script>
+      function create() {
+        if (Math.random() < 0.5) {
+          return {};
+        } else {
+          return [];
+        }
+      }
+      var obj = create();
+      //如何得到创建obj的构造函数名称
+      console.log(obj.__proto__.constructor.name); //即可以通过此方法得到某个对象是由那个构造函数创建的
+      // if (Array.isArray(obj)) {
+      //   console.log("Array");
+      // } else {
+      //   console.log("Object");
+      // }
+    </script>
   </body>
 </html>

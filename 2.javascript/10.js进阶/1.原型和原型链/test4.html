@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function User(name, age) {
+      //   this.name = name;
+      //   this.age = age;
+      //   // this.sayHello = function () {
+      //   //   console.log(`hello`);
+      //   // };
+      // }
+      // User.prototype.sayHello = function () {
+      //   console.log(`hello`);
+      // };
+      // var u1 = new User("萧策安", 23);
+      // var u2 = new User("沈兰舟", 21);
+      // console.log(u1.sayHello === u2.sayHello); //问题，false。解决：将这个方法放到函数原型里面
+
+      //原型链知识点的骚操作/灵活应用
+      String.prototype.camel = function () {
+        return this.replace(
+          /(\s*\b[a-zA-Z])([a-zA-Z]*)/g,
+          function ($, $1, $2) {
+            // console.log($, $1, $2);
+            return $1.toUpperCase().trim() + $2.toLowerCase();
+          }
+        );
+      };
+
+      function A() {}
+      console.log(A.call === Function.prototype.call); //true
+
+      var arr = [34, 56, 3, 5];
+      console.log(arr.toString()); //arr里面的toString方法被重写了
+      console.log(Object.prototype.toString(arr)); //强行调用object的toString方法
+    </script>
+    <script src="./面试题/面试题3.js"></script>
+  </body>
+</html>

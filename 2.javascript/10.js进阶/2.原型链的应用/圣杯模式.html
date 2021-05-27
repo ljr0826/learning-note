@@ -2,50 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <!-- <script src="../.././plugin/helpers.js"></script> -->
     <script>
-      //   inherit = function (son, father) {
-      //     //袁老师思路
-      //     son.prototype = Object.create(father.prototype);
+      function inherit(son, father) {
+        son.prototype = Object.create(father.prototype);
+        son.prototype.constructor(son);
+        console.log(Object.getPrototypeOf(son)); //son.__proto__
+      }
+      // var inherit = (function () {
+      //   var Temp = function () {};
+      //   return function (son, father) {
+      //     Temp.prototype = father.prototype;
+      //     son.prototype = new Temp();
       //     son.prototype.constructor = son;
       //     son.prototype.uber = father.prototype;
       //   };
-
-      if (!this.myPlugin) {
-        this.myPlugin = {};
-      }
-      this.myPlugin.inherit = (function () {
-        var Temp = function () {};
-        return function (son, father) {
-          Temp.prototype = father.prototype;
-          son.prototype = new Temp();
-          son.prototype.constructor = son;
-          son.prototype.uber = father.prototype;
-        };
-      })();
-      var Father = function (lastName, firstName, age) {
-        this.lastName = lastName;
+      // })();
+      function User(firstName, lastName, age) {
         this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
-        this.fullName = `姓名${this.lastName}${this.firstName}，年龄${this.age}`;
+      }
+      User.prototype.sayHello = function () {
+        console.log("User prototype sayHello");
       };
-      Father.prototype.sayHello = function () {
-        console.log("世界和平");
+      function VIPUser(firstName, lastName, age, money) {
+        // this.uber(firstName, lastName, money);
+        User.call(this, firstName, lastName, age);
+        this.money = money;
+      }
+      inherit(VIPUser, User);
+      VIPUser.prototype.upgrade = function () {
+        console.log("VIPUser prototype upgrade");
       };
-      var father = new Father("谢", "怜", "800");
-      console.log(father);
-      var Son = function (lastName, firstName, age, lover) {
-        // this.myPlugin.inherit();
-        Father.call(this, lastName, firstName, age);
-        this.lover = lover;
-      };
-      this.myPlugin.inherit(Son, Father);
-      var son = new Son("谢", "怜", "800", "花城");
-      console.log(son);
+      var an = new VIPUser("萧", "策安", 23, 1000);
+      var lan = new User("沈", "兰舟", 21);
     </script>
   </body>
 </html>

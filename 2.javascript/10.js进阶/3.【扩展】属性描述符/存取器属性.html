@@ -2,30 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
       var obj = {};
+      // obj.x = 1; //数据属性
+      //存取器属性。读取会运行一个函数，设置也会运行一个函数
+      //怎样将一个属性变成存取器属性。又怎样告诉他运行哪个函数？
+      //答：使用Object.defineProperty()方法来做一个存取器属性
       Object.defineProperty(obj, "x", {
-        //属性描述符
-        // value: 1,
+        //属性描述符。配置的是obj.x的相关信息。本节课主要学习这个描述符对象里面可以填哪些东西及有哪些东西可以配置
+        //value属性：若没有配置，默认值为undefined，
+        // value: 1, //只这样写的话仍然是数据属性。相当于obj.x = 1
+        //存取器属性怎么做？---加一些配置：get函数、set函数。只要加了这两个属性就是存取器属性了
+        //配置了get、set的话，设置的value和writable是无效的，同时设置会报错
         get: function () {
-          //当读取属性x时运行的函数
+          //get函数表示当读取属性x时，运行的函数；并且该函数的返回值将作为属性的值
           console.log("读取属性x");
-          //该函数的返回值将作为属性的值
           return 2;
         },
         set: function (val) {
-          //当给该属性赋值时运行的函数
-          //val：表示要赋的值
+          //set函数表示当给该属性赋值时，运行的函数；一般都需要一个参数val，表示要赋的值
           console.log("给属性赋值为" + val);
-        }, //get和set与value不能同时存在
+        },
       });
-      //   obj.x = 1; //会运行一个函数
-      obj.x = 3;
-      console.log(obj.x); //会运行一个函数<==>调用了get函数
+      obj.x = 3; //相当于运行了属性描述符的set函数
+      console.log(obj.x); //相当于调用了属性描述符的get函数，得到的始终是get函数的返回值即运行的结果
+      //思考：存取器属性有什么意义？
     </script>
   </body>
 </html>

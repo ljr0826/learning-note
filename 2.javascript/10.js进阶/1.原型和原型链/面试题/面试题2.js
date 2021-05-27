@@ -1,11 +1,11 @@
 function A() {}
 function B(a) {
-    this.a = a;
+  this.a = a;
 }
 function C(a) {
-    if (a) {
-        this.a = a;
-    }
+  if (a) {
+    this.a = a;
+  }
 }
 A.prototype.a = 1;
 B.prototype.a = 1;

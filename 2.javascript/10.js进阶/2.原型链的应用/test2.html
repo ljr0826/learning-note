@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../plugin/helpers.js"></script>
+    <script>
+      //实现继承
+      function User(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.fullName = this.firstName + " " + this.lastName;
+      }
+      User.prototype.sayHello = function () {
+        console.log(`大家好，我叫${this.fullName}，今年${this.age}了`);
+      };
+
+      function VIPUser(firstName, lastName, age, money) {
+        // this = Object.create(User);X
+        // User.call(this);X
+        // User(firstName, lastName, age); //X 运行一次这个函数。问题：直接调用函数this指向全局对象
+        User.call(this, firstName, lastName, age);
+        this.money = money;
+      }
+      myPlugin.inherit(VIPUser, User); //在什么时候调用最好？最好一开始就写好。避免将son特有的覆盖掉
+      VIPUser.prototype.upgrade = function () {
+        console.log(`使用了${100}软妹币，升级了`);
+        this.money -= 100;
+      };
+      var vUser = new VIPUser("萧", "策安", 23, 1000);
+
+      //我们最终要实现的继承。就是希望解决这个问题：vUser上没有User.prototype的方法
+    </script>
+  </body>
+</html>

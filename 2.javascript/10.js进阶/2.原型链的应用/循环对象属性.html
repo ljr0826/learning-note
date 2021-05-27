@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -9,13 +10,16 @@
     <script>
       var p = {
         x: 123,
-        y: "殿下，信我",
+        y: 456,
       };
       var obj = Object.create(p);
-      obj.u = "天官赐福，百无禁忌";
+      obj.abc = "jfeijf";
       for (var prop in obj) {
-        if (obj.hasOwnProperty(prop)) {
-          console.log(obj[prop]);
+        // console.log(prop); //能循环到该对象原型链上的东西。但是我们不希望这样
+        //obj的原型链上还有Object.prototype。为什么没有打印出来呢？
+        //答：属性描述符部分做的特殊处理。下节课学习
+        if (obj.hasOwnPrototype(prop)) {
+          console.log(prop);
         }
       }
     </script>

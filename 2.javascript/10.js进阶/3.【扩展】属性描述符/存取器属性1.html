@@ -2,19 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
+      //存取器属性的用处？1.可以利用存取器属性来限定某些属性的取值范围
       function User(name, age) {
         this.name = name;
+        //年龄考虑多一点：年龄的取值范围有限制 0~100
+        //如果age<0则age = 0；age>100则age=100
+        // if (age < 0) {
+        //   age = 0;
+        // } else if (age > 100) {
+        //   age = 100;
+        // } //这样写有问题，构造函数创建对象后对属性赋值无法阻止；所以要将数据属性写成存取器属性
         var _age;
         Object.defineProperty(this, "age", {
+          configurable: true,
           get: function () {
+            console.log("运行了存取器属性的get函数");
             return _age;
           },
           set: function (val) {
+            console.log("运行了存取器属性的set函数" + val);
             if (val < 0) {
               val = 0;
             } else if (val > 100) {
@@ -23,11 +35,27 @@
             _age = val;
           },
         });
-        this.age = age;
+        Object.defineProperty(this, "age", {
+          get: function () {
+            console.log("ff");
+            return _age;
+          },
+          set: function (val) {
+            console.log("运行了存取器属性的set函数" + val);
+            if (val < 0) {
+              val = 0;
+            } else if (val > 100) {
+              val = 100;
+            }
+            _age = val;
+          },
+        });
+        this.age = age; //会运行存取器属性的set函数
       }
-      var u = new User("abc", -1);
-      u.age = u.age + 1000;
-      console.log(u.age);
+
+      var u = new User("fsfe", -1);
+      // u.age = 10000; //问题出现。10000超出范围但是没有变成100
+      //还有当项目中构造函数超级多，每个构造函数都有条件限制。记不住的话就容易出现这种情况。所以直接在构造函数里面设置条件不好
     </script>
   </body>
 </html>

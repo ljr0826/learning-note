@@ -8,11 +8,8 @@
   </head>
   <body>
     <script>
-      var obj = {
-        x: 1, //数据属性，初始化对象时添加的属性
-        say: function () {}, //数据属性
-      };
-      obj.y = 2; //数据属性。通过直接赋值添加的属性
+      var obj = {};
+      console.log(Object.getPrototypeOf(obj));
     </script>
   </body>
 </html>
