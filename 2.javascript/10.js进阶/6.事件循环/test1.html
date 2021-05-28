@@ -2,20 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <img src="" alt="" />
     <script>
       console.log("1");
       setTimeout(function () {
-        console.log("2", "异步代码");
-      }, 0);
-      console.log("3");
-      for (var i = 0; i <= 1000; i++) {
-        console.log("同步代码");
+        console.log("2异步代码");
+      }, 0); //函数需要某个时机到达后才会运行就是异步函数。即使再快也要等执行栈没有多余的东西才能运行
+      //通知计时器线程，等待多少ms后运行一个函数。js引擎不负责计时，通知完成即出栈
+      //时机到达后，web api会把函数放到事件队列中来；执行任何东西都需要在执行栈里面
+      //当执行栈里没有东西时。会将事件队列的函数拿出来执行
+      for (var i = 0; i < 1000; i++) {
+        console.log(i);
       }
+      console.log("3");
+      //1 3 2
     </script>
   </body>
 </html>

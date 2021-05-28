@@ -2,33 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <button>点击</button>
     <script>
-      document.querySelector("button").onclick = function A() {
-        //1. js执行引擎通知事件监听线程(web api)、等待
-        //4. 事件成熟后从web api中放到event queue中等待
-        //5. call stack中没有任何内容时从event queue中放到call stack中执行
-        setTimeout(function B() {
-          //6.js执行引擎通知计时器线程(web api)、等待
+      document.querySelector("button").onclick = function () {
+        setTimeout(function () {
           console.log("异步代码");
         }, 0);
-        //8. 事件成熟后从web api中放到event queue中等待
-        //9. call stack中没有任何内容时从event queue中放到call stack中执行
-        loop(); //7. 执行栈执行
+        loop();
       };
-
       function loop() {
-        //2. 执行栈中声明
-        for (var i = 0; i < 10000; i++) {
+        for (var i = 0; i < 100; i++) {
           console.log(i);
         }
       }
-
-      loop(); //3. 执行栈中执行
     </script>
   </body>
 </html>

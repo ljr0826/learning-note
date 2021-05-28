@@ -1,8 +1,10 @@
 var food = "rice";
+
 var eat = function () {
-    console.log(`eat ${food}`);
+  console.log(`eat ${food}`); // eat rice
 };
+
 (function () {
-    var food = "noodle";
-    eat();//eat rice
+  var food = "noodle";
+  eat();
 })();

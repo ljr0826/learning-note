@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(this.name); //2. ""
+      function A() {
+        this.abc = 123;
+
+        function B() {
+          console.log(this); //5. window对象
+        }
+        B(); //4. this指向window对象
+      }
+      var a = new A(); //3.函数A的上下文。要做很多事情：this指向是在调用函数的时候确定的，等this指向新对象
+
+      console.log(a.abc); //6. 123
+      //1. 全局上下文，可以认为他就是一个对象，存放地址指向一块内存空间，里面有this指向(遵循规则)和VO
+      //这些对象实际上存在于堆里面。栈里面只是存放了这些对象的地址
+    </script>
+  </body>
+</html>

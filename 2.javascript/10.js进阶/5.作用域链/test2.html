@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function A() {
+        var count = 0;
+        return function () {
+          count++;
+          console.log(count);
+        }; //这个是函数表达式，而不是函数字面量
+      }
+      var test = A();
+      //js中有垃圾回收器。A的执行上下文出栈。但是A的VO由于找得到（通过函数的[[scrop]]）还在
+      //即由于函数执行完成。该函数的执行上下文出栈。但是由于函数执行内部定义的函数的[[scope]]指向当前VO所以将执行上下文中的VO保存了下来
+      //这个特点在js的某种应用中很常见
+      //闭包：广义上说就是函数内部可以使用外部函数的变量。狭义上说就是由于函数声明时的属性[[scope]]指向当前VO所以导致VO中的局部变量被保存了下来
+      //按照作用域链改变变量的值是可以的
+      test(); //1
+      test(); //2
+      test(); //3
+      console.log(count); //报错
+    </script>
+  </body>
+</html>

@@ -2,22 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      var obj = {
-        x: 123,
-        y: 234,
-      };
-      console.log(obj.toString());
-      console.log(obj.valueOf());
-      console.dir(obj);
-      //       - console
-
-      // log 方法：打印对象的 valueOf 的返回值
-      // dir 方法：打印对象结构
+      console.log("G1"); //3. 调用函数。创建执行上下文。函数调用完该执行上下文出栈
+      function A() {
+        console.log("A1"); //5. 调用函数。...
+        function B() {
+          console.log("B"); //7. 调用函数。...
+        }
+        B(); //6. 调用函数。...
+        console.log("A2"); //8. 调用函数
+      }
+      A(); //4.调用函数A。创建执行上下文环境
+      console.log("G2"); //9. 调用函数。....。最终全局执行上下文出栈
+      //G1 A1 B A2 G2
+      //浏览器执行代码时，虽然js是解释型语言。但浏览器会先扫一眼代码
+      //任何js代码运行都会有一个环境即执行上下文。一开始看到全局代码在全局执行上下文中
+      //1. 先建立全局执行上下文。开始执行js代码
+      //2. 每次调用函数，都会创建一个新的函数上下文（js引擎始终执行的是栈顶的上下文）
     </script>
   </body>
 </html>

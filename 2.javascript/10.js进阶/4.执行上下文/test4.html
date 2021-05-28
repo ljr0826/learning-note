@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var g1 = 123;
+      function A(a, b) {
+        console.log(a, b); //1 fb
+        var b = 123;
+        function b() {} //字面量声明函数，一旦提取到VO里面；之后不再看他因为已经处理过了
+        var a = function () {};
+        console.log(a, b); //fa 123
+      }
+      var g2 = 456;
+      var g3 = function () {};
+      A(1, 2);
+      //a=1 b=func
+    </script>
+  </body>
+</html>

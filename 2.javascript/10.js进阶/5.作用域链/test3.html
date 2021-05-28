@@ -8,22 +8,19 @@
   </head>
   <body>
     <script>
-      var g = 0;
+      var a = 1;
+
       function A() {
-        var a = 1;
-        function B() {
-          var b = 2;
-          var C = function () {
-            var c = 3;
-            console.log(c, b, a, g);
-          };
-          C();
-        }
+        console.log(a); //1   主要看函数A在哪里声明的，不管它后续怎么被赋值给谁
+      } //即函数A声明时的作用域，而不是后续运行时的作用域
+
+      function Special() {
+        var a = 5;
+        var B = A;
         B();
       }
-      A();
 
-      //
+      Special();
     </script>
   </body>
 </html>
