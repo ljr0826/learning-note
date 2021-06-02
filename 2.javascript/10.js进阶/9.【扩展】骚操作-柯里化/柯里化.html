@@ -2,42 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <!-- <script src="../../plugin/helper.js"></script> -->
+    <script src="../../plugin/helpers.js"></script>
     <script>
-      //curry：Haskell curry是函数式编程里面的东西
-      //柯里化函数：固定某个函数的一些参数，得到该函数剩余参数的一个新函数，如果没有剩余参数，则调用
-
-      curry = function (func) {
-        //得到从下标1开始的参数数组
-        var args = Array.prototype.slice.call(arguments, 1);
-        var that = this;
-        return function () {
-          var curArgs = Array.from(arguments); //当前调用的参数
-          var totalArgs = args.concat(curArgs);
-          if (totalArgs.length >= func.length) {
-            // 参数数量够了
-            return func.apply(null, totalArgs);
-          } else {
-            //参数数量仍然不够
-            totalArgs.unshift(func);
-            return that.curry.apply(that, totalArgs);
-          }
-        };
-      };
       function f(x, y, z) {
         return (x + y) * z;
       }
-      var g = curry(f, 2);
+      //求：(2+3)*5   (2+5)*6     (2+4)*7   (2+4)*16
+      //发现第一个参数都是2。利用柯里化函数将第一个参数固定下来
+      var g = myPlugin.curry(f, 2); //参数分别表示：要执行的函数、固定的第一个参数
+      // g(3, 4);
       console.log(g(3, 5));
       console.log(g(5, 6));
-      var y = g(3);
-      console.log(y(8));
-      //求：(2+3)*5  (2+5)*6 (2+1)*7 (2+7)*16
-      //   console.log(g(3, 2));
+      var y = g(4); //再固定一个参数4。相当于myPlugin.curry(f, 2, 4)
+      console.log(y(7));
+      console.log(y(16));
+      // //即curry的关注点在于他的返回值。首先返回值是一个函数。调用这个返回值可能得到一个新的函数或直接调用得到结果
     </script>
   </body>
 </html>

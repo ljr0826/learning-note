@@ -7,9 +7,8 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="../../plugin/helpers.js"></script>
     <script>
-      var str = "   MY    fIrST     naME";
+      var str = "       YeArs Of     wIshFul ThiNKIng   hAve gOne aStrAy";
       //将字符串中每一个单词首字母大写
       function everyFirstLetterUp(str) {
         return str.replace(/\b(\w)(\w*)\b/g, function ($, $1, $2) {
@@ -36,21 +35,35 @@
       function curString(number, str) {
         return str.substr(0, number);
       }
-
-      //实现：将一个字符串变为小驼峰命名法。将以上写好的函数组合起来
-      // str = everyFirstLetterUp(str);
-      // str = firstLetterLower(str);
-      // str = otherLetterLower(str);
-      // str = removeEmpty(str);
-      // console.log(str); //反复调用，麻烦；难以维护且容易出错
-      // //这些函数都只有一个参数。且前一个的返回值为下一个函数的参数。怎么用？
-      var smallCamel = myPlugin.pipe(
+      function pipe() {
+        var args = Array.from(arguments);
+        return function (val) {
+          return args.reduce(function (result, func) {
+            return func(result);
+          }, val);
+        };
+      }
+      function curry(func) {
+        var args = Array.from(arguments).slice(1),
+          that = this;
+        return function () {
+          var curArgs = Array.from(arguments);
+          var totalArgs = args.concat(curArgs);
+          if (totalArgs.length >= func.length) {
+            return func.apply(that, totalArgs);
+          } else {
+            totalArgs.unshift(func);
+            return this.curry.apply(that, totalArgs);
+          }
+        };
+      }
+      var smallCamel = pipe(
         everyFirstLetterUp,
         firstLetterLower,
         otherLetterLower,
         removeEmpty,
-        myPlugin.curry(curString, 10) //这个就是单参函数了。前提是number参数放在前面
-      ); //将这些函数组合形成一个新的函数。函数调用顺序固定下来了，复杂度降低
+        curry(curString, 10)
+      );
       console.log(smallCamel(str));
     </script>
   </body>

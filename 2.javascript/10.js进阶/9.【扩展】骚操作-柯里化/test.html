@@ -2,34 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
       .container {
-        border: 2px solid #008c8c;
+        border: 2px solid;
         padding: 30px;
       }
     </style>
   </head>
   <body>
     <div class="container"></div>
-    <!-- <script src="../../plugin/helper.js"></script> -->
+    <script src="../../plugin/helpers.js"></script>
     <script>
-      var curry = function (func) {
-        var that = this;
-        // var args = Array.from(arguments).slice(1);
-        var args = Array.prototype.slice.call(arguments, 1);
-        return function () {
-          var curArgs = Array.from(arguments);
-          var totalArgs = args.concat(curArgs);
-          if (totalArgs.length >= func.length) {
-            return func.apply(null, totalArgs);
-          } else {
-            totalArgs.unshift(func);
-            return that.curry.apply(that, totalArgs);
-          }
-        };
-      };
+      //div里面可能添加任何东西
+      //参数依次为dom对象、dom名称、元素属性、元素样式、元素内容
+      var div = document.querySelector(".container");
       function createElement(container, name, props, styles, content) {
         var ele = document.createElement(name);
         container.appendChild(ele);
@@ -43,8 +32,21 @@
           ele.innerHTML = content;
         }
       }
+      var create = myPlugin.curry(
+        createElement,
+        div,
+        "div",
+        {},
+        {
+          height: "100px",
+          lineHeight: "100px",
+          textAlign: "center",
+          background: "lightblue",
+          margin: "30px",
+        }
+      );
       createElement(
-        document.querySelector(".container"),
+        div,
         "img",
         {
           src: "1.jpg",
@@ -53,22 +55,9 @@
           width: "100px",
         }
       );
-      var create = curry(
-        createElement,
-        document.querySelector(".container"),
-        "div",
-        {},
-        {
-          width: "200px",
-          height: "200px",
-          marginRight: "10px",
-          float: "left",
-          background: "lightblue",
-        }
-      );
-      create("你有没有什么想说的。");
-      create("....我想死");
-      create("你想的倒美。");
+      create("我大将军一言九鼎");
+      create("战无不胜");
+      create("经年痴心妄想，一时走火入魔");
     </script>
   </body>
 </html>

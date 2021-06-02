@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <script>
+      function debounce(callback, time, immediate) {
+        var timer; //为避免全局变量污染，利用闭包实现该变量的利用
+        return function () {
+          var args = arguments; //参数问题
+          var context = this; //this指向问题。这样写会固定this指向该函数调用的地方
+          var callNow = !timer; //只执行最开始的一次
+          clearTimeout(timer);
+          if (immediate) {
+            timer = setTimeout(function () {
+              timer = null;
+            }, time);
+            if (callNow) {
+              callback.apply(context, args);
+            }
+          } else {
+            timer = setTimeout(function () {
+              callback.apply(context, args);
+            }, time);
+          }
+        };
+      }
+      var inp = document.querySelector("input");
+      var handle = debounce(
+        function () {
+          console.log(arguments);
+        },
+        1000,
+        true
+      );
+      inp.oninput = function () {
+        handle(this.value, this);
+      };
+    </script>
+  </body>
+</html>

@@ -2,24 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <script src="../../plugin/helper.js"></script>
+    <!-- <script src="../../plugin/helpers.js"></script> -->
     <script>
-      //克隆obj
-      var obj1 = {
-        x: 1,
-        y: 3,
-        z: {
-          name: "谢怜",
-          age: "800",
-        },
-        p: [2, 4, 2, [4, 8]],
-      };
-      var newA = this.myPlugin.clone(obj1, true);
-      console.log(newA);
+      //对象克隆。产生一个和obj长得一样的对象（！地址不同）
+      //js没有提供现成的方法给我们
+      var obj = [123, [5, 6, 7, [9, 0]]];
+      var newObj = clone(obj, true);
+      console.log(newObj);
+      function clone(obj, deep) {
+        if (Array.isArray(obj)) {
+          if (deep) {
+            var newObj = [];
+            obj.forEach((item) => {
+              newObj.push(this.clone(item, deep));
+            });
+            return newObj;
+          } else {
+            return obj.slice(); //直接复制一个新数组返回
+          }
+        } else if (typeof obj === "object") {
+          var newObj = {};
+          for (var prop in obj) {
+            if (deep) {
+              newObj[prop] = this.clone(prop, deep);
+            } else {
+              newObj[prop] = obj[prop];
+            }
+          }
+          return newObj;
+        } else {
+          return obj;
+        }
+      }
     </script>
   </body>
 </html>

@@ -2,71 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
+    <script src="../../plugin/helpers.js"></script>
     <script>
-      //两个对象，混合后产生一个新对象
+      //两个对象混合后产生一个新对象：mixin
       var obj1 = {
         x: 1,
         y: 2,
-        z: 3,
+        z: 5,
       };
       var obj2 = {
-        x: "abc",
-        z: "bcd",
-        h: "aaa",
+        x: "fs",
+        z: "fjlk",
+        h: "3wdw",
       };
-
-      //将obj2混合到obj1中 mixin
-      //   var obj3 = {
-      //     x: "abc",
-      //     y: 2,
-      //     z: "bcd",
-      //     h: "aaa",
-      //   };
-      mixin = function (obj1, obj2) {
-        var newArr = {}; //定义一个新对象
-        //得到obj2中所有的属性
-        for (var prop in obj2) {
-          newArr[prop] = obj2[prop];
-        }
-        //得到obj1中obj2没有的属性
-        for (var prop in obj1) {
-          if (!(prop in obj2)) {
-            newArr[prop] = obj1[prop];
-          }
-        }
-        return newArr;
-      };
-      console.log(mixin(obj1, obj2));
-
-      var obj3 = Object.assign(obj1, obj2); //方法Object.assign(obj1,obj2)，将obj2混合到obj1中，obj1会发生变化
-      console.log(obj3 === obj1);
-      var newArr = Object.assign({}, obj1, obj2);
-      console.log(newArr);
-
+      //涉及到前后问题。将obj2混合到obj1中：同名属性obj2覆盖obj1
       //应用
+      console.log(myPlugin.mixin(obj1, obj2));
+      console.log(Object.assign(obj1, obj2));
+      //实际上：js已经给我们提供了一个方法来帮助我们混合对象
+      //静态方法：Object.assign(obj1,obj2)。会将obj2混合到obj1中，返回一个混合后的对象（混合后的对象即obj1）
+      //该方法的第一个参数即是混合后的对象。且支持多个参数；因此使用时通常Object.assign({},obj1,obj2)
+
+      //用处：复杂函数。即参数特别多的时候通常会将参数放在一个参数对象里面
       //option参数是一个对象，表示配置对象
+      //而这些参数有可能并不是全部；没有传递的参数使用默认值
       function complicate(option) {
-        //如果没有传递，则使用默认值
         var defaultOption = {
           a: "default-a",
           b: "default-b",
           c: "default-c",
-          d: "default-d",
+          d: "defaule-d",
           e: "default-e",
         };
-        // var opt = mixin(defaultOption, option);
         var opt = Object.assign({}, defaultOption, option);
         console.log(opt);
       }
-
       complicate({
         a: 123,
         b: 34,
-      });
+      }); //这种场景将来会经常使用。即使不传参也没有什么影响
     </script>
   </body>
 </html>

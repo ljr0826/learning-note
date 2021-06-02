@@ -2,43 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <input type="text" />
+    <script src="../../plugin/helpers.js"></script>
     <script>
-      //函数节流：保证一个时间段内执行一次
-      var throttle = function (callback, time, immediately) {
-        if (immediately === undefined) {
-          immediately = true;
-        } else if (immediately) {
-          var t;
-          return function () {
-            if (!t || Date.now() - t >= time) {
-              t = Date.now(); //获取当前时间戳
-              callback(arguments);
-            }
-          };
-        } else {
-          var timer;
-          return function () {
-            if (timer) {
-              return;
-            }
-            var args = arguments; //利用闭包保存参数数据
-            timer = setTimeout(function () {
-              callback.apply(null, args);
-              timer = null;
-            }, time);
-          };
-        }
-      };
-      var inp = document.querySelector("input");
-      var handle = throttle(function () {
-        console.log(inp.value);
-      }, 3000);
-      inp.oninput = function () {
+      //函数节流：保证一段时间内只执行一次
+      //函数节流和函数防抖有什么区别？
+      //具体做项目的时候根据具体情况选择使用函数节流还是函数防抖
+
+      var handle = myPlugin.throttle(
+        function () {
+          console.log("a");
+        },
+        1000,
+        false
+      );
+      window.onresize = function () {
         handle();
       };
     </script>

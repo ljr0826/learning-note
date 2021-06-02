@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //柯里化函数一定要传递一个参数。剩余传递的参数用arguments接收
+      function curry(func) {
+        var args = Array.from(arguments).slice(1);
+        var that = this;
+        // var args = Array.prototype.slice.call(arguments, 1);
+        return function () {
+          var curArgs = Array.from(arguments);
+          var totalArgs = args.concat(curArgs);
+          if (totalArgs.length >= func.length) {
+            return func.apply(that, totalArgs);
+          } else {
+            totalArgs.unshift(func);
+            return that.curry.apply(that, totalArgs);
+          }
+        };
+      }
+      var handle = curry(function (a, b, c) {
+        return a + b + c;
+      }, 1);
+      console.log(handle(2, 3));
+      console.log(handle(2, 2));
+      console.log(handle(2)(3));
+    </script>
+  </body>
+</html>

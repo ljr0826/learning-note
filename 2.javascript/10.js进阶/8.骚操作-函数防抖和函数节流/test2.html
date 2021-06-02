@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var handle = throttle(
+        function () {
+          console.log("a");
+        },
+        1000,
+        false
+      );
+      window.onresize = function () {
+        handle();
+      };
+      //函数防抖
+      function throttle(callback, wait, immediate) {
+        if (immediate === undefined) {
+          immediate = true;
+        }
+        if (immediate) {
+          var time;
+          return function () {
+            if (!time || Date.now() - time >= wait) {
+              callback.apply(this, arguments);
+              time = Date.now();
+            }
+          };
+        } else {
+          var timer;
+          return function () {
+            var args = arguments,
+              context = this;
+            if (timer) {
+              return;
+            }
+            timer = setTimeout(function () {
+              callback.apply(context, args);
+              timer = null;
+            }, wait);
+          };
+        }
+      }
+    </script>
+  </body>
+</html>
