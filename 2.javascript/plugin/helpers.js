@@ -5,13 +5,13 @@ if (!this.myPlugin) {
  * 继承
  */
 this.myPlugin.inherit = (function () {
-  // var Temp = function () {};
+  var Temp = function () {};
   return function (son, father) {
     //有很多花式改发
     // son.prototype = father.prototype; //目标。但由于引用类型，这样不对
-    // Temp.prototype = father.prototype;
-    // son.prototype = new Temp(); //Object.create()方法没有出现之前使用的是这种方法
-    son.prototype = Object.create(father.prototype); //Object.create(User.prototype).__proto__ === User.prototype
+    Temp.prototype = father.prototype;
+    son.prototype = new Temp(); //Object.create()方法没有出现之前使用的是这种方法
+    // son.prototype = Object.create(father.prototype); //Object.create(User.prototype).__proto__ === User.prototype
     //细节：constructor的指向？son.prototype.hasOwnProperty('constructor');false
     son.prototype.constructor = son; //解决constructor指向问题
     son.prototype.uber = father.prototype; //为了操作方便加的东西。uber表示父级的意思，因为super被占用所以不能用。圣杯模式标准方法
