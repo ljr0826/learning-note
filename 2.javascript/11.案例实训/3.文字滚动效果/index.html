@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        background-color: #b3effe;
+        height: 50px;
+        padding: 10px 20px;
+        box-sizing: border-box;
+      }
+      .left {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+      }
+      .title::after {
+        content: "|";
+        margin-left: 20px;
+        font-size: 27px;
+        vertical-align: -2px;
+        color: #ccc;
+      }
+      .left ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        margin-left: 20px;
+        height: 30px;
+        overflow: hidden;
+      }
+      .left ul li {
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left title">最新公告</div>
+      <div class="left">
+        <ul>
+          <li>1. Lorem ipsum dolor sit.</li>
+          <li>2. Ab eaque consequatur temporibus?</li>
+          <li>3. Ratione quae voluptates natus.</li>
+          <li>4. Impedit id asperiores sit!</li>
+          <li>5. Aut et voluptates minus.</li>
+        </ul>
+      </div>
+    </div>
+    <script src="../../plugin/helpers.js"></script>
+    <script src="../../plugin/animate.js"></script>
+    <script src="index.js">
+      //实际上滚动效果是控制ul的滚动条高度scrollTop
+    </script>
+  </body>
+</html>

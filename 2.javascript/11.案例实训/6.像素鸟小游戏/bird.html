@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>像素鸟小游戏</title>
+    <style>
+      .game {
+        /*像素和天空一样*/
+        width: 800px;
+        height: 600px;
+        border: 2px solid #008c8c;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+      .game .sky {
+        /*天空是在移动的，是绝对定位元素；将宽度设置2倍方便移动*/
+        position: absolute;
+        width: 200%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: url("img/sky.png");
+      }
+      .game .land {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 112px;
+        background: url("img/land.png");
+      }
+      .game .bird {
+        width: 33px;
+        height: 26px;
+        position: absolute;
+        left: 150px;
+        top: 150px;
+        background: url("img/bird.png");
+      }
+      .game .pipe {
+        position: absolute;
+        width: 52px;
+        /*高度和位置随机，由js生成*/
+        /* height: 250px;
+        left: 500px; */
+      }
+      .game .up {
+        background: url("img/pipeDown.png") no-repeat;
+        background-position: left bottom; /*背景图靠左靠下对齐*/
+      }
+      .game .down {
+        background: url("img/pipeUp.png") no-repeat;
+        /*js控制top值 */
+        /* top: 300px; */
+      }
+      .game .over {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9; /*保证覆盖所有的元素*/
+        line-height: 600px;
+        color: #fff;
+        font-size: 5em;
+        text-align: center;
+        display: none;
+      }
+      p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game">
+      <!--游戏里有天空、大地、小鸟-->
+      <div class="sky"></div>
+      <div class="land"></div>
+      <div class="bird"></div>
+      <!-- <div class="pipe up"></div>
+      <div class="pipe down"></div> -->
+      <div class="over">
+        <p>游戏结束</p>
+      </div>
+    </div>
+    <p>回车键开始/暂停，空格键跳跃</p>
+    <script src="bird.js"></script>
+  </body>
+</html>

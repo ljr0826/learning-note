@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 90%;
+        margin: 0 auto;
+        border: 2px solid #008c8c;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script src="../../plugin/waterfall.js"></script>
+    <script src="../../plugin/helpers.js"></script>
+    <script>
+      var srcs = [];
+      for (var i = 0; i <= 40; i++) {
+        srcs.push(`img/${i}.jpg`);
+      }
+      myPlugin.createWaterFall({
+        minHGap: 10, //水平方向的最小间隙
+        minVGap: 15, //垂直方向的最小间隙
+        imgSrcs: srcs, //图片的路径的数组
+        imgWidth: 220, //单张图片的宽度固定
+        container: document.querySelector(".container"),
+      }); //调用插件。传入配置对象
+      //1. 先来思考：哪些东西是可以配置的
+      //图片横纵最小间隙、图片的路径数组、图片的宽度是一定要固定的高度随意、图片的父级dom对象是谁
+    </script>
+  </body>
+</html>

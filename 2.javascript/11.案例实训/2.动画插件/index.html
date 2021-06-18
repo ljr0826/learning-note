@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .item {
+        width: 100px;
+        height: 100px;
+        border: 2px solid;
+        background: #000;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item"></div>
+    <p>
+      <button id="btnBegin">按钮</button>
+      <button id="btnStop">停止</button>
+    </p>
+    <script src="../../plugin/helpers.js"></script>
+    <script src="../../plugin/animate.js"></script>
+    <script>
+      var div = document.querySelector(".item");
+      var btn = document.getElementById("btnBegin");
+      //参数应该传递什么？计时器间隔时间、
+      //怎么和页面挂钩？！写回调函数
+      var animate = new myPlugin.Animate({
+        duration: 30,
+        total: 5000,
+        begin: {
+          left: 100,
+          top: 100,
+          r: 0,
+          g: 0,
+          b: 0,
+        }, //数字初始值。必须传递
+        end: {
+          left: 700,
+          top: 500,
+          r: 200,
+          g: 200,
+          b: 200,
+        }, //数字结束值，必须传递
+        // onstart: function () {
+        //   console.log("开始");
+        // },
+        //变化时
+        onmove: function (data) {
+          //   console.log(data);
+          div.style.left = data.left + "px";
+          div.style.top = data.top + "px";
+          div.style.background = `rgb(${data.r},${data.g},${data.b})`;
+          //   console.log(this.curData);//需要绑定this
+        },
+        onover: function () {
+          console.log("结束");
+        }, //结束时运行的事件
+      });
+      btnBegin.onclick = function () {
+        animate.start();
+      };
+      btnStop.onclick = function () {
+        animate.stop();
+      };
+    </script>
+  </body>
+</html>

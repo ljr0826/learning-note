@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 300px;
+        margin: 0 auto;
+      }
+      .container .menu {
+        padding: 10px 0;
+      }
+      .container .menu h2 {
+        background-color: #f0f0f0;
+        padding: 5px 6px 4px 6px;
+        border: 1px solid #e0e0e0;
+        cursor: pointer;
+        font-size: 16px;
+        color: #666;
+        margin: 0;
+        font-weight: normal;
+      }
+      .container .menu .items {
+        padding-left: 20px;
+        display: none; /*最开始都不显示。使用active类样式表示当前显示的菜单项*/
+        overflow: hidden;
+      }
+      .container .menu .items.active {
+        display: block;
+      }
+      .container .menu .items a {
+        display: block;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 2;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
+        <h2>电影</h2>
+        <div class="items">
+          <a href="">Lorem ipsum dolor sit.</a>
+          <a href="">Magni est alias deserunt.</a>
+          <a href="">Quas aut quidem molestias.</a>
+          <a href="">Inventore fugiat nisi veniam.</a>
+          <a href="">Non ullam dolores hic?</a>
+        </div>
+      </div>
+      <div class="menu">
+        <h2>书籍</h2>
+        <div class="items">
+          <a href="">Lorem ipsum dolor sit.</a>
+          <a href="">Magni est alias deserunt.</a>
+          <a href="">Quas aut quidem molestias.</a>
+          <a href="">Inventore fugiat nisi veniam.</a>
+          <a href="">Non ullam dolores hic?</a>
+        </div>
+      </div>
+      <div class="menu">
+        <h2>游戏</h2>
+        <div class="items active">
+          <a href="">Lorem ipsum dolor sit.</a>
+          <a href="">Magni est alias deserunt.</a>
+          <a href="">Quas aut quidem molestias.</a>
+          <a href="">Inventore fugiat nisi veniam.</a>
+          <a href="">Non ullam dolores hic?</a>
+        </div>
+      </div>
+      <div class="menu">
+        <h2>动漫</h2>
+        <div class="items">
+          <a href="">Lorem ipsum dolor sit.</a>
+          <a href="">Magni est alias deserunt.</a>
+          <a href="">Quas aut quidem molestias.</a>
+          <a href="">Inventore fugiat nisi veniam.</a>
+          <a href="">Non ullam dolores hic?</a>
+        </div>
+      </div>
+      <div class="menu">
+        <h2>音乐</h2>
+        <div class="items">
+          <a href="">Lorem ipsum dolor sit.</a>
+          <a href="">Magni est alias deserunt.</a>
+          <a href="">Quas aut quidem molestias.</a>
+          <a href="">Inventore fugiat nisi veniam.</a>
+          <a href="">Non ullam dolores hic?</a>
+        </div>
+      </div>
+    </div>
+    <script src="../../plugin/helpers.js"></script>
+    <script src="../../plugin/animate.js"></script>
+    <script src="index.js">
+      //有很多菜单。每个菜单可以认为是div(标题一般用h2+具体内容)
+      //先写好html、css
+    </script>
+  </body>
+</html>
