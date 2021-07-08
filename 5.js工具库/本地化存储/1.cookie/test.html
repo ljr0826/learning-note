@@ -8,7 +8,33 @@
   </head>
   <body>
     <script>
-      document.cookie = "shenwei=kunlun; domain=127.0.0.1; path=/; max-age=4";
+      document.cookie = "name=kaivon";
+      document.cookie = "name=kaivon2; age=18; domain=127.0.0.1";
+
+      document.cookie = "color=red; domain=127.0.0.1; path=/docs";
+      console.log(new Date());
+
+      document.cookie = "margin=20; expires=" + new Date(2108, 1, 1);
+
+      document.cookie = "padding=30; max-age=1";
+      document.cookie = "padding=30; max-age=5";
+      //注意：控制台不是定时器，到期了还在是很正常的。可以点击别的地方切换一下再回来就没有了
+
+      setTimeout(function () {
+        console.log(document.cookie);
+      }, 4000);
+      setTimeout(function () {
+        console.log(document.cookie);
+      }, 5000);
+
+      var cookies = document.cookie
+        .split("; ")
+        .map((item) => {
+          return item.split("=");
+        })
+        .filter((item) => {
+          return item[0] === "margin";
+        })[0][1];
     </script>
   </body>
 </html>

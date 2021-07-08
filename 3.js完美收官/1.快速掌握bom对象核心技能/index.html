@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+      div {
+        position: absolute;
+        left: 200px;
+        top: 1500px;
+        width: 200px;
+        height: 200px;
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo" style="opacity: 0.3"></div>
+    <script>
+      //window对象属性
+      //innerheight、innerwidth：包含滚动条\clientHeight、clientWidth：不包含滚动条。显示区高度
+      //pageXOffset、pageYOffset：设置或得到滚动条偏移量可以被赋值但是滚动条不会移动。
+      //懒加载的应用（先加载看到的部分。判断offsetTop和window.pageYOffset + window.innerHeight
+      //懒加载需要应用到网络请求。现在用opacity模拟
+      function check(_id) {
+        var oDiv = document.getElementById(_id);
+        var lock = false;
+        if (!lock) {
+          if (oDiv.offsetTop <= window.pageYOffset + window.innerHeight) {
+            oDiv.timer = setInterval(function () {
+              if (parseFloat(oDiv.style.opacity) === 1) {
+                clearInterval(oDiv.timer);
+                lock = true;
+              } else {
+                oDiv.style.opacity = parseFloat(oDiv.style.opacity) + 0.01;
+              }
+            }, 60);
+          }
+        }
+      }
+      window.onscroll = function (e) {
+        check("demo");
+      };
+      //screenLeft、screenTop、screenX、screenY、浏览器左侧距离屏幕的距离
+      //name属性：可写，给window窗口起了一个名字，页面变化name值不会变化。后续有用
+      //alert弹出警告框、confirm返回true\false、prompt输入框等一般不用
+      //beforeunload事件：确认离开吗
+      //scrollBy、scrollTo、
+      //open方法。//参数：url地址、窗口名字、窗口特征值。三参不能少
+      //   window.open("https://www.baidu.com", "dudu", "width=200, height=200");
+      //close方法。关闭open的窗口
+
+      //navigator对象属性：userAgent、cookieEnabled浏览器是否起用cookie布尔值、onLine电脑是否在联网的状态下
+      //cookie曲奇饼干的意思。
+      //history对象属性：length属性表示url地址变化了几次
+      //history对象方法：go()方法参数表示前进+或后退-几位、back方法回退、forward方法前进。h5对history对象做了功能的补充
+      //screen对象。客户端显示屏的信息。没啥用
+      //location对象属性：可读可写，href-url地址全、protocol协议、host域名端口号、pathname路径以/开头、search参数?开头、hash锚点#开头。网络部分深入理解
+      //改锚点页面不刷新。单页面应用的来源。vue应用广泛。单页面不刷新页面用户体验更好
+      //1. 根据锚点的信息选择对应展示的内容。2. 切换内容时映射到锚点之中。 3. 检测锚点修改，修改后再映射内容
+      //location对象方法：assign(url地址)方法加载新文档、！reload方法重新加载当前文档有参数、replace方法
+    </script>
+  </body>
+</html>

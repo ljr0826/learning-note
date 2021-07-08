@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background: green;
+        position: fixed;
+        left: 100px;
+        top: 100px;
+        border-radius: 50%;
+        cursor: move;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      var manageCookie = {
+        set(name, value, date) {
+          document.cookie = `${name}=${value}; max-age=${date}`;
+        },
+        remove(name) {
+          this.set(name, "", 0);
+        },
+        get(name) {
+          var cookies = document.cookie.split("; ");
+          for (var i = 0; i < cookies.length; i++) {
+            var item = cookies[i].split("=");
+            if (item[0] === name) {
+              return item[1];
+            }
+          }
+        },
+      };
+      //拖拽应用：实现即使页面刷新物体也停留在最终拖拽的位置
+      var box = document.getElementById("box");
+
+      var drag = {
+        init(dom) {
+          this.dom = dom;
+          this.bindEvent();
+          var _left = manageCookie.get("newLeft"),
+            _top = manageCookie.get("newTop");
+          this.dom.style.left = _left ? _left + "px" : "100px";
+          this.dom.style.top = _top ? _top + "px" : "100px";
+        },
+        bindEvent() {
+          this.dom.onmousedown = this.mouseDown.bind(this);
+        },
+        mouseDown(e) {
+          var style = getComputedStyle(this.dom);
+          this.prevLeft = parseFloat(style.left);
+          this.prevTop = parseFloat(style.top);
+          window.onmousemove = this.mouseMove.bind(this);
+          window.onmouseup = window.onmouseleave = this.mouseUpLeave.bind(this);
+        },
+        mouseMove(e) {
+          this.prevLeft = this.prevLeft + e.movementX;
+          this.prevTop = this.prevTop + e.movementY;
+          this.dom.style.left = this.prevLeft + "px";
+          this.dom.style.top = this.prevTop + "px";
+        },
+        mouseUpLeave(e) {
+          manageCookie.set("newLeft", this.prevLeft, 10000);
+          manageCookie.set("newTop", this.prevTop, 10000);
+          window.onmousemove = null;
+        },
+      };
+      drag.init(box);
+    </script>
+  </body>
+</html>

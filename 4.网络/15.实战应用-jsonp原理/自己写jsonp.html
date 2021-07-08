@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //location表示当前链接地址的对象；参数--protocol协议，host域名+端口号
+      //new URL(目标url)：表示创建一个目标链接地址的对象
+      var $ = {
+        ajax: function (option) {
+          var url = option.url,
+            type = option.type,
+            dataType = option.dataType;
+          var urlObj = new URL(url);
+          //1. 判断是否同源
+          if (
+            urlObj.protocol === location.protocol &&
+            urlObj.hostname === location.hostname &&
+            urlObj.port === location.port
+          ) {
+            //同源直接发送ajax请求
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+              if (this.readyState === 4 && this.status === 200) {
+                var txt = this.responseText;
+                console.log(JSON.parse(txt));
+              }
+            };
+            xhr.open(type, url);
+          } else {
+            //跨域
+            var _script = document.createElement("script");
+            var callback = "cb" + Math.floor(Math.random() * 1000000);
+            window[callback] = option.success;
+            if (url.includes("?")) {
+              _script.src = url + "&callback=" + callback;
+            } else {
+              _script.src = url + "?callback=" + callback;
+            }
+            document.body.appendChild(_script);
+          }
+        },
+      };
+
+      $.ajax({
+        url: "http://developer.duyiedu.com/edu/testJsonp",
+        type: "GET", //发送请求的方式
+        dataType: "jsonp", //服务端返回的数据类型
+        success: function (data) {
+          console.log(data);
+        }, //成功之后执行的回调函数
+      });
+      //jsonp的格式哪里特殊？发送的时候会带上一个参数callback、返回的结果不是json，而是callback+(json)
+      //jsonp跨域只能使用get方法，如果我们设置的是post方法，jquery会自动转为get方法
+      //问：是不是在jsonp里面只能使用get方法？是不是设置的post方法都会转为get方法？
+      //答：不是的，jquery会先判断是否同源，若同源设置什么是什么；若不同源设置什么都改为get
+    </script>
+  </body>
+</html>

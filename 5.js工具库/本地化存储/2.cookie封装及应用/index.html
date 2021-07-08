@@ -6,66 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      #box {
+      div {
         width: 100px;
         height: 100px;
-        position: absolute;
-        top: 100px;
+        background: green;
+        position: fixed;
         left: 100px;
-        background-color: green;
+        top: 100px;
       }
     </style>
   </head>
   <body>
     <div id="box"></div>
     <script>
-      const manageCookie = {
-        //设置cookie
+      //cookie仅仅是一个document.cookie来设置或操作。
+      //想取出cookie中的某一个或修改其中的某一个值让cookie的操作更简单一些
+      var manageCookie = {
+        //name、value、date表示时间
         set: function (name, value, date) {
-          //expires 要求用户传入的是一个时间节点，函数默认规定传进来的是天数
-          //   let endDate = new Date();
-          //   endDate.setDate(endDate.getDate() + date); //设置setDate为过期时间点
-          //   document.cookie = `${name}=${value}; expires=${endDate}`;
+          // //方法一：使用expires要求用户传入的是一个时间节点(这里要求传入天数)
+          // var endDate = new Date(); //需要是GMT的格式。当前时间
+          // endDate.setDate(endDate.getDate() + date);
+          // document.cookie = `${name}=${value}; expires=${endDate}`;
 
-          //max-age相对简单的多,要求传入的时间单位是秒
+          //方法二：使用max-age（要求传入的date为秒数）
           document.cookie = `${name}=${value}; max-age=${date}`;
-        },
-        //移除cookie
+        }, //设置cookie的一些方法。增加或修改。肯定还是使用document.cookie
         remove: function (name) {
-          //只需要把时间设置为0
+          //将时间调整到过去或者调整为0即移除了
           this.set(name, "", 0);
-          console.log(this);
-        },
-        //获取cookie
+        }, //移除cookie的方法
         get: function (name) {
-          let cookies = document.cookie.split("; ");
-          cookies.forEach((item) => {
-            let index = item.split("=");
-            // console.log(index);
-            if (index[0] === name) {
-              console.log(`name:${index[1]}`);
+          var cookies = document.cookie.split("; ");
+          for (var i = 0; i < cookies.length; i++) {
+            var item = cookies[i].split("=");
+            if (item[0] === name) {
+              return item[1];
             }
-          });
-        },
-      };
-      manageCookie.set("width", "30px", 3000);
-      manageCookie.set("height", "30px", 10000);
-      //   manageCookie.remove("width", "", 0);
-      manageCookie.get("height");
+          }
+        }, //获取cookie的方法
+      }; //操作cookie的一些方法
 
-      //拖拽
-      //原理：鼠标抬起时利用cookie记录当前位置，赋值给行内样式
-      const drag = {
-        init(dom) {
+      // manageCookie.set("left", 100, 10000);
+      // // manageCookie.remove("left");
+      // console.log(manageCookie.get("left"));
+
+      var drag = {
+        init: function (dom) {
           this.dom = dom;
           this.bindEvent();
+          var l = manageCookie.get("newLeft");
+          var t = manageCookie.get("newTop");
+          this.dom.style.left = l ? l + "px" : "100px";
+          this.dom.style.top = t ? t + "px" : "100px";
         },
         bindEvent() {
-          this.dom.onmousedown; //？继续？
+          this.dom.onmousedown = this.mouseDown.bind(this);
+        },
+        mouseDown: function (e) {
+          document.onmousemove = this.mouseMove.bind(this);
+          document.onmouseup = this.mouseUp.bind(this);
+
+          this.disX = e.clientX - this.dom.offsetLeft;
+          this.disY = e.clientY - this.dom.offsetTop;
+        },
+        mouseMove: function (e) {
+          this.newLeft = e.clientX - this.disX;
+          this.newTop = e.clientY - this.disY;
+          this.dom.style.left = this.newLeft + "px";
+          this.dom.style.top = this.newTop + "px";
+        },
+        mouseUp: function (e) {
+          document.onmousemove = null;
+          document.onmouseup = null;
+          //鼠标抬起时存储（通过cookie）此刻盒子的位置信息
+          manageCookie.set("newLeft", this.newLeft, 10000);
+          manageCookie.set("newTop", this.newTop, 10000);
         },
       };
-
       drag.init(document.getElementById("box"));
+
+      var demo = {
+        init() {
+          this.gender = "sex";
+          console.log("ccc");
+        },
+      };
     </script>
   </body>
 </html>

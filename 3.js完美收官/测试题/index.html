@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1. 计算数组中，最大连续增长子序列的长度
+      var arr = [1, 2, 3, 4, 1, 2, 3, 4, 5, 1, 2, 3];
+      function test(arr) {
+        if (!arr || arr.length === 0) {
+          return 0;
+        }
+        var max = 0, //最大的长度
+          nowMax = 1; //当前的长度
+        for (var i = 1; i < arr.length; i++) {
+          if (arr[i] > arr[i - 1]) {
+            nowMax++;
+          } else {
+            max = nowMax > max ? nowMax : max;
+            nowMax = 1;
+          }
+        }
+        max = nowMax > max ? nowMax : max;
+        return max;
+      }
+    </script>
+  </body>
+</html>

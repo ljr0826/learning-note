@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+      }
+      button {
+        margin-top: 200px;
+      }
+      span {
+        position: absolute;
+        left: 300px;
+        top: 0;
+        width: 1px;
+        height: 100px;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <span></span>
+    <button id="btn">run</button>
+    <script>
+      //让div元素匀速直线运动
+      var oDiv = document.querySelector("div");
+      var btn = document.getElementById("btn");
+      var timer;
+      btn.onclick = function (e) {
+        startMove(oDiv, 300);
+      };
+
+      //缓冲运动
+      function startMove(dom, target) {
+        clearInterval(timer);
+        var iSpeed = null;
+        timer = setInterval(() => {
+          //速度距离目标点越近越小
+          iSpeed = (target - dom.offsetLeft) / 7;
+          iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+          if (dom.offsetLeft === target) {
+            clearInterval(timer);
+          } else {
+            dom.style.left = dom.offsetLeft + iSpeed + "px";
+          }
+        }, 30);
+      }
+
+      //   function startMove(dom, target) {
+      //     clearInterval(timer);
+      //     var iSpeed = target - dom.offsetLeft > 0 ? 7 : -7;
+      //     timer = setInterval(function () {
+      //       if (Math.abs(target - dom.offsetLeft) < Math.abs(iSpeed)) {
+      //         clearInterval(timer);
+      //         dom.style.left = target + "px";
+      //       } else {
+      //         dom.style.left = dom.offsetLeft + iSpeed + "px";
+      //       }
+      //     }, 30);
+      //   }
+    </script>
+  </body>
+</html>
