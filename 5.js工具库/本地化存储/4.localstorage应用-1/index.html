@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var selectData = {}; //用来存储所有的商品信息和商品。将这个对象存储到本地
+
+      function init() {
+        selectData = JSON.parse(localStorage.getItem("shoppingCart")) || {}; //若最初storage为空是null让他等于{}
+        createSelectDom();
+      }
+      init();
+      //1. 请求数据。注意并不是localstorage要求的http环境而是ajax要求的http环境
+      ajax("js/shoppingData.json", function (data) {
+        // console.log(data);
+        createGoodsDom(data);
+        addEvent();
+      });
+
+      //创建商品结构
+      function createGoodsDom(data) {
+        var str = "";
+        data.forEach((item) => {
+          var color = ""; //用来存储每条数据里面的颜色信息
+          item.list.forEach((product) => {
+            color += `span元素`;
+          });
+          str += `商品结构`;
+        });
+        var tbody = document.querySelector(".product tbody");
+        tbody.innerHTML = str;
+      }
+
+      //添加商品操作事件
+      function addEvent() {
+        var trs = document.querySelectorAll(".product tr"); //获取到所有的行
+        for (var i = 0; i < trs.length; i++) {
+          action(trs[i], i);
+        }
+        function action(tr, n) {
+          var tds = tr.children, //当前行里所有的td
+            img = tds[0].children[0], //商品图片
+            imgSrc = img.getAttribute("src"), //商品图片的地址
+            name = tds[1].children[0].innerHTML, //商品的名字
+            colors = tds[1].children[1].children, //所有颜色按钮
+            price = parseFloat(tds[2].innerHTML), //价格
+            spans = tds[2].querySelectorAll("span"), //加减按钮
+            strong = tds[2].querySelector("strong"), //数量
+            joinBtn = tds[3].children[0], //加入购物车的按钮
+            selectNum = 0; //选中商品的数量
+          //颜色按钮点击功能
+          var last = null, //上一次选中的按钮
+            colorValue = "", //选中的颜色
+            colorId = ""; //选中商品对应的ID
+          for (var i = 0; i < colors.length; i++) {
+            colors[i].index = 1; //添加一个自定义的属性为索引值
+            colors[i].onclick = function () {
+              last && last !== this && (last.className = "");
+              this.classList.toggle("active");
+              colorValue = this.className ? this.innerHTML : "";
+              colorId = this.className ? this.dataset.id : "";
+
+              imgSrc = this.className ? "images/0.jpg" : "image/1.jpg"; //图片的命名方式是一个老师自定义的
+              img.src = imgSrc;
+              last = this; //将当前次点击的对象赋值给last
+            };
+          }
+
+          //减的按钮
+          spans[0].onclick = function () {
+            selectNum--;
+            if (selectNum < 0) {
+              selectNum = 0;
+            }
+
+            strong.innerHTML = selectNum;
+          };
+          //加的按钮
+          spans[1].onclick = function () {
+            selectNum++;
+
+            strong.innerHTML = selectNum;
+          };
+
+          //加入购物车
+          joinBtn.onclick = function () {
+            if (!colorValue) {
+              alert("请选择颜色");
+              return;
+            }
+            if (!selectNum) {
+              alert("请添加购买数量");
+              return;
+            }
+
+            //给selectData对象赋值。用自定义属性来区分不同商品
+            selectData[colorId] = {
+              id: colorId,
+              name: name,
+              color: colorValue,
+              price: price,
+              num: selectNum,
+              img: imgSrc,
+              time: new Date().getTime(), //事件戳，为了排序用的（因为localstorage的默认排序不准确
+            };
+
+            localStorage.setItem("shoppingCart", JSON.stringify(selectData));
+            //加入购物车后让所有已经选择的内容还原
+            imgSrc = "images/moren.jpg";
+            last.className = "";
+            strong.innerHTML = selectNum = 0;
+
+            createSelectDom(); //存储完数据后要渲染购物车的结构
+          };
+        }
+      }
+
+      //创建购物车商品结构
+      function createSelectDom() {
+        var tbody = document.querySelector(".selected .tbody");
+        var totalPrice = document.querySelector(".select th strong");
+        var str = "";
+        var total = 0; //总共多少钱。需要计算的
+
+        var goods = Object.values(selectData);
+
+        goods.sort(function (g1, g2) {
+          return g2.time - g1.time;
+        }); //排序
+
+        tbody.innerHTML = "";
+        for (var i = 0; i < goods.length; i++) {
+          str += "dom结构";
+          total += goods[i].price * goods[i].num;
+        }
+        tbody.innerHTML = str;
+        totalPrice.innerHTML = total + ".00元";
+
+        del(); //结构创建完成后添加删除功能。留意两个地方（localstorage数据、dom结构）
+      }
+      //删除功能
+      function del() {
+        var btns = document.querySelectorAll(".select tbody button");
+        var tbody = document.querySelector(".select tbody");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].onclick = function () {
+            //删除localstorage数据、dom结构
+            delete selectData[this.dataset.id];
+            localStorage.setItem("shoppingCart", JSON.stringify(selectData));
+
+            tbody.removeChild(this.parentElement.parentElement);
+
+            //更新总价格
+            var totalPrice = document.querySelector(".select th strong");
+            totalPrice.innerHTML =
+              parseFloat(totalPrice.innerHTML) -
+              parseFloat(
+                this.parentElement.parentElement.children[3].innerHTML
+              ) +
+              ".00元";
+          };
+        }
+      }
+
+      //storage事件。该事件在window上
+
+      window.addEventListener("storage", function (ev) {
+        console.log(
+          "我在04页面修改了购物车，这个log会在05的页面打印出来；或者我在05的页面修改了购物车这个log会在04的页面打印出来"
+        );
+        console.log(ev.key); //key属性表示对应修改的是那一个localStorage（名字key）
+        console.log(ev.newValue); //newValue属性表示localStorage修改后的数据（新数据
+        console.log(ev.oldValue); //该属性表示localStorage修改前的数据（旧数据
+        console.log(ev.storageArea); //该属性表示修改的localStorage对象
+        console.log(ev.url); //该属性会返回操作的那个页面的url
+
+        init();
+      });
+    </script>
+  </body>
+</html>

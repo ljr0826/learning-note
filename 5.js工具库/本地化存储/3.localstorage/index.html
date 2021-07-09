@@ -8,18 +8,24 @@
   </head>
   <body>
     <script>
-      console.dir(Storage);
+      localStorage.clear();
       console.log(Storage);
+      console.dir(Storage);
+      console.log(localStorage, sessionStorage);
+
+      var _color = ["red", "green"];
+      console.log(_color.toString());
+      var _color = { c1: "red", c2: "green" };
       console.log(localStorage.length);
-      localStorage.setItem("name", "kavin");
-      localStorage.setItem("age", "18");
-      localStorage.setItem("sex", "male");
-      localStorage.setItem("interest", "drink");
-      const arr = ["red", "green"];
-      const obj = { name: "cc", age: "ss" }; //存储的值会变为字符串
-      localStorage.setItem("color", arr);
-      localStorage.setItem("cc", JSON.stringify(obj));
-      console.log(JSON.parse(localStorage.getItem("cc")));
+
+      localStorage.setItem("name", "mic");
+      localStorage.setItem("age", "30");
+      localStorage.setItem("gender", "male");
+      localStorage.setItem("interest", "dance");
+
+      localStorage.setItem("color", JSON.stringify(_color));
+      console.log(JSON.parse(localStorage.getItem("color")));
+
       localStorage.removeItem("color");
     </script>
   </body>
