@@ -4,9 +4,297 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .video_player {
+        position: relative;
+        margin: 0px auto;
+        width: 300px;
+        height: 500px;
+        font-size: 8px;
+      }
+      video {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 300px;
+        height: 500px;
+      }
+      .menu {
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        bottom: 0px;
+        display: none;
+      }
+      .play {
+        position: absolute;
+        width: 30px;
+        height: 12px;
+        border: 1px solid white;
+        text-align: center;
+        line-height: 12px;
+        color: white;
+        border-radius: 10px;
+        margin-left: 3px;
+        top: 50%;
+        margin-top: -6px;
+        cursor: pointer;
+      }
+      .time {
+        position: absolute;
+        width: 60px;
+        height: 12px;
+        text-align: center;
+        line-height: 12px;
+        color: white;
+        border-radius: 10px;
+        margin-left: 40px;
+        top: 50%;
+        margin-top: -6px;
+        cursor: pointer;
+      }
+      .progress_bar {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: white;
+        left: 0px;
+        top: -2px;
+      }
+      .progress_bar div {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 120px;
+        height: 2px;
+        background-color: orange;
+      }
+      .progress_bar i {
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        background-color: orange;
+        border-radius: 50%;
+        left: 120px;
+        top: -2px;
+        cursor: pointer;
+      }
+      .quick {
+        position: absolute;
+        width: 40px;
+        height: 12px;
+        border: 1px solid white;
+        text-align: center;
+        line-height: 12px;
+        color: white;
+        border-radius: 10px;
+        left: 150px;
+        top: 50%;
+        margin-top: -6px;
+        cursor: pointer;
+      }
+      .quick_list {
+        position: absolute;
+        width: 50px;
+        height: 100px;
+        background: rgba(0, 0, 0, 0.5);
+        left: 200px;
+        top: -100px;
+        color: white;
+        text-align: center;
+        display: none;
+      }
+      .quick_list li {
+        position: relative;
+        height: 20px;
+        width: 50px;
+        line-height: 20px;
+        list-style-type: none;
+        cursor: pointer;
+      }
+      .quick_list li:hover {
+        color: green;
+      }
+      .vol_add,
+      .vol_ins {
+        position: absolute;
+        width: 20px;
+        height: 12px;
+        border: 1px solid white;
+        text-align: center;
+        line-height: 12px;
+        color: white;
+        border-radius: 10px;
+        top: 50%;
+        margin-top: -6px;
+        cursor: pointer;
+      }
+      .vol_add {
+        left: 200px;
+      }
+      .vol_ins {
+        left: 222px;
+      }
+      .full_screen {
+        position: absolute;
+        left: 250px;
+        width: 40px;
+        height: 12px;
+        border: 1px solid white;
+        text-align: center;
+        line-height: 12px;
+        color: white;
+        border-radius: 10px;
+        top: 50%;
+        margin-top: -6px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <audio controls autoplay muted loop src="./media/audio.mp3"></audio>
-    <video controls autoplay muted loop src="./media/video.mp4"></video>
+    <div class="video_player">
+      <video src="media/video.mp4"></video>
+      <div class="menu">
+        <div class="play">播放</div>
+        <div class="time">0:00/0:00</div>
+        <div class="progress_bar">
+          <div></div>
+          <i></i>
+        </div>
+        <div class="quick">倍速</div>
+        <div class="quick_list">
+          <ul>
+            <li>x0.50</li>
+            <li>x0.75</li>
+            <li>x1.00</li>
+            <li>x1.50</li>
+            <li>x2.00</li>
+          </ul>
+        </div>
+        <div class="vol_add">+</div>
+        <div class="vol_ins">-</div>
+        <div class="full_screen">全屏</div>
+      </div>
+    </div>
+    <script>
+      //原生的控件不好看，基本上自己写控件(控制条)，即基本上不用control
+      var videoPlayer = document.querySelector(".video_player");
+      var video = videoPlayer.querySelector("video");
+      var menu = document.querySelector(".menu");
+      var play = document.querySelector(".play");
+      var time = document.querySelector(".time");
+      var progressBar = document.querySelector(".progress_bar");
+      var quick = document.querySelector(".quick");
+      var quickList = document.querySelector(".quick_list");
+      var volAdd = document.querySelector(".vol_add");
+      var volIns = document.querySelector(".vol_ins");
+      var fullScreen = document.querySelector(".full_screen");
+      videoPlayer.onmouseenter = function (e) {
+        menu.style.display = "block";
+      };
+      videoPlayer.onmouseleave = function (e) {
+        menu.style.display = "none";
+      };
+      play.onclick = function () {
+        if (video.paused) {
+          video.play();
+          play.innerHTML = "暂停";
+        } else {
+          video.pause();
+          play.innerHTML = "播放";
+        }
+      };
+      progressBar.onmouseenter = function (e) {
+        progressBar.style.height = "14px";
+        progressBar.style.top = "-16px";
+        progressBar.querySelector("div").style.height = "14px";
+        progressBar.querySelector("i").style.height = "18px";
+      };
+      progressBar.onmouseleave = function (e) {
+        progressBar.style.height = "2px";
+        progressBar.style.top = "-2px";
+        progressBar.querySelector("div").style.height = "2px";
+        progressBar.querySelector("i").style.height = "6px";
+      };
+      progressBar.onclick = function (e) {
+        //实现跳转
+        var location = e.layerX; //获取点击的位置
+        var width = progressBar.clientWidth;
+        var targetTime = (location / width) * video.duration;
+        video.currentTime = targetTime;
+      };
+      quick.onclick = function () {
+        quickList.style.display = "block";
+      };
+      quick.onclick = function () {
+        quickList.style.display = "block";
+      };
+      quickList.onmouseleave = function () {
+        quickList.style.display = "none";
+      };
+      var liList = quickList.querySelectorAll("li");
+
+      liList.forEach((item, index) => {
+        item.onclick = function () {
+          if (index === 0) {
+            //0.5倍速（怎么调节速度呢
+            video.playbackRate = 0.5; //该属性表示视频速率
+            quick.innerHTML = "x0.50";
+          } else if (index === 1) {
+            //0.75倍速
+            video.playbackRate = 1;
+            quick.innerHTML = "x0.75";
+          } else if (index === 2) {
+            //1倍速
+            video.playbackRate = 1;
+            quick.innerHTML = "倍速";
+          } else if (index === 3) {
+            //1.5倍速
+            video.playbackRate = 1.5;
+            quick.innerHTML = "x1.50";
+          } else if (index === 4) {
+            //2倍速
+            video.playbackRate = 2;
+            quick.innerHTML = "x2.00";
+          }
+        };
+      });
+
+      volAdd.onclick = function (e) {
+        video.volume = video.volume + 0.1 > 1 ? 1 : video.volume + 0.1;
+      };
+      volIns.onclick = function (e) {
+        video.volume = video.volume - 0.1 < 0 ? 0 : video.volume - 0.1;
+      };
+
+      fullScreen.onclick = function () {
+        var dom = document.documentElement;
+        dom.requestFullscreen();
+        videoPlayer.style.width = window.screen.width + "px";
+        videoPlayer.style.height = window.screen.height + "px";
+        video.style.width = window.screen.width + "px";
+        video.style.height = window.screen.height + "px";
+      };
+      setInterval(function () {
+        var total = video.duration; //单位秒
+        var nowTime = video.currentTime; //当前时间
+        time.innerHTML =
+          parseInt(nowTime / 60) +
+          ":" +
+          String(parseInt(nowTime % 60)).padStart(2, 0) +
+          "/" +
+          parseInt(total / 60) +
+          ":" +
+          parseInt(total % 60);
+        var width = (nowTime / total) * progressBar.clientWidth;
+        progressBar.querySelector("div").style.width = width + "px";
+        progressBar.querySelector("i").style.left = width + "px";
+      }, 1000);
+    </script>
   </body>
 </html>
