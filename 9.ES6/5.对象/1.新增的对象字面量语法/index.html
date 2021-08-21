@@ -2,54 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      function createUser(loginId, loginPwd, nickName) {
-        // const sayHello = function () {
-        //   console.log(
-        //     "loginId",
-        //     this.loginId,
-        //     "loginPwd",
-        //     this.loginPwd,
-        //     "nickName",
-        //     this.nickName
-        //   );
-        // };
-        return {
-          loginId,
-          loginPwd,
-          nickName,
-          sayHello() {
-            console.log(
-              "loginId",
-              this.loginId,
-              "loginPwd",
-              this.loginPwd,
-              "nickName",
-              this.nickName
-            );
-          },
-          id: Math.random(),
-        };
-      }
-      const u = createUser("小柴", "21432423", "肥宅");
-      //   console.log(createUser("小柴", "21432423", "肥宅"));
-      u.sayHello();
-
       const prop1 = "name";
       const prop2 = "age";
       const prop3 = "sayHello";
+
       const user = {
-        [prop1]: "姬成",
-        [prop2]: 100,
+        [prop1]: "顾昀",
+        [prop2]: "27",
         [prop3]() {
           console.log(this[prop1], this[prop2]);
         },
       };
-      user[prop3]();
+      console.log(user);
+      user.sayHello();
     </script>
   </body>
 </html>

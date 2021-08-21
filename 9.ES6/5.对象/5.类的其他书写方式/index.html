@@ -2,47 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      const printName = "print";
-      class Animal {
-        constructor(type, name, age, sex) {
-          (this.type = type),
-            (this.name = name),
-            // Object.defineProperty(this, "age", {
-            //   get() {},
-            //   set(val) {},
-            // }),
-            (this.age = age),
-            (this.sex = sex);
-        }
-        //创建一个age属性，并给他加上一个getter，读取该属性时，会运行该函数
-        get age() {
-          return this._age + "岁";
-        }
-        //创建一个age属性，并给他加上一个setter，给该属性赋值时，会运行该函数
-        set age(age) {
-          if (typeof age !== "number") {
-            throw new TypeError("age property must be a number");
-          }
-          if (age < 0) {
-            age = 0;
-          } else if (age > 1000) {
-            age = 1000;
-          }
-          this._age = age;
-        }
-        [printName]() {
-          console.log(
-            `【类型】：${this.type},【名字】：${this.name},【年龄】：${this.age},【性别】：${this.sex}`
-          );
-        }
+      class Test {
+        constructor() {} //暂时没有实例成员，可以不写constructor
+        // @Obsolete //目前会报错，不支持当前语法，以后学习了ts或babel可以有办法让他支持，但是现在做不到
+        print() {
+          console.log("print方法");
+        } //若是这个方法过期了，但是为了避免往期项目受到影响所以不会删除这个方法，而是给到一个提示
+        //即方法若过时了就标记一下，若是可以用了再去掉标记。若是更改函数体内容来标记就太low了，而且麻烦容易出问题
+        //这是一个典型的横切关注点的问题，就是有些功能具有通用性，和类里面具体的功能无关，是单独抽离出来的功能
+        //这种问题最合适的就是使用装饰器：即标记已过期，做标记用。语法是```@装饰器名称```
+        //装饰器的本质是一个函数，有三个参数：类本身，方法名字，方法的相关信息(类似于属性描述符)
       }
-      const cat = new Animal("猫", "简单", 3, "女");
-      cat[printName]();
+      function Obsolete(target, methodName, descriptor) {
+        console.log(target, methodName, descriptor);
+      }
     </script>
   </body>
 </html>

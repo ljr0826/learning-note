@@ -2,32 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
+    <p>
+      <textarea id="txt"></textarea>
+      <button id="btn">设置div的内容</button>
+    </p>
+    <div id="container"></div>
     <script>
-      const text1 = "秋葵";
-      const text2 = "香菜";
-      const text = myTag`邓哥喜欢吃${text1},也喜欢吃${text2}。`;
-      function myTag(parts) {
-        console.log(arguments);
-        const values = Array.prototype.slice.apply(arguments).slice(1); //parts.length = values.length + 1
-        // return values;
+      const container = document.getElementById("container");
+      const txt = document.getElementById("txt");
+      const btn = document.getElementById("btn");
+      btn.onclick = function () {
+        container.innerHTML = safe`<p>${txt.value}</p>`;
+      };
+      function safe(parts) {
+        const values = Array.prototype.slice.call(arguments, 1);
         let str = "";
         for (let i = 0; i < values.length; i++) {
-          str += parts[i] + values[i];
+          const v = values[i].replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          str += parts[i] + v;
           if (i === values.length - 1) {
-            str += parts[i + 1];
+            str += parts[values.length];
           }
         }
         return str;
-        // str += part[0] + values[0];
-        // return parts;
       }
-      console.log(text);
-
-      var ss = String.row``;
+      console.log(`<h1>顾昀\n长庚</h1>`);
     </script>
   </body>
 </html>

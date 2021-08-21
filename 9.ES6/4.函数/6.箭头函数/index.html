@@ -2,42 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      //   var arr = [9, 1, 5];
-      //   var obj = {
-      //     fn() {
-      //       console.log("this",typeof this);
-      //     },
-      //   };
-      const obj = {
-        count: 0,
-        //this-->obj
-        start: function () {
-          setInterval(() => {
-            console.log(this);
-            this.count++; //直接调用函数，this 指向全局对象
-            console.log(this.count);
-          }, 1000);
-        },
-        regEvent: function () {
-          window.onclick = () => {
-            // this.count++;
-            console.log(this.count); //如果是 DOM 事件函数，this 指向事件源
-          };
-        },
-        print: function () {
-          console.log(this);
-          console.log(this.count);
-        },
+      const func = () => {
+        console.log(this);
+        // console.log(arguments); //外层window对象没有arguments关键字
       };
-      //   obj.start();
-      obj.print();
-      const ss = obj.print; //实际开发中一般没有这么使用的
-      ss();
+      func(); //this--->window
+      const obj = {
+        method: func,
+      };
+      obj.method(); //this--->window
+      // const func = () => {
+      //   console.log(this);
+      // };
+      // console.log(func);
+      // console.dir(func);
+      // console.log(func.prototype); //undefined
+      // console.dir(func.prototype); //undefined
+      // const obj = {
+      //   method: function () {
+      //     const func = () => {
+      //       console.log(this); //obj
+      //       console.log(arguments); //234
+      //     };
+      //     func();
+      //   },
+      // };
+      // obj.method(234);
+      // //箭头函数的作用：让你临时用一下，用完就甩掉。所以也没有原型，占用内存空间特别少
     </script>
   </body>
 </html>

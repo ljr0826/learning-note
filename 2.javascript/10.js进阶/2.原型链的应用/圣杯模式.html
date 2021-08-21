@@ -10,7 +10,7 @@
     <script>
       function inherit(son, father) {
         son.prototype = Object.create(father.prototype);
-        son.prototype.constructor(son);
+        son.prototype.constructor = son;
         console.log(Object.getPrototypeOf(son)); //son.__proto__
       }
       // var inherit = (function () {

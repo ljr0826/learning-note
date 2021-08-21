@@ -2,16 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
+    <div id="demo"></div>
     <script>
-      function sum(a, b = 1, c = 2) {
-        return a + b + c;
+      // "use strict";
+      function test(a, b = a) {
+        console.log(a, b);
       }
-      console.log(sum(10, undefined, 2));
-      console.log(sum(11));
+      test(1, 2); // 1 2
+      test(1); // 1 1
+
+      function cc(a = b, b) {
+        //形参解释：形参a=b，b存在于暂时性死区；走到b时将其从暂时性死区移除
+        //即读取到a=b时就会报错，Uncaught ReferenceError: Cannot access 'b' before initialization at cc...
+        let a = 33; //这样也不行。因为let或const不能重复声明
+        console.log(a, b);
+      }
+      cc(undefined, 2);
     </script>
   </body>
 </html>

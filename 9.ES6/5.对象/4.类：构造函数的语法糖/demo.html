@@ -2,26 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      class Animal {
-        constructor(type, name, age, sex) {
-          (this.type = type),
-            (this.name = name),
-            (this.age = age),
-            (this.sex = sex);
+      class NovelPerson {
+        constructor(novel, personName, personAge) {
+          this.novel = novel;
+          this.personName = personName;
+          this.personAge = personAge;
         }
-        print() {
-          console.log(
-            `【类型】：${this.type},【名字】：${this.name},【年龄】：${this.age},【性别】：${this.sex}`
-          );
+        ana() {
+          console.log(`【小说】：${this.novel}`);
+          console.log(`【人物名】：${this.personName}`);
+          console.log(`【人物年龄】${this.personAge}`);
         }
       }
-      const cat = new Animal("猫", "简单", 3, "女");
-      cat.print();
+      const guYun = new NovelPerson("杀破狼", "顾昀", 27);
+      const changGeng = new NovelPerson("杀破狼", "长庚", 20);
+      guYun.ana();
+      changGeng.ana();
     </script>
   </body>
 </html>

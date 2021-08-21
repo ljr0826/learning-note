@@ -2,45 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
-    <div class="btns"></div>
+    <div id="divButtons"></div>
     <script>
-      //   var a = 1;
-      //   function print() {
-      //     console.log(a);
-      //   }
-      //   var a = 2;
-      //   print(); //1. 允许重复的变量声明：导致数据被覆盖
-
-      //   if (Math.random() < 0.5) {
-      //     var a = "abc"; //2.1存在变量提升：导致怪异的数据访问
-      //     console.log(a);
-      //   } else {
-      //     console.log(a);
-      //   }
-      //   console.log(a);
-
-      //   var div = document.querySelector(".btns");
-      //   for (var i = 0; i < 10; i++) {
-      //     var j = i;
-      //     var btn = document.createElement("button");
-      //     btn.innerHTML = "按钮" + i;
-      //     div.appendChild(btn);
-      //     btn.onclick = function () {
-      //       console.log(i, j);
-      //     };
-      //   }
-      //   //循环结束后，i = 11(闭包问题)
-
-      var abc = 123;
-      console.log(window.abc);
-      //   var console = 23;
-      console.log(console);
-      var name = "sf";
-      console.log(name); //window内的成员被大量覆盖/污染
+      var abc = "123";
+      console.log(window.abc); //window里面挂载的对象越来越多，导致全局变量污染
+      // var name = "abc";
+      console.log(window.name); //""，表示窗口的名称
     </script>
   </body>
 </html>

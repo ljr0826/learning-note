@@ -2,30 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
       function Person(firstName, lastName) {
-        //判断是否是使用new的方式来调用的函数
-        //过去的判断方式
-        if (!(this instanceof Person)) {
-          throw new Error("该函数没有使用new来调用");
-        }
-        // if (new.target === undefined) {
+        //判断是否是使用new 的方式调用
+        // //过去的判断方式
+        // if (!(this instanceof Person)) {
         //   throw new Error("该函数没有使用new来调用");
         // }
+
+        if (new.target === undefined) {
+          throw new Error("该函数没有使用new来调用");
+        }
+        console.log(new.target);
         this.firstName = firstName;
         this.lastName = lastName;
         this.fullName = `${firstName} ${lastName}`;
       }
-      const p1 = new Person("戚", "容");
-      console.log(p1);
-      const p2 = Person("戚", "容");
-      console.log(p2);
-      const p3 = Person.call(p1, "戚", "容");
-      console.log(p3);
+      const person1 = new Person("顾", "昀");
+      // console.log(person1);
+
+      const person2 = Person("长", "庚"); //this指向window。和预计不符
+      // console.log(person2);
+
+      const person3 = Person.call(person1, "沈", "易");
+      // console.log(person3);
     </script>
   </body>
 </html>

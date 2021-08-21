@@ -6,6 +6,23 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="index.js"></script>
+    <script>
+      const obj1 = {
+        name: "顾昀",
+        age: 27,
+        love: "长庚",
+        address: {
+          country: "大梁",
+          province: "燕回",
+          city: "小镇",
+        },
+      };
+      //克隆一个对象到obj2
+      const obj2 = { ...obj1, name: "大胆", address: { ...obj1.address } };
+      //将对象全部展开就相当于一对对的键值对，重复属性能起到一个覆盖的作用
+      //原来对象不可变，产生一个新的对象
+      console.log(obj2);
+      console.log(obj2.address === obj1.address); //false
+    </script>
   </body>
 </html>

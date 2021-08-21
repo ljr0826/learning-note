@@ -7,26 +7,40 @@
   </head>
   <body>
     <script>
-      function Animal(type, name, age, sex) {
-        this.type = type;
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
+      class Animal {
+        constructor(type, name, age, sex) {
+          this.type = type;
+          this.name = name;
+          this.age = age;
+          this.sex = sex;
+        }
+        print() {
+          console.log(`【种类】：${this.type}`);
+          console.log(`【名字】：${this.name}`);
+          console.log(`【年龄】：${this.age}`);
+          console.log(`【性别】：${this.sex}`);
+        }
       }
-      Animal.prototype.print = function () {
-        console.log(`【种类】：${this.type}`);
-        console.log(`【名字】：${this.name}`);
-        console.log(`【年龄】：${this.age}`);
-        console.log(`【性别】：${this.sex}`);
-      };
-      function Dog(name, age, sex) {
-        //借用父类的构造函数
-        Animal.call(this, "犬类", name, age, sex);
+      class Dog extends Animal {
+        //关键字extends，表示继承，用于类的定义
+        constructor(name, age, sex) {
+          //若子类定义了constructor，则必须在constructor第一行调用super，否则会报错
+          super("犬类", name, age, sex); //关键字super，直接当作函数调用，表示调用父类的构造函数
+          this.loves = "吃骨头"; //子类特有的属性
+        }
+        print() {
+          //调用父类的print
+          super.print(); //super当作对象使用的话，表示父类的原型
+          console.log(`【爱好】：${this.loves}`); //自己特有的代码
+        } //和父类冲突，采用自己的方法
+        shout() {
+          console.log("汪汪");
+        } //子类特有的原型方法
+        //类里面会自动帮你搞定原型链间的继承关系
       }
-      Object.setPrototypeOf(Dog.prototype, Animal.prototype);
-      const d = new Dog("旺财", 3, "公");
-      d.print();
-      console.log(d);
+      const dog = new Dog("旺财", 3, "公");
+      dog.print();
+      console.log(dog);
     </script>
   </body>
 </html>

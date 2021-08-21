@@ -8,11 +8,9 @@
   <body>
     <script>
       const text = "Hello World!!!";
-      const reg = /W\w+/y;
-      console.log(`reg.lastIndex:${reg.lastIndex}`);
-      console.log(reg.test(text));
-      reg.lastIndex = 6;
-      console.log(`reg.lastIndex:${reg.lastIndex}`);
+      const reg = /H\w+/y;
+      reg.lastIndex = 0;
+      console.log("reg.lastIndex：", reg.lastIndex); //一开始的默认值为0。要求一开始就满足正则
       console.log(reg.test(text));
     </script>
   </body>

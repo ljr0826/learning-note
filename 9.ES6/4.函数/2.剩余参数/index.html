@@ -6,6 +6,22 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="index.js"></script>
+    <script>
+      //实现参数数量不固定但是也求和的情况
+      //以往的方法：参数是数组(调用者使用不方便)、或者用arguments
+      function sum(...args) {
+        //args收集了所有的参数，形成了一个数组(真数组)
+        let sum = 0;
+        args.forEach((item) => {
+          sum += item;
+        });
+        return sum;
+      }
+      console.log(sum());
+      console.log(sum(1));
+      console.log(sum(1, 2));
+      console.log(sum(1, 2, 3));
+      console.log(sum(1, 2, 3, 4));
+    </script>
   </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+      <p><input type="number" name="" id="" value="0" /></p>
+    </div>
+    <p>
+      <button>计算</button>
+    </p>
+    <h2>最大值：<span id="spanmax"></span></h2>
+    <h2>最小值：<span id="spanmin"></span></h2>
+    <script>
+      //得到文本框里面所有的数字放入一个数组中
+      function getValues() {
+        const numbers = [];
+        const inps = document.querySelectorAll("input");
+        inps.forEach((item) => {
+          numbers.push(+item.value);
+        });
+        return numbers;
+      }
+
+      const btn = document.querySelector("button");
+      btn.onclick = function () {
+        const numbers = getValues(); //得到文本框中所有的数字形成的数组
+        document.getElementById("spanmax").innerHTML = Math.max(...numbers);
+        document.getElementById("spanmin").innerHTML = Math.min(...numbers);
+      };
+    </script>
+  </body>
+</html>

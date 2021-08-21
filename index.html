@@ -7,26 +7,48 @@
   </head>
   <body>
     <script>
-      function getTopFreqInArray(arr) {
-        let nums = {};
-        arr.forEach((item) => {
-          if (!nums[item]) {
-            nums[item] = 1;
-          } else {
-            nums[item]++;
+      // function getTopFreqInArray(arr) {
+      //   let nums = {};
+      //   arr.forEach((item) => {
+      //     if (!nums[item]) {
+      //       nums[item] = 1;
+      //     } else {
+      //       nums[item]++;
+      //     }
+      //   });
+      //   let result = null;
+      //   for (const key in nums) {
+      //     if (!result || nums[key] > result.freq) {
+      //       result = {
+      //         number: key,
+      //         freq: nums[key],
+      //       };
+      //     }
+      //   }
+      //   return result;
+      // }
+
+      const love1 = "顾昀";
+      const love2 = "长庚";
+      //希望对字符串进行简单的处理再拼接
+      const text = myTag`顾昀行到水穷处最大的慰藉是${love2}${love1}`;
+      function myTag(parts) {
+        console.log(arguments);
+        const values = Array.prototype.slice.call(arguments, 1);
+        // const values = Array.from(arguments).slice(1);
+        let str = "";
+        //parts.length = values.length + 1
+        for (var i = 0; i < values.length; i++) {
+          str += parts[i] + values[i];
+          if (i === values.length - 1) {
+            str += parts[values.length];
           }
-        });
-        let result = null;
-        for (const key in nums) {
-          if (!result || nums[key] > result.freq) {
-            result = {
-              number: key,
-              freq: nums[key],
-            };
-          }
-        }
-        return result;
+        } //模拟模板字符串的拼接过程
+        return str;
       }
+
+      
+      console.log(text);
     </script>
   </body>
 </html>
