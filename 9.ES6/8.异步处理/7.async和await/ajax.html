@@ -72,35 +72,40 @@
       //2. 根据班级id获取李华所在班级的老师id Promise
       //3. 根据老师的id查询老师信息 Promise
 
-      async function GetTeacher() {
-        const sts = await ajax({
-          url: "./data/students.json",
+      ajax({
+        url: "data/students.json",
+      })
+        .then((resp) => {
+          return resp.filter((stu) => stu.name === "李华")[0].classId;
+        })
+        .then((cid) => {
+          return ajax({ url: "data/classes.json" }).then((cls) => {
+            return cls.filter((item) => item.id === cid)[0].teacherId;
+          });
+        })
+        .then((tid) => {
+          return ajax({ url: "data/teachers.json" }).then((tea) => {
+            console.log(tea.filter((item) => item.id === tid)[0]);
+          });
         });
-        let cid;
-        for (let i = 0; i < sts.length; i++) {
-          if (sts[i].name === "李华") {
-            cid = sts[i].classId;
-          }
-        }
-        const cls = await ajax({
-          url: "./data/classes.json",
-        });
-        let tid;
-        for (let i = 0; i < cls.length; i++) {
-          if (cls[i].id === cid) {
-            tid = cls[i].teacherId;
-          }
-        }
-        const tes = await ajax({
-          url: "./data/classes.json",
-        });
-        for (let i = 0; i < tes.length; i++) {
-          if (tes[i].teacherId === tid) {
-            console.log(tes[i]);
-          }
-        }
+
+      async function getTeacher() {
+        const cid = (
+          await ajax({
+            url: "data/students.json",
+          })
+        ).filter((stu) => stu.name === "李华")[0].classId;
+        const tid = (
+          await ajax({
+            url: "data/classes.json",
+          })
+        ).filter((clas) => clas.id === cid)[0].teacherId;
+        const result = (await ajax({ url: "data/teachers.json" })).filter(
+          (teas) => teas.id === tid
+        )[0];
+        console.log(result);
       }
-      GetTeacher();
+      getTeacher();
     </script>
   </body>
 </html>

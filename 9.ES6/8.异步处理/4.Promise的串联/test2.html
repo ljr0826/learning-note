@@ -8,22 +8,20 @@
   <body>
     <script>
       const pro1 = new Promise((resolve, reject) => {
-        resolve(1);
-        console.log(pro1);
+        throw 1;
       });
-      const pro2 = pro1.then((result) => result * 2);
-      //pro2的类型：Promise对象
-      //pro2的状态：一定会等到(result) => result * 2运行后才会变成已决状态
-      console.log(pro2);
+      const pro2 = pro1.then(
+        (res) => res * 2,
+        (err) => err * 3
+      ); //这个pro2是第一个then函数调用得到的。和下面的catch函数属于不同的作业队列
+      pro1.catch((err) => {
+        err * 2;
+      }); //和上面的then函数无关，不存在覆盖之类的情况
       pro2.then(
-        (result) => console.log(pro2),
-        (err) => console.log(err),
-        console.log(pro2) 
-      );
-      //输出：2
-      console.log(pro2);
-      function a() {}
-      a(console.log(pro2))
+        (res) => console.log(res * 2),
+        (err) => console.log(err * 3)
+      ); //1*3*2=6
+      //前面的结果是后面已决状态的数据
     </script>
   </body>
 </html>

@@ -8,14 +8,27 @@
   <body>
     <script>
       const pro = new Promise((resolve, reject) => {
-        reject(1);
+        resolve(1);
       });
-      pro.finally(() => console.log("finally1"));
-      pro.finally(() => console.log("finally2"));
-      pro.then(() => console.log("then1"));
-      pro.then(() => console.log("then2"));
-      pro.catch(() => console.log("catch1"));
-      pro.catch(() => console.log("catch1"));
+      pro.finally((resp) => {
+        console.log("finally1", resp); //没有参数，因为无论是then还是catch，只要到达已决状态就会运行
+      });
+      pro.finally(() => {
+        console.log("finally2");
+      });
+
+      pro.then((resp) => {
+        console.log("then1", resp * 1);
+      });
+      pro.then((resp) => {
+        console.log("then2", resp * 2);
+      });
+      pro.catch((resp) => {
+        console.log("catch1", resp * 1);
+      });
+      pro.catch((resp) => {
+        console.log("catch2", resp * 2);
+      });
     </script>
   </body>
 </html>

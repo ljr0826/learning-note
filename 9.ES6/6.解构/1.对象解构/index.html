@@ -8,7 +8,7 @@
   <body>
     <script>
       const user = {
-        name: "kevin",
+        name: "yuan",
         age: 11,
         sex: "男",
         address: {
@@ -16,31 +16,11 @@
           city: "成都",
         },
       };
-      //   let name, age, sex, address;
-      //   name = user.name;
-      //   age = user.age;
-      //   sex = user.sex;
-      //   address = user.address;//以前同名属性的操作方法
-
-      //   //后面放对象，前面放方法
-      //   let name, age, sex, address,abc;
-      //   ({ name, age, sex, address } = user);
-
-      //将以上两条语句合并书写
-      //先定义5个变量name、age、gender、address、abc，
-      //然后从对象中读取同名属性，放到变量中(其中gender读取的是sex属性)，若对象中无该变量，使用默认值
-      //   let { name, age, sex: gender, address, abc = 123 } = user;
-      //   console.log(name, age, gender, address, abc);
-
-      //解构出user中的name、province
-      //定义两个变量name、province
-      //再解构
-
       const {
         name,
-        address: { province },
+        address: { city },
       } = user;
-      console.log(name, province);
+      console.log(name, city);
     </script>
   </body>
 </html>

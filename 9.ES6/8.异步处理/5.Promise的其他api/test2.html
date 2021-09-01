@@ -2,35 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      const pro = new Promise((resolve, reject) => {
-        resolve(1);
-      });
-      //等效于：
-      const pro = Promise.resolve(1);
-
-      const pro = new Promise((resolve, reject) => {
-        reject(2);
-      });
-      //等效于：
-      const pro = Promise.reject(2);
-
-      const p = new Promise((resolve, reject) => {
-        resolve(3);
-      });
-      const pro = new Promise((resolve, reject) => {
-        resolve(p);
-      });
-      //等效于：
-      const pro = Promise.resolve(p);
-      //也等效于：
-      const pro = p;
-
-      //浏览器之间不一致
+      const proms = [];
+      function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+      for (let i = 0; i < 10; i++) {
+        proms.push(
+          new Promise((resolve, reject) => {
+            setTimeout(() => {
+              if (i % 3 === 0) {
+                reject(i);
+                console.log(i, "失败");
+              } else {
+                resolve(i);
+                console.log(i, "完成");
+              }
+            }, getRandom(1000, 5000));
+          })
+        );
+      }
+      console.log(proms);
+      //要求实现：等到所有的promise变成resolve状态后输出：全部完成
+      //使用Promise.all()方法，将数组传递进去会返回一个新的promise对象，这个返回的promise对象会在数组中所有的成员达到resolve状态后resolve
+      const pro = Promise.all(proms);
+      pro.then(
+        (data) => {
+          console.log("全部完成", data); //返回的promise对象中的数据，是数组中相应顺序的promise的resolve值
+        },
+        (err) => {
+          console.log("失败信息", err); //若数组中有reject信息。会将第一个reject的信息作为返回的promis对象的信息
+        }
+      );
     </script>
   </body>
 </html>

@@ -15,18 +15,24 @@
         proms.push(
           new Promise((resolve, reject) => {
             setTimeout(() => {
-              console.log(i, "完成");
-              resolve(i);
+              if (Math.random() < 0.5) {
+                console.log(i, "完成");
+                resolve(i);
+              } else {
+                console.log(i, "失败");
+                reject(i);
+              }
             }, getRandom(1000, 5000));
           })
         );
       }
-
-      //等到所有的Promise变成resolve状态后输出：全部完成
-      Promise.all(proms).then((datas) => {
-        console.log("全部完成", datas);
+      const pro = Promise.race(proms);
+      pro.then((data) => {
+        console.log("最快的是resolve", data);
       });
-      console.log(proms);
+      pro.catch((err) => {
+        console.log("最快的是reject", err);
+      });
     </script>
   </body>
 </html>

@@ -7,11 +7,13 @@
   </head>
   <body>
     <script>
-      function confess(god) {
+      function biaobai(god) {
         return new Promise((resolve, reject) => {
-          console.log(`邓哥向${god}表白`);
+          //处理整个未决阶段的事情
+          console.log(`邓哥向${god}发出了表白短信`);
           setTimeout(() => {
             if (Math.random() < 0.1) {
+              //女神同意了。推向resolve状态
               resolve(true);
             } else {
               resolve(false);
@@ -19,8 +21,10 @@
           }, 3000);
         });
       }
-      confess("女神1").then((result) => {
-        console.log(result);
+      const pro = biaobai("女神1");
+      console.log(pro); //对象中的PromiseState属性表示事情的三种状态：pending、resolved/fullfilled、rejected
+      pro.then((data) => {
+        console.log(data); //女神的回应结果
       });
     </script>
   </body>

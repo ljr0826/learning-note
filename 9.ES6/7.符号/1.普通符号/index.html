@@ -2,41 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      //   //   //创建一个符号
-      //   //   const syb1 = Symbol();
-      //   //   const syb2 = Symbol();
-      //   //   const syb3 = Symbol("abc"); //参数即为对符号的描述
-      //   //   console.log(syb1, syb2, typeof syb1, typeof syb2, syb1 === syb2);
-
-      //   const syb = Symbol();
-      //   console.log(String(syb), typeof String(syb));
-      //   const obj = {
-      //     [syb]: 3,
-      //     a: 2,
-      //     b: 1,
-      //   };
-      //   for (const prop in obj) {
-      //     console.log(prop);
-      //   }
-      //   console.log(Object.keys(obj));
-      //   console.log(Object.getOwnPropertyNames(obj));
-      //   console.log(Object.getOwnPropertySymbols(obj)); //得到的是一个符号属性的数组
-      const lover = Symbol();
-      const obj = {
-        name: "小静王",
-        age: 800,
-        sex: "male",
-        [lover]: "表哥雪莲",
-      };
-      for (const prop in obj) {
-        console.log(prop);
-      }
-      console.log(obj, obj[lover]);
+      //符号属性
+      const Hero = (() => {
+        const getRandom = Symbol("符号属性");
+        return class Hero {
+          constructor(attack, hp, defence) {
+            this.attack = attack;
+            this.hp = hp;
+            this.defence = defence;
+          }
+          gongji() {
+            const dmg = this.attack * this[getRandom](0.8, 1, 1);
+            console.log(dmg);
+          }
+          [getRandom](min, max) {
+            return Math.random() * (max - min) + min;
+          }
+        };
+      })();
+      const h = new Hero(3, 4);
+      h.gongji();
     </script>
   </body>
 </html>

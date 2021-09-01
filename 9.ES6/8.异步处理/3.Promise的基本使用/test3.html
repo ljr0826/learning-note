@@ -8,27 +8,29 @@
   <body>
     <script>
       const pro = new Promise((resolve, reject) => {
+        //未决阶段的代码会立即执行。只负责推向已决状态
         console.log("未决阶段");
+        // resolve(123); //同步代码。立即就从未决阶段推向已决阶段了
         setTimeout(() => {
-          resolve(123);
+          if (Math.random() < 0.3) {
+            resolve(123);
+          } else {
+            reject(new Error("发生错误"));
+          }
         }, 3000);
       });
-      pro.then((data) => {
-        //pro的状态是?
-        console.log(data);
-      });
-      pro.then((data) => {
-        //pro的状态是?
-        console.log(data);
-      });
-      pro.then((data) => {
-        //pro的状态是?
-        console.log(data);
-      });
-      pro.then((data) => {
-        //pro的状态是?
-        console.log(data);
-      });
+      pro.then(
+        //pro对象到达已决阶段后会立即执行回调中的代码。只负责后续处理
+        (data) => {
+          console.log(data); //已决阶段的resolved状态
+        },
+        (err) => {
+          console.log(err); //已决阶段的rejected状态
+        }
+      );
+      pro.then((data2) => {
+        console.log(data2);
+      }); //多个作业队列的注册
     </script>
   </body>
 </html>

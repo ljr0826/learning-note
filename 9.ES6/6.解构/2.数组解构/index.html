@@ -2,22 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      const numbers = ["a", "b", "c", "d", [1, 2, 3, 4]];
-      //   const { 0: n1, 1: n2 } = numbers;//还是有点麻烦
-      //   console.log(n1, n2);
-
-      //   const [n1, n2, , n4, n5 = 123] = numbers;
-      //   console.log(n1, n2, n4, n5);
-
-      //得到numbers下标为4的数组中下标为2的数据，放到变量n中
-      //   const [, , , , [, , n]] = numbers; //方法1
-      const [, , n] = numbers[4]; //方法2
-      console.log(n);
+      const numbers = [324, 7, 23, 0, 5, 53];
+      //得到数组前两项，分别放到变量a和b中，然后剩余的所有数据放到数组nums中
+      const [a, b, ...nums] = numbers; //剩余项的解构必须是最后一个，且只能有一个
+      console.log(a, b, nums);
     </script>
   </body>
 </html>

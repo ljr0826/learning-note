@@ -16,7 +16,7 @@
         //2：send方法已被调用
         //3：正在接收服务器的响应消息体
         //4：服务器响应的所有内容均已接收完毕
-        if (readyState === 4) {
+        if (this.readyState === 4) {
           var ps = JSON.parse(xhr.responseText);
           console.log(xhr.responseText);
         }

@@ -7,20 +7,18 @@
   </head>
   <body>
     <script>
-      const syb1 = Symbol.for("abc");
-      const syb2 = Symbol.for("abc");
-      console.log(syb1 === syb2);
-      const obj1 = {
-        a: 1,
-        b: 2,
-        [syb1]: 3,
-      };
-      const obj2 = {
-        a: "a",
-        b: "b",
-        [syb2]: "c",
-      };
-      console.log(obj1, obj2);
+      const SymbolFor = (() => {
+        const global = {};
+        return function (name) {
+          if (!global[name]) {
+            global[name] = Symbol.for("");
+          }
+          return global[name];
+        };
+      })();
+      const syb1 = SymbolFor("abc");
+      const syb2 = SymbolFor("abc");
+      console.log(syb1 === syb2); //true
     </script>
   </body>
 </html>

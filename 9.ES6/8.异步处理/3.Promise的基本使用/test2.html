@@ -58,10 +58,7 @@
                 (xhr.status >= 200 && xhr.status < 300) ||
                 xhr.status == 304
               ) {
-                if (obj.success) {
-                  // resolve
-                  resolve(JSON.parse(xhr.responseText));
-                }
+                resolve(JSON.parse(xhr.responseText));
               } else {
                 reject(xhr.status);
               }
@@ -69,12 +66,9 @@
           };
         });
       }
-
-      ajax({
-        url: "./data/students.json?name=李华",
-      }).then(
-        (data) => {
-          console.log(data);
+      ajax({ url: ".././data/students.json?name=李华" }).then(
+        (resp) => {
+          console.log(resp);
         },
         (err) => {
           console.log(err);

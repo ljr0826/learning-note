@@ -12,21 +12,23 @@
         const defaultOptions = {
           method: "get",
           url: "/",
-        };
+        }; //默认配置
         const opt = {
           ...defaultOptions,
           ...options,
-        };
+        }; //最终的配置
         console.log(opt);
       }
+
       //解构的方法
       function ajax({ method = "get", url = "/" } = {}) {
-        //若不传参，默认从{}中解构(解决不传参的问题)
+        //特别注意：若不传参，默认从{}中解构(使用参数默认值，解决不传参的问题)，因为从undefined解构东西会报错
         console.log(method, url);
       }
+
       ajax({
         method: "get",
-        // url: "/abc",
+        url: "/abc",
       });
     </script>
   </body>

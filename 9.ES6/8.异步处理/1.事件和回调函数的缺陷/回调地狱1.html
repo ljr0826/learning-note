@@ -15,15 +15,16 @@
     </p>
     <script>
       //dom2第二个参数，是否在捕获阶段触发处理函数
+      //有些事情需要等到另一件事情发生后才会发生
       const btn1 = document.querySelector("#btn1");
       const btn2 = document.querySelector("#btn2");
       const btn3 = document.querySelector("#btn3");
       btn1.addEventListener("click", () => {
-        console.log("按钮1");
+        //按钮1的其他事情
         btn2.addEventListener("click", () => {
-          console.log("按钮2");
+          //按钮2的其他事情
           btn3.addEventListener("click", () => {
-            console.log("hello");
+            alert("hello");
           });
         });
       });

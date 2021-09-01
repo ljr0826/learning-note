@@ -7,17 +7,13 @@
   </head>
   <body>
     <script>
-      function A() {}
-      Object.defineProperty(A, Symbol.hasInstance, {
-        value: function (obj) {
-          console.log("判定obj");
-          return false;
-        },
-      });
-      const obj = new A();
-      console.log(obj instanceof A);
-      console.log(A[Symbol.hasInstance](obj));
-      //即某些场景下我们可以参与js的内部实现的
+      class Person {
+        [Symbol.toStringTag] = "Person"; //可以影响Object原生的toString函数
+      }
+      const p = new Person();
+      const arr = [23, 1, 646];
+      console.log(Object.prototype.toString.apply(p)); //[object Object]--->[object Person]
+      console.log(Object.prototype.toString.apply(arr)); //[object Array]
     </script>
   </body>
 </html>

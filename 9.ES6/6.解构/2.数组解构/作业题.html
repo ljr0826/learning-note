@@ -30,11 +30,15 @@
 
       //解构出第二条评论的用户名和评论内容
       // name:"用户名2"  content:"评论2"
-
-      //   const {
-      //     content,
-      //     user: { name },
-      //   } = article.comments[1];//方法1
+      const {
+        comments: [
+          ,
+          {
+            content,
+            user: { name },
+          },
+        ],
+      } = article; //写法1
 
       const [
         ,
@@ -42,8 +46,14 @@
           content,
           user: { name },
         },
-      ] = article.comments; //方法2
-      console.log(name, content);
+      ] = article.comments; //写法2
+
+      const {
+        content,
+        user: { name },
+      } = article.comments[1]; //写法3
+
+      console.log(content, name);
     </script>
   </body>
 </html>

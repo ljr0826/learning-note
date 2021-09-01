@@ -12,34 +12,33 @@
     <script>
       //获取李华所在班级的老师的信息
       ajax({
-        url: ".data/students.json",
+        url: "./data/students.json?name=李华",
         success: function (data) {
+          // console.log(data);
           data.forEach((stu) => {
-            for (let i = 0; i < data.length; i++) {
-              if (data[i].name === "李华") {
-                const cid = data[i].classId;
-                ajax({
-                  url: "./data/classes.json?id=" + cid,
-                  success: function (data) {
-                    for (let i = 0; i < data.length; i++) {
-                      if (data[i].id === cid) {
-                        const tid = data[i].teacherId;
-                        ajax({
-                          url: "./data/teacher.json?id=" + tid,
-                          success: function (data) {
-                            for (let i = 0; i < data.length; i++) {
-                              if (data[i].id === tid) {
-                                console.log(data[i]);
-                              }
+            if (stu.name === "李华") {
+              const cid = stu.classId;
+              ajax({
+                url: "./data/classes.json",
+                success: function (data) {
+                  data.forEach((cla) => {
+                    if (cla.id === cid) {
+                      const tid = cla.teacherId;
+                      ajax({
+                        url: "./data/teachers.json",
+                        success: function (data) {
+                          data.forEach((tea) => {
+                            if (tea.id === tid) {
+                              console.log(tea);
                             }
-                          },
-                        });
-                      }
+                          });
+                        },
+                      });
                     }
-                  },
-                });
-                return;
-              }
+                  });
+                },
+              });
+              return;
             }
           });
         },

@@ -71,42 +71,22 @@
       //1. 获取李华的班级id Promise
       //2. 根据班级id获取李华所在班级的老师id Promise
       //3. 根据老师的id查询老师信息 Promise
-
+      //有先后顺序。第一件事没有做完，后面的事情就要等着
       ajax({
-        url: "./data/students.json",
+        url: "data/students.json",
       })
-        .then((students) => {
-          for (const i in students) {
-            if (students[i].name === "李华") {
-              return students[i].classId;
-            }
-          }
+        .then((resp) => {
+          return resp.filter((stu) => stu.name === "李华")[0].classId;
         })
         .then((cid) => {
-          return ajax({
-            url: "./data/classes.json",
-          }).then((classes) => {
-            for (const i in classes) {
-              if (classes[i].id === cid) {
-                return classes[i].teacherId;
-              }
-            }
+          return ajax({ url: "data/classes.json" }).then((cls) => {
+            return cls.filter((item) => item.id === cid)[0].teacherId;
           });
         })
         .then((tid) => {
-          return ajax({
-            url: "./data/teachers.json",
-          }).then((teachers) => {
-            for (const i in teachers) {
-              if (teachers[i].id === tid) {
-                console.log(teachers[i]);
-                return teachers[i];
-              }
-            }
+          return ajax({ url: "data/teachers.json" }).then((tea) => {
+            console.log(tea.filter((item) => item.id === tid)[0]);
           });
-        })
-        .then((teacher) => {
-          console.log(teacher);
         });
     </script>
   </body>

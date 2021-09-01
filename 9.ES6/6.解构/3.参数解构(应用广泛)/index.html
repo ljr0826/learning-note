@@ -7,15 +7,16 @@
   </head>
   <body>
     <script>
-      //   function print(user) {
-      //     console.log(`姓名：${name}`);
-      //     console.log(`年龄：${age}`);
-      //     console.log(`性别：${sex}`);
-      //     console.log(`省份：${province}`);
-      //     console.log(`城市：${city}`);
-      //   }
+      // function print(user) {
+      //   console.log(`姓名：${uesr.name}`);
+      //   console.log(`年龄：${uesr.age}`);
+      //   console.log(`性别：${uesr.sex}`);
+      //   console.log(`省份：${uesr.address.province}`);
+      //   console.log(`城市：${uesr.address.city}`);
+      // } //以前的写法：太low了
+
       function print({ name, age, sex, address: { province, city } }) {
-        //直接解构
+        //直接解构：因为知道传递的参数一定是一个对象
         console.log(`姓名：${name}`);
         console.log(`年龄：${age}`);
         console.log(`性别：${sex}`);

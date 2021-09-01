@@ -8,19 +8,19 @@
   <body>
     <script>
       const pro = new Promise((resolve, reject) => {
+        //未决阶段的函数是同步的，会立即执行
         console.log("a");
         resolve(1);
         setTimeout(() => {
           console.log("b");
         }, 0);
       });
-      pro.then((data) => {
-        console.log(data);
-      });
-      pro.catch((err) => {
-        console.log(err);
-      });
-      console.log("c"); //a c 1 b
+      pro.then(
+        (data) => {
+          console.log(data);
+        } //这里的thenable函数和catchable函数是异步的。就算事情到了已决阶段也要加入到事件队列中等待执行栈留空
+      );
+      console.log("c"); // a c 1 b
     </script>
   </body>
 </html>

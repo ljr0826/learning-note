@@ -7,15 +7,24 @@
   </head>
   <body>
     <script>
-      async function test1() {
-        console.log(1);
-        return 2;
+      async function asy() {
+        console.log("1");
+        await console.log("2");
+        console.log("3");
       }
-      async function test2() {
-        const result = await test1();
-        console.log(result);
-      }
-      test2();
+      asy();
+      console.log("4");
+
+      console.log("=============");
+      // async function asy() {
+      //   console.log("11");
+      //   Promise.resolve(console.log("22")).then(() => {
+      //     console.log("33");
+      //   });
+      // }
+      // asy();
+      // console.log("44");
+      //11 22 44 33
     </script>
   </body>
 </html>
