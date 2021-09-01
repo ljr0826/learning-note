@@ -9,27 +9,16 @@
     <button>得到所有的省份数据</button>
     <script>
       async function getProvinces() {
-        const url = "http://101.132.72.36:5100/api/local";
-        const config = {
+        const req = new Request("http://101.132.72.36:5100/api/local", {
           method: "GET",
           headers: {
-            // "Content-Type": "application/json",
-            a: 1,
+            "Content-Type": "application-json",
           },
-          //   body: `{"a":"1"}`,
-        };
-        const req = new Request(url, config);
-        try {
-          const resp = await fetch(req); //使用`fetch`函数即可立即向服务器发送网络请求
-          const result = await resp.json();
-          console.log(resp, result);
-        } catch (err) {
-          console.log(err);
-        }
+        });
+        const resp = await fetch(req);
+        console.log(req, resp);
       }
-      document.querySelector("button").onclick = function () {
-        getProvinces();
-      };
+      document.querySelector("button").onclick = getProvinces;
     </script>
   </body>
 </html>

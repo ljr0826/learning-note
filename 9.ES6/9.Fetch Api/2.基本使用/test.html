@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -9,26 +10,23 @@
     <button>得到所有的省份数据</button>
     <script>
       async function getProvinces() {
-        const url = "http://101.132.72.36:5100/api/local";
+        const url = "http://101.132.72.36:5100/api/local"; //请求地址
         const config = {
-          method: "GET",
+          method: "GET", //请求方法
           headers: {
-            // "Content-Type": "application/json",
-            a: 1,
-          },
-          //   body: `{"a":"1"}`,
-        };
+            "Content-Type": "application-json",
+            a: 1, //也可以配置一些自定义的东西
+          }, //请求头配置
+          // body: "{'a':1}",
+        }; //配置对象
         try {
-          const resp = await fetch(url, config); //使用`fetch`函数即可立即向服务器发送网络请求
-          const result = await resp.json();
-          console.log(resp, result);
+          const resp = await fetch(url, config);
+          console.log(resp);
         } catch (err) {
           console.log(err);
         }
       }
-      document.querySelector("button").onclick = function () {
-        getProvinces();
-      };
+      document.querySelector("button").onclick = getProvinces;
     </script>
   </body>
 </html>

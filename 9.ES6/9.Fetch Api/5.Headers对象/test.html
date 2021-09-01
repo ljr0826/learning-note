@@ -54,6 +54,11 @@
       document.querySelector("button").onclick = function () {
         getProvinces();
       };
+      Promise.resolve(1)
+        .then()
+        .then((data) => {
+          console.log(data);
+        });
     </script>
   </body>
 </html>

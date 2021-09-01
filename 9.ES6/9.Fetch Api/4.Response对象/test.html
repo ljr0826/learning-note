@@ -23,24 +23,23 @@
 
       async function getProvinces() {
         // const resp = await fetch(getRequestInfo())
-
         const resp = new Response(
           `[
                 {"id":1, "name":"北京"},
                 {"id":2, "name":"天津"}
-            ]`,
+            ]`, //响应体里面的信息（这里是json格式的）
           {
             ok: true,
             status: 200,
           }
-        );
+        ); //不想真的去测试服务器，模拟数据测试一下
         const result = await getJSON(resp);
         console.log(result);
       }
 
       async function getJSON(resp) {
-        const json = await resp.json();
-        return json;
+        //该函数用来将response对象解析成一个json格式
+        return await resp.json();
       }
 
       document.querySelector("button").onclick = function () {

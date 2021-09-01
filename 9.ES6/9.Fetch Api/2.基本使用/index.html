@@ -6,28 +6,20 @@
     <title>Document</title>
   </head>
   <body>
-    <button>得到所有的省份数据</button>
+    <button>点击</button>
     <script>
-      try {
-        async function getProvinces() {
-          const resp = await fetch(
-            "http://developer.duyiedu.com/edu/testJsonp",
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          const result = resp.text();
-          console.log(result);
-        }
-        document.querySelector("button").onclick = function () {
-          getProvinces();
-        };
-      } catch (err) {
-        console.log(err);
+      async function getProvinces() {
+        const resp = await fetch("https://www.baidu.com", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application-json",
+          },
+        });
+        const result = await resp.json();
+        console.log(result);
       }
+
+      document.querySelector("button").onclick = getProvinces;
     </script>
   </body>
 </html>
