@@ -7,16 +7,17 @@
   </head>
   <body>
     <script>
-      const arr = [2, 4, 6, 7, 8, 9];
-
-      const iterator = arr[Symbol.iterator]();
+      const arr = [2, 5, 7, 9, 3]; //es6里，将数组做成了一个可迭代对象
+      const iterator = arr[Symbol.iterator](); //得到一个迭代器
+      //很多伪数组也是可迭代对象。比如获取的dom数组
+      //可迭代对象的遍历：
       let result = iterator.next();
       while (!result.done) {
-        const item = result.value;
+        const item = result.value; //取出数据
         console.log(item);
-        result = iterator.next(); //下一次迭代
+        result = iterator.next();
       }
-      console.log("对比");
+      //相当于使用es6推出的for-of语法糖
       for (const item of arr) {
         console.log(item);
       }

@@ -8,11 +8,14 @@
   <body>
     <script>
       function* t1() {
-        yield "a";
-        yield "b";
+        yield "A";
+        yield "B";
       }
       function* test() {
-        yield* t1();
+        //在生成器内部调用t1的方式
+        // t1(); //这种调用方式错误。只是创建一个生成器对象，既没有迭代也没有赋值
+        // yield t1(); //这种调用方式也是错误的。这次第一次迭代的结果即value值是函数t1调用生成的生成器对象
+        yield* t1(); //我们希望在这个生成器函数的迭代过程中去使用其他函数的迭代过程。加个*过后就相当于将这个代码copy过来了
         yield 1;
         yield 2;
         yield 3;

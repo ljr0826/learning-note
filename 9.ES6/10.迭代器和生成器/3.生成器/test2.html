@@ -7,16 +7,15 @@
   </head>
   <body>
     <script>
-      const arr1 = [1, 2, 3, 4, 5, 6];
+      const arr1 = [1, 2, 3, 4, 5];
       const arr2 = [6, 7, 8, 9, 0];
-      //迭代器创建函数 iterator creator
-      function* createIterator(arr) {
+      function* creatIterator(arr) {
         for (const item of arr) {
           yield item;
         }
       }
-      const iter1 = createIterator(arr1);
-      const iter2 = createIterator(arr2);
+      const generator1 = creatIterator(arr1); //创建生成器对象
+      const generator2 = creatIterator(arr2);
     </script>
   </body>
 </html>

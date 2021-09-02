@@ -10,21 +10,26 @@
       const arr1 = [1, 2, 3, 4, 5];
       const arr2 = [6, 7, 8, 9, 0];
       /**
-       * 迭代器创建函数
+       * 迭代器创建函数：根据你提供的数组arr创建通用的迭代器。帮你返回一个迭代器
        */
       function createIterator(arr) {
         let i = 0;
         return {
           next() {
-            var result = {
-              value: arr[this.i],
-              done: this.i >= arr.length,
+            return {
+              value: arr[i++],
+              done: i > arr.length,
             };
-            this.i++;
-            return result;
           },
         };
       }
+      const iterator = createIterator(arr2);
+      let data = iterator.next();
+      while (!data.done) {
+        console.log(data);
+        data = iterator.next();
+      }
+      console.log("迭代完成");
     </script>
   </body>
 </html>

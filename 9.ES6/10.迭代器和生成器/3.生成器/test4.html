@@ -8,12 +8,16 @@
   <body>
     <script>
       function* test() {
-        let info = yield 1;
+        conosle.log("函数开始");
+        let info = yield 1; //生成器第二次调用next方法。相当于将5传递给info即yield表达式的返回值
         console.log(info);
-        info = yield 2 + info;
+        info = yield 2 + info; //生成器第三次调用next方法。相当于将undefined传递给info
         console.log(info);
       }
       const generator = test();
+      generator.next(); //第一个调用next方法时传参没有任何意义。因为最开始连yield都没有
+      generator.next(5); //value值为7
+      generator.next(); //value值为undefiend
     </script>
   </body>
 </html>

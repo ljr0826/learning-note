@@ -19,8 +19,12 @@
     <script>
       const divs = document.querySelectorAll("div");
       const iterator = divs[Symbol.iterator]();
-      console.log(iterator.next());
-
+      let result = iterator.next();
+      while (!result.done) {
+        console.log(result.value);
+        result = iterator.next();
+      }
+      console.log("迭代完成");
       for (const item of divs) {
         console.log(item);
       }

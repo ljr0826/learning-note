@@ -7,15 +7,7 @@
   </head>
   <body>
     <script>
-      //   const arr = [1, 2, 3, 4, 5];
-      //   const obj = { ...arr };
-      //   console.log(obj);
-
       const obj = {
-        a: 1,
-        b: 2,
-      };
-      const obj1 = {
         a: 1,
         b: 2,
         [Symbol.iterator]() {
@@ -23,13 +15,8 @@
           let i = 0;
           return {
             next: () => {
-              const propName = keys[i];
-              const propValue = this[propName];
               const result = {
-                value: {
-                  propName,
-                  propValue,
-                },
+                value: { propName: keys[i], propValue: this[keys[i]] },
                 done: i >= keys.length,
               };
               i++;
@@ -38,9 +25,14 @@
           };
         },
       };
-      //   const arr = [...obj]; //报错，因为obj不是可迭代的
-      const arr1 = [...obj1];
-      console.log(arr1);
+      const arr = [...obj]; //若obj不是可迭代对象。那么它只能展开到对象里面。这样会报错
+      //但一旦它是可迭代对象，就可以一个个将数据展开到数组中
+      console.log(arr);
+      //甚至调用函数的时候，也可以使用展开运算符传入可迭代对象
+      function test(a, b) {
+        console.log(a, b);
+      }
+      test(...obj);
     </script>
   </body>
 </html>

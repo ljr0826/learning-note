@@ -2,22 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
       function* test() {
-        //给生成器每一次迭代提供数据的
-        console.log("第一次运行");
-        yield 1; //yield就是提供了一个语法糖，让你可以在函数内部很方便的产生迭代数据
+        //注意：这是一个生成器函数，调用这个函数只是简单的得到一个生成器而已。生成器函数的函数体根本就没有运行
+        //这个生成器函数的作用是给生成器提供迭代数据的。生成器的初衷就是为了简化迭代器的编写
+        //所以生成器函数内部是为了给生成器每次迭代提供数据。故而没有迭代时函数体不运行
+        //每次调用生成器的next方法，将导致生成器函数运行到下一个yield关键字位置。
+        //该yield关键字只能在生成器函数内部使用，表达产生一个迭代数据的意思
+        console.log("第一次运行"); //这个生成器函数的函数体根本就没有运行
+        yield 1; //表示产生了一个迭代数据1
         console.log("第二次运行");
         yield 2;
-        console.log("第三次运行"); //函数运行完，done的值变为true
-        return 10;
+        console.log("第三次运行"); //函数体运行完。done属性变为true迭代完成
       }
-      const generator = test();
+      const generator = test(); //调用生成器函数一定会得到一个生成器对象。这是创建生成器对象的唯一途径
       console.log(generator.next());
+      //感觉上，生成器在外面控制着函数的执行；实际上，就是一个语法糖，让你在函数内部方便的产生迭代数据
     </script>
   </body>
 </html>

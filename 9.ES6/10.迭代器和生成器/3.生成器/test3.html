@@ -14,21 +14,21 @@
       function* createFeiBoIterator() {
         let prev1 = 1,
           prev2 = 1,
-          n = 1; //当前是斐波那契数列的第几位
+          n = 1,
+          result;
         while (true) {
           if (n <= 2) {
             yield 1;
           } else {
-            let newPrev = prev1 + prev2;
-            yield newPrev;
+            result = prev1 + prev2;
             prev2 = prev1;
-            prev1 = newPrev;
+            prev1 = result;
+            yield result;
           }
           n++;
         }
       }
-      const iterator = createFeiBoIterator();
-      console.log(iterator.next()); //this不会别乱用
+      const generator = createFeiBoIterator();
     </script>
   </body>
 </html>

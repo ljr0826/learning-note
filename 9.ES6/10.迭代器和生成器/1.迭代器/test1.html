@@ -2,32 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
       const arr = [1, 2, 3, 4, 5];
+      for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+      } //循环一定要操作数据集合。若不是真数组就需要涉及到转换为真数组
+      //即循环相当于亲自到仓库取数据。迭代器则是让管理员帮你拿数据，本人不和仓库打交道；你不用管他是怎么拿的
       const iterator = {
-        i: 0, //当前的数组下标
+        i: 0, //表示当前的数组下标
         next() {
-          var result = {
-            value: arr[this.i],
-            done: this.i >= arr.length,
+          return {
+            value: arr[this.i++],
+            done: this.i > arr.length,
           };
-          this.i++;
-          return result;
         },
-      };
-      //   console.log(iterator.next());
-
-      //让迭代器不断取出下一个数据，直到没有数据为止
+      }; //该迭代器用来迭代数组arr。每次调用next取到arr的下一项
+      //一旦这个迭代器写完之后，不用再关注操作的数组是什么样的，很灵活；抽象了整个取数据的过程。想调用几次调用几次
+      // console.log(iterator.next()); //,.....
+      //实现：让迭代器不断地取出下一个数据，直到没有数据为止
       let data = iterator.next();
       while (!data.done) {
-        console.log(data.value);
+        //只要没有迭代完成，则取出数据
+        console.log(data);
+        //进行下一次迭代
         data = iterator.next();
       }
-      console.log("迭代完成");
+      console.log("迭代完成"); //整个迭代过程没有操作数组。即将数据集合和取数据的过程分开
     </script>
   </body>
 </html>
