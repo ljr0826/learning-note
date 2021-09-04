@@ -7,26 +7,17 @@
   </head>
   <body>
     <script>
-      const s1 = new Set();
-      const arr = [2, 4, 6];
-      s1.add(3);
-      s1.add(1);
-      s1.add(2);
-      s1.add(1); //无效
-      s1.add(+0);
-      s1.add(-0);
-      for (const item of s1) {
+      //实现对数组去重：去重后得到一个新的数组
+      const arr = [2, 4, 7, 32, 24, 12, 6, 8, 9, 6, 8, 7, 64, 32];
+      const newArr = [...new Set(arr)];
+
+      for (const item of newArr) {
         console.log(item);
       }
-      console.log(s1);
-      s1.forEach((item, index, s) => {
-        console.log(item, index, s);
-      });
-      console.log(arr);
-      arr.forEach((item, index, s) => {
-        console.log(item, index, s);
-      });
-      console.log("总数为：", s1.size);
+      newArr.forEach((item, i, s) => {
+        console.log(item, i, s);
+      }); //注意：数组里面的forEach方法有三个参数：每一项的值、下标、数组本身（下标是数组里面特有的东西）
+      //但是set集合的forEach方法的三个参数表示：每一项的值、set集合中没有下标但是为了forEach方法的统一也有这个参数但是也表示每一项的值、数组本身
     </script>
   </body>
 </html>

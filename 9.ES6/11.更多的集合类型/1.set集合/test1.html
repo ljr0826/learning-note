@@ -2,18 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      const s1 = new Set();
-      console.log(s1);
-      const s2 = new Set([1, 2, 2, 4, 5, 6]); //自动帮你去重
-      console.log(s2);
-      const s3 = new Set("sdffzsz");
-      console.log(s3); //字符串对象也是一个可迭代对象
-      console.log("sfsdg".split(""));
+      const s1 = new Set(); //创建一个空的、没有任何内容的set集合  Set(0) {}
+      const s2 = new Set([1, 2, 3, 3, 4, 2, 1, 4, 5]); //会自动帮助我们去重  Set(5) {1, 2, 3, 4, 5}
+      const s3 = new Set("fjklfkw"); //字符串对象也是一个可迭代对象，也可以去重  {"f", "j", "k", "l", "w"}
+      console.log(s1, s2, s3);
     </script>
   </body>
 </html>

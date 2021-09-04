@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -13,34 +14,15 @@
       };
       Object.defineProperty(obj, "a", {
         value: 3,
-        configurable: false,
-        enumerable: false,
-        writable: false,
+        configurable: false, //设置为false后。后面在更改属性描述符会报错，即这个属性不能再使用defindProperty了
+        enumerable: false, //设置为false后。这个属性for-in循环不出来。Object.keys(obj)和Object.values(obj)也得不到
+        writable: false, //设置为false后。这个属性变成只读属性。不能通过obj.a修改
       });
-      Object.defineProperties(obj, {
-        a: {
-          value: 3,
-          configurable: false,
-          enumerable: false,
-          writable: false,
-        },
-        b: {
-          value: 0,
-          configurable: false,
-          enumerable: true,
-          writable: false,
-        },
-      });
-      //   Object.defineProperty(obj, "a", {
-      //     value: 4,
-      //     configurable: true,
-      //   }); //报错
-      obj.a = 7; //无效
-      const props = Object.keys(obj);
-      console.log(props);
-      const desc = Object.getOwnPropertyDescriptor(obj, "a");
-      console.log(Object.getOwnPropertyDescriptors(obj));
-      console.log(desc);
+      for (const prop in obj) {
+        console.log(prop);
+      }
+      console.log(Object.keys(obj));
+      console.log(Object.values(obj));
     </script>
   </body>
 </html>

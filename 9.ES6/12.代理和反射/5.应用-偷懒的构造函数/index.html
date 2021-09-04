@@ -2,34 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
-
   <body>
     <script>
-      class User {}
-
+      class User {
+        // constructor(firstName, lastName, age) {
+        //   this.firstName = firstName;
+        //   this.lastName = lastName;
+        //   this.age = age; //这一部分赋值，写起来特别恶心
+        //   //可以用Reflect.constructor代理重写
+        // }
+      }
+      //因此可以将类写一个代理出来。实现：没有constructor中this赋值的一系列操作
       function ConstructorProxy(Class, ...propNames) {
         return new Proxy(Class, {
-          construct(target, argumentsList) {
-            const obj = Reflect.construct(target, argumentsList);
+          construct(target, argumentList) {
+            // console.log("参数列表", argumentList);
+            const obj = Reflect.construct(target, argumentList); //相当于是调用了构造器User
             propNames.forEach((name, i) => {
-              obj[name] = argumentsList[i];
+              obj[name] = argumentList[i];
             });
             return obj;
           },
         });
       }
-
       const UserProxy = ConstructorProxy(User, "firstName", "lastName", "age");
-
-      const obj = new UserProxy("袁", "进", 18);
+      const obj = new UserProxy("顾", "昀", 27);
       console.log(obj);
-
       class Monster {}
-
       const MonsterProxy = ConstructorProxy(
         Monster,
         "attack",
@@ -37,9 +40,8 @@
         "hp",
         "rate",
         "name"
-      );
-
-      const m = new MonsterProxy(10, 20, 100, 30, "怪物");
+      ); //通用函数
+      const m = new MonsterProxy(10, 20, 100, 30, "小怪兽");
       console.log(m);
     </script>
   </body>

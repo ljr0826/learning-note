@@ -2,24 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      const mp1 = new Map([
+      //set除了设置还有一堆、不重复的意思
+      //map除了地图以外还有映射的意思
+      const mp1 = new Map(); //创建一个空的map集合
+      const mp2 = new Map([
         ["a", 3],
         ["b", 4],
-        ["c", 5], //它要求每一次迭代的结果必须是一个长度为2的数组，数组第一项表示键，第二项表示值。
-      ]);
-      //   console.log(mp1);
-      mp1.set({}, 234);
-      mp1.set("a", "abc");
-      mp1.set({}, 111);
-      console.log(mp1);
-      console.log("get('a'):", mp1.get("a"));
-      console.log("has('a'):", mp1.has("a"));
-      console.log("键的总数：", mp1.size);
+        ["c", 5],
+      ]); //创建一个具有初始内容的集合。初始内容来自于可迭代对象每一次迭代的结果。
+      //但是它要求每一次迭代的结果必须是可迭代的对象（可以是一个长度为2的数组）。数组第一项表示键，数组第二项表示值
+      //即先迭代数组，将每一项拿出来；若拿出来的这一项不可迭代就报错，可迭代的话将第一项拿出来当作键、第二项拿出来当作值
+      mp2.set({}, 890);
+      console.log(mp2);
+      console.log("总数", mp2.size);
     </script>
   </body>
 </html>

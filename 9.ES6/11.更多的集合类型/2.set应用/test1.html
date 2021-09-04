@@ -10,23 +10,17 @@
       //两个数组的并集、交集、差集(不能出现重复项)
       const arr1 = [33, 22, 55, 33, 11, 33, 5];
       const arr2 = [22, 55, 77, 88, 88, 99, 99];
-
       //并集
-      const bingArr = [...new Set([...arr1, ...arr2])];
-      console.log(bingArr);
-
+      const bingji = [...new Set([...arr1, ...arr2])];
+      console.log(bingji);
       //交集
-      const jiaoArr = [...new Set(arr1)].filter((item) => arr2.includes(item));
-      console.log(jiaoArr);
-
+      const jiaoji = [...new Set(arr1)].filter((item) => arr2.includes(item));
+      console.log(jiaoji);
       //差集
-
-      const chaArr = [...new Set([...arr1, ...arr2])].filter(
-        (item) => !jiaoArr.includes(item)
+      const chaji = [...new Set([...arr1, ...arr2])].filter(
+        (item) => !(arr1.includes(item) && arr2.includes(item))
       );
-      console.log(chaArr);
-
-      //除了数组的includes方法可以使用外，还有数组的indexOf方法、set的has方法
+      console.log(chaji);
     </script>
   </body>
 </html>

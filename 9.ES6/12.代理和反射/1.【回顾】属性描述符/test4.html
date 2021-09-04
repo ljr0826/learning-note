@@ -17,7 +17,7 @@
     <script>
       const spanName = document.getElementById("name");
       const spanAge = document.getElementById("age");
-      const user = {};
+      const user = {}; //实现页面上的数据和该对象中的属性保持一致
       Object.defineProperties(user, {
         name: {
           get() {
@@ -32,10 +32,28 @@
             return spanAge.innerText;
           },
           set(val) {
+            if (typeof val != "number") {
+              throw newTypeError("年龄必须是一个数字");
+            } else if (val < 0) {
+              val = 0;
+            } else if (val > 200) {
+              val = 200;
+            }
             spanAge.innerText = val;
           },
         },
       });
+
+      function HTMLSpanElement() {
+        Object.defineProperty(this, "innerHTML", {
+          get() {
+            //获取页面窗口中对应的元素的内容
+          },
+          set() {
+            //重新渲染页面窗口
+          },
+        });
+      } //dom对象中的属性innerHTML是存取器属性，因为读取和设置时可以知道它什么时候被更改了
     </script>
   </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <p>
+        <span></span>
+        <span></span>
+      </p>
+      <p>
+        <span></span>
+        <span></span>
+      </p>
+    </div>
+    <script>
+      const div = document.getElementById("container");
+      //创建一个观察者（也可以叫代理）target表示目标对象
+      //实现：观察目标对象里面的属性变化，显示到页面的p元素内部
+      function observer(target) {
+        const proxy = new Proxy(target, {
+          set(target, prop, value) {
+            Reflect.set(target, prop, value);
+            render();
+          },
+          get(target, prop) {
+            return Reflect.get(target, prop);
+          },
+        });
+        render();
+        function render() {
+          let html = "";
+          for (const prop of Object.keys(target)) {
+            html += `      <p>
+              <span>${prop}：</span>
+              <span>${target[prop]}</span>
+            </p>`;
+          }
+          div.innerHTML = html;
+        }
+        return proxy; //返回观察者对象
+      }
+      const target = {
+        a: 1,
+        b: 2,
+      };
+      const obj = observer(target); //以后修改对象不修改target目标对象，而是修改观察者obj
+      obj.a = 10;
+      target.c = 3;
+      console.log(target, obj);
+      console.log(target === obj);
+    </script>
+  </body>
+</html>

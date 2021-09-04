@@ -2,23 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      obj = {
-        name: "adsf",
+      const obj = {
+        name: "顾昀",
       };
       Object.defineProperty(obj, "age", {
         get() {
           return obj._age;
         },
         set(val) {
-          if (typeof val !== "number") {
-            throw new Error("年龄必须是一个数字");
-          }
-          if (val < 0) {
+          if (typeof val != "number") {
+            throw newTypeError("年龄必须是一个数字");
+          } else if (val < 0) {
             val = 0;
           } else if (val > 200) {
             val = 200;
@@ -26,7 +26,7 @@
           obj._age = val;
         },
       });
-      obj.age = -2;
+      obj.age = 230;
       console.log(obj.age);
     </script>
   </body>

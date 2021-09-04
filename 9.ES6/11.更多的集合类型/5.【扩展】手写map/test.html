@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class MyMap {
+        constructor(iterable = []) {
+          if (typeof iterable[Symbol.iterator] !== "function") {
+            throw TypeError(`你提供的${item}不是一个可迭代的额对象`);
+          }
+          this._datas = [];
+          for (const item of iterable) {
+            //item也得是一个可迭代对象
+            if (typeof item[Symbol.iterator] !== "function") {
+              throw new TypeError(`你提供的${item}不是一个可迭代的额对象`);
+            }
+            const iterator = item[Symbol.iterator](); //迭代器
+            const key = iterator.next().value;
+            const value = iterator.next().value;
+            this.set(key, value);
+          }
+        }
+        set(key, value) {
+          if (this.has(key)) {
+            //修改
+            const item = this._getObj(key);
+            item.value = value;
+          } else {
+            this._datas.push({ key, value });
+          }
+        }
+        has(key) {
+          return this._getObj(key) !== undefined;
+        }
+        get(key) {
+          const item = this._getObj(key);
+          if (item) {
+            return item.value;
+          }
+        }
+        get size() {
+          return this._datas.length;
+        }
+        delete(key) {
+          for (let i = 0; i < this._datas.length; i++) {
+            const element = this._datas[i];
+            if (this.isEqual(element.key, key)) {
+              this._datas.splice(i, 1);
+              return true;
+            }
+          }
+        }
+        clear() {
+          this._datas.length = 0;
+        }
+        *[Symbol.iterator]() {
+          for (const item of this._datas) {
+            yield [item.key, item.value];
+          }
+        }
+        forEach(callback) {
+          for (const item of this._datas) {
+            callback(item.value, item.key, item);
+          }
+        }
+        //根据key值从内部数组中，找到对应的数组项
+        _getObj(key) {
+          for (const item of this._datas) {
+            if (this.isEqual(key, item.key)) {
+              return item;
+            }
+          }
+        }
+        //判断两个数据是否相等
+        isEqual(data1, data2) {
+          if (
+            (data1 === +0 && data2 === -0) ||
+            (data1 === -0 && data2 === +0)
+          ) {
+            return true;
+          }
+          return Object.is(data1, data2);
+        }
+      }
+      const mp = new MyMap([
+        ["a", 3],
+        ["b", 4],
+        ["c", 5],
+        ["b", 9],
+      ]);
+      console.log(mp.has("c"), mp.set("a", 0), mp.get("b"));
+      for (const item of mp) {
+        console.log(item);
+      }
+      mp.forEach((value, key, map) => {
+        console.log(value, key, map);
+      });
+    </script>
+  </body>
+</html>

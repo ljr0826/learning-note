@@ -11,10 +11,10 @@
         a: 1,
         b: 2,
       };
-      //   obj.a = 10;
-      Reflect.set(obj, "a", 10);
-      console.log(obj);
-      console.log(Reflect.get(obj, "a"));
+      // obj.a = 10; //这种在函数式编程中就是一个魔法
+      Reflect.set(obj, "a", 10); //使用一个底层的实现给obj的属性a设置为10
+      // console.log(obj.a);
+      console.log(Reflect.get(obj, "a")); //使用一个底层的实现将obj的属性a读取出来
     </script>
   </body>
 </html>

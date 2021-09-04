@@ -12,26 +12,36 @@
       function sum(a, b) {
         return a + b;
       }
-
+      //若反射里面有这样的api，代理就可以重写这样的api
+      //得到一个可验证的函数：传递一个函数以及需要的数据类型进来
+      //返回一个新的函数。调用的时候就调用这个新的函数
       function validatorFunction(func, ...types) {
-        const proxy = new Proxy(func, {
-          apply(target, thisArgument, argumentsList) {
+        //以前的写法
+        // return function (...argumentList) {
+        //   types.forEach((t, i) => {
+        //     if (typeof argumentList[i] !== t) {
+        //       throw new TypeError(
+        //         `第${i + 1}个参数${argumentList[i]}不满足类型`
+        //       );
+        //     }
+        //   });
+        //   return func(...argumentList);
+        // };
+        return new Proxy(func, {
+          apply(target, thisArgument, argumentList) {
             types.forEach((t, i) => {
-              const arg = argumentsList[i];
-              if (typeof arg !== t) {
+              if (typeof argumentList[i] !== t) {
                 throw new TypeError(
-                  `第${i + 1}个参数${argumentsList[i]}不满足类型${t}`
+                  `第${i + 1}个参数${argumentList[i]}不满足类型`
                 );
               }
             });
-            return Reflect.apply(target, thisArgument, argumentsList);
+            return Reflect.apply(target, thisArgument, argumentList);
           },
         });
-        return proxy;
       }
-
-      const sumProxy = validatorFunction(sum, "number", "number");
-      console.log(sumProxy(1, 2));
+      const sumProxy = validatorFunction(sum, "number", "number"); //函数变得通用并且没有浪费内存空间
+      console.log(sumProxy("2", 6));
     </script>
   </body>
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <p>
+        <span></span>
+        <span></span>
+      </p>
+      <p>
+        <span></span>
+        <span></span>
+      </p>
+    </div>
+    <script>
+      const div = document.getElementById("container");
+      //创建一个观察者（也可以叫代理）target表示目标对象
+      //实现：观察目标对象里面的属性变化，显示到页面的p元素内部
+      function observer(target) {
+        const ob = {}; //要返回的观察者对象
+        const props = Object.keys(target); //目标对象里面的所有属性名
+        for (const prop of props) {
+          // ob[prop] = target[prop]; //这样写的话。外面给观察者对象赋值的话它不知道。所以不行
+          Object.defineProperty(ob, prop, {
+            get() {
+              return target[prop];
+            },
+            set(val) {
+              target[prop] = val; //赋值的时候，除了更新数据值之外，还要重新渲染div元素
+              render();
+            },
+            enumerable: true, //属性默认不可枚举，所以将该属性设置为true
+          });
+        }
+        render();
+        function render() {
+          let html = "";
+          for (const prop of Object.keys(ob)) {
+            html += `      <p>
+              <span>${prop}：</span>
+              <span>${ob[prop]}</span>
+            </p>`;
+          }
+          div.innerHTML = html;
+        }
+        return ob; //返回观察者对象
+      }
+      const target = {
+        a: 1,
+        b: 2,
+      };
+      const obj = observer(target); //以后修改对象不修改target目标对象，而是修改观察者obj
+      obj.a = 10;
+      //缺陷：搞出来了两个对象，观察者只观察了目标对象一开始的情况。后续若目标对象target发生变化，观察者检测不到
+      //而且造成了内存空间的浪费。以前没有办法，因为我们没有办法实现底层实现。代理出来就不一样了
+      target.c = 3;
+      console.log(target, obj);
+    </script>
+  </body>
+</html>

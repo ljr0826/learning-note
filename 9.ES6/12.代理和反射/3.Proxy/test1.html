@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -12,14 +13,15 @@
         b: 2,
       };
       const proxy = new Proxy(obj, {
-        set(target, propertyKey, value, receiver) {
-          //   console.log(target, propertyLey, value);
-          //   target[propertyKey] = value;
-          Reflect.set(target, propertyKey, value, receiver); //更容易阅读,第四个参数是代理对象本身
-        },
+        set(target, propertyKey, value) {
+          // console.log(target, propertyKey, value);
+          // target[propertyKey] = value;//重写代理
+          //...一些额外的事情
+          Reflect.set(target, propertyKey, value); //这种方式更加容易阅读。即重写代理的属性的原理还是反射提供的api
+        }, //我们不能重写目标里面的底层实现，但是能够实现重写代理里面的底层实现
         get(target, propertyKey) {
           if (Reflect.has(target, propertyKey)) {
-            return Reflect.get(target, propertyKey);
+            return Reflect.has(target, propertyKey);
           } else {
             return -1;
           }
@@ -27,11 +29,11 @@
         has(target, propertyKey) {
           return false;
         },
-      });
-      console.log(proxy);
-      proxy.a = 10;
+      }); //反射里面的方法在配置里面都可以重写
+      proxy.a = 1; //以后通过代理和目标对象打交道
       console.log(proxy.a);
-      console.log(proxy.d);
+      console.log(proxy.d); //没有这个属性，得到-1》即代理里面怎么写的就怎样运行
+      console.log("a" in proxy); //false
     </script>
   </body>
 </html>

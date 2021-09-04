@@ -2,23 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     <script>
-      //   function method(a, b) {
-      //     console.log("method", a, b);
-      //   }
-      //   //   method(3, 4);
-      //   Reflect.apply(method, null, [3, 4]);
-
       const obj = {
         a: 1,
         b: 2,
       };
-      delete obj.a;
-      console.log(obj);
+      console.log("a" in obj);
+      console.log(Reflect.has(obj, "a")); //对象里面是否有属性a
     </script>
   </body>
 </html>

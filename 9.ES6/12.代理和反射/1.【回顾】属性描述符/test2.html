@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -13,21 +14,19 @@
       Object.defineProperty(obj, "a", {
         get() {
           console.log("运行了属性a的get函数");
+          // return obj.a;//这样会无限递归-报错
           return obj._a;
         },
         set(val) {
+          //set方法是有一个参数的
           console.log("运行了属性a的set函数", val);
-          obj._a = val;
+          obj._a = val; //因为存取器属性没有内存空间，利用一个内存空间帮助我们存放一下数据
         },
-      });
-      //   obj.a = 20 + 10;
-      //   console.log(obj.a);
-
-      //   obj.a = obj.a + 1;
-      //   console.log(obj.a);
-
-      obj.a = 10;
-      console.log(obj.a);
+      }); //存取器属性的属性值不是放到内存空间里面的。没有专门的内存空间放数据
+      //当读取属性a的时候，运行get函数；给属性a赋值的时候，运行set函数
+      obj.a = 20; //相当于set(20)
+      console.log(obj.a); //相当于console.log(get())
+      //存取器属性最大的意义就是：对该属性的赋值、读取都会收到函数的控制
     </script>
   </body>
 </html>

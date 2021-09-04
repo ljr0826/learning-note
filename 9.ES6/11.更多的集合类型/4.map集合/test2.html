@@ -7,18 +7,18 @@
   </head>
   <body>
     <script>
-      const mp = new Map([
+      const mp1 = new Map([
         ["a", 3],
         ["b", 4],
         ["c", 5],
         ["b", 9],
       ]);
-      console.log(mp, [...mp]);
-      for (const [key, value] of mp) {
-        console.log([key, value], key, value); //解构
-      }
-      mp.forEach((value, key, mpp) => {
-        console.log(value, key, mpp);
+      console.log([...mp1]); //map集合和数组之间的相互转换
+      for (const [key, value] of mp1) {
+        console.log(key, value); //对数组的解构
+      } //遍历map集合
+      mp1.forEach((value, key, mp) => {
+        console.log(value, key, mp);
       });
     </script>
   </body>
